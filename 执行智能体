@@ -1,0 +1,14 @@
+"""Teaching example: execute an assigned action through the adapter."""
+
+
+class ExecutionAgent:
+    def __init__(self, adapter):
+        self.adapter = adapter
+
+    def execute(self, task_id, action):
+        result = self.adapter.step(action)
+        return {
+            'task_id': task_id,
+            'execution_status': 'completed' if result['success'] else 'failed',
+            **result,
+        }
