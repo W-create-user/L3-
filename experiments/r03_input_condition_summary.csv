@@ -1,0 +1,4 @@
+﻿input_condition,rows,first_transition,last_transition,input_changed_rows
+USS_zero_offset,40,1,100,1
+positive_legal_offset,30,31,60,1
+negative_legal_offset,30,61,90,1
