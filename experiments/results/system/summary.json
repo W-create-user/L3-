@@ -1,0 +1,74 @@
+{
+  "environment": "synthetic interface fixture; not SMPL",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "raw_sha256": "e04b7f61a980ff503b02ed6385868824dd76ab4cbc5ce44147a655f389ffa3da",
+  "summary": {
+    "architecture/single": {
+      "n": 30,
+      "success_rate": 1.0,
+      "mean_seconds": 5.3792200003499604e-05
+    },
+    "architecture/four_agents": {
+      "n": 30,
+      "success_rate": 1.0,
+      "mean_seconds": 0.0016234466333268454
+    },
+    "scheduling/fixed": {
+      "n": 30,
+      "success_rate": 0.0,
+      "mean_seconds": 6.104756667658269e-05
+    },
+    "scheduling/cnp": {
+      "n": 30,
+      "success_rate": 1.0,
+      "mean_seconds": 4.012613331572841e-05
+    },
+    "safety/monitor_on": {
+      "n": 60,
+      "success_rate": 1.0,
+      "mean_seconds": 2.5434849997433655e-05,
+      "unsafe_admitted_rate": 0.0,
+      "normal_blocked_rate": 0.0
+    },
+    "safety/monitor_off": {
+      "n": 60,
+      "success_rate": 0.5,
+      "mean_seconds": 3.406000037860698e-07,
+      "unsafe_admitted_rate": 1.0,
+      "normal_blocked_rate": 0.0
+    }
+  }
+}
