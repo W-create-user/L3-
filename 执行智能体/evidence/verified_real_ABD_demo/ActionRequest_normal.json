@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.2",
+  "request_id": "f82c2d2e-83dc-47bc-af36-a56c962c122a",
+  "task_id": "TASK-a13f3fc4",
+  "task_name": "完成一次仿真控制任务",
+  "parent_task_id": "TASK-a13f3fc4",
+  "subtask_id": "SUB-f811cbec",
+  "subtask_name": "execute_approved_action",
+  "goal_type": "control_cycle",
+  "task_type": "control_cycle",
+  "task_context": {
+    "task_id": "TASK-a13f3fc4",
+    "task_name": "完成一次仿真控制任务",
+    "parameters": {
+      "task_type": "control_cycle",
+      "priority": 4,
+      "preconditions": [],
+      "constraints": {
+        "environment": "AtropineEnv",
+        "require_monitoring": true
+      },
+      "subtasks": [
+        {
+          "subtask_id": "SUB-08fc7801",
+          "name": "collect_observation",
+          "description": "获取当前仿真环境可用的状态观测",
+          "order": 1,
+          "dependencies": [],
+          "required_capability": "state_read",
+          "preconditions": [],
+          "status": "pending"
+        },
+        {
+          "subtask_id": "SUB-9c6abb6a",
+          "name": "evaluate_goal",
+          "description": "结合任务目标分析当前状态",
+          "order": 2,
+          "dependencies": [
+            "SUB-08fc7801"
+          ],
+          "required_capability": "decision",
+          "preconditions": [
+            "observation_available"
+          ],
+          "status": "pending"
+        },
+        {
+          "subtask_id": "SUB-713886de",
+          "name": "generate_action_intent",
+          "description": "生成待审核的抽象控制动作意图，不直接生成未经核实的环境动作",
+          "order": 3,
+          "dependencies": [
+            "SUB-9c6abb6a"
+          ],
+          "required_capability": "decision",
+          "preconditions": [
+            "goal_evaluated"
+          ],
+          "status": "pending"
+        },
+        {
+          "subtask_id": "SUB-6b2a33ad",
+          "name": "safety_review",
+          "description": "将候选动作提交监管模块进行安全检查",
+          "order": 4,
+          "dependencies": [
+            "SUB-713886de"
+          ],
+          "required_capability": "monitoring",
+          "preconditions": [
+            "candidate_action_available"
+          ],
+          "status": "pending"
+        },
+        {
+          "subtask_id": "SUB-f811cbec",
+          "name": "execute_approved_action",
+          "description": "仅在监管放行后请求执行模块提交动作",
+          "order": 5,
+          "dependencies": [
+            "SUB-6b2a33ad"
+          ],
+          "required_capability": "environment_execution",
+          "preconditions": [
+            "monitoring_passed"
+          ],
+          "status": "pending"
+        },
+        {
+          "subtask_id": "SUB-be9c1123",
+          "name": "verify_result",
+          "description": "读取执行反馈并检查本轮任务结果",
+          "order": 6,
+          "dependencies": [
+            "SUB-f811cbec"
+          ],
+          "required_capability": "decision",
+          "preconditions": [
+            "execution_feedback_available"
+          ],
+          "status": "pending"
+        }
+      ],
+      "status": "created",
+      "source": "rule_mapping"
+    }
+  },
+  "action": [
+    -6.908619252499193e-05,
+    0.005374751053750515,
+    0.0008017149521037936,
+    -0.0013224054127931595
+  ],
+  "action_source": "B_local_space_midpoint_baseline",
+  "observation": [
+    0.0,
+    0.4078,
+    0.1089,
+    0.3888,
+    0.2126,
+    13.057265281677246,
+    13.057265281677246,
+    0.0010000000474974513,
+    0.0010000000474974513,
+    2.9748927777934295e-17,
+    2.592966759681261e-13,
+    4.996121355530039e-16,
+    2.0030083522187096e-15,
+    2.705462201238527e-13,
+    1.881636778660866e-36,
+    1.6677838895012747e-16,
+    2.4056603771946324e-12,
+    1.851387786450359e-06,
+    1.1296488517860219e-14,
+    2.3651628311794502e-14,
+    5.358809826991494e-14,
+    5.629197994106013e-15,
+    3.2045784315597325e-13,
+    4.3675843974352727e-07,
+    0.003806860283230873,
+    7.33504812105916e-06,
+    2.9407137266882815e-05,
+    0.003972020298070985,
+    2.7625222937305794e-26,
+    2.4485544314247816e-06,
+    0.035318666969761645,
+    0.0002718112219056352,
+    0.00016584922779303932,
+    0.0003472410285158351,
+    0.0007867528659823202,
+    8.264498644340235e-05,
+    0.004704797047650017,
+    0.0007301725920046264,
+    0.0010720018025791589
+  ],
+  "state_version": 1,
+  "step_count": 0,
+  "environment": "SMPL.AtropineEnvGym",
+  "normalize": false,
+  "uss_subtracted": true,
+  "action_space": {
+    "shape": [
+      4
+    ],
+    "dtype": "float32",
+    "low": [
+      -0.0001574199995957315,
+      -0.0014623400056734681,
+      -0.00021811999613419175,
+      -0.003004539990797639
+    ],
+    "high": [
+      1.924762000271585e-05,
+      0.012211842462420464,
+      0.001821549842134118,
+      0.00035972922341898084
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "time": "2026-11-05T23:29:52.528577+08:00",
+  "actual_A_source": "D:\\SMPL_Project\\midterm_review_20261105\\code\\integration_abd_1103\\member_A_11_02",
+  "monitor_provenance": "D_provided_source",
+  "monitor_source": "D:\\SMPL_Project\\midterm_review_20261105\\code\\external_D\\pr1_8c105883\\source\\agents\\monitoring_agent.py",
+  "monitor_source_sha256": "e6b996ad4a0d714f4402f303d7a573131aae20104d57d6a212e8cfaa22bf3345",
+  "R03_validation": "not claimed; D described R03 as not implemented",
+  "SMPL_source": "D:\\SMPL_Project\\midterm_review_20261105\\code\\vendor\\smpl",
+  "normalize": false,
+  "uss_subtracted": true,
+  "observation_shape": [
+    39
+  ],
+  "action_shape": [
+    4
+  ],
+  "action_low": [
+    -0.0001574199995957315,
+    -0.0014623400056734681,
+    -0.00021811999613419175,
+    -0.003004539990797639
+  ],
+  "action_high": [
+    1.924762000271585e-05,
+    0.012211842462420464,
+    0.001821549842134118,
+    0.00035972922341898084
+  ],
+  "python": "3.11.18 (main, Oct 26 2026, 14:08:50) [MSC v.1944 64 bit (AMD64)]",
+  "versions": {
+    "numpy": "1.26.4",
+    "gym": "0.26.2",
+    "casadi": "3.8.2",
+    "scipy": "1.17.1"
+  },
+  "A_sha256": {
+    "main.py": "efdd5b3c8751f8e94fd5ffe21eee7d64813406d1897fa5d7fa38dcaec3f11498",
+    "agents\\decision_agent.py": "fa2626dff627d05baae5a56d317bfe7b68c07a52b64a939238a24c1c9b4841b6",
+    "agents\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "algorithms\\htn_planner.py": "5ecfe039c9dcbad36113dedb5826c8281e4b2ea00e2f07092b49c2872f33695b",
+    "algorithms\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests\\test_decision_agent.py": "01b86e8af2246fe6a56c3d985338bb8fe1e42fc5497ba0cfd66e53ff7daf392b"
+  },
+  "B_sha256": {
+    "a_integration.py": "2640be9135df3116a22f49a6269861c2ac53f8aca9d639c5546b6e5ae6c999ea",
+    "demo_actual_a.py": "a1a4dcb3387aa977cd4f18f12ae111f204dc2fc2e698093bc57d1b34da586292",
+    "demo_current_task.py": "e752d53342fb241c97a5289a6bead4d7787b32b169d0d5cc9eade2fad7fa8326",
+    "environment_adapter.py": "343d04fc865f350c51032495ec2a38c63eb1174136f9b12284ab3c4ac64aae3e",
+    "execution_agent.py": "d01e4f1d8ad851ef4519aff7694cac5da4eebb0e1ac30a9e65d37383b966497f",
+    "export_for_D.py": "973d973cf4781eb30dee774761e31e9f4ea800fa3bf6a0d522842f4070b845c3",
+    "local_policy.py": "20375d1f64777fa680f8bbfb35457470a81fdbbcb27eb6ff1c29e5debfcea6be",
+    "reference_monitor.py": "8c2a5f54020b54c6169d82478dd606b82d78d2a8b6c98b009b24965fb4e730f8",
+    "safety_bridge.py": "c9cadf84d9ecb3751132a454826a6baa56194d065d8e367e12524dbd1dd9c172",
+    "task_contract.py": "3b5af1a0937d8dd4922ab6d32ee72bf29abb84b726a009d40839016f17efc847",
+    "test_contract.py": "219e163406d15fdbfbb901fb20a4aad68d46b80c70e57f449398b36af136a990",
+    "test_current_task.py": "bfd3445755614c860ab2523499d99a2d93e75544ebe80ff2156acec57888e1ac",
+    "test_D_PR1.py": "811d9c20788b89550bf7e2b754350ab99a470b24ebc4f347955d34c795de9cc4",
+    "test_peer_interfaces.py": "2c21d1de6cdd79d04bb75daa43fa918513f2292e6a7e5cdd96e38d15624dd3a8",
+    "__init__.py": "887792c8d4c4bfbeef1f47ec9f4aff7a13743cd2c46540e09e650219f43ac79c"
+  }
+}
