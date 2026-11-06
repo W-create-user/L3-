@@ -70,3 +70,14 @@ with EnvironmentAdapter() as env:
 源码来源：`agents/decision_agent.py`、`agents/scheduling_agent.py` 和 `algorithms/cnp_protocol.py` 从仓库对应 A/C 目录整合；`runtime` 下执行、环境适配、任务契约、安全桥和策略模块来自原 B 压缩包；D 沿用根目录监管实现。原始交付目录和 ZIP 保留作为来源记录，统一入口使用上述整合后的模块。
 
 验证记录：6 项确定性接口测试通过，使用测试环境适配器，覆盖四智能体闭环、拒绝时零步进、只读零步进、失败停止、重复任务及过期请求。当前云环境缺少 `requests`，真实 SMPL 启动未通过，因此接口测试结果不等同于真实工艺仿真验证。
+
+## 中期智能体系统补充（SMPL路线）
+
+详见 `docs/智能体系统中期报告.md`。新增 `runtime.dispatch.Dispatcher` 的多候选投标和有界重分配、`runtime.supervision.Supervision` 接管锁存、`AgentCluster.run_batch`、带来源的状态规则配置及 `runtime.gym_adapter.GymEnvironmentAdapter`。目前17项测试通过。
+
+```bash
+python -m unittest discover -s tests -v
+python -m experiments.evaluate_system
+```
+
+实验输出为 `experiments/results/system/{raw.csv,events.jsonl,summary.json}`，全部是合成接口验证，不能作为真实SMPL工艺性能数据。项目按新版项目书采用SMPL：mAbEnv主研究、AtropineEnv辅助验证；真实环境验收状态和剩余缺口以本次中期系统报告为准。

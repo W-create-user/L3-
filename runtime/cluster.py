@@ -1,5 +1,7 @@
 """Synchronous A/C/B/D orchestration; only B may advance the environment."""
 from copy import deepcopy
+from time import perf_counter
+from .supervision import Supervision
 import numpy as np
 from agents.decision_agent import DecisionAgent
 from agents.scheduling_agent import SchedulingAgent
@@ -8,14 +10,18 @@ from .execution_agent import ExecutionAgent
 
 
 class AgentCluster:
-    def __init__(self, adapter, *, log_path=None):
+    def __init__(self, adapter, *, log_path=None, state_rules=None):
         self.adapter = adapter
         self.decision = DecisionAgent()
         self.execution = ExecutionAgent(adapter, log_path=log_path)
-        self.monitor = MonitoringAgent(adapter.action_space)
+        self.monitor = MonitoringAgent(adapter.action_space, state_rules=state_rules)
+        self.supervision = Supervision()
+        self.history = []
         self.scheduler = SchedulingAgent()
 
     def run(self, goal, *, action=None, seed=1101):
+        self.supervision.require_autonomous()
+        started = perf_counter()
         # Every call starts a new episode and invalidates pending action requests.
         self.scheduler = SchedulingAgent()
         task = self.decision.task_to_dict(self.decision.create_task(goal))
@@ -42,6 +48,7 @@ class AgentCluster:
             contract = self.scheduler.assignment_for_execution(assignment)
             status, reason = 'completed', None
             try:
+                self.adapter.require_ready()
                 name = sub['name']
                 if name == 'collect_observation':
                     observation = self.execution.get_observation()
@@ -85,8 +92,23 @@ class AgentCluster:
                 break
         complete = all(s['status'] == 'COMPLETED' for s in task['subtasks'])
         task['status'] = 'COMPLETED' if complete else 'FAILED'
-        return {'task': task, 'success': complete, 'failure_reason': error,
+        if not complete:
+            self.supervision.request_takeover(error or 'dependency_deadlock')
+        result = {'task': task, 'success': complete, 'failure_reason': error,
                 'observation': outcome['observation'] if outcome else observation,
                 'execution_result': outcome, 'events': events,
                 'subtask_statuses': {r['subtask_id']: self.scheduler.get_task_status(
                     task['task_id'], r['subtask_id']) for r in records}}
+
+        result['elapsed_seconds'] = perf_counter() - started
+        result['supervision_mode'] = self.supervision.mode
+        self.history.append(deepcopy(result))
+        return result
+
+    def run_batch(self, goals, *, seed=1101):
+        results = []
+        for index, goal in enumerate(goals):
+            results.append(self.run(goal, seed=seed + index))
+            if not results[-1]['success']:
+                break
+        return results

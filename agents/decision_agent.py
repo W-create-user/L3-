@@ -1,4 +1,4 @@
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from typing import Any, Dict, List, Union
 from uuid import uuid4
 
@@ -24,6 +24,8 @@ class SubTask:
     required_capability: str
 
     # 子任务状态
+    preconditions: List[str] = field(default_factory=lambda: ["environment_ready"])
+    completion_criteria: List[str] = field(default_factory=lambda: ["handler_succeeded"])
     status: str = "PENDING"
 
 

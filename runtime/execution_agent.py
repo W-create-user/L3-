@@ -110,7 +110,7 @@ class ExecutionAgent:
             'observation': observation,
             'state_version': self.adapter.state_version,
             'step_count': self.adapter.step_count,
-            'environment': 'SMPL.AtropineEnvGym',
+            'environment': getattr(self.adapter, 'environment_name', 'SMPL.AtropineEnvGym'),
             'normalize': False,
             'uss_subtracted': True,
             'action_space': {

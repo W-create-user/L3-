@@ -23,7 +23,7 @@ class MonitoringAgent:
     不能将演示模式用于正式 AtropineEnv 安全验证。
     """
 
-    def __init__(self, action_space=None):
+    def __init__(self, action_space=None, state_rules=None):
         """
         初始化监管智能体。
 
@@ -34,6 +34,12 @@ class MonitoringAgent:
         """
 
         self.logs = []
+        self.state_rules = list(state_rules or [])
+        for rule in self.state_rules:
+            if not rule.get("source") or type(rule.get("index")) is not int or rule["index"] < 0:
+                raise ValueError("State rules require a nonnegative index and a documented source")
+            if not np.isfinite([rule["low"], rule["high"]]).all() or rule["low"] > rule["high"]:
+                raise ValueError("Invalid state-rule limits")
 
         if action_space is not None:
             # 使用仿真环境真实动作空间
@@ -206,6 +212,19 @@ class MonitoringAgent:
         # 4. 异常风险等级评估
         #
         # 未配置规则时，不得声称已完成状态异常检测。
+
+        if self.state_rules:
+            try:
+                observed = np.asarray(state, dtype=float)
+                if observed.ndim != 1 or not np.isfinite(observed).all():
+                    raise ValueError("状态不是有限一维向量")
+                for rule in self.state_rules:
+                    value = observed[rule["index"]]
+                    if not rule["low"] <= value <= rule["high"]:
+                        return self._response("Reject", 3, "R-03", "BLOCK",
+                            f"状态约束触发：index={rule['index']}, source={rule['source']}")
+            except (ValueError, TypeError, IndexError):
+                return self._response("Reject", 3, "R-03", "BLOCK", "状态数据无效或规则索引不可用")
 
         # ================= 检查通过 =================
 
