@@ -1,0 +1,57 @@
+{
+  "environment": "real SMPL.AtropineEnvGym",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "packages": {
+    "numpy": "1.26.4",
+    "gym": "0.26.2",
+    "requests": "2.34.2",
+    "casadi": "3.7.2",
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu",
+    "mzutils": "0.2022",
+    "numpy_distribution_metadata": "2.5.4"
+  },
+  "results": [
+    {
+      "scenario": "normal",
+      "seed": 1102,
+      "status": "completed",
+      "step_calls": 1,
+      "reward": -0.140157434021285,
+      "efactor": 13.197422386573033
+    },
+    {
+      "scenario": "normal",
+      "seed": 1103,
+      "status": "completed",
+      "step_calls": 1,
+      "reward": -0.047367963025719106,
+      "efactor": 13.104632915577467
+    },
+    {
+      "scenario": "reject",
+      "seed": 1101,
+      "status": "incomplete_or_failed",
+      "step_calls": 0
+    },
+    {
+      "scenario": "inspect",
+      "seed": 1101,
+      "status": "completed",
+      "step_calls": 0
+    }
+  ],
+  "source_sha256": {
+    "main.py": "ea13e7645b771cf0bba129f1d4a116ade40e429b661255c556d7940a44738b2f",
+    "a_integration/main.py": "a5a164ec72ab3759b3ac81566820498027bf76c6b2b8d511d9ce54ab5bcc9077",
+    "a_integration/decision_agent.py": "f176b6d6513e5ef13a4565ace0e00ea5a3c368009bf84622564c1922853ec209",
+    "a_integration/agents/monitoring_agent.py": "e6b996ad4a0d714f4402f303d7a573131aae20104d57d6a212e8cfaa22bf3345",
+    "执行智能体/code/integration_abd_1103/execution_agent.py": "d2d602ba6bb168ae98ff7958922e1cb4dc742cca5d664c65853b173f2227d4d5",
+    "执行智能体/code/integration_abd_1103/environment_adapter.py": "343d04fc865f350c51032495ec2a38c63eb1174136f9b12284ab3c4ac64aae3e",
+    "执行智能体/code/vendor/smpl/smpl/envs/atropineenv.py": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311",
+    "执行智能体/code/vendor/smpl/smpl/envs/models/atropine_process.py": "5165b6bf0556978af27cac7d810d5e37108fa64baccdd4fbdb2d416c9b91e88a"
+  },
+  "limitations": "Single-step midpoint baseline; no mAbEnv, optimization, industrial L3 or R03 validation. Seed 1101 CLI run is a separate evidence directory.",
+  "environment_note": "NumPy module version verified directly; pip --target upgrade left duplicate distribution metadata. Module was 1.26.4 during simulation."
+}

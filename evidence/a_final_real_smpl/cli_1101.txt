@@ -1,0 +1,68 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/workspace/work/smpl-deps/mzutils/torch_funcs.py:96: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @custom_fwd
+/workspace/work/smpl-deps/mzutils/torch_funcs.py:101: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  @custom_bwd
+CasADi - 2026-11-06 14:39:27 WARNING("The options 't0', 'tf', 'grid' and 'output_t0' have been deprecated.
+The same functionality is provided by providing additional input arguments to the 'integrator' function, in particular:
+ * Call integrator(..., t0, tf, options) for a single output time, or
+ * Call integrator(..., t0, grid, options) for multiple grid points.
+The legacy 'output_t0' option can be emulated by including or excluding 't0' in 'grid'.
+Backwards compatibility is provided in this release only.") [.../casadi/core/integrator.cpp:692]
+[MonitoringAgent] TASK-5d06c93f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5d06c93f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+{
+  "run_status": "completed",
+  "task_id": "TASK-5d06c93f",
+  "task_type": "control_cycle",
+  "subtask_count": 6,
+  "completed_subtasks": 6,
+  "subtask_statuses": {
+    "SUB-be6589b2": "completed",
+    "SUB-5dccf1d5": "completed",
+    "SUB-476f7a10": "completed",
+    "SUB-be96c323": "completed",
+    "SUB-cadce7d4": "completed",
+    "SUB-3310ba23": "completed"
+  },
+  "executor_id": "ExecutionAgent-01",
+  "step_calls": 1,
+  "step_count": 1,
+  "d_demo_mode": false,
+  "bids_are_live": false,
+  "bids_note": "Configured local capability-profile bids; not dynamic bid telemetry from independent live agents.",
+  "controller_note": "B space-midpoint is an interface baseline, not an optimized process controller.",
+  "r03_enabled": false,
+  "replanning_policy": {
+    "max_action_regenerations": 2,
+    "max_environment_retries": 1,
+    "automatic_live_reassignment": false
+  },
+  "environment": "SMPL.AtropineEnvGym",
+  "seed": 1101,
+  "observation_space_shape": [
+    39
+  ],
+  "action_space_shape": [
+    4
+  ],
+  "action_low": [
+    -0.0001574199995957315,
+    -0.0014623400056734681,
+    -0.00021811999613419175,
+    -0.003004539990797639
+  ],
+  "action_high": [
+    1.924762000271585e-05,
+    0.012211842462420464,
+    0.001821549842134118,
+    0.00035972922341898084
+  ],
+  "reset_observation_shape": [
+    39
+  ],
+  "b_source_dir": "/workspace/work/merge_latest/执行智能体/code/vendor/smpl"
+}

@@ -1,0 +1,950 @@
+{
+  "summary": {
+    "run_status": "completed",
+    "task_id": "TASK-2366bd17",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 6,
+    "subtask_statuses": {
+      "SUB-ab384c6b": "completed",
+      "SUB-701b7f2a": "completed",
+      "SUB-de11799c": "completed",
+      "SUB-13743e9b": "completed",
+      "SUB-0c73aaf9": "completed",
+      "SUB-6261be4c": "completed"
+    },
+    "executor_id": "ExecutionAgent-01",
+    "step_calls": 1,
+    "step_count": 1,
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "Configured local capability-profile bids; not dynamic bid telemetry from independent live agents.",
+    "controller_note": "B space-midpoint is an interface baseline, not an optimized process controller.",
+    "r03_enabled": false,
+    "replanning_policy": {
+      "max_action_regenerations": 2,
+      "max_environment_retries": 1,
+      "automatic_live_reassignment": false
+    },
+    "environment": "SMPL.AtropineEnvGym",
+    "seed": 1102,
+    "observation_space_shape": [
+      39
+    ],
+    "action_space_shape": [
+      4
+    ],
+    "action_low": [
+      -0.0001574199995957315,
+      -0.0014623400056734681,
+      -0.00021811999613419175,
+      -0.003004539990797639
+    ],
+    "action_high": [
+      1.924762000271585e-05,
+      0.012211842462420464,
+      0.001821549842134118,
+      0.00035972922341898084
+    ],
+    "reset_observation_shape": [
+      39
+    ],
+    "b_source_dir": "/workspace/work/merge_latest/执行智能体/code/vendor/smpl"
+  },
+  "parent_task": {
+    "task_id": "TASK-2366bd17",
+    "task_type": "control_cycle",
+    "priority": 3,
+    "preconditions": [],
+    "dependencies": [],
+    "status": "created",
+    "completion_criteria": [
+      "all_subtasks_completed"
+    ],
+    "description": "执行一次控制任务",
+    "constraints": {},
+    "subtasks": [
+      {
+        "subtask_id": "SUB-ab384c6b",
+        "name": "collect_observation",
+        "description": "获取当前仿真环境观测",
+        "order": 1,
+        "dependencies": [],
+        "required_capability": "state_read",
+        "preconditions": [],
+        "completion_criteria": [
+          "observation_received"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-701b7f2a",
+        "name": "evaluate_goal",
+        "description": "根据任务目标分析当前状态",
+        "order": 2,
+        "dependencies": [
+          "SUB-ab384c6b"
+        ],
+        "required_capability": "decision",
+        "preconditions": [
+          "observation_received"
+        ],
+        "completion_criteria": [
+          "goal_evaluated"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-de11799c",
+        "name": "generate_action_intent",
+        "description": "生成待审核的抽象控制动作意图",
+        "order": 3,
+        "dependencies": [
+          "SUB-701b7f2a"
+        ],
+        "required_capability": "decision",
+        "preconditions": [
+          "goal_evaluated"
+        ],
+        "completion_criteria": [
+          "action_intent_created"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-13743e9b",
+        "name": "safety_review",
+        "description": "将候选动作提交监管模块检查",
+        "order": 4,
+        "dependencies": [
+          "SUB-de11799c"
+        ],
+        "required_capability": "monitoring",
+        "preconditions": [
+          "action_intent_created"
+        ],
+        "completion_criteria": [
+          "safety_decision_received"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-0c73aaf9",
+        "name": "execute_approved_action",
+        "description": "仅在监管放行后请求执行模块执行动作",
+        "order": 5,
+        "dependencies": [
+          "SUB-13743e9b"
+        ],
+        "required_capability": "environment_execution",
+        "preconditions": [
+          "safety_passed"
+        ],
+        "completion_criteria": [
+          "execution_result_received"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-6261be4c",
+        "name": "verify_result",
+        "description": "检查执行反馈与任务完成情况",
+        "order": 6,
+        "dependencies": [
+          "SUB-0c73aaf9"
+        ],
+        "required_capability": "decision",
+        "preconditions": [
+          "execution_result_received"
+        ],
+        "completion_criteria": [
+          "result_verified"
+        ],
+        "status": "pending"
+      }
+    ],
+    "source": "rule_mapping"
+  },
+  "c_tasks": [
+    {
+      "task_id": "TASK-2366bd17",
+      "subtask_id": "SUB-ab384c6b",
+      "task_type": "collect_observation",
+      "priority": 3,
+      "dependencies": [],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "state_read",
+      "description": "获取当前仿真环境观测",
+      "order": 1,
+      "preconditions": [],
+      "completion_criteria": [
+        "observation_received"
+      ]
+    },
+    {
+      "task_id": "TASK-2366bd17",
+      "subtask_id": "SUB-701b7f2a",
+      "task_type": "evaluate_goal",
+      "priority": 3,
+      "dependencies": [
+        "SUB-ab384c6b"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "decision",
+      "description": "根据任务目标分析当前状态",
+      "order": 2,
+      "preconditions": [
+        "observation_received"
+      ],
+      "completion_criteria": [
+        "goal_evaluated"
+      ]
+    },
+    {
+      "task_id": "TASK-2366bd17",
+      "subtask_id": "SUB-de11799c",
+      "task_type": "generate_action_intent",
+      "priority": 3,
+      "dependencies": [
+        "SUB-701b7f2a"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "decision",
+      "description": "生成待审核的抽象控制动作意图",
+      "order": 3,
+      "preconditions": [
+        "goal_evaluated"
+      ],
+      "completion_criteria": [
+        "action_intent_created"
+      ]
+    },
+    {
+      "task_id": "TASK-2366bd17",
+      "subtask_id": "SUB-13743e9b",
+      "task_type": "safety_review",
+      "priority": 3,
+      "dependencies": [
+        "SUB-de11799c"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "monitoring",
+      "description": "将候选动作提交监管模块检查",
+      "order": 4,
+      "preconditions": [
+        "action_intent_created"
+      ],
+      "completion_criteria": [
+        "safety_decision_received"
+      ]
+    },
+    {
+      "task_id": "TASK-2366bd17",
+      "subtask_id": "SUB-0c73aaf9",
+      "task_type": "execute_approved_action",
+      "priority": 3,
+      "dependencies": [
+        "SUB-13743e9b"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "environment_execution",
+      "description": "仅在监管放行后请求执行模块执行动作",
+      "order": 5,
+      "preconditions": [
+        "safety_passed"
+      ],
+      "completion_criteria": [
+        "execution_result_received"
+      ]
+    },
+    {
+      "task_id": "TASK-2366bd17",
+      "subtask_id": "SUB-6261be4c",
+      "task_type": "verify_result",
+      "priority": 3,
+      "dependencies": [
+        "SUB-0c73aaf9"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "decision",
+      "description": "检查执行反馈与任务完成情况",
+      "order": 6,
+      "preconditions": [
+        "execution_result_received"
+      ],
+      "completion_criteria": [
+        "result_verified"
+      ]
+    }
+  ],
+  "stage_results": [
+    {
+      "subtask_id": "SUB-ab384c6b",
+      "task_type": "collect_observation",
+      "duration_seconds": 0.00016,
+      "execution_status": "completed",
+      "observation_shape": [
+        39
+      ],
+      "observation_finite": true,
+      "step_delta": 0
+    },
+    {
+      "subtask_id": "SUB-701b7f2a",
+      "task_type": "evaluate_goal",
+      "duration_seconds": 8.8e-05,
+      "execution_status": "completed",
+      "evaluation": "observation_received_and_finite",
+      "observation_dimension": 39,
+      "numeric_process_target": null,
+      "note": "No numeric process target was supplied; this stage validates state availability only."
+    },
+    {
+      "subtask_id": "SUB-de11799c",
+      "task_type": "generate_action_intent",
+      "duration_seconds": 0.000114,
+      "execution_status": "completed",
+      "action": [
+        -6.908619252499193e-05,
+        0.005374751053750515,
+        0.0008017149521037936,
+        -0.0013224054127931595
+      ],
+      "action_source": "space_midpoint_baseline"
+    },
+    {
+      "subtask_id": "SUB-13743e9b",
+      "task_type": "safety_review",
+      "duration_seconds": 0.000109,
+      "execution_status": "completed",
+      "safety_decision": {
+        "task_id": "TASK-2366bd17",
+        "decision": "pass",
+        "rule_id": null,
+        "reason": "所有已启用的规则检查通过（R-03 未启用）",
+        "risk_level": 0
+      }
+    },
+    {
+      "subtask_id": "SUB-0c73aaf9",
+      "task_type": "execute_approved_action",
+      "duration_seconds": 0.027913,
+      "execution_status": "completed",
+      "execution_result": {
+        "task_id": "TASK-2366bd17",
+        "request_id": "fe5fb658-eb33-430d-b546-f4800487d996",
+        "parent_task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-0c73aaf9",
+        "safety_decision": {
+          "schema_version": "SafetyDecision/1.0",
+          "request_id": "fe5fb658-eb33-430d-b546-f4800487d996",
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-0c73aaf9",
+          "approved": true,
+          "decision": "pass",
+          "reason": "所有已启用的规则检查通过（R-03 未启用）",
+          "level": 0,
+          "risk_level": 0,
+          "rule_id": null,
+          "intervention": null,
+          "demo_mode": false,
+          "raw_review": {
+            "task_id": "TASK-2366bd17",
+            "decision": "pass",
+            "rule_id": null,
+            "reason": "所有已启用的规则检查通过（R-03 未启用）",
+            "risk_level": 0,
+            "demo_mode": false,
+            "raw_safety_result": {
+              "task_id": "TASK-2366bd17",
+              "decision": "pass",
+              "rule_id": null,
+              "reason": "所有已启用的规则检查通过（R-03 未启用）",
+              "risk_level": 0
+            }
+          }
+        },
+        "success": true,
+        "observation": [
+          0.0,
+          0.40779998898506165,
+          0.10890000313520432,
+          0.3887999951839447,
+          0.2125999927520752,
+          13.057265281677246,
+          13.19742202758789,
+          0.007363299839198589,
+          -0.001964399591088295,
+          2.995529370986873e-17,
+          2.5883844221620544e-13,
+          5.046747237100841e-16,
+          2.0021999635772437e-15,
+          2.7359958374405247e-13,
+          1.6106224110558696e-36,
+          1.683617743104219e-16,
+          2.4030812062481033e-12,
+          1.8409249378237291e-06,
+          1.1411202454421517e-14,
+          2.3655182291595044e-14,
+          5.39748265884505e-14,
+          5.683956147276622e-15,
+          3.2300838436263857e-13,
+          4.386929788324778e-07,
+          0.0037906691431999207,
+          7.390922746708384e-06,
+          2.9322063710424118e-05,
+          0.004006844945251942,
+          2.358744334863775e-26,
+          2.465645138727268e-06,
+          0.03519294038414955,
+          0.00026960205286741257,
+          0.0001671161880949512,
+          0.0003464283072389662,
+          0.0007904572412371635,
+          8.324110240209848e-05,
+          0.0047304327599704266,
+          0.0007323450990952551,
+          0.001072513754479587
+        ],
+        "action": [
+          -6.908619252499193e-05,
+          0.005374751053750515,
+          0.0008017149521037936,
+          -0.0013224054127931595
+        ],
+        "reward": -0.140157434021285,
+        "done": false,
+        "terminated": false,
+        "truncated": false,
+        "termination_flag_source": "derived_from_SMPL_done_and_info_timeout",
+        "info": {
+          "efactor": 13.197422386573033,
+          "previous_efactor": 13.057264952551748,
+          "reward_on_steady": -0.140157434021285,
+          "reward_on_absolute_efactor": -13.197422386573033,
+          "reward_on_efactor_diff": -0.140157434021285,
+          "terminal": false,
+          "timeout": false
+        },
+        "step_count": 1,
+        "step_calls": 1,
+        "state_version": 2,
+        "failure_reason": null,
+        "executed": true,
+        "execution_status": "completed",
+        "raw_safety_result": {
+          "task_id": "TASK-2366bd17",
+          "decision": "pass",
+          "rule_id": null,
+          "reason": "所有已启用的规则检查通过（R-03 未启用）",
+          "risk_level": 0,
+          "demo_mode": false,
+          "raw_safety_result": {
+            "task_id": "TASK-2366bd17",
+            "decision": "pass",
+            "rule_id": null,
+            "reason": "所有已启用的规则检查通过（R-03 未启用）",
+            "risk_level": 0
+          }
+        },
+        "safety_checker_error": null
+      },
+      "feedback": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-0c73aaf9",
+        "execution_status": "completed",
+        "failure_reason": null,
+        "exclude_failed_agent": false
+      }
+    },
+    {
+      "subtask_id": "SUB-6261be4c",
+      "task_type": "verify_result",
+      "duration_seconds": 0.0001,
+      "execution_status": "completed",
+      "verified": true,
+      "step_delta": 1,
+      "verification_rule": "one successful B execution must advance exactly one env.step"
+    }
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-06T14:40:08.247404+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-ab384c6b",
+      "task_type": "collect_observation",
+      "bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-ab384c6b",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-ab384c6b",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-ab384c6b",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-ab384c6b",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-ab384c6b",
+        "winner_id": "ExecutionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247506+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-ab384c6b",
+      "task_type": "collect_observation",
+      "duration_seconds": 0.00016,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247591+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-701b7f2a",
+      "task_type": "evaluate_goal",
+      "bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-701b7f2a",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-701b7f2a",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-701b7f2a",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-701b7f2a",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-701b7f2a",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247644+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-701b7f2a",
+      "task_type": "evaluate_goal",
+      "duration_seconds": 8.8e-05,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247701+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-de11799c",
+      "task_type": "generate_action_intent",
+      "bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-de11799c",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-de11799c",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-de11799c",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-de11799c",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-de11799c",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247794+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-de11799c",
+      "task_type": "generate_action_intent",
+      "duration_seconds": 0.000114,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247860+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-13743e9b",
+      "task_type": "safety_review",
+      "bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-13743e9b",
+          "agent_id": "MonitoringAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-13743e9b",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "MonitoringAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-13743e9b",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-13743e9b",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-13743e9b",
+        "winner_id": "MonitoringAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.247943+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-13743e9b",
+      "task_type": "safety_review",
+      "duration_seconds": 0.000109,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.248003+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-0c73aaf9",
+      "task_type": "execute_approved_action",
+      "bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-0c73aaf9",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-0c73aaf9",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-0c73aaf9",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-0c73aaf9",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-0c73aaf9",
+        "winner_id": "ExecutionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.275894+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-0c73aaf9",
+      "task_type": "execute_approved_action",
+      "duration_seconds": 0.027913,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.275991+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-6261be4c",
+      "task_type": "verify_result",
+      "bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-6261be4c",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "subtask_id": "SUB-6261be4c",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-6261be4c",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-2366bd17",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-6261be4c",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-2366bd17",
+        "subtask_id": "SUB-6261be4c",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.276041+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-6261be4c",
+      "task_type": "verify_result",
+      "duration_seconds": 0.0001,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.276070+00:00",
+      "event": "run_finished",
+      "summary": {
+        "run_status": "completed",
+        "task_id": "TASK-2366bd17",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 6,
+        "subtask_statuses": {
+          "SUB-ab384c6b": "completed",
+          "SUB-701b7f2a": "completed",
+          "SUB-de11799c": "completed",
+          "SUB-13743e9b": "completed",
+          "SUB-0c73aaf9": "completed",
+          "SUB-6261be4c": "completed"
+        },
+        "executor_id": "ExecutionAgent-01",
+        "step_calls": 1,
+        "step_count": 1,
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "Configured local capability-profile bids; not dynamic bid telemetry from independent live agents.",
+        "controller_note": "B space-midpoint is an interface baseline, not an optimized process controller.",
+        "r03_enabled": false,
+        "replanning_policy": {
+          "max_action_regenerations": 2,
+          "max_environment_retries": 1,
+          "automatic_live_reassignment": false
+        }
+      }
+    }
+  ],
+  "assignments": [
+    [
+      {
+        "task_id": "TASK-2366bd17",
+        "winner_id": "ExecutionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-ab384c6b"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-2366bd17",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-701b7f2a"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-2366bd17",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-de11799c"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-2366bd17",
+        "winner_id": "MonitoringAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-13743e9b"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-2366bd17",
+        "winner_id": "ExecutionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-0c73aaf9"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-2366bd17",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-6261be4c"
+      }
+    ]
+  ],
+  "d_logs": [
+    {
+      "timestamp": "2026-11-06T14:40:08.247926+00:00",
+      "approved": true,
+      "status": "Pass",
+      "level": 0,
+      "rule_id": null,
+      "intervention": "ALLOW",
+      "reason": "所有已启用的规则检查通过（R-03 未启用）",
+      "demo_mode": false,
+      "task_id": "TASK-2366bd17"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:08.249044+00:00",
+      "approved": true,
+      "status": "Pass",
+      "level": 0,
+      "rule_id": null,
+      "intervention": "ALLOW",
+      "reason": "所有已启用的规则检查通过（R-03 未启用）",
+      "demo_mode": false,
+      "task_id": "TASK-2366bd17"
+    }
+  ]
+}

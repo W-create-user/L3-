@@ -1,0 +1,459 @@
+{
+  "summary": {
+    "run_status": "completed",
+    "task_id": "TASK-15c84187",
+    "task_type": "inspect_state",
+    "subtask_count": 3,
+    "completed_subtasks": 3,
+    "subtask_statuses": {
+      "SUB-fc81427a": "completed",
+      "SUB-17bb3fb9": "completed",
+      "SUB-80c53086": "completed"
+    },
+    "executor_id": "ExecutionAgent-01",
+    "step_calls": 0,
+    "step_count": 0,
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "Configured local capability-profile bids; not dynamic bid telemetry from independent live agents.",
+    "controller_note": "B space-midpoint is an interface baseline, not an optimized process controller.",
+    "r03_enabled": false,
+    "replanning_policy": {
+      "max_action_regenerations": 2,
+      "max_environment_retries": 1,
+      "automatic_live_reassignment": false
+    }
+  },
+  "parent_task": {
+    "task_id": "TASK-15c84187",
+    "task_type": "inspect_state",
+    "priority": 3,
+    "preconditions": [],
+    "dependencies": [],
+    "status": "created",
+    "completion_criteria": [
+      "all_subtasks_completed"
+    ],
+    "description": "检查状态",
+    "constraints": {},
+    "subtasks": [
+      {
+        "subtask_id": "SUB-fc81427a",
+        "name": "collect_observation",
+        "description": "获取当前仿真环境观测",
+        "order": 1,
+        "dependencies": [],
+        "required_capability": "state_read",
+        "preconditions": [],
+        "completion_criteria": [
+          "observation_received"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-17bb3fb9",
+        "name": "evaluate_state",
+        "description": "依据任务要求分析当前状态",
+        "order": 2,
+        "dependencies": [
+          "SUB-fc81427a"
+        ],
+        "required_capability": "decision",
+        "preconditions": [
+          "observation_received"
+        ],
+        "completion_criteria": [
+          "state_evaluated"
+        ],
+        "status": "pending"
+      },
+      {
+        "subtask_id": "SUB-80c53086",
+        "name": "return_state_result",
+        "description": "整理并返回状态检查结果",
+        "order": 3,
+        "dependencies": [
+          "SUB-17bb3fb9"
+        ],
+        "required_capability": "decision",
+        "preconditions": [
+          "state_evaluated"
+        ],
+        "completion_criteria": [
+          "result_returned"
+        ],
+        "status": "pending"
+      }
+    ],
+    "source": "rule_mapping"
+  },
+  "c_tasks": [
+    {
+      "task_id": "TASK-15c84187",
+      "subtask_id": "SUB-fc81427a",
+      "task_type": "collect_observation",
+      "priority": 3,
+      "dependencies": [],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "state_read",
+      "description": "获取当前仿真环境观测",
+      "order": 1,
+      "preconditions": [],
+      "completion_criteria": [
+        "observation_received"
+      ]
+    },
+    {
+      "task_id": "TASK-15c84187",
+      "subtask_id": "SUB-17bb3fb9",
+      "task_type": "evaluate_state",
+      "priority": 3,
+      "dependencies": [
+        "SUB-fc81427a"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "decision",
+      "description": "依据任务要求分析当前状态",
+      "order": 2,
+      "preconditions": [
+        "observation_received"
+      ],
+      "completion_criteria": [
+        "state_evaluated"
+      ]
+    },
+    {
+      "task_id": "TASK-15c84187",
+      "subtask_id": "SUB-80c53086",
+      "task_type": "return_state_result",
+      "priority": 3,
+      "dependencies": [
+        "SUB-17bb3fb9"
+      ],
+      "status": "pending",
+      "constraints": {},
+      "required_capability": "decision",
+      "description": "整理并返回状态检查结果",
+      "order": 3,
+      "preconditions": [
+        "state_evaluated"
+      ],
+      "completion_criteria": [
+        "result_returned"
+      ]
+    }
+  ],
+  "stage_results": [
+    {
+      "subtask_id": "SUB-fc81427a",
+      "task_type": "collect_observation",
+      "duration_seconds": 0.000225,
+      "execution_status": "completed",
+      "observation_shape": [
+        39
+      ],
+      "observation_finite": true,
+      "step_delta": 0
+    },
+    {
+      "subtask_id": "SUB-17bb3fb9",
+      "task_type": "evaluate_state",
+      "duration_seconds": 7.8e-05,
+      "execution_status": "completed",
+      "evaluation": "observation_received_and_finite",
+      "observation_dimension": 39,
+      "numeric_process_target": null,
+      "note": "No numeric process target was supplied; this stage validates state availability only."
+    },
+    {
+      "subtask_id": "SUB-80c53086",
+      "task_type": "return_state_result",
+      "duration_seconds": 0.000134,
+      "execution_status": "completed",
+      "observation": [
+        0.0,
+        0.4078,
+        0.1089,
+        0.3888,
+        0.2126,
+        13.057265281677246,
+        13.057265281677246,
+        0.0010000000474974513,
+        0.0010000000474974513,
+        2.9748927777934295e-17,
+        2.592966759681261e-13,
+        4.996121355530039e-16,
+        2.0030083522187096e-15,
+        2.705462201238527e-13,
+        1.881636778660866e-36,
+        1.6677838895012747e-16,
+        2.4056603771946324e-12,
+        1.851387786450359e-06,
+        1.1296488517860219e-14,
+        2.3651628311794502e-14,
+        5.358809826991494e-14,
+        5.629197994106013e-15,
+        3.2045784315597325e-13,
+        4.3675843974352727e-07,
+        0.003806860283230873,
+        7.33504812105916e-06,
+        2.9407137266882815e-05,
+        0.003972020298070985,
+        2.7625222937305794e-26,
+        2.4485544314247816e-06,
+        0.035318666969761645,
+        0.0002718112219056352,
+        0.00016584922779303932,
+        0.0003472410285158351,
+        0.0007867528659823202,
+        8.264498644340235e-05,
+        0.004704797047650017,
+        0.0007301725920046264,
+        0.0010720018025791589
+      ]
+    }
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-06T14:40:09.537348+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-fc81427a",
+      "task_type": "collect_observation",
+      "bids": [
+        {
+          "task_id": "TASK-15c84187",
+          "subtask_id": "SUB-fc81427a",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-15c84187",
+          "subtask_id": "SUB-fc81427a",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-15c84187",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-fc81427a",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-15c84187",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-fc81427a",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-15c84187",
+        "subtask_id": "SUB-fc81427a",
+        "winner_id": "ExecutionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:09.537526+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-fc81427a",
+      "task_type": "collect_observation",
+      "duration_seconds": 0.000225,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:09.537598+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-17bb3fb9",
+      "task_type": "evaluate_state",
+      "bids": [
+        {
+          "task_id": "TASK-15c84187",
+          "subtask_id": "SUB-17bb3fb9",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-15c84187",
+          "subtask_id": "SUB-17bb3fb9",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-15c84187",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-17bb3fb9",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-15c84187",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-17bb3fb9",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-15c84187",
+        "subtask_id": "SUB-17bb3fb9",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:09.537645+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-17bb3fb9",
+      "task_type": "evaluate_state",
+      "duration_seconds": 7.8e-05,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:09.537696+00:00",
+      "event": "assignment_awarded",
+      "subtask_id": "SUB-80c53086",
+      "task_type": "return_state_result",
+      "bids": [
+        {
+          "task_id": "TASK-15c84187",
+          "subtask_id": "SUB-80c53086",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1
+        },
+        {
+          "task_id": "TASK-15c84187",
+          "subtask_id": "SUB-80c53086",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8
+        }
+      ],
+      "ranked_bids": [
+        {
+          "task_id": "TASK-15c84187",
+          "agent_id": "DecisionAgent-01",
+          "estimated_cost": 0.5,
+          "capability_match": 0.95,
+          "load": 0.1,
+          "subtask_id": "SUB-80c53086",
+          "score": 0.855
+        },
+        {
+          "task_id": "TASK-15c84187",
+          "agent_id": "ExecutionAgent-01",
+          "estimated_cost": 4.0,
+          "capability_match": 0.4,
+          "load": 0.8,
+          "subtask_id": "SUB-80c53086",
+          "score": 0.3
+        }
+      ],
+      "assignment": {
+        "task_id": "TASK-15c84187",
+        "subtask_id": "SUB-80c53086",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded"
+      },
+      "bid_source": "configured_local_capability_profiles"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:09.537809+00:00",
+      "event": "subtask_completed",
+      "subtask_id": "SUB-80c53086",
+      "task_type": "return_state_result",
+      "duration_seconds": 0.000134,
+      "status": "completed"
+    },
+    {
+      "timestamp": "2026-11-06T14:40:09.537849+00:00",
+      "event": "run_finished",
+      "summary": {
+        "run_status": "completed",
+        "task_id": "TASK-15c84187",
+        "task_type": "inspect_state",
+        "subtask_count": 3,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-fc81427a": "completed",
+          "SUB-17bb3fb9": "completed",
+          "SUB-80c53086": "completed"
+        },
+        "executor_id": "ExecutionAgent-01",
+        "step_calls": 0,
+        "step_count": 0,
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "Configured local capability-profile bids; not dynamic bid telemetry from independent live agents.",
+        "controller_note": "B space-midpoint is an interface baseline, not an optimized process controller.",
+        "r03_enabled": false,
+        "replanning_policy": {
+          "max_action_regenerations": 2,
+          "max_environment_retries": 1,
+          "automatic_live_reassignment": false
+        }
+      }
+    }
+  ],
+  "assignments": [
+    [
+      {
+        "task_id": "TASK-15c84187",
+        "winner_id": "ExecutionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-fc81427a"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-15c84187",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-17bb3fb9"
+      }
+    ],
+    [
+      {
+        "task_id": "TASK-15c84187",
+        "winner_id": "DecisionAgent-01",
+        "score": 0.855,
+        "assignment_status": "awarded",
+        "subtask_id": "SUB-80c53086"
+      }
+    ]
+  ],
+  "d_logs": []
+}
