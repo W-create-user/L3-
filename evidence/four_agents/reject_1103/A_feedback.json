@@ -1,0 +1,13 @@
+{
+  "task_id": "TASK-83295272",
+  "accepted": true,
+  "status": "failed",
+  "subtask_statuses": {
+    "SUB-1e8cb004": "completed",
+    "SUB-fdce7f00": "completed",
+    "SUB-cb8d3a3a": "completed",
+    "SUB-6b705b91": "completed",
+    "SUB-c7b73b48": "failed",
+    "SUB-5e399c3e": "pending"
+  }
+}

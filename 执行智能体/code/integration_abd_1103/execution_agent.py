@@ -44,6 +44,54 @@ class ExecutionAgent:
     def get_observation(self):
         return self.adapter.get_observation()
 
+    def execute_assignment(self, assignment, safety_checker, *, action=None,
+                           action_policy=None, subtask=None):
+        """Synchronous A/D entry: only an exact decision='pass' may execute.
+
+        assignment is an A Task (raw or normalized). The callback is invoked as
+        safety_checker(action_request, observation). Missing, malformed or
+        exceptional reviews become explicit rejections, never implicit approval.
+        """
+        request = self.prepare_action(assignment, action=action,
+                                      action_policy=action_policy, subtask=subtask)
+        raw_review = None
+        checker_error = None
+        try:
+            raw_review = safety_checker(copy.deepcopy(request),
+                                       copy.deepcopy(request['observation']))
+            # Require a losslessly loggable result before any model execution.
+            raw_review = to_plain(copy.deepcopy(raw_review))
+            json.dumps(raw_review, allow_nan=False)
+            if not isinstance(raw_review, dict):
+                raise ValueError('Safety checker must return a decision dictionary')
+            if raw_review.get('decision') not in ('pass', 'reject'):
+                raise ValueError('Safety checker decision must be exactly pass or reject')
+            if raw_review.get('task_id') != request['task_id']:
+                raise ValueError('Safety checker task_id must match the assignment')
+            if raw_review.get('demo_mode') is True:
+                raise ValueError('Demo-mode review cannot authorize formal execution')
+            # Also validates conflicting approved/status values and request IDs.
+            normalize_safety_decision(request, raw_review)
+            review = raw_review
+        except Exception as error:
+            checker_error = f'{type(error).__name__}: {error}'
+            try:
+                json.dumps(raw_review, allow_nan=False)
+            except Exception:
+                raw_review = {'unserializable_review_repr': repr(raw_review)}
+            review = {
+                'task_id': request['task_id'], 'request_id': request['request_id'],
+                'decision': 'reject', 'risk_level': 3,
+                'rule_id': 'B-SAFETY-CHECKER-INVALID',
+                'reason': 'Safety review blocked: ' + checker_error,
+                'raw_review': raw_review,
+            }
+        result = self.execute_action(request, review)
+        result['raw_safety_result'] = copy.deepcopy(raw_review)
+        result['safety_checker_error'] = checker_error
+        self._record('assignment_result', result=result)
+        return result
+
     def prepare_action(self, task, *, action=None, action_policy=None, subtask=None):
         """Pure preparation with respect to SMPL: no reset and no step."""
         self.adapter.require_ready()

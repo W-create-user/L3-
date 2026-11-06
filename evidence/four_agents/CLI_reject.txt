@@ -1,0 +1,66 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+D:\SMPL_Project\member_b_1101\.venv\Lib\site-packages\mzutils\torch_funcs.py:96: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @custom_fwd
+D:\SMPL_Project\member_b_1101\.venv\Lib\site-packages\mzutils\torch_funcs.py:101: FutureWarning: `torch.cuda.amp.custom_bwd(args...)` is deprecated. Please use `torch.amp.custom_bwd(args..., device_type='cuda')` instead.
+  @custom_bwd
+CasADi - 2026-11-06 21:25:32 WARNING("The options 't0', 'tf', 'grid' and 'output_t0' have been deprecated.
+The same functionality is provided by providing additional input arguments to the 'integrator' function, in particular:
+ * Call integrator(..., t0, tf, options) for a single output time, or
+ * Call integrator(..., t0, grid, options) for multiple grid points.
+The legacy 'output_t0' option can be emulated by including or excluding 't0' in 'grid'.
+Backwards compatibility is provided in this release only.") [.../casadi/core/integrator.cpp:695]
+D:\SMPL_Project\member_b_1101\.venv\Lib\site-packages\casadi\casadi.py:913: FutureWarning: 
+casadi: a numpy function was called on a casadi value (issue #2959).
+This used legacy casadi 3.7.2 behaviour, where the result type follows
+the input:
+  - a numeric input (DM)       -> a plain numpy array
+  - a symbolic input (SX / MX) -> a casadi value, or an error if the
+                                  function has no casadi equivalent
+
+For a shape-correct, type-preserving result, opt in to the
+casadi-aware numpy support:
+
+    try:
+        ca.GlobalOptions.setNumpyMode(1)
+    except AttributeError:
+        pass
+
+Or use setNumpyMode(-1) to keep legacy behaviour silently.
+Shown once; run python with -W always to see every occurrence.
+
+  _w.warn(_NUMPY_LEGACY_NOTICE, FutureWarning)
+[MonitoringAgent] Level 3 | Reject | 动作超出允许范围：动作[0]=1.00002, 允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221, 允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182, 允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036, 允许范围=[-0.00300454, 0.000359729]
+{
+  "status": "failed",
+  "failure_reason": "safety_rejected",
+  "task_id": "TASK-6cc19a18",
+  "seed": 1101,
+  "scenario": "reject",
+  "step_delta": 0,
+  "elapsed_seconds": 0.004845999996177852,
+  "all_C_locks_released": true,
+  "observation_shape": [
+    39
+  ],
+  "action_shape": [
+    4
+  ],
+  "action_low": [
+    -0.0001574199995957315,
+    -0.0014623400056734681,
+    -0.00021811999613419175,
+    -0.003004539990797639
+  ],
+  "action_high": [
+    1.924762000271585e-05,
+    0.012211842462420464,
+    0.001821549842134118,
+    0.00035972922341898084
+  ],
+  "D_demo_mode": false,
+  "scope": "Actual A template + actual C scheduling + B execution + actual repository D rules + real SMPL; synchronous prototype"
+}
+Evidence: D:\大创\四智能体系统集成_20261106\outputs\four_agents\20261106_212525_89d53551

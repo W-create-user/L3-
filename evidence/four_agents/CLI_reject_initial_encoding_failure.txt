@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\大创\四智能体系统集成_20261106\main.py", line 27, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\大创\四智能体系统集成_20261106\main.py", line 17, in main
+    with EnvironmentAdapter() as adapter:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "D:\大创\四智能体系统集成_20261106\执行智能体\code\integration_abd_1103\environment_adapter.py", line 45, in __init__
+    raise FileNotFoundError(f'Missing {config / filename}; set SMPL_SOURCE_DIR')
+FileNotFoundError: Missing D:\大创\四智能体系统集成_20261106\鎵ц鏅鸿兘浣揬code\vendor\smpl\smpl\configdata\atropineenv\x0.txt; set SMPL_SOURCE_DIR
+System failed: 1
+At D:\大创\四智能体系统集成_20261106\run_system.ps1:16 char:24
++  if ($runExit -ne 0) { throw "System failed: $runExit" }
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (System failed: 1:String) [], RuntimeException
+    + FullyQualifiedErrorId : System failed: 1
+ 

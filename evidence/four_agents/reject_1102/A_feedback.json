@@ -1,0 +1,13 @@
+{
+  "task_id": "TASK-68e63b93",
+  "accepted": true,
+  "status": "failed",
+  "subtask_statuses": {
+    "SUB-a0912433": "completed",
+    "SUB-52162cd7": "completed",
+    "SUB-386fe70b": "completed",
+    "SUB-8ceec34c": "completed",
+    "SUB-e9c33104": "failed",
+    "SUB-25082345": "pending"
+  }
+}

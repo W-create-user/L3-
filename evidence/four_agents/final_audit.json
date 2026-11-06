@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "source_hashes_match_final_code": true,
+  "actual_A_feedback_verified": true,
+  "normal_runs": 3,
+  "reject_runs": 3,
+  "median_seconds": {
+    "single_execution": 0.02352029993198812,
+    "four_agents": 0.02950299996882677
+  },
+  "no_unmonitored_out_of_bounds_step": true,
+  "financial_spending_verified": false,
+  "mAbEnv_verified": false,
+  "multimodal_fusion_verified": false,
+  "CLI_normal": {
+    "status": "PASS",
+    "task_id": "TASK-e8dbedeb",
+    "step_delta": 1,
+    "source_script_sha256": "f3aee9e7eb553cd8817a0d5f2640bf8ba55f72fc9dce125c3d57a44de24b93ba"
+  },
+  "CLI_reject": {
+    "status": "PASS",
+    "task_id": "TASK-6cc19a18",
+    "step_delta": 0,
+    "source_script_sha256": "f3aee9e7eb553cd8817a0d5f2640bf8ba55f72fc9dce125c3d57a44de24b93ba"
+  },
+  "CLI_inspect": {
+    "status": "PASS",
+    "task_id": "TASK-d5df3627",
+    "step_delta": 0,
+    "source_script_sha256": "f3aee9e7eb553cd8817a0d5f2640bf8ba55f72fc9dce125c3d57a44de24b93ba"
+  },
+  "encoding_bug_fixed": "Windows PowerShell UTF-8 BOM; initial failure retained separately"
+}

@@ -1,0 +1,13 @@
+{
+  "task_id": "TASK-f6af87de",
+  "accepted": true,
+  "status": "completed",
+  "subtask_statuses": {
+    "SUB-feef93be": "completed",
+    "SUB-0f273d9b": "completed",
+    "SUB-27fa3956": "completed",
+    "SUB-d91aac3e": "completed",
+    "SUB-65b3ea6b": "completed",
+    "SUB-4c6dcf7f": "completed"
+  }
+}

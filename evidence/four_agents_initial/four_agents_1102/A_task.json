@@ -1,0 +1,75 @@
+{
+  "task_id": "TASK-1486a985",
+  "goal_type": "control_cycle",
+  "description": "执行一次仿真控制任务",
+  "priority": 3,
+  "constraints": {},
+  "subtasks": [
+    {
+      "subtask_id": "SUB-61e1667e",
+      "name": "collect_observation",
+      "description": "获取当前仿真环境状态信息",
+      "order": 1,
+      "dependencies": [],
+      "required_capability": "state_read",
+      "status": "PENDING"
+    },
+    {
+      "subtask_id": "SUB-df1656d8",
+      "name": "evaluate_goal",
+      "description": "根据任务目标分析当前状态",
+      "order": 2,
+      "dependencies": [
+        "SUB-61e1667e"
+      ],
+      "required_capability": "decision",
+      "status": "PENDING"
+    },
+    {
+      "subtask_id": "SUB-c803ff72",
+      "name": "generate_action_intent",
+      "description": "生成待审核的抽象控制动作意图",
+      "order": 3,
+      "dependencies": [
+        "SUB-df1656d8"
+      ],
+      "required_capability": "decision",
+      "status": "PENDING"
+    },
+    {
+      "subtask_id": "SUB-49b0dde5",
+      "name": "safety_review",
+      "description": "将候选动作提交监管模块进行安全检查",
+      "order": 4,
+      "dependencies": [
+        "SUB-c803ff72"
+      ],
+      "required_capability": "monitoring",
+      "status": "PENDING"
+    },
+    {
+      "subtask_id": "SUB-621b5814",
+      "name": "execute_approved_action",
+      "description": "执行经过监管放行的动作",
+      "order": 5,
+      "dependencies": [
+        "SUB-49b0dde5"
+      ],
+      "required_capability": "environment_execution",
+      "status": "PENDING"
+    },
+    {
+      "subtask_id": "SUB-53620778",
+      "name": "verify_result",
+      "description": "获取执行结果并检查任务完成情况",
+      "order": 6,
+      "dependencies": [
+        "SUB-621b5814"
+      ],
+      "required_capability": "decision",
+      "status": "PENDING"
+    }
+  ],
+  "status": "CREATED",
+  "source": "rule_mapping"
+}
