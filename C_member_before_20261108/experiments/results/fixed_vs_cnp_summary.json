@@ -1,0 +1,34 @@
+{
+  "fixed_first_fit": {
+    "trials": 30,
+    "assignment_successes": 30,
+    "assignment_success_rate": 1.0,
+    "mean_capability_match": 0.787,
+    "mean_estimated_cost": 4.0,
+    "mean_load": 0.415,
+    "mean_cnp_score": null
+  },
+  "cnp_weighted": {
+    "trials": 30,
+    "assignment_successes": 30,
+    "assignment_success_rate": 1.0,
+    "mean_capability_match": 0.852333,
+    "mean_estimated_cost": 3.2,
+    "mean_load": 0.305667,
+    "mean_cnp_score": 0.648879
+  },
+  "experiment_design": {
+    "trials_per_policy": 30,
+    "candidate_agents_per_trial": 3,
+    "baseline": "alphabetical first-fit; ignores bid metrics",
+    "cnp": "0.50 capability + 0.30/(1+estimated_cost) + 0.20*(1-load)",
+    "weights_status": "manual prototype weights; not trained or optimized",
+    "data_origin": "synthetic deterministic test data; not real ExecutionAgent bids and not SMPL measurements",
+    "limitations": [
+      "assignment success rate is trivially 100% because every trial supplies three valid bids",
+      "no wall-clock bid timeout or asynchronous communication is measured",
+      "no environment execution reward or task completion outcome is measured",
+      "the experiment compares selection behavior only, not end-to-end system performance"
+    ]
+  }
+}
