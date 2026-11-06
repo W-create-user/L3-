@@ -1,0 +1,611 @@
+{
+  "uploaded_file": "L3_A_Final_20261108.zip",
+  "archive_sha256": "288c8583429b232ad02f422f0ad38fd19d7deeaa89e8ad2e9b71a3af18f78e23",
+  "base_commit": "eb104135e66f79b53ffc6459c5bcbf557993ad6a",
+  "source_checksum_note": "Original manifest has non-UTF8 path bytes; undecodable paths recorded with replacement characters. See source_checks.",
+  "source_checks": [
+    {
+      "path": "./C_reference/TEST_RESULTS.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/docs/CNP_WORKFLOW_AND_INTERFACE.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/docs/C_FREEZE_ACCEPTANCE_CHECKLIST.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/docs/C_MEMBER_PROGRESS_REPORT.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/experiments/EXPERIMENT_RUN_LOG.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/experiments/results/fixed_vs_cnp_raw.csv",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/experiments/results/fixed_vs_cnp_summary.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./C_reference/experiments/run_fixed_vs_cnp.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./README.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./README_INTEGRATION.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./adapters/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./adapters/a_to_c_adapter.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./adapters/assignment_adapter.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./adapters/b_to_d_adapter.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./adapters/feedback_adapter.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./adapters/runtime_adapters.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./agents/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./agents/monitoring_agent.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./agents/safety_rules.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./agents/scheduling_agent.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./algorithms/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./algorithms/cnp_protocol.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./config.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./decision_agent.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/ACCEPTANCE_MATRIX.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/ARCHITECTURE.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/DAILY_DELIVERABLES_1106_1108.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/D_interface_v1.2.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/INTERFACE_CONTRACT.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/KNOWN_LIMITATIONS.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/REPRODUCE.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./docs/STATUS_20261106.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/A_HTN_preview_20261106.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/A_compile_check_20261106.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/A_live_attempt_stderr.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/A_live_attempt_stdout.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/A_local_test_results_20261106.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/SHA256SUMS.csv",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/logs/20261106_183417/B_events.jsonl",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/logs/20261106_183417/D_reviews.jsonl",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/logs/20261106_183417/PASS.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/logs/20261106_183417/REJECT.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/logs/20261106_183417/verification.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/regression_tests_59/tests.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/B_20261106/regression_tests_59/verification.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/C_20261106/experiment_replay_stdout.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/C_20261106/fixed_vs_cnp_raw.csv",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/C_20261106/fixed_vs_cnp_summary.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/D_20261106/D_interface_v1.2.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./evidence/D_20261106/source_hashes.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./logs/container_live_attempt/run_error.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./main.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./planning/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./planning/replanning.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/.mpl-cache/fontlist-v390.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/demo_execute_assignment.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/external_D/pr1_8c105883/source/agents/monitoring_agent.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/external_D/pr1_8c105883/source/agents/safety_rules.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/external_D/pr1_8c105883/source/docs/D_���ަ������޻���_v1.2.md",
+      "exists": false,
+      "matches": false
+    },
+    {
+      "path": "./runtime/b_code/external_D/pr1_8c105883/source/experiments/test_monitoring_integration.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/external_D/pr1_8c105883/source_manifest.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/integration_abd_1103/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/integration_abd_1103/environment_adapter.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/integration_abd_1103/execution_agent.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/integration_abd_1103/local_policy.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/integration_abd_1103/safety_bridge.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/integration_abd_1103/task_contract.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/requirements-lock.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/LICENSE.rst",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/README.rst",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/SOURCE_VERSION.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/requirements.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/setup.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/_version.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/README.rst",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/atropineenv/U.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/atropineenv/model.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/atropineenv/x0.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/atropineenv/x0u.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/atropineenv/z0.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/atropineenv/z0u.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/steady_actions.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/steady_observations.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/ulb.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/uss.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/uub.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/xlb.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/xss.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/mabenv/xub.npy",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/pensimenv/random_batch_0.csv",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/configdata/pensimenv/random_batch_1.csv",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/atropineenv.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/beerfmtenv.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/helpers/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/helpers/constants.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/helpers/helper_funcs.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/helpers/mab_helpers.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/helpers/mab_helpers_integrated.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/helpers/mab_helpers_old.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/mabdownenv.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/mabenv.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/mabenv_integrated.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/mabenv_old.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/models/__init__.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/models/atropine_process.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/models/config.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/pensimenv.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/reactorenv.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./runtime/b_code/vendor/smpl/smpl/envs/utils.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./scripts/run_acceptance.ps1",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./scripts/setup_windows.ps1",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./tests/test_a_integration.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./tests/test_integrated_contracts.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./tests/test_live_orchestration_contracts.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./tests/test_member_c_nov5.py",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "./tests/test_replanning_controller.py",
+      "exists": true,
+      "matches": true
+    }
+  ],
+  "integration_changes": [
+    "namespaced imports",
+    "reuse repository B and SMPL",
+    "root --engine a-final routing",
+    "inspect handlers",
+    "nonzero incomplete exit",
+    "unique output and overwrite protection"
+  ],
+  "excluded": [
+    "duplicate vendor and B code",
+    "font cache",
+    "historical logs (available in uploaded archive)"
+  ]
+}

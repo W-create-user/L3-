@@ -30,3 +30,15 @@
 - `tests/`：测试代码
 - `experiments/`：实验记录
 - `data/`：数据说明
+
+## 最新 A 代码包集成
+
+已接入用户交付的 `L3_A_Final_20261108.zip`，位于 [`a_integration`](a_integration/README.md)。
+
+```bash
+python main.py --engine a-final --offline-preview
+python main.py --engine a-final --seed 1101
+python -m unittest discover -s a_integration/tests -v
+```
+
+原四角色入口保持默认路径。新版A复用仓库B和SMPL代码；本次35项接口测试通过，不将测试适配器结果写成新增真实工艺实验。

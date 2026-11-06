@@ -5,14 +5,21 @@ from pathlib import Path
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 import json
-from integrated_system.system import EnvironmentAdapter, FourAgentSystem
+
 
 def main():
-    parser=argparse.ArgumentParser()
+    route = argparse.ArgumentParser(add_help=False)
+    route.add_argument('--engine', choices=['legacy', 'a-final'], default='legacy')
+    selected, remaining = route.parse_known_args()
+    if selected.engine == 'a-final':
+        from a_integration.main import main as run_a
+        return run_a(remaining)
+    from integrated_system.system import EnvironmentAdapter, FourAgentSystem
+    parser=argparse.ArgumentParser(epilog="New A package: --engine a-final --offline-preview; legacy remains the default")
     parser.add_argument('--scenario',choices=['normal','reject','inspect'],default='normal')
     parser.add_argument('--seed',type=int,default=1101)
     parser.add_argument('--output',type=Path,default=Path('outputs/four_agents'))
-    args=parser.parse_args()
+    args=parser.parse_args(remaining)
     output=args.output/(datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y%m%d_%H%M%S')+'_'+uuid4().hex[:8])
     with EnvironmentAdapter() as adapter:
         system=FourAgentSystem(adapter,output)
