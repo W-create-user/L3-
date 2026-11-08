@@ -1,0 +1,101 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+CasADi - 2026-11-08 12:59:04 WARNING("The options 't0', 'tf', 'grid' and 'output_t0' have been deprecated.
+The same functionality is provided by providing additional input arguments to the 'integrator' function, in particular:
+ * Call integrator(..., t0, tf, options) for a single output time, or
+ * Call integrator(..., t0, grid, options) for multiple grid points.
+The legacy 'output_t0' option can be emulated by including or excluding 't0' in 'grid'.
+Backwards compatibility is provided in this release only.") [.../casadi/core/integrator.cpp:692]
+[MonitoringAgent] TASK-c3235d2a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-c3235d2a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-8c3b4b0b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-8c3b4b0b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e92a2d95 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e92a2d95 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e18f34cb | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e18f34cb | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c492b87 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c492b87 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b533d534 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b533d534 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-0 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-1 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-2 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-3 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-4 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-5 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-6 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-7 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-8 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-10 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-11 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-12 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-13 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-14 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-15 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-16 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-17 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-18 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-19 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] offline-20 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=-0.000197485，允许范围=[-0.00015742, 1.92476e-05]
+[MonitoringAgent] offline-21 | Level 3 | Reject | R-02: 动作超出允许范围：动作[1]=-0.0062538，允许范围=[-0.00146234, 0.0122118]
+[MonitoringAgent] offline-22 | Level 3 | Reject | R-02: 动作超出允许范围：动作[2]=-0.00114167，允许范围=[-0.00021812, 0.00182155]
+[MonitoringAgent] offline-23 | Level 3 | Reject | R-02: 动作超出允许范围：动作[3]=-0.00465665，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] offline-24 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=9.76097e-05，允许范围=[-0.00015742, 1.92476e-05]
+[MonitoringAgent] offline-25 | Level 3 | Reject | R-02: 动作超出允许范围：动作[1]=0.0164639，允许范围=[-0.00146234, 0.0122118]
+[MonitoringAgent] offline-26 | Level 3 | Reject | R-02: 动作超出允许范围：动作[2]=0.00271838，允许范围=[-0.00021812, 0.00182155]
+[MonitoringAgent] offline-27 | Level 3 | Reject | R-02: 动作超出允许范围：动作[3]=0.00155886，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] offline-28 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=-0.000230613，允许范围=[-0.00015742, 1.92476e-05]
+[MonitoringAgent] offline-29 | Level 3 | Reject | R-02: 动作超出允许范围：动作[1]=-0.00175072，允许范围=[-0.00146234, 0.0122118]
+[MonitoringAgent] offline-30 | Level 3 | Reject | R-02: 动作超出允许范围：动作[2]=-0.000850035，允许范围=[-0.00021812, 0.00182155]
+[MonitoringAgent] offline-31 | Level 3 | Reject | R-02: 动作超出允许范围：动作[3]=-0.00311267，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] offline-32 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=4.82201e-05，允许范围=[-0.00015742, 1.92476e-05]
+[MonitoringAgent] offline-33 | Level 3 | Reject | R-02: 动作超出允许范围：动作[1]=0.0172576，允许范围=[-0.00146234, 0.0122118]
+[MonitoringAgent] offline-34 | Level 3 | Reject | R-02: 动作超出允许范围：动作[2]=0.00259745，允许范围=[-0.00021812, 0.00182155]
+[MonitoringAgent] offline-35 | Level 3 | Reject | R-02: 动作超出允许范围：动作[3]=0.00173331，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] offline-36 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=-0.000173292，允许范围=[-0.00015742, 1.92476e-05]
+[MonitoringAgent] offline-37 | Level 3 | Reject | R-02: 动作超出允许范围：动作[1]=-0.00220263，允许范围=[-0.00146234, 0.0122118]
+[MonitoringAgent] offline-38 | Level 3 | Reject | R-02: 动作超出允许范围：动作[2]=-0.000512809，允许范围=[-0.00021812, 0.00182155]
+[MonitoringAgent] offline-39 | Level 3 | Reject | R-02: 动作超出允许范围：动作[3]=-0.00308448，允许范围=[-0.00300454, 0.000359729]
+{
+  "process_results": {
+    "four_cnp": {
+      "task_count": 3,
+      "task_completion_rate": 1.0,
+      "mean_task_seconds": 0.03779176900002312,
+      "assignment_success_rate": 1.0,
+      "total_environment_steps": 3
+    },
+    "four_fixed": {
+      "task_count": 3,
+      "task_completion_rate": 1.0,
+      "mean_task_seconds": 0.033521905666627085,
+      "assignment_success_rate": 1.0,
+      "total_environment_steps": 3
+    },
+    "single_executor": {
+      "task_count": 3,
+      "task_completion_rate": 1.0,
+      "mean_task_seconds": 0.030266697333217962,
+      "assignment_success_rate": null,
+      "total_environment_steps": 3
+    }
+  },
+  "safety_gate_offline": {
+    "enabled": {
+      "unsafe_count": 20,
+      "safe_count": 20,
+      "dangerous_candidate_interception_rate": 1.0,
+      "normal_candidate_false_interception_rate": 0.0
+    },
+    "disabled": {
+      "unsafe_count": 20,
+      "safe_count": 20,
+      "dangerous_candidate_interception_rate": 0.0,
+      "normal_candidate_false_interception_rate": 0.0
+    }
+  }
+}

@@ -145,6 +145,8 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                 if execution.get("task_id") != parent["task_id"] or execution.get("subtask_id") != sid:
                     raise ValueError("B feedback identity mismatch")
                 feedback = execution_result_to_feedback(execution)
+                if feedback is None or feedback["execution_status"] not in {"completed", "failed"}:
+                    raise ValueError("Synchronous B execution must return terminal feedback")
                 status, reason = feedback["execution_status"], feedback.get("failure_reason")
                 payload = {"execution_result": execution}
             elif name == "verify_result":
@@ -263,6 +265,9 @@ def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=110
                             "action_space_shape": list(adapter.action_space.shape),
                             "action_low": adapter.action_space.low.tolist(),
                             "action_high": adapter.action_space.high.tolist()})
+            if summary["run_status"] == "completed" and len(results) < cycles:
+                summary["run_status"] = "incomplete_or_failed"
+                summary["failure_reason"] = "episode_ended_before_requested_cycles"
             result = {"summary": summary, "cycles": results}
             (out / "result.json").write_text(json.dumps(_plain(result), ensure_ascii=False, indent=2), encoding="utf-8")
             monitor.export_logs(out / "D_reviews.jsonl")

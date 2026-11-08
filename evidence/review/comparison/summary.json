@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "environment": "real SMPL.AtropineEnvGym",
+  "config": {
+    "seeds": [
+      1101,
+      1102,
+      1103
+    ],
+    "cycles_per_arm": 1,
+    "policy": "space_midpoint",
+    "paired_arms": [
+      "single_executor",
+      "four_fixed",
+      "four_cnp"
+    ]
+  },
+  "python": "3.12.14",
+  "source_sha256": {
+    "l3_system/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "l3_system/adapters/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "l3_system/adapters/a_to_c_adapter.py": "9b2971894e01014245eea1afb85e5cd03f041a18bcaf403c76d273260b8f3daa",
+    "l3_system/adapters/assignment_adapter.py": "7aa1a5be4a79e50453da407bc3f70cea90f50b3d2e9b51fc3dfa048fe71bf332",
+    "l3_system/adapters/b_to_d_adapter.py": "eaf4f7befbcdf79b8f1c3d6f8a2cac8248ecefd01f80d14429968c18762236e3",
+    "l3_system/adapters/feedback_adapter.py": "d503eb40945cf967a1bdadffc000be0a76edab13919797ff9f8528b763b1c67e",
+    "l3_system/adapters/runtime_adapters.py": "c2e37744d710dba41ce6e851aec2fe0e46dd23dde742dfe769024db1792d4b38",
+    "l3_system/agents/__init__.py": "623f28cbc54852b182390550bc00c5a685dca3350d92c75b5c07e5dae2645aa1",
+    "l3_system/agents/monitoring_agent.py": "5d05ee8dcdd87e17b1692f6323c5594d47b1caa53b5e6ed97a6f56c040d4422f",
+    "l3_system/agents/safety_rules.py": "acbab6f626576ad6e1f98520c0e53ffb9c1c3aa2b630b94f57d4bd983744aacb",
+    "l3_system/agents/scheduling_agent.py": "69b9faab33ea3a25602c2a4e529a3185de456abe6cdf87738654cbd12289dc43",
+    "l3_system/algorithms/__init__.py": "1e8a6f626a324e3bf23935b4bdf499f528b5eb3edfeb60f8fa8539dc6919163c",
+    "l3_system/algorithms/cnp_protocol.py": "a13589f69935bff2d0169f441f761966e2c75bf78dfa43cfdfa52b8043a03c17",
+    "l3_system/config.py": "22046269835a88e344d8ff29d4ab4e0534ef5c86f2ce3e387e3b5ccdeb635d19",
+    "l3_system/decision_agent.py": "f176b6d6513e5ef13a4565ace0e00ea5a3c368009bf84622564c1922853ec209",
+    "l3_system/execution/__init__.py": "887792c8d4c4bfbeef1f47ec9f4aff7a13743cd2c46540e09e650219f43ac79c",
+    "l3_system/execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+    "l3_system/execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+    "l3_system/execution/local_policy.py": "20375d1f64777fa680f8bbfb35457470a81fdbbcb27eb6ff1c29e5debfcea6be",
+    "l3_system/execution/safety_bridge.py": "9f21346d2bde6ac01b5fa689d0d04ee4a11436c780b1dd31f7e1208ce48a4ee2",
+    "l3_system/execution/task_contract.py": "3b5af1a0937d8dd4922ab6d32ee72bf29abb84b726a009d40839016f17efc847",
+    "l3_system/main.py": "7a9c162a2822c40785a03b69bcecfdf8e6f566b97b4b857a04fcccb8bf25390a",
+    "l3_system/planning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "l3_system/planning/replanning.py": "ea211176e0d4fcc754f30356e92da79c4b2e79bb416d9d6b1bd99ec893b9635f",
+    "l3_system/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "l3_system/tests/test_a_integration.py": "0b952e08cace689be9ea9fc41cbe3ddb79edaa22a9c546285cffbdf3745f1aca",
+    "l3_system/tests/test_contract.py": "2b5997e978c914cb1f2faa47c8fb4e1729c3cc136c92e54a0159daca62e27f37",
+    "l3_system/tests/test_failure_paths.py": "6d08562581a6522b677f406e56e6f016d53d99b203e77aa2ddd57414a1e082cd",
+    "l3_system/tests/test_integrated_contracts.py": "a1c04f3f27fda7c1cd38cc46b9ce7897ba59df557c3747a6c0933727ed872f35",
+    "l3_system/tests/test_live_orchestration_contracts.py": "f28336f8da692327b7747162f29ea84a5d937088140e9fd4be889c733919c89a",
+    "l3_system/tests/test_member_c_nov5.py": "e64b8c58a564aeb9694cc30bbaeafb8a2cdf94a48b52b4c5519605ec4537bfbf",
+    "l3_system/tests/test_replanning_controller.py": "ced19ac4975e0e529dd56f83c659f1d2790cdd704bd44052a554b34f5128435f",
+    "l3_system/tests/test_review_regressions.py": "62bd8083dd6eb27b5bb070ad96b194790c3d8c120e6bb6f859dc637f0fdad583",
+    "experiments/compare.py": "5f7c61e4d76de9020a26669bd76676580f77cc3ba4159152ef38182a06db2f10"
+  },
+  "process_results": {
+    "four_cnp": {
+      "task_count": 3,
+      "task_completion_rate": 1.0,
+      "mean_task_seconds": 0.03779176900002312,
+      "assignment_success_rate": 1.0,
+      "total_environment_steps": 3
+    },
+    "four_fixed": {
+      "task_count": 3,
+      "task_completion_rate": 1.0,
+      "mean_task_seconds": 0.033521905666627085,
+      "assignment_success_rate": 1.0,
+      "total_environment_steps": 3
+    },
+    "single_executor": {
+      "task_count": 3,
+      "task_completion_rate": 1.0,
+      "mean_task_seconds": 0.030266697333217962,
+      "assignment_success_rate": null,
+      "total_environment_steps": 3
+    }
+  },
+  "paired_checks": [
+    {
+      "seed": 1101,
+      "equal_initial_states": true,
+      "equal_actions_rewards_observations": true
+    },
+    {
+      "seed": 1102,
+      "equal_initial_states": true,
+      "equal_actions_rewards_observations": true
+    },
+    {
+      "seed": 1103,
+      "equal_initial_states": true,
+      "equal_actions_rewards_observations": true
+    }
+  ],
+  "safety_gate_offline": {
+    "enabled": {
+      "unsafe_count": 20,
+      "safe_count": 20,
+      "dangerous_candidate_interception_rate": 1.0,
+      "normal_candidate_false_interception_rate": 0.0
+    },
+    "disabled": {
+      "unsafe_count": 20,
+      "safe_count": 20,
+      "dangerous_candidate_interception_rate": 0.0,
+      "normal_candidate_false_interception_rate": 0.0
+    }
+  },
+  "limits": [
+    "Task completion means interface cycle completion, not achievement of a process production target.",
+    "Only one compatible local worker bids per stage: fixed/CNP comparison is a degenerate baseline, not evidence of CNP superiority.",
+    "Single executor bypasses orchestration; time measures software overhead, not production efficiency.",
+    "Safety labels are constructed from action bounds; disabled gate is offline and never executes dangerous actions.",
+    "Small sample: no statistical significance, generalization or industrial safety claims."
+  ]
+}

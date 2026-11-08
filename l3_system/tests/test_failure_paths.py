@@ -91,6 +91,14 @@ class FailurePathTests(unittest.TestCase):
             result = self.run_cycle()
         self.assert_failed_without_locks(result)
 
+    def test_nonterminal_executor_result_cannot_complete_synchronous_cycle(self):
+        def running(request, review):
+            return {'task_id':request['task_id'],'subtask_id':request['subtask_id'],
+                    'execution_status':'running'}
+        with patch.object(self.executor, 'execute_action', side_effect=running):
+            result = self.run_cycle()
+        self.assert_failed_without_locks(result)
+
     def test_no_bids_fails_with_feedback(self):
         with patch('l3_system.main.configured_bids', return_value=[]):
             result = self.run_cycle()
