@@ -1,6 +1,7 @@
 """Scheduling Agent with parent task/subtask identity preservation."""
 from __future__ import annotations
 from typing import Any, Iterable, Mapping
+from copy import deepcopy
 from l3_system.algorithms.cnp_protocol import CNPError, CNPProtocol
 
 
@@ -45,19 +46,22 @@ class SchedulingAgent:
             seen_subtasks.add(subtask_id)
         return [self.register_task(task) for task in task_list]
 
+    def _completed_ids(self):
+        completed = {self._key(t) for t in self.tasks.values() if t["status"] == "completed"}
+        parents = {t["task_id"] for t in self.tasks.values()}
+        completed.update(parent for parent in parents
+                         if all(t["status"] == "completed" for t in self.tasks.values()
+                                if t["task_id"] == parent))
+        return completed
+
     def ready_tasks(self) -> list[dict[str, Any]]:
         ready = []
-        completed_ids = {
-            self._key(t) for t in self.tasks.values() if t["status"] == "completed"
-        }
-        completed_ids |= {
-            t["task_id"] for t in self.tasks.values() if t["status"] == "completed"
-        }
+        completed_ids = self._completed_ids()
         for task in self.tasks.values():
             if task["status"] != "pending":
                 continue
             if all(dep in completed_ids for dep in task.get("dependencies", [])):
-                ready.append(task)
+                ready.append(deepcopy(task))
         return sorted(ready, key=lambda t: (-int(t.get("priority", 0)), self._key(t)))
 
     def schedule(self, task: Mapping[str, Any],
@@ -84,12 +88,7 @@ class SchedulingAgent:
         if record["status"] not in {"pending", "announced"}:
             raise CNPError(f"Task {key!r} cannot be scheduled from status {record['status']!r}")
 
-        completed_ids = {
-            self._key(t) for t in self.tasks.values() if t["status"] == "completed"
-        }
-        completed_ids |= {
-            t["task_id"] for t in self.tasks.values() if t["status"] == "completed"
-        }
+        completed_ids = self._completed_ids()
         for dep in record.get("dependencies", []):
             if dep not in completed_ids:
                 return {
@@ -171,13 +170,23 @@ class SchedulingAgent:
             str(subtask_id) if subtask_id is not None else None,
             feedback.get("exclude_failed_agent"),
         )
+        previous = self.tasks[key]["status"]
+        if previous in {"completed", "failed", "blocked"}:
+            # A duplicate terminal message cannot release a worker's newer lock.
+            if previous == normalized["execution_status"] and self.feedback_log:
+                old = next((f for f in reversed(self.feedback_log)
+                            if str(f.get("subtask_id") or f["task_id"]) == key), None)
+                if old == normalized:
+                    return deepcopy(old)
+            raise CNPError("Conflicting feedback for a terminal task")
         self.tasks[key]["status"] = normalized["execution_status"]
         current_assignment = self.assignments.get(key)
         if normalized["execution_status"] in {"completed", "failed"}:
             if current_assignment:
                 winner = str(current_assignment["winner_id"])
                 # Terminal feedback releases the winner's active-task lock.
-                self.active_agent_tasks.pop(winner, None)
+                if self.active_agent_tasks.get(winner) == key:
+                    self.active_agent_tasks.pop(winner, None)
                 if normalized["execution_status"] == "failed":
                     # Safety rejection is an action-level decision, not proof
                     # that the execution agent itself is unavailable.
@@ -236,27 +245,33 @@ class SchedulingAgent:
         return str(self.tasks[key]["status"])
 
     def get_assignment(self, task_id: str, subtask_id: str | None = None):
-        """Return the current effective Assignment, or None if none is active."""
+        """Return the latest recorded Assignment, including completed history."""
         key = str(subtask_id) if subtask_id is not None else str(task_id)
+        if key in self.tasks and self.tasks[key]["task_id"] != str(task_id):
+            raise CNPError("Parent task_id mismatch")
         value = self.assignments.get(key)
-        return dict(value) if value else None
+        return deepcopy(value) if value else None
 
     def get_active_assignment(
         self, task_id: str, subtask_id: str | None = None
     ) -> dict[str, Any] | None:
         """Return the current Assignment only while its winner lock is active."""
         key = str(subtask_id) if subtask_id is not None else str(task_id)
+        if key in self.tasks and self.tasks[key]["task_id"] != str(task_id):
+            raise CNPError("Parent task_id mismatch")
         value = self.assignments.get(key)
         if not value:
             return None
         winner = str(value["winner_id"])
         if self.active_agent_tasks.get(winner) != key:
             return None
-        return dict(value)
+        return deepcopy(value)
 
     def get_assignment_history(
         self, task_id: str, subtask_id: str | None = None
     ) -> list[dict[str, Any]]:
         """Return all awarded Assignments for a subtask, oldest first."""
         key = str(subtask_id) if subtask_id is not None else str(task_id)
-        return [dict(item) for item in self.assignment_history.get(key, [])]
+        if key in self.tasks and self.tasks[key]["task_id"] != str(task_id):
+            raise CNPError("Parent task_id mismatch")
+        return deepcopy(self.assignment_history.get(key, []))

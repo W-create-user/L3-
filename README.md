@@ -33,8 +33,16 @@ python main.py --cycles 5
 ```bash
 python -m unittest discover -s l3_system/tests -t . -v
 python -m experiments.run_validation --output outputs/validation
+python -m experiments.compare --output outputs/comparison
+python -m experiments.check_docs
 ```
 
-详细接口与限制见 [运行说明](docs/四智能体运行说明.md)、[代码分析与清理说明](docs/代码分析与清理说明.md)、[当前中期状态](docs/项目中期报告.md)。本次实测证据见 [验证汇总](evidence/current/smpl/summary.json)。`requirements-lock.txt` 保存本次 Linux/Python 3.12 验证的完整依赖版本。
+本轮复核修复与验证记录见 [复核记录](docs/复核记录.md)。
+
+需求对应情况见 [需求验收矩阵](docs/需求验收矩阵.md)，实验设计与指标见 [实验说明](docs/实验说明与指标.md)。
+
+详细接口与限制见 [运行说明](docs/四智能体运行说明.md)、[代码分析与清理说明](docs/代码分析与清理说明.md)、[当前中期状态](docs/项目中期报告.md)。本次实测证据见 [验证汇总](evidence/review/smpl/summary.json)。`requirements-lock.txt` 保存本次 Linux/Python 3.12 验证的完整依赖版本。
 
 当前互联使用单进程 Python 调用，验证环境为真实 AtropineEnv（39 维观测、4 维动作）。动作中点只用于接口基线。Word 中的 mAbEnv 主研究路线保留，相关 SMPL 源码完整保存在 `vendor/`，尚未完成 mAbEnv 适配、工艺优化、多模态模型、ROS/ZeroMQ 或工业 L3 人机接管验证。
+
+GitHub Actions 配置见 [自动检查](.github/workflows/verify.yml)：检查 Python 3.11/3.12 契约测试、文档文件链接，并在 Python 3.12 下运行真实 SMPL 验收及配对对照，保存结果为运行附件。

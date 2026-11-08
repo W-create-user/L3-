@@ -1,0 +1,989 @@
+{
+  "summary": {
+    "run_status": "incomplete_or_failed",
+    "failure_reason": "safety_rejected",
+    "task_id": "TASK-5138a793",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 3,
+    "subtask_statuses": {
+      "SUB-7058d76c": "completed",
+      "SUB-ca4f4377": "completed",
+      "SUB-f250e836": "completed",
+      "SUB-d6aa6411": "failed",
+      "SUB-8ab688dc": "blocked",
+      "SUB-5c25080f": "blocked"
+    },
+    "step_calls": 0,
+    "step_delta": 0,
+    "step_count": 0,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+    "r03_enabled": false,
+    "environment": "SMPL.AtropineEnvGym",
+    "seed": 1101,
+    "scenario": "reject",
+    "requested_cycles": 1,
+    "finished_cycles": 1,
+    "total_step_calls": 0,
+    "observation_space_shape": [
+      39
+    ],
+    "action_space_shape": [
+      4
+    ],
+    "action_low": [
+      -0.0001574199995957315,
+      -0.0014623400056734681,
+      -0.00021811999613419175,
+      -0.003004539990797639
+    ],
+    "action_high": [
+      1.924762000271585e-05,
+      0.012211842462420464,
+      0.001821549842134118,
+      0.00035972922341898084
+    ]
+  },
+  "cycles": [
+    {
+      "summary": {
+        "run_status": "incomplete_or_failed",
+        "failure_reason": "safety_rejected",
+        "task_id": "TASK-5138a793",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-7058d76c": "completed",
+          "SUB-ca4f4377": "completed",
+          "SUB-f250e836": "completed",
+          "SUB-d6aa6411": "failed",
+          "SUB-8ab688dc": "blocked",
+          "SUB-5c25080f": "blocked"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false
+      },
+      "parent_task": {
+        "task_id": "TASK-5138a793",
+        "task_type": "control_cycle",
+        "priority": 3,
+        "preconditions": [],
+        "dependencies": [],
+        "status": "failed",
+        "completion_criteria": [
+          "all_subtasks_completed"
+        ],
+        "description": "执行一次仿真控制任务",
+        "constraints": {},
+        "subtasks": [
+          {
+            "subtask_id": "SUB-7058d76c",
+            "name": "collect_observation",
+            "description": "获取当前仿真环境观测",
+            "order": 1,
+            "dependencies": [],
+            "required_capability": "state_read",
+            "preconditions": [],
+            "completion_criteria": [
+              "observation_received"
+            ],
+            "status": "completed"
+          },
+          {
+            "subtask_id": "SUB-ca4f4377",
+            "name": "evaluate_goal",
+            "description": "根据任务目标分析当前状态",
+            "order": 2,
+            "dependencies": [
+              "SUB-7058d76c"
+            ],
+            "required_capability": "decision",
+            "preconditions": [
+              "observation_received"
+            ],
+            "completion_criteria": [
+              "goal_evaluated"
+            ],
+            "status": "completed"
+          },
+          {
+            "subtask_id": "SUB-f250e836",
+            "name": "generate_action_intent",
+            "description": "生成待审核的抽象控制动作意图",
+            "order": 3,
+            "dependencies": [
+              "SUB-ca4f4377"
+            ],
+            "required_capability": "decision",
+            "preconditions": [
+              "goal_evaluated"
+            ],
+            "completion_criteria": [
+              "action_intent_created"
+            ],
+            "status": "completed"
+          },
+          {
+            "subtask_id": "SUB-d6aa6411",
+            "name": "safety_review",
+            "description": "将候选动作提交监管模块检查",
+            "order": 4,
+            "dependencies": [
+              "SUB-f250e836"
+            ],
+            "required_capability": "monitoring",
+            "preconditions": [
+              "action_intent_created"
+            ],
+            "completion_criteria": [
+              "safety_decision_received"
+            ],
+            "status": "failed"
+          },
+          {
+            "subtask_id": "SUB-8ab688dc",
+            "name": "execute_approved_action",
+            "description": "仅在监管放行后请求执行模块执行动作",
+            "order": 5,
+            "dependencies": [
+              "SUB-d6aa6411"
+            ],
+            "required_capability": "environment_execution",
+            "preconditions": [
+              "safety_passed"
+            ],
+            "completion_criteria": [
+              "execution_result_received"
+            ],
+            "status": "blocked"
+          },
+          {
+            "subtask_id": "SUB-5c25080f",
+            "name": "verify_result",
+            "description": "检查执行反馈与任务完成情况",
+            "order": 6,
+            "dependencies": [
+              "SUB-8ab688dc"
+            ],
+            "required_capability": "decision",
+            "preconditions": [
+              "execution_result_received"
+            ],
+            "completion_criteria": [
+              "result_verified"
+            ],
+            "status": "blocked"
+          }
+        ],
+        "source": "rule_mapping"
+      },
+      "c_tasks": [
+        {
+          "task_id": "TASK-5138a793",
+          "subtask_id": "SUB-7058d76c",
+          "task_type": "collect_observation",
+          "priority": 3,
+          "dependencies": [],
+          "status": "pending",
+          "constraints": {},
+          "required_capability": "state_read",
+          "description": "获取当前仿真环境观测",
+          "order": 1,
+          "preconditions": [],
+          "completion_criteria": [
+            "observation_received"
+          ]
+        },
+        {
+          "task_id": "TASK-5138a793",
+          "subtask_id": "SUB-ca4f4377",
+          "task_type": "evaluate_goal",
+          "priority": 3,
+          "dependencies": [
+            "SUB-7058d76c"
+          ],
+          "status": "pending",
+          "constraints": {},
+          "required_capability": "decision",
+          "description": "根据任务目标分析当前状态",
+          "order": 2,
+          "preconditions": [
+            "observation_received"
+          ],
+          "completion_criteria": [
+            "goal_evaluated"
+          ]
+        },
+        {
+          "task_id": "TASK-5138a793",
+          "subtask_id": "SUB-f250e836",
+          "task_type": "generate_action_intent",
+          "priority": 3,
+          "dependencies": [
+            "SUB-ca4f4377"
+          ],
+          "status": "pending",
+          "constraints": {},
+          "required_capability": "decision",
+          "description": "生成待审核的抽象控制动作意图",
+          "order": 3,
+          "preconditions": [
+            "goal_evaluated"
+          ],
+          "completion_criteria": [
+            "action_intent_created"
+          ]
+        },
+        {
+          "task_id": "TASK-5138a793",
+          "subtask_id": "SUB-d6aa6411",
+          "task_type": "safety_review",
+          "priority": 3,
+          "dependencies": [
+            "SUB-f250e836"
+          ],
+          "status": "pending",
+          "constraints": {},
+          "required_capability": "monitoring",
+          "description": "将候选动作提交监管模块检查",
+          "order": 4,
+          "preconditions": [
+            "action_intent_created"
+          ],
+          "completion_criteria": [
+            "safety_decision_received"
+          ]
+        },
+        {
+          "task_id": "TASK-5138a793",
+          "subtask_id": "SUB-8ab688dc",
+          "task_type": "execute_approved_action",
+          "priority": 3,
+          "dependencies": [
+            "SUB-d6aa6411"
+          ],
+          "status": "pending",
+          "constraints": {},
+          "required_capability": "environment_execution",
+          "description": "仅在监管放行后请求执行模块执行动作",
+          "order": 5,
+          "preconditions": [
+            "safety_passed"
+          ],
+          "completion_criteria": [
+            "execution_result_received"
+          ]
+        },
+        {
+          "task_id": "TASK-5138a793",
+          "subtask_id": "SUB-5c25080f",
+          "task_type": "verify_result",
+          "priority": 3,
+          "dependencies": [
+            "SUB-8ab688dc"
+          ],
+          "status": "pending",
+          "constraints": {},
+          "required_capability": "decision",
+          "description": "检查执行反馈与任务完成情况",
+          "order": 6,
+          "preconditions": [
+            "execution_result_received"
+          ],
+          "completion_criteria": [
+            "result_verified"
+          ]
+        }
+      ],
+      "stage_results": [
+        {
+          "subtask_id": "SUB-7058d76c",
+          "task_type": "collect_observation",
+          "execution_status": "completed",
+          "duration_seconds": 0.00024325700019289798,
+          "observation": [
+            0.0,
+            0.4078,
+            0.1089,
+            0.3888,
+            0.2126,
+            13.057265281677246,
+            13.057265281677246,
+            0.0010000000474974513,
+            0.0010000000474974513,
+            2.9748927777934295e-17,
+            2.592966759681261e-13,
+            4.996121355530039e-16,
+            2.0030083522187096e-15,
+            2.705462201238527e-13,
+            1.881636778660866e-36,
+            1.6677838895012747e-16,
+            2.4056603771946324e-12,
+            1.851387786450359e-06,
+            1.1296488517860219e-14,
+            2.3651628311794502e-14,
+            5.358809826991494e-14,
+            5.629197994106013e-15,
+            3.2045784315597325e-13,
+            4.3675843974352727e-07,
+            0.003806860283230873,
+            7.33504812105916e-06,
+            2.9407137266882815e-05,
+            0.003972020298070985,
+            2.7625222937305794e-26,
+            2.4485544314247816e-06,
+            0.035318666969761645,
+            0.0002718112219056352,
+            0.00016584922779303932,
+            0.0003472410285158351,
+            0.0007867528659823202,
+            8.264498644340235e-05,
+            0.004704797047650017,
+            0.0007301725920046264,
+            0.0010720018025791589
+          ]
+        },
+        {
+          "subtask_id": "SUB-ca4f4377",
+          "task_type": "evaluate_goal",
+          "execution_status": "completed",
+          "duration_seconds": 9.085400006370037e-05,
+          "evaluation": "finite_current_observation",
+          "numeric_process_target": null
+        },
+        {
+          "subtask_id": "SUB-f250e836",
+          "task_type": "generate_action_intent",
+          "execution_status": "completed",
+          "duration_seconds": 0.000775489000034213,
+          "request": {
+            "schema_version": "1.2",
+            "request_id": "175998f3-a5ae-4c2a-909a-a922f348d677",
+            "task_id": "TASK-5138a793",
+            "task_name": "执行一次仿真控制任务",
+            "parent_task_id": "TASK-5138a793",
+            "subtask_id": "SUB-8ab688dc",
+            "subtask_name": "execute_approved_action",
+            "goal_type": "control_cycle",
+            "task_type": "control_cycle",
+            "task_context": {
+              "task_id": "TASK-5138a793",
+              "task_name": "执行一次仿真控制任务",
+              "parameters": {
+                "task_type": "control_cycle",
+                "priority": 3,
+                "preconditions": [],
+                "dependencies": [],
+                "constraints": {},
+                "subtasks": [
+                  {
+                    "subtask_id": "SUB-7058d76c",
+                    "name": "collect_observation",
+                    "description": "获取当前仿真环境观测",
+                    "order": 1,
+                    "dependencies": [],
+                    "required_capability": "state_read",
+                    "preconditions": [],
+                    "completion_criteria": [
+                      "observation_received"
+                    ],
+                    "status": "pending"
+                  },
+                  {
+                    "subtask_id": "SUB-ca4f4377",
+                    "name": "evaluate_goal",
+                    "description": "根据任务目标分析当前状态",
+                    "order": 2,
+                    "dependencies": [
+                      "SUB-7058d76c"
+                    ],
+                    "required_capability": "decision",
+                    "preconditions": [
+                      "observation_received"
+                    ],
+                    "completion_criteria": [
+                      "goal_evaluated"
+                    ],
+                    "status": "pending"
+                  },
+                  {
+                    "subtask_id": "SUB-f250e836",
+                    "name": "generate_action_intent",
+                    "description": "生成待审核的抽象控制动作意图",
+                    "order": 3,
+                    "dependencies": [
+                      "SUB-ca4f4377"
+                    ],
+                    "required_capability": "decision",
+                    "preconditions": [
+                      "goal_evaluated"
+                    ],
+                    "completion_criteria": [
+                      "action_intent_created"
+                    ],
+                    "status": "pending"
+                  },
+                  {
+                    "subtask_id": "SUB-d6aa6411",
+                    "name": "safety_review",
+                    "description": "将候选动作提交监管模块检查",
+                    "order": 4,
+                    "dependencies": [
+                      "SUB-f250e836"
+                    ],
+                    "required_capability": "monitoring",
+                    "preconditions": [
+                      "action_intent_created"
+                    ],
+                    "completion_criteria": [
+                      "safety_decision_received"
+                    ],
+                    "status": "pending"
+                  },
+                  {
+                    "subtask_id": "SUB-8ab688dc",
+                    "name": "execute_approved_action",
+                    "description": "仅在监管放行后请求执行模块执行动作",
+                    "order": 5,
+                    "dependencies": [
+                      "SUB-d6aa6411"
+                    ],
+                    "required_capability": "environment_execution",
+                    "preconditions": [
+                      "safety_passed"
+                    ],
+                    "completion_criteria": [
+                      "execution_result_received"
+                    ],
+                    "status": "pending"
+                  },
+                  {
+                    "subtask_id": "SUB-5c25080f",
+                    "name": "verify_result",
+                    "description": "检查执行反馈与任务完成情况",
+                    "order": 6,
+                    "dependencies": [
+                      "SUB-8ab688dc"
+                    ],
+                    "required_capability": "decision",
+                    "preconditions": [
+                      "execution_result_received"
+                    ],
+                    "completion_criteria": [
+                      "result_verified"
+                    ],
+                    "status": "pending"
+                  }
+                ],
+                "completion_criteria": [
+                  "all_subtasks_completed"
+                ],
+                "status": "created",
+                "source": "rule_mapping"
+              }
+            },
+            "action": [
+              1.0000191926956177,
+              1.012211799621582,
+              1.001821517944336,
+              1.0003597736358643
+            ],
+            "action_source": "caller_explicit_action",
+            "observation": [
+              0.0,
+              0.4078,
+              0.1089,
+              0.3888,
+              0.2126,
+              13.057265281677246,
+              13.057265281677246,
+              0.0010000000474974513,
+              0.0010000000474974513,
+              2.9748927777934295e-17,
+              2.592966759681261e-13,
+              4.996121355530039e-16,
+              2.0030083522187096e-15,
+              2.705462201238527e-13,
+              1.881636778660866e-36,
+              1.6677838895012747e-16,
+              2.4056603771946324e-12,
+              1.851387786450359e-06,
+              1.1296488517860219e-14,
+              2.3651628311794502e-14,
+              5.358809826991494e-14,
+              5.629197994106013e-15,
+              3.2045784315597325e-13,
+              4.3675843974352727e-07,
+              0.003806860283230873,
+              7.33504812105916e-06,
+              2.9407137266882815e-05,
+              0.003972020298070985,
+              2.7625222937305794e-26,
+              2.4485544314247816e-06,
+              0.035318666969761645,
+              0.0002718112219056352,
+              0.00016584922779303932,
+              0.0003472410285158351,
+              0.0007867528659823202,
+              8.264498644340235e-05,
+              0.004704797047650017,
+              0.0007301725920046264,
+              0.0010720018025791589
+            ],
+            "state_version": 1,
+            "step_count": 0,
+            "environment": "SMPL.AtropineEnvGym",
+            "normalize": false,
+            "uss_subtracted": true,
+            "action_space": {
+              "shape": [
+                4
+              ],
+              "dtype": "float32",
+              "low": [
+                -0.0001574199995957315,
+                -0.0014623400056734681,
+                -0.00021811999613419175,
+                -0.003004539990797639
+              ],
+              "high": [
+                1.924762000271585e-05,
+                0.012211842462420464,
+                0.001821549842134118,
+                0.00035972922341898084
+              ]
+            }
+          }
+        },
+        {
+          "subtask_id": "SUB-d6aa6411",
+          "task_type": "safety_review",
+          "execution_status": "failed",
+          "duration_seconds": 0.0006044980000297073,
+          "safety_decision": {
+            "task_id": "TASK-5138a793",
+            "decision": "reject",
+            "request_id": "175998f3-a5ae-4c2a-909a-a922f348d677",
+            "subtask_id": "SUB-8ab688dc",
+            "rule_id": "R-02",
+            "reason": "R-02: 动作超出允许范围：动作[0]=1.00002，允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221，允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182，允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036，允许范围=[-0.00300454, 0.000359729]",
+            "risk_level": 3,
+            "demo_mode": false,
+            "raw_safety_result": {
+              "request_id": "175998f3-a5ae-4c2a-909a-a922f348d677",
+              "subtask_id": "SUB-8ab688dc",
+              "task_id": "TASK-5138a793",
+              "decision": "reject",
+              "rule_id": "R-02",
+              "reason": "R-02: 动作超出允许范围：动作[0]=1.00002，允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221，允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182，允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036，允许范围=[-0.00300454, 0.000359729]",
+              "risk_level": 3
+            }
+          }
+        }
+      ],
+      "events": [
+        {
+          "timestamp": "2026-11-08T12:58:58.797680+00:00",
+          "event": "assignment_awarded",
+          "subtask_id": "SUB-7058d76c",
+          "task_type": "collect_observation",
+          "bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "subtask_id": "SUB-7058d76c",
+              "agent_id": "ExecutionAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0
+            }
+          ],
+          "assignment": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-7058d76c",
+            "winner_id": "ExecutionAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded"
+          },
+          "ranked_bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "agent_id": "ExecutionAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0,
+              "subtask_id": "SUB-7058d76c",
+              "score": 0.85
+            }
+          ]
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.797861+00:00",
+          "event": "subtask_completed",
+          "subtask_id": "SUB-7058d76c",
+          "task_type": "collect_observation",
+          "feedback": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-7058d76c",
+            "execution_status": "completed",
+            "failure_reason": null,
+            "exclude_failed_agent": false
+          }
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.797952+00:00",
+          "event": "assignment_awarded",
+          "subtask_id": "SUB-ca4f4377",
+          "task_type": "evaluate_goal",
+          "bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "subtask_id": "SUB-ca4f4377",
+              "agent_id": "DecisionAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0
+            }
+          ],
+          "assignment": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-ca4f4377",
+            "winner_id": "DecisionAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded"
+          },
+          "ranked_bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "agent_id": "DecisionAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0,
+              "subtask_id": "SUB-ca4f4377",
+              "score": 0.85
+            }
+          ]
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.797992+00:00",
+          "event": "subtask_completed",
+          "subtask_id": "SUB-ca4f4377",
+          "task_type": "evaluate_goal",
+          "feedback": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-ca4f4377",
+            "execution_status": "completed",
+            "failure_reason": null,
+            "exclude_failed_agent": false
+          }
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.798051+00:00",
+          "event": "assignment_awarded",
+          "subtask_id": "SUB-f250e836",
+          "task_type": "generate_action_intent",
+          "bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "subtask_id": "SUB-f250e836",
+              "agent_id": "DecisionAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0
+            }
+          ],
+          "assignment": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-f250e836",
+            "winner_id": "DecisionAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded"
+          },
+          "ranked_bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "agent_id": "DecisionAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0,
+              "subtask_id": "SUB-f250e836",
+              "score": 0.85
+            }
+          ]
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.798827+00:00",
+          "event": "subtask_completed",
+          "subtask_id": "SUB-f250e836",
+          "task_type": "generate_action_intent",
+          "feedback": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-f250e836",
+            "execution_status": "completed",
+            "failure_reason": null,
+            "exclude_failed_agent": false
+          }
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.798911+00:00",
+          "event": "assignment_awarded",
+          "subtask_id": "SUB-d6aa6411",
+          "task_type": "safety_review",
+          "bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "subtask_id": "SUB-d6aa6411",
+              "agent_id": "MonitoringAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0
+            }
+          ],
+          "assignment": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-d6aa6411",
+            "winner_id": "MonitoringAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded"
+          },
+          "ranked_bids": [
+            {
+              "task_id": "TASK-5138a793",
+              "agent_id": "MonitoringAgent-01",
+              "estimated_cost": 1.0,
+              "capability_match": 1.0,
+              "load": 0.0,
+              "subtask_id": "SUB-d6aa6411",
+              "score": 0.85
+            }
+          ]
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.799471+00:00",
+          "event": "subtask_failed",
+          "subtask_id": "SUB-d6aa6411",
+          "task_type": "safety_review",
+          "feedback": {
+            "task_id": "TASK-5138a793",
+            "subtask_id": "SUB-d6aa6411",
+            "execution_status": "failed",
+            "failure_reason": "safety_rejected",
+            "exclude_failed_agent": false
+          }
+        },
+        {
+          "timestamp": "2026-11-08T12:58:58.799508+00:00",
+          "event": "A_task_feedback",
+          "task": {
+            "task_id": "TASK-5138a793",
+            "task_type": "control_cycle",
+            "priority": 3,
+            "preconditions": [],
+            "dependencies": [],
+            "status": "failed",
+            "completion_criteria": [
+              "all_subtasks_completed"
+            ],
+            "description": "执行一次仿真控制任务",
+            "constraints": {},
+            "subtasks": [
+              {
+                "subtask_id": "SUB-7058d76c",
+                "name": "collect_observation",
+                "description": "获取当前仿真环境观测",
+                "order": 1,
+                "dependencies": [],
+                "required_capability": "state_read",
+                "preconditions": [],
+                "completion_criteria": [
+                  "observation_received"
+                ],
+                "status": "completed"
+              },
+              {
+                "subtask_id": "SUB-ca4f4377",
+                "name": "evaluate_goal",
+                "description": "根据任务目标分析当前状态",
+                "order": 2,
+                "dependencies": [
+                  "SUB-7058d76c"
+                ],
+                "required_capability": "decision",
+                "preconditions": [
+                  "observation_received"
+                ],
+                "completion_criteria": [
+                  "goal_evaluated"
+                ],
+                "status": "completed"
+              },
+              {
+                "subtask_id": "SUB-f250e836",
+                "name": "generate_action_intent",
+                "description": "生成待审核的抽象控制动作意图",
+                "order": 3,
+                "dependencies": [
+                  "SUB-ca4f4377"
+                ],
+                "required_capability": "decision",
+                "preconditions": [
+                  "goal_evaluated"
+                ],
+                "completion_criteria": [
+                  "action_intent_created"
+                ],
+                "status": "completed"
+              },
+              {
+                "subtask_id": "SUB-d6aa6411",
+                "name": "safety_review",
+                "description": "将候选动作提交监管模块检查",
+                "order": 4,
+                "dependencies": [
+                  "SUB-f250e836"
+                ],
+                "required_capability": "monitoring",
+                "preconditions": [
+                  "action_intent_created"
+                ],
+                "completion_criteria": [
+                  "safety_decision_received"
+                ],
+                "status": "failed"
+              },
+              {
+                "subtask_id": "SUB-8ab688dc",
+                "name": "execute_approved_action",
+                "description": "仅在监管放行后请求执行模块执行动作",
+                "order": 5,
+                "dependencies": [
+                  "SUB-d6aa6411"
+                ],
+                "required_capability": "environment_execution",
+                "preconditions": [
+                  "safety_passed"
+                ],
+                "completion_criteria": [
+                  "execution_result_received"
+                ],
+                "status": "blocked"
+              },
+              {
+                "subtask_id": "SUB-5c25080f",
+                "name": "verify_result",
+                "description": "检查执行反馈与任务完成情况",
+                "order": 6,
+                "dependencies": [
+                  "SUB-8ab688dc"
+                ],
+                "required_capability": "decision",
+                "preconditions": [
+                  "execution_result_received"
+                ],
+                "completion_criteria": [
+                  "result_verified"
+                ],
+                "status": "blocked"
+              }
+            ],
+            "source": "rule_mapping"
+          },
+          "summary": {
+            "run_status": "incomplete_or_failed",
+            "failure_reason": "safety_rejected",
+            "task_id": "TASK-5138a793",
+            "task_type": "control_cycle",
+            "subtask_count": 6,
+            "completed_subtasks": 3,
+            "subtask_statuses": {
+              "SUB-7058d76c": "completed",
+              "SUB-ca4f4377": "completed",
+              "SUB-f250e836": "completed",
+              "SUB-d6aa6411": "failed",
+              "SUB-8ab688dc": "blocked",
+              "SUB-5c25080f": "blocked"
+            },
+            "step_calls": 0,
+            "step_delta": 0,
+            "step_count": 0,
+            "executor_id": "ExecutionAgent-01",
+            "d_demo_mode": false,
+            "bids_are_live": false,
+            "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+            "all_C_locks_released": true,
+            "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+            "r03_enabled": false
+          }
+        }
+      ],
+      "assignments": [
+        [
+          {
+            "task_id": "TASK-5138a793",
+            "winner_id": "ExecutionAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded",
+            "subtask_id": "SUB-7058d76c"
+          }
+        ],
+        [
+          {
+            "task_id": "TASK-5138a793",
+            "winner_id": "DecisionAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded",
+            "subtask_id": "SUB-ca4f4377"
+          }
+        ],
+        [
+          {
+            "task_id": "TASK-5138a793",
+            "winner_id": "DecisionAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded",
+            "subtask_id": "SUB-f250e836"
+          }
+        ],
+        [
+          {
+            "task_id": "TASK-5138a793",
+            "winner_id": "MonitoringAgent-01",
+            "score": 0.85,
+            "assignment_status": "awarded",
+            "subtask_id": "SUB-d6aa6411"
+          }
+        ],
+        [],
+        []
+      ],
+      "d_logs": [
+        {
+          "timestamp": "2026-11-08T12:58:58.799099+00:00",
+          "approved": false,
+          "status": "Reject",
+          "level": 3,
+          "rule_id": "R-02",
+          "intervention": "BLOCK",
+          "reason": "R-02: 动作超出允许范围：动作[0]=1.00002，允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221，允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182，允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036，允许范围=[-0.00300454, 0.000359729]",
+          "demo_mode": false,
+          "task_id": "TASK-5138a793",
+          "request_id": "175998f3-a5ae-4c2a-909a-a922f348d677",
+          "subtask_id": "SUB-8ab688dc"
+        }
+      ]
+    }
+  ]
+}

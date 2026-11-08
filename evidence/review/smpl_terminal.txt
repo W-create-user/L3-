@@ -1,0 +1,30 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+CasADi - 2026-11-08 12:58:58 WARNING("The options 't0', 'tf', 'grid' and 'output_t0' have been deprecated.
+The same functionality is provided by providing additional input arguments to the 'integrator' function, in particular:
+ * Call integrator(..., t0, tf, options) for a single output time, or
+ * Call integrator(..., t0, grid, options) for multiple grid points.
+The legacy 'output_t0' option can be emulated by including or excluding 't0' in 'grid'.
+Backwards compatibility is provided in this release only.") [.../casadi/core/integrator.cpp:692]
+[MonitoringAgent] TASK-9c54b741 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9c54b741 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5138a793 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=1.00002，允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221，允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182，允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] TASK-6bd8b10a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6bd8b10a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b6defa8a | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=1.00002，允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221，允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182，允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] TASK-3ed0691d | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-3ed0691d | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-958323be | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=1.00002，允许范围=[-0.00015742, 1.92476e-05]; 动作[1]=1.01221，允许范围=[-0.00146234, 0.0122118]; 动作[2]=1.00182，允许范围=[-0.00021812, 0.00182155]; 动作[3]=1.00036，允许范围=[-0.00300454, 0.000359729]
+[MonitoringAgent] TASK-1a5a70ae | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1a5a70ae | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-dbd39340 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-dbd39340 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6002b656 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6002b656 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-4a392138 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-4a392138 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9b824d49 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9b824d49 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+Validated 10 cases; report: evidence/review/smpl/summary.json

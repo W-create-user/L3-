@@ -1,6 +1,7 @@
 """Simplified CNP message models and deterministic bid evaluation."""
 from __future__ import annotations
 from dataclasses import dataclass, asdict
+import math
 from typing import Any, Iterable, Mapping
 
 
@@ -24,6 +25,11 @@ class Bid:
         missing = [key for key in required if key not in data]
         if missing:
             raise CNPError(f"Bid missing fields: {', '.join(missing)}")
+        for key in ("task_id", "agent_id"):
+            if not isinstance(data[key], str) or not data[key].strip():
+                raise CNPError(f"{key} must be a non-empty string")
+        if any(isinstance(data[key], bool) for key in ("estimated_cost", "capability_match", "load")):
+            raise CNPError("Bid numeric values cannot be boolean")
         try:
             bid = cls(
                 task_id=str(data["task_id"]),
@@ -40,6 +46,8 @@ class Bid:
             raise CNPError("task_id and agent_id must be non-empty")
         if bid.subtask_id == "":
             raise CNPError("subtask_id must be non-empty when provided")
+        if not all(math.isfinite(v) for v in (bid.estimated_cost, bid.capability_match, bid.load)):
+            raise CNPError("Bid values must be finite")
         if bid.estimated_cost < 0:
             raise CNPError("estimated_cost must be >= 0")
         if not 0 <= bid.capability_match <= 1:
@@ -67,15 +75,17 @@ class CNPProtocol:
     """Announcement -> bid collection -> evaluation -> award -> feedback."""
 
     def __init__(self, weights: Mapping[str, float] | None = None):
-        self.weights = dict(weights or {
+        self.weights = dict({
             "capability": 0.50, "cost": 0.30, "load": 0.20
-        })
+        } if weights is None else weights)
         if set(self.weights) != {"capability", "cost", "load"}:
             raise CNPError("weights must contain capability, cost and load")
+        if any(isinstance(v, bool) or not math.isfinite(float(v)) for v in self.weights.values()):
+            raise CNPError("weights must be finite numbers")
         if any(float(v) < 0 for v in self.weights.values()):
             raise CNPError("weights must be non-negative")
         total = sum(float(v) for v in self.weights.values())
-        if total <= 0:
+        if not math.isfinite(total) or total <= 0:
             raise CNPError("at least one weight must be positive")
         self.weights = {k: float(v) / total for k, v in self.weights.items()}
 
@@ -183,3 +193,9 @@ class CNPProtocol:
         if subtask_id is not None:
             result["subtask_id"] = str(subtask_id)
         return result
+
+
+class FixedOrderProtocol(CNPProtocol):
+    """Fixed lexicographic worker order; retains validation and resource gating."""
+    def evaluate(self, bids):
+        return [ScoredBid(bid, 0.0) for bid in sorted(bids, key=lambda b: b.agent_id)]
