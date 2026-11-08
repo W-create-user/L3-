@@ -1,44 +1,40 @@
-## 四类智能体统一入口
+# 流程工业四智能体协同原型
 
-新增根目录 `main.py`，接入实际 A/C/B/D 与真实 AtropineEnv，提供正常、拒绝、只读三种运行。请以 [统一运行说明](docs/四智能体运行说明.md)、[更新后的中期报告](docs/项目中期报告.md) 和 [最终实验记录](evidence/four_agents/summary.json) 为准。旧交付快照中的“尚未集成”等表述保留作历史记录，不代表本次最新状态。当前中点策略不是优化控制，mAbEnv、多模态与工业L3未验证。
+按《项目修改后的版本.doc》的 SMPL、四角色、HTN/CNP 路线，完成决策 A、调度 C、执行 B、监管 D 的本地同步互联。根目录只有一个运行入口，代码集中于 `l3_system/`。
 
-# L3-# 面向流程工业 L3 级自主运行的智能体集群多模态监管与协同执行研究
-
-项目编号：S202610703  
-申报单位：西安建筑科技大学
-
-## 项目简介
-
-本项目面向流程工业 L3 级自主运行场景，研究智能体集群的多模态状态监管、任务协同和安全执行方法。
-
-## 主要模块
-
-- 智能体集群
-- 多模态信息处理
-- 运行状态监管
-- 任务规划与协同执行
-- 实验评估
-
-## 当前进度
-
-项目仓库初始化，正在进行需求分析和技术调研。
-
-## 仓库结构
-
-- `docs/`：项目文档
-- `src/`：源代码
-- `tests/`：测试代码
-- `experiments/`：实验记录
-- `data/`：数据说明
-
-## 最新 A 代码包集成
-
-已接入用户交付的 `L3_A_Final_20261108.zip`，位于 [`a_integration`](a_integration/README.md)。
-
-```bash
-python main.py --engine a-final --offline-preview
-python main.py --engine a-final --seed 1101
-python -m unittest discover -s a_integration/tests -v
+```mermaid
+flowchart LR
+    G[生产目标] --> A[A 决策与 HTN 分解]
+    A --> C[C 依赖管理与 CNP 授予]
+    C --> B[B 观测与候选动作准备]
+    B --> D[D 独立动作审核]
+    D -->|放行| E[B 执行 SMPL]
+    D -->|拒绝或异常| F[C 失败反馈与锁释放]
+    E --> F
+    F --> A
 ```
 
-原四角色入口保持默认路径。新版A复用仓库B和SMPL代码；本次35项接口测试通过，不将测试适配器结果写成新增真实工艺实验。
+使用 Python 3.11 或 3.12，在仓库根目录运行：
+
+```bash
+python -m venv .venv
+# Linux/macOS
+source .venv/bin/activate
+# Windows PowerShell 使用 .\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python main.py --scenario normal
+python main.py --scenario reject
+python main.py --scenario inspect
+python main.py --cycles 5
+```
+
+`reject` 是预期拒绝验收场景，通过时退出码为 0。实际执行失败、连续轮数不足或锁未释放时退出码为 1。`--offline-preview` 仅查看 HTN 计划。运行记录默认保存在 `outputs/` 的独立目录。
+
+```bash
+python -m unittest discover -s l3_system/tests -t . -v
+python -m experiments.run_validation --output outputs/validation
+```
+
+详细接口与限制见 [运行说明](docs/四智能体运行说明.md)、[代码分析与清理说明](docs/代码分析与清理说明.md)、[当前中期状态](docs/项目中期报告.md)。本次实测证据见 [验证汇总](evidence/current/smpl/summary.json)。`requirements-lock.txt` 保存本次 Linux/Python 3.12 验证的完整依赖版本。
+
+当前互联使用单进程 Python 调用，验证环境为真实 AtropineEnv（39 维观测、4 维动作）。动作中点只用于接口基线。Word 中的 mAbEnv 主研究路线保留，相关 SMPL 源码完整保存在 `vendor/`，尚未完成 mAbEnv 适配、工艺优化、多模态模型、ROS/ZeroMQ 或工业 L3 人机接管验证。
