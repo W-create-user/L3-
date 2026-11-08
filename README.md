@@ -34,10 +34,15 @@ python main.py --cycles 5
 python -m unittest discover -s l3_system/tests -t . -v
 python -m experiments.run_validation --output outputs/validation
 python -m experiments.compare --output outputs/comparison
+python -m experiments.validate_session --output outputs/session_validation
 python -m experiments.check_docs
 ```
 
 本轮复核修复与验证记录见 [复核记录](docs/复核记录.md)。
+
+新增持续运行会话 `MultiAgentSystem`，主入口在多轮运行中复用 A/C/B/D，
+监管拒绝或模块异常后保持 `takeover_requested`，须显式人工确认才能继续。
+候选动作有限重生成、人工确认恢复 API 和本轮修复见 [系统集成与恢复](docs/系统集成与恢复.md)。
 
 需求对应情况见 [需求验收矩阵](docs/需求验收矩阵.md)，实验设计与指标见 [实验说明](docs/实验说明与指标.md)。
 

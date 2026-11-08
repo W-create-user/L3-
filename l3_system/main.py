@@ -58,7 +58,7 @@ def _default_action_generator(observation, action_space, attempt=0):
 
 
 def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
-                      scheduler=None, action_generator=None, event_path=None):
+                      scheduler=None, decision=None, action_generator=None, event_path=None):
     """Run one HTN chain. Every awarded stage returns terminal feedback to C.
 
     B owns pending ActionRequests and invalidates them on use/reset. D reviews
@@ -69,8 +69,15 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         raise RuntimeError("Formal run requires D initialized with the live action_space")
     if executor_id != EXECUTOR_ID:
         raise ValueError(f"Configured executor identity must be {EXECUTOR_ID!r}")
-    decision = DecisionAgent()
+    decision = decision if decision is not None else DecisionAgent()
     parent = decision.task_to_dict(decision.create_task(goal))
+    # Do not report a production goal as satisfied when its predicates have no
+    # implementation. The finite MVP only verifies its documented task chain.
+    if (parent['preconditions']
+            or parent['completion_criteria'] != ['all_subtasks_completed']
+            or set(parent['constraints']) - {'environment'}
+            or parent['constraints'].get('environment', 'AtropineEnv') != 'AtropineEnv'):
+        raise NotImplementedError('Unsupported goal predicates or process constraints')
     tasks = convert_subtasks_for_c(parent)
     scheduler = scheduler if scheduler is not None else SchedulingAgent()
     scheduler.register_tasks(tasks)
@@ -82,7 +89,7 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         event_file.parent.mkdir(parents=True, exist_ok=True)
     def emit(event, **payload):
         record = {"timestamp": datetime.now(timezone.utc).isoformat(),
-                  "event": event, **_plain(payload)}
+                  "event": event, "task_id": parent["task_id"], **_plain(payload)}
         events.append(record)
         if event_file:
             with event_file.open("a", encoding="utf-8") as stream:
@@ -148,13 +155,19 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                 if feedback is None or feedback["execution_status"] not in {"completed", "failed"}:
                     raise ValueError("Synchronous B execution must return terminal feedback")
                 status, reason = feedback["execution_status"], feedback.get("failure_reason")
+                if execution.get("execution_status") == "rejected":
+                    reason = "safety_rejected"
                 payload = {"execution_result": execution}
             elif name == "verify_result":
                 if not (execution and execution.get("success") is True
                         and execution.get("executed") is True
                         and executor.adapter.step_calls - before == 1):
                     raise RuntimeError("Expected exactly one successful environment step")
-                payload = {"verified": True, "step_delta": 1}
+                state_review = monitor.check_observation(executor.get_observation(), parent["task_id"])
+                if not state_review["approved"]:
+                    status, reason = "failed", "invalid_post_execution_observation"
+                payload = {"verified": status == "completed", "step_delta": 1,
+                           "state_review": state_review}
             else:
                 raise ValueError(f"Unsupported HTN stage: {name}")
         except Exception as exc:
@@ -243,16 +256,19 @@ def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=110
     monitor = None
     try:
         with EnvironmentAdapter(source_dir=source_dir, max_steps=max_steps) as adapter:
-            monitor = MonitoringAgent(action_space=adapter.action_space)
+            monitor = MonitoringAgent(action_space=adapter.action_space,
+                                      observation_space=adapter.observation_space)
             executor = ExecutionAgent(adapter, log_path=out / "B_events.jsonl")
             executor.reset(seed=seed)
+            from l3_system.runtime import MultiAgentSystem
+            system = MultiAgentSystem(executor=executor, monitor=monitor,
+                                      event_path=out / "events.jsonl")
             results = []
             for cycle in range(cycles):
                 if adapter.done:
                     break
-                result = run_control_cycle(
+                result = system.run_cycle(
                     goal="检查当前仿真状态" if scenario == "inspect" else goal,
-                    executor=executor, monitor=monitor, event_path=out / "events.jsonl",
                     action_generator=(lambda obs, space, attempt: space.high.astype(float) + 1) if scenario == "reject" else None)
                 results.append(result)
                 if result["summary"]["run_status"] != "completed":

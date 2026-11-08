@@ -45,6 +45,9 @@ def convert_subtasks_for_c(decision_result: Mapping[str, Any]) -> list[dict[str,
             raise ValueError(f"subtask {item['subtask_id']} has unknown dependencies: {sorted(unknown)}")
         if item["subtask_id"] in dependencies:
             raise ValueError(f"subtask {item['subtask_id']} cannot depend on itself")
+        # Parent prerequisites gate the root stage, not just the display plan.
+        if not dependencies:
+            dependencies = list(decision_result.get("dependencies", []))
         status = item.get("status", "pending")
         if not isinstance(status, str):
             raise ValueError("subtask status must be a string")

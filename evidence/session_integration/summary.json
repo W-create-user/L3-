@@ -1,0 +1,790 @@
+{
+  "base_commit": "06886595b6fb6988368d591f243e168d8c9f4186",
+  "unit_tests": {
+    "passed": 86,
+    "failed": 0
+  },
+  "real_environment_validation": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "1.26.4",
+      "casadi": "3.7.2",
+      "gym": "0.26.2",
+      "scipy": "1.16.3",
+      "matplotlib": "3.10.8",
+      "requests": "2.34.2",
+      "tqdm": "4.70.1"
+    },
+    "environment": "real SMPL.AtropineEnvGym",
+    "validated_cases": 10,
+    "results": [
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-522c56c5",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 6,
+        "subtask_statuses": {
+          "SUB-fd757da5": "completed",
+          "SUB-b249b597": "completed",
+          "SUB-c7f008bd": "completed",
+          "SUB-ca4f62c0": "completed",
+          "SUB-4d89ae5a": "completed",
+          "SUB-95159e33": "completed"
+        },
+        "step_calls": 1,
+        "step_delta": 1,
+        "step_count": 1,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1101,
+        "scenario": "normal",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 1,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "incomplete_or_failed",
+        "failure_reason": "safety_rejected",
+        "task_id": "TASK-0611547b",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-abe2e461": "completed",
+          "SUB-791a40f9": "completed",
+          "SUB-f899d7c7": "completed",
+          "SUB-08e52d44": "failed",
+          "SUB-c3bb46a9": "blocked",
+          "SUB-a5ebf5fb": "blocked"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "takeover_requested",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1101,
+        "scenario": "reject",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 0,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-043b57be",
+        "task_type": "inspect_state",
+        "subtask_count": 3,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-c1c1b716": "completed",
+          "SUB-1f57640d": "completed",
+          "SUB-c250890f": "completed"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1101,
+        "scenario": "inspect",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 0,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-aa6c9d97",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 6,
+        "subtask_statuses": {
+          "SUB-524147c3": "completed",
+          "SUB-eb14f2b6": "completed",
+          "SUB-e2e1402e": "completed",
+          "SUB-033ec688": "completed",
+          "SUB-48b4ab01": "completed",
+          "SUB-3ee89b89": "completed"
+        },
+        "step_calls": 1,
+        "step_delta": 1,
+        "step_count": 1,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1102,
+        "scenario": "normal",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 1,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "incomplete_or_failed",
+        "failure_reason": "safety_rejected",
+        "task_id": "TASK-95418ec7",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-68f5b309": "completed",
+          "SUB-6c0450e7": "completed",
+          "SUB-0c25178a": "completed",
+          "SUB-ebf87d21": "failed",
+          "SUB-c044bc4b": "blocked",
+          "SUB-2e7609b4": "blocked"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "takeover_requested",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1102,
+        "scenario": "reject",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 0,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-3e6fc62d",
+        "task_type": "inspect_state",
+        "subtask_count": 3,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-350c8fe0": "completed",
+          "SUB-74325890": "completed",
+          "SUB-06cf9b98": "completed"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1102,
+        "scenario": "inspect",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 0,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-0fc753a6",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 6,
+        "subtask_statuses": {
+          "SUB-a1add721": "completed",
+          "SUB-620c6336": "completed",
+          "SUB-1c5d7bc8": "completed",
+          "SUB-c655eee6": "completed",
+          "SUB-fc459600": "completed",
+          "SUB-55704ea0": "completed"
+        },
+        "step_calls": 1,
+        "step_delta": 1,
+        "step_count": 1,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1103,
+        "scenario": "normal",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 1,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "incomplete_or_failed",
+        "failure_reason": "safety_rejected",
+        "task_id": "TASK-55c1e954",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-8469b029": "completed",
+          "SUB-b251d3e0": "completed",
+          "SUB-61184bb5": "completed",
+          "SUB-bb9edbc5": "failed",
+          "SUB-b6d0085d": "blocked",
+          "SUB-3c975545": "blocked"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "takeover_requested",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1103,
+        "scenario": "reject",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 0,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-a350e790",
+        "task_type": "inspect_state",
+        "subtask_count": 3,
+        "completed_subtasks": 3,
+        "subtask_statuses": {
+          "SUB-4f6ef1aa": "completed",
+          "SUB-7973c98c": "completed",
+          "SUB-cf1c10aa": "completed"
+        },
+        "step_calls": 0,
+        "step_delta": 0,
+        "step_count": 0,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1103,
+        "scenario": "inspect",
+        "requested_cycles": 1,
+        "finished_cycles": 1,
+        "total_step_calls": 0,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      },
+      {
+        "run_status": "completed",
+        "failure_reason": null,
+        "task_id": "TASK-154f3f40",
+        "task_type": "control_cycle",
+        "subtask_count": 6,
+        "completed_subtasks": 6,
+        "subtask_statuses": {
+          "SUB-edf1d4ce": "completed",
+          "SUB-0cb01845": "completed",
+          "SUB-06331fba": "completed",
+          "SUB-23848726": "completed",
+          "SUB-069b4141": "completed",
+          "SUB-9b4f68bc": "completed"
+        },
+        "step_calls": 5,
+        "step_delta": 1,
+        "step_count": 5,
+        "executor_id": "ExecutionAgent-01",
+        "d_demo_mode": false,
+        "bids_are_live": false,
+        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "all_C_locks_released": true,
+        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "r03_enabled": false,
+        "system_state": "autonomous",
+        "action_regenerations": 0,
+        "environment": "SMPL.AtropineEnvGym",
+        "seed": 1101,
+        "scenario": "normal",
+        "requested_cycles": 5,
+        "finished_cycles": 5,
+        "total_step_calls": 5,
+        "observation_space_shape": [
+          39
+        ],
+        "action_space_shape": [
+          4
+        ],
+        "action_low": [
+          -0.0001574199995957315,
+          -0.0014623400056734681,
+          -0.00021811999613419175,
+          -0.003004539990797639
+        ],
+        "action_high": [
+          1.924762000271585e-05,
+          0.012211842462420464,
+          0.001821549842134118,
+          0.00035972922341898084
+        ]
+      }
+    ],
+    "limits": "Interface baseline; no claim of process optimization, mAb validation or industrial L3 certification."
+  },
+  "session_validation": {
+    "environment": "real SMPL.AtropineEnvGym",
+    "seed": 1101,
+    "human_confirmation": "simulated API call, not a human-factor study",
+    "total_step_calls": 2,
+    "transitions": [
+      {
+        "timestamp": "2026-11-08T14:50:10.384399+00:00",
+        "event": "system_state_changed",
+        "previous_state": "autonomous",
+        "state": "restricted",
+        "reason": "regenerate_rejected_candidate",
+        "task_id": "TASK-0322258c",
+        "attempt": 1
+      },
+      {
+        "timestamp": "2026-11-08T14:50:10.427586+00:00",
+        "event": "system_state_changed",
+        "previous_state": "restricted",
+        "state": "autonomous",
+        "reason": "reviewed_replacement_completed",
+        "task_id": "TASK-d9508d41"
+      },
+      {
+        "timestamp": "2026-11-08T14:50:10.432783+00:00",
+        "event": "system_state_changed",
+        "previous_state": "autonomous",
+        "state": "restricted",
+        "reason": "regenerate_rejected_candidate",
+        "task_id": "TASK-d717a7a1",
+        "attempt": 1
+      },
+      {
+        "timestamp": "2026-11-08T14:50:10.437399+00:00",
+        "event": "system_state_changed",
+        "previous_state": "restricted",
+        "state": "takeover_requested",
+        "reason": "safety_rejected",
+        "task_id": "TASK-ec78f315"
+      },
+      {
+        "timestamp": "2026-11-08T14:50:10.437668+00:00",
+        "event": "system_state_changed",
+        "previous_state": "takeover_requested",
+        "state": "autonomous",
+        "reason": "human_confirmed_resume",
+        "operator": "simulation-validation",
+        "note": "Switch to midpoint baseline",
+        "new_episode": false
+      }
+    ],
+    "recovered": {
+      "run_status": "completed",
+      "failure_reason": null,
+      "task_id": "TASK-d9508d41",
+      "task_type": "control_cycle",
+      "subtask_count": 6,
+      "completed_subtasks": 6,
+      "subtask_statuses": {
+        "SUB-680e91b6": "completed",
+        "SUB-7df08f48": "completed",
+        "SUB-b99c1b41": "completed",
+        "SUB-2dcfc60b": "completed",
+        "SUB-eabce296": "completed",
+        "SUB-d8f6dfa4": "completed"
+      },
+      "step_calls": 1,
+      "step_delta": 1,
+      "step_count": 1,
+      "executor_id": "ExecutionAgent-01",
+      "d_demo_mode": false,
+      "bids_are_live": false,
+      "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+      "all_C_locks_released": true,
+      "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+      "r03_enabled": false,
+      "system_state": "autonomous",
+      "action_regenerations": 1
+    },
+    "rejected": {
+      "run_status": "incomplete_or_failed",
+      "failure_reason": "safety_rejected",
+      "task_id": "TASK-ec78f315",
+      "task_type": "control_cycle",
+      "subtask_count": 6,
+      "completed_subtasks": 3,
+      "subtask_statuses": {
+        "SUB-0a35ccb9": "completed",
+        "SUB-fbdcd596": "completed",
+        "SUB-684b1f65": "completed",
+        "SUB-6eaa102c": "failed",
+        "SUB-20799120": "blocked",
+        "SUB-d7eda9a5": "blocked"
+      },
+      "step_calls": 1,
+      "step_delta": 0,
+      "step_count": 1,
+      "executor_id": "ExecutionAgent-01",
+      "d_demo_mode": false,
+      "bids_are_live": false,
+      "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+      "all_C_locks_released": true,
+      "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+      "r03_enabled": false,
+      "system_state": "takeover_requested",
+      "action_regenerations": 1
+    },
+    "resumed": {
+      "run_status": "completed",
+      "failure_reason": null,
+      "task_id": "TASK-70f26427",
+      "task_type": "control_cycle",
+      "subtask_count": 6,
+      "completed_subtasks": 6,
+      "subtask_statuses": {
+        "SUB-3cf3fedf": "completed",
+        "SUB-19c1c0f1": "completed",
+        "SUB-1c790c79": "completed",
+        "SUB-7b55d45b": "completed",
+        "SUB-5b114785": "completed",
+        "SUB-429ff6bf": "completed"
+      },
+      "step_calls": 2,
+      "step_delta": 1,
+      "step_count": 2,
+      "executor_id": "ExecutionAgent-01",
+      "d_demo_mode": false,
+      "bids_are_live": false,
+      "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+      "all_C_locks_released": true,
+      "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+      "r03_enabled": false,
+      "system_state": "autonomous",
+      "action_regenerations": 0
+    }
+  },
+  "comparison": {
+    "schema_version": 1,
+    "environment": "real SMPL.AtropineEnvGym",
+    "config": {
+      "seeds": [
+        1101,
+        1102,
+        1103
+      ],
+      "cycles_per_arm": 1,
+      "policy": "space_midpoint",
+      "paired_arms": [
+        "single_executor",
+        "four_fixed",
+        "four_cnp"
+      ]
+    },
+    "python": "3.12.14",
+    "source_sha256": {
+      "l3_system/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "l3_system/adapters/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "l3_system/adapters/a_to_c_adapter.py": "553f11369486f58e2c109f18f4f7ef6b648977bc40da2acdca74000b716cf4e6",
+      "l3_system/adapters/assignment_adapter.py": "7aa1a5be4a79e50453da407bc3f70cea90f50b3d2e9b51fc3dfa048fe71bf332",
+      "l3_system/adapters/b_to_d_adapter.py": "eaf4f7befbcdf79b8f1c3d6f8a2cac8248ecefd01f80d14429968c18762236e3",
+      "l3_system/adapters/feedback_adapter.py": "d503eb40945cf967a1bdadffc000be0a76edab13919797ff9f8528b763b1c67e",
+      "l3_system/adapters/runtime_adapters.py": "c2e37744d710dba41ce6e851aec2fe0e46dd23dde742dfe769024db1792d4b38",
+      "l3_system/agents/__init__.py": "623f28cbc54852b182390550bc00c5a685dca3350d92c75b5c07e5dae2645aa1",
+      "l3_system/agents/monitoring_agent.py": "a7b3cf64c897d55d8ab09f1ec3ce7ce5fc32c2b1bc699bf664b332568fcc17fd",
+      "l3_system/agents/safety_rules.py": "acbab6f626576ad6e1f98520c0e53ffb9c1c3aa2b630b94f57d4bd983744aacb",
+      "l3_system/agents/scheduling_agent.py": "69b9faab33ea3a25602c2a4e529a3185de456abe6cdf87738654cbd12289dc43",
+      "l3_system/algorithms/__init__.py": "1e8a6f626a324e3bf23935b4bdf499f528b5eb3edfeb60f8fa8539dc6919163c",
+      "l3_system/algorithms/cnp_protocol.py": "a13589f69935bff2d0169f441f761966e2c75bf78dfa43cfdfa52b8043a03c17",
+      "l3_system/config.py": "22046269835a88e344d8ff29d4ab4e0534ef5c86f2ce3e387e3b5ccdeb635d19",
+      "l3_system/decision_agent.py": "f176b6d6513e5ef13a4565ace0e00ea5a3c368009bf84622564c1922853ec209",
+      "l3_system/execution/__init__.py": "887792c8d4c4bfbeef1f47ec9f4aff7a13743cd2c46540e09e650219f43ac79c",
+      "l3_system/execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+      "l3_system/execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+      "l3_system/execution/local_policy.py": "20375d1f64777fa680f8bbfb35457470a81fdbbcb27eb6ff1c29e5debfcea6be",
+      "l3_system/execution/safety_bridge.py": "9f21346d2bde6ac01b5fa689d0d04ee4a11436c780b1dd31f7e1208ce48a4ee2",
+      "l3_system/execution/task_contract.py": "3b5af1a0937d8dd4922ab6d32ee72bf29abb84b726a009d40839016f17efc847",
+      "l3_system/main.py": "6bffe5d732b0a6eee03e856991ae35594f5ebeeaec72a96aee04725329aa31d6",
+      "l3_system/planning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "l3_system/planning/replanning.py": "ea211176e0d4fcc754f30356e92da79c4b2e79bb416d9d6b1bd99ec893b9635f",
+      "l3_system/runtime.py": "3a732f544f55099d440bc2928379985989ab52d62c5df39f82eea9881e8a2c06",
+      "l3_system/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "l3_system/tests/test_a_integration.py": "0b952e08cace689be9ea9fc41cbe3ddb79edaa22a9c546285cffbdf3745f1aca",
+      "l3_system/tests/test_contract.py": "2b5997e978c914cb1f2faa47c8fb4e1729c3cc136c92e54a0159daca62e27f37",
+      "l3_system/tests/test_failure_paths.py": "6d08562581a6522b677f406e56e6f016d53d99b203e77aa2ddd57414a1e082cd",
+      "l3_system/tests/test_integrated_contracts.py": "a1c04f3f27fda7c1cd38cc46b9ce7897ba59df557c3747a6c0933727ed872f35",
+      "l3_system/tests/test_live_orchestration_contracts.py": "f28336f8da692327b7747162f29ea84a5d937088140e9fd4be889c733919c89a",
+      "l3_system/tests/test_member_c_nov5.py": "e64b8c58a564aeb9694cc30bbaeafb8a2cdf94a48b52b4c5519605ec4537bfbf",
+      "l3_system/tests/test_replanning_controller.py": "ced19ac4975e0e529dd56f83c659f1d2790cdd704bd44052a554b34f5128435f",
+      "l3_system/tests/test_review_regressions.py": "62bd8083dd6eb27b5bb070ad96b194790c3d8c120e6bb6f859dc637f0fdad583",
+      "l3_system/tests/test_system_runtime.py": "03f74fb25585c30a3581c0c983e74c96471043954d32db5f54fe2420af90445e",
+      "experiments/compare.py": "5f7c61e4d76de9020a26669bd76676580f77cc3ba4159152ef38182a06db2f10"
+    },
+    "process_results": {
+      "four_cnp": {
+        "task_count": 3,
+        "task_completion_rate": 1.0,
+        "mean_task_seconds": 0.03618856833331089,
+        "assignment_success_rate": 1.0,
+        "total_environment_steps": 3
+      },
+      "four_fixed": {
+        "task_count": 3,
+        "task_completion_rate": 1.0,
+        "mean_task_seconds": 0.03676200666662529,
+        "assignment_success_rate": 1.0,
+        "total_environment_steps": 3
+      },
+      "single_executor": {
+        "task_count": 3,
+        "task_completion_rate": 1.0,
+        "mean_task_seconds": 0.03119010499998846,
+        "assignment_success_rate": null,
+        "total_environment_steps": 3
+      }
+    },
+    "paired_checks": [
+      {
+        "seed": 1101,
+        "equal_initial_states": true,
+        "equal_actions_rewards_observations": true
+      },
+      {
+        "seed": 1102,
+        "equal_initial_states": true,
+        "equal_actions_rewards_observations": true
+      },
+      {
+        "seed": 1103,
+        "equal_initial_states": true,
+        "equal_actions_rewards_observations": true
+      }
+    ],
+    "safety_gate_offline": {
+      "enabled": {
+        "unsafe_count": 20,
+        "safe_count": 20,
+        "dangerous_candidate_interception_rate": 1.0,
+        "normal_candidate_false_interception_rate": 0.0
+      },
+      "disabled": {
+        "unsafe_count": 20,
+        "safe_count": 20,
+        "dangerous_candidate_interception_rate": 0.0,
+        "normal_candidate_false_interception_rate": 0.0
+      }
+    },
+    "limits": [
+      "Task completion means interface cycle completion, not achievement of a process production target.",
+      "Only one compatible local worker bids per stage: fixed/CNP comparison is a degenerate baseline, not evidence of CNP superiority.",
+      "Single executor bypasses orchestration; time measures software overhead, not production efficiency.",
+      "Safety labels are constructed from action bounds; disabled gate is offline and never executes dangerous actions.",
+      "Small sample: no statistical significance, generalization or industrial safety claims."
+    ]
+  }
+}
