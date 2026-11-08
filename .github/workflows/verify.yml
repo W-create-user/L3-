@@ -31,6 +31,7 @@ jobs:
         run: |
           python -m experiments.run_validation --output outputs/validation
           python -m experiments.compare --output outputs/comparison
+          python -m experiments.validate_session --output outputs/session_validation
       - uses: actions/upload-artifact@v4
         if: always() && matrix.python == '3.12'
         with:

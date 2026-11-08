@@ -11,8 +11,10 @@ except ImportError:  # 兼容直接运行 python agents/monitoring_agent.py
 
 
 class MonitoringAgent:
-    def __init__(self, action_space=None):
+    def __init__(self, action_space=None, observation_space=None):
         self.logs = []
+        self.observation_shape = (tuple(observation_space.shape)
+                                  if observation_space is not None else None)
         self.demo_mode = action_space is None
         if self.demo_mode:
             self.action_shape = (4,)
@@ -47,6 +49,10 @@ class MonitoringAgent:
 
     def check_action(self, state, candidate_action, task_id=None):
         """兼容旧版接口；state 传入但 R-03 尚未启用。"""
+        if self.observation_shape is not None:
+            error = self.observation_error(state)
+            if error:
+                return self._response('Reject', 3, 'STATE-INVALID', 'BLOCK', error, task_id)
         action, error = validate_action(candidate_action, self.action_shape)
         if error:
             return self._response('Reject', 3, 'R-01', 'BLOCK', error, task_id)
@@ -55,6 +61,25 @@ class MonitoringAgent:
             return self._response('Reject', 3, 'R-02', 'BLOCK', error, task_id)
         return self._response('Pass', 0, None, 'ALLOW',
                               '所有已启用的规则检查通过（R-03 未启用）', task_id)
+
+    def observation_error(self, observation):
+        """Data integrity only; no invented physical thresholds or R-03 model."""
+        try:
+            values = np.asarray(observation)
+            if (values.dtype.kind not in 'fiu' or not np.isfinite(values).all()
+                    or (self.observation_shape is not None
+                        and values.shape != self.observation_shape)):
+                return '过程观测维度错误或包含非有限数值'
+        except (ValueError, TypeError):
+            return '过程观测无法解析为数值数组'
+        return None
+
+    def check_observation(self, observation, task_id=None):
+        error = self.observation_error(observation)
+        return self._response('Reject' if error else 'Pass', 3 if error else 0,
+                              'STATE-INVALID' if error else None,
+                              'BLOCK' if error else 'ALLOW',
+                              error or '过程观测数据完整性检查通过（非工艺安全判定）', task_id)
 
     def check_request(self, action_request, observation=None):
         """A 的统一入口：ActionRequest={'task_id':str,'action':数组}。
@@ -83,6 +108,7 @@ class MonitoringAgent:
             'rule_id': result['rule_id'],
             'reason': result['reason'],
             'risk_level': result['level'],
+            'demo_mode': self.demo_mode,
         }
 
     def get_logs(self):
