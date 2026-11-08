@@ -1,0 +1,57 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+CasADi - 2026-11-08 12:46:10 WARNING("The options 't0', 'tf', 'grid' and 'output_t0' have been deprecated.
+The same functionality is provided by providing additional input arguments to the 'integrator' function, in particular:
+ * Call integrator(..., t0, tf, options) for a single output time, or
+ * Call integrator(..., t0, grid, options) for multiple grid points.
+The legacy 'output_t0' option can be emulated by including or excluding 't0' in 'grid'.
+Backwards compatibility is provided in this release only.") [.../casadi/core/integrator.cpp:692]
+{
+  "run_status": "completed",
+  "failure_reason": null,
+  "task_id": "TASK-48825e9f",
+  "task_type": "inspect_state",
+  "subtask_count": 3,
+  "completed_subtasks": 3,
+  "subtask_statuses": {
+    "SUB-7ad3db4e": "completed",
+    "SUB-952dcd16": "completed",
+    "SUB-499f1743": "completed"
+  },
+  "step_calls": 0,
+  "step_delta": 0,
+  "step_count": 0,
+  "executor_id": "ExecutionAgent-01",
+  "d_demo_mode": false,
+  "bids_are_live": false,
+  "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+  "all_C_locks_released": true,
+  "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+  "r03_enabled": false,
+  "environment": "SMPL.AtropineEnvGym",
+  "seed": 1101,
+  "scenario": "inspect",
+  "requested_cycles": 1,
+  "finished_cycles": 1,
+  "total_step_calls": 0,
+  "observation_space_shape": [
+    39
+  ],
+  "action_space_shape": [
+    4
+  ],
+  "action_low": [
+    -0.0001574199995957315,
+    -0.0014623400056734681,
+    -0.00021811999613419175,
+    -0.003004539990797639
+  ],
+  "action_high": [
+    1.924762000271585e-05,
+    0.012211842462420464,
+    0.001821549842134118,
+    0.00035972922341898084
+  ]
+}

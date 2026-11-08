@@ -9,3 +9,4 @@ data/raw/
 outputs/
 logs/
 *.log
+.mpl-cache/
