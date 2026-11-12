@@ -1,0 +1,22 @@
+{
+  "schema_version": "SensorReplay/0.1",
+  "mode": "offline_only",
+  "environment": "Atropine",
+  "source_episode_id": "B-handoff::continuous_5",
+  "source_lineage_group": "REPLACE_WITH_REVIEWED_SOURCE_LINEAGE",
+  "source_split": "excluded",
+  "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "dictionary_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "events": [
+    {
+      "event_id": "offline-missing-observation-contract-check",
+      "kind": "missing",
+      "variable_index": 6,
+      "unit": "dimensionless",
+      "coordinate": "raw_observation_normalize_false",
+      "start_record": 1,
+      "end_record": 3,
+      "parameters": {}
+    }
+  ]
+}

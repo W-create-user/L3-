@@ -6,10 +6,10 @@ from pathlib import Path
 import numpy as np
 
 try:
-    from .safety_rules import validate_action, check_bounds
+    from .safety_rules import validate_action, check_bounds, observation_integrity_error
     from .process_rules import ProcessRuleEngine
 except ImportError:  # 兼容直接运行 python agents/monitoring_agent.py
-    from safety_rules import validate_action, check_bounds
+    from safety_rules import validate_action, check_bounds, observation_integrity_error
     from process_rules import ProcessRuleEngine
 
 
@@ -106,15 +106,7 @@ class MonitoringAgent:
 
     def observation_error(self, observation):
         """Data integrity only; no invented physical thresholds or R-03 model."""
-        try:
-            values = np.asarray(observation)
-            if (values.dtype.kind not in 'fiu' or not np.isfinite(values).all()
-                    or (self.observation_shape is not None
-                        and values.shape != self.observation_shape)):
-                return '过程观测维度错误或包含非有限数值'
-        except (ValueError, TypeError):
-            return '过程观测无法解析为数值数组'
-        return None
+        return observation_integrity_error(observation, self.observation_shape)
 
     def check_observation(self, observation, task_id=None, *, process_context=None):
         error = self.observation_error(observation)
