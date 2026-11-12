@@ -27,7 +27,7 @@ jobs:
       - run: python -m unittest discover -s l3_system/tests -t . -v
       - name: D01 dataset manifest contract tests
         run: |
-          python -m pip install -r deliverables/D01/requirements-d01.txt
+          python -m pip install -r deliverables/D01/requirements-d01.txt -r requirements-monitoring.txt
           python -m unittest discover -s deliverables/D01/tests -v
       - run: python -m experiments.check_docs
       - name: Real Atropine acceptance and paired baselines
