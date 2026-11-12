@@ -1,0 +1,92 @@
+[
+  {
+    "run_id": "continuous_5",
+    "request_id": "b4619dc6-c084-46c9-8483-eb373a3f8425",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/continuous_5/B_events.jsonl",
+    "source_line": 5,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "continuous_5",
+    "request_id": "e450259b-7aaa-4e4a-a8d5-339642674159",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/continuous_5/B_events.jsonl",
+    "source_line": 8,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "continuous_5",
+    "request_id": "8f9e6e95-11f0-4af0-aeac-7de209e808ab",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/continuous_5/B_events.jsonl",
+    "source_line": 11,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "continuous_5",
+    "request_id": "f30bb05d-4ef0-4f50-b294-b67c810fbd5d",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/continuous_5/B_events.jsonl",
+    "source_line": 14,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "continuous_5",
+    "request_id": "3ac7e214-8048-4e17-b850-d28328912750",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/continuous_5/B_events.jsonl",
+    "source_line": 17,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "normal_1101",
+    "request_id": "e4ec0c71-d753-47d2-8449-cfcf331d409f",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/normal_1101/B_events.jsonl",
+    "source_line": 5,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "normal_1102",
+    "request_id": "188240a6-4d43-43eb-8314-5c9f50a4c8e1",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/normal_1102/B_events.jsonl",
+    "source_line": 5,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "normal_1103",
+    "request_id": "e77056f0-d96b-4319-af56-0e1be2fdc565",
+    "label": "interface_baseline_pass",
+    "label_scope": "interface_execution",
+    "process_anomaly_label": null,
+    "source": "runs/normal_1103/B_events.jsonl",
+    "source_line": 5,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  },
+  {
+    "run_id": "reject_1101",
+    "request_id": "874c06b8-49b3-454f-b34c-c9c921cc2d72",
+    "label": "action_bounds_rejection",
+    "label_scope": "request_validation",
+    "process_anomaly_label": null,
+    "source": "runs/reject_1101/B_events.jsonl",
+    "source_line": 5,
+    "authority": "D runtime SafetyDecision for rejection; B execution result for success; no manual/field anomaly ground truth"
+  }
+]

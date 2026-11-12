@@ -1,0 +1,14 @@
+﻿backend,index,name,unit,unit_status,request_scale,physical_value_formula,uss,uscale,low,high,normalize
+AtropineEnvGym,0,Tropine_in_DMF_feed,mL/min (inferred from model u/1000 -> L/min),source_conversion_inferred_not_field_calibrated,delta_from_USS,request_delta + USS[index],0.4078,,-0.0001574199995957315,1.924762000271585e-05,False
+AtropineEnvGym,1,Phenylacetylchloride_feed,mL/min (inferred from model u/1000 -> L/min),source_conversion_inferred_not_field_calibrated,delta_from_USS,request_delta + USS[index],0.1089,,-0.0014623400056734681,0.012211842462420464,False
+AtropineEnvGym,2,external_stream_3,mL/min (inferred from model u/1000 -> L/min),source_conversion_inferred_not_field_calibrated,delta_from_USS,request_delta + USS[index],0.3888,,-0.00021811999613419175,0.001821549842134118,False
+AtropineEnvGym,3,external_stream_4,mL/min (inferred from model u/1000 -> L/min),source_conversion_inferred_not_field_calibrated,delta_from_USS,request_delta + USS[index],0.2126,,-0.003004539990797639,0.00035972922341898084,False
+MAbEnvGym,0,F_in,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,50.0,0.34702715277671814,1.0,False
+MAbEnvGym,1,F_1,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,50.0,0.3471071720123291,1.0,False
+MAbEnvGym,2,F_r,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,50.0,8.002277900232002e-05,1.0,False
+MAbEnvGym,3,F_2,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,50.0,0.34702715277671814,1.0,False
+MAbEnvGym,4,GLC_in,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,2000.0,0.799999475479126,1.0,False
+MAbEnvGym,5,GLN_in,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,2000.0,0.005198487546294928,1.0,False
+MAbEnvGym,6,Tc,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,50.0,0.591999888420105,1.0,False
+MAbEnvGym,7,buffer_outlet_flow,unconfirmed,requires_B03_per_variable_verification,physical_value/uscale[index],model_action * uscale[index],,50.0,0.34702715277671814,1.0,False
+MAbEnvGym,8,capture_column_switch,dimensionless_switch,source_threshold_semantics,physical_value/uscale[index],model_action * uscale[index],,1.0,0.0,1.0,False

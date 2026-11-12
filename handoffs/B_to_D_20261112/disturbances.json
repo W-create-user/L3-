@@ -1,0 +1,102 @@
+[
+  {
+    "run_id": "continuous_5",
+    "process_disturbance_injected": false,
+    "sensor_noise_injected": false,
+    "initialization_randomization": {
+      "seed": 1101,
+      "source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 270,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "scope": "x0 clipped at 1e-30 then sampled in [0.99*x0,1.01*x0]; not an injected process fault"
+    },
+    "candidate_fault_injected": false,
+    "candidate_fault": null
+  },
+  {
+    "run_id": "normal_1101",
+    "process_disturbance_injected": false,
+    "sensor_noise_injected": false,
+    "initialization_randomization": {
+      "seed": 1101,
+      "source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 270,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "scope": "x0 clipped at 1e-30 then sampled in [0.99*x0,1.01*x0]; not an injected process fault"
+    },
+    "candidate_fault_injected": false,
+    "candidate_fault": null
+  },
+  {
+    "run_id": "normal_1102",
+    "process_disturbance_injected": false,
+    "sensor_noise_injected": false,
+    "initialization_randomization": {
+      "seed": 1102,
+      "source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 270,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "scope": "x0 clipped at 1e-30 then sampled in [0.99*x0,1.01*x0]; not an injected process fault"
+    },
+    "candidate_fault_injected": false,
+    "candidate_fault": null
+  },
+  {
+    "run_id": "normal_1103",
+    "process_disturbance_injected": false,
+    "sensor_noise_injected": false,
+    "initialization_randomization": {
+      "seed": 1103,
+      "source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 270,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "scope": "x0 clipped at 1e-30 then sampled in [0.99*x0,1.01*x0]; not an injected process fault"
+    },
+    "candidate_fault_injected": false,
+    "candidate_fault": null
+  },
+  {
+    "run_id": "reject_1101",
+    "process_disturbance_injected": false,
+    "sensor_noise_injected": false,
+    "initialization_randomization": {
+      "seed": 1101,
+      "source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 270,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "scope": "x0 clipped at 1e-30 then sampled in [0.99*x0,1.01*x0]; not an injected process fault"
+    },
+    "candidate_fault_injected": true,
+    "candidate_fault": {
+      "formula": "action_space.high + 1",
+      "unit": "model action units per component; deliberately out of Box",
+      "scope": "request only; D rejects before plant execution"
+    }
+  },
+  {
+    "run_id": "inspect_1101",
+    "process_disturbance_injected": false,
+    "sensor_noise_injected": false,
+    "initialization_randomization": {
+      "seed": 1101,
+      "source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 270,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "scope": "x0 clipped at 1e-30 then sampled in [0.99*x0,1.01*x0]; not an injected process fault"
+    },
+    "candidate_fault_injected": false,
+    "candidate_fault": null
+  }
+]

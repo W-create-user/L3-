@@ -1,0 +1,396 @@
+{
+  "fields": [
+    {
+      "index": 0,
+      "upstream_name": "o_0",
+      "name": "step_index_before_increment",
+      "meaning": "模型在 step_count 自增前写入的步号，非物理分钟数",
+      "unit": "step_index",
+      "group": "time_index",
+      "model_box_low": 0.0,
+      "model_box_high": 100.0
+    },
+    {
+      "index": 1,
+      "upstream_name": "o_1",
+      "name": "USS_1",
+      "meaning": "第 1 路基准输入流量，不是当前候选偏移",
+      "unit": "mL/min (inferred from u/1000 conversion)",
+      "group": "steady_inputs",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 2,
+      "upstream_name": "o_2",
+      "name": "USS_2",
+      "meaning": "第 2 路基准输入流量，不是当前候选偏移",
+      "unit": "mL/min (inferred from u/1000 conversion)",
+      "group": "steady_inputs",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 3,
+      "upstream_name": "o_3",
+      "name": "USS_3",
+      "meaning": "第 3 路基准输入流量，不是当前候选偏移",
+      "unit": "mL/min (inferred from u/1000 conversion)",
+      "group": "steady_inputs",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 4,
+      "upstream_name": "o_4",
+      "name": "USS_4",
+      "meaning": "第 4 路基准输入流量，不是当前候选偏移",
+      "unit": "mL/min (inferred from u/1000 conversion)",
+      "group": "steady_inputs",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 5,
+      "upstream_name": "o_5",
+      "name": "E_factor_steady",
+      "meaning": "基准 E-factor，env.yss",
+      "unit": "dimensionless",
+      "group": "efactor",
+      "model_box_low": 0.0,
+      "model_box_high": 15.0
+    },
+    {
+      "index": 6,
+      "upstream_name": "o_6",
+      "name": "E_factor_current",
+      "meaning": "当前 E-factor，env.previous_efactor",
+      "unit": "dimensionless",
+      "group": "efactor",
+      "model_box_low": 0.0,
+      "model_box_high": 20.0
+    },
+    {
+      "index": 7,
+      "upstream_name": "o_7",
+      "name": "estimator_x_1",
+      "meaning": "状态估计器坐标，未确认可直接对应的现场物理量",
+      "unit": "model_coordinate_unspecified",
+      "group": "estimator",
+      "model_box_low": -5.0,
+      "model_box_high": 5.0
+    },
+    {
+      "index": 8,
+      "upstream_name": "o_8",
+      "name": "estimator_x_2",
+      "meaning": "状态估计器坐标，未确认可直接对应的现场物理量",
+      "unit": "model_coordinate_unspecified",
+      "group": "estimator",
+      "model_box_low": -5.0,
+      "model_box_high": 5.0
+    },
+    {
+      "index": 9,
+      "upstream_name": "o_9",
+      "name": "F_organic_0",
+      "meaning": "organic 相 TROPINE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 10,
+      "upstream_name": "o_10",
+      "name": "F_organic_1",
+      "meaning": "organic 相 DIMETHYLFORMAMIDE (DMF) 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 11,
+      "upstream_name": "o_11",
+      "name": "F_organic_2",
+      "meaning": "organic 相 PHENYLACETYLCHLORIDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 12,
+      "upstream_name": "o_12",
+      "name": "F_organic_3",
+      "meaning": "organic 相 INTERMEDIATE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 13,
+      "upstream_name": "o_13",
+      "name": "F_organic_4",
+      "meaning": "organic 相 FORMALDEHYDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 14,
+      "upstream_name": "o_14",
+      "name": "F_organic_5",
+      "meaning": "organic 相 METHANOL 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 15,
+      "upstream_name": "o_15",
+      "name": "F_organic_6",
+      "meaning": "organic 相 SODIUM HYDROXIDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 16,
+      "upstream_name": "o_16",
+      "name": "F_organic_7",
+      "meaning": "organic 相 WATER 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 17,
+      "upstream_name": "o_17",
+      "name": "F_organic_8",
+      "meaning": "organic 相 ATROPINE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 18,
+      "upstream_name": "o_18",
+      "name": "F_organic_9",
+      "meaning": "organic 相 APOATROPINE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 19,
+      "upstream_name": "o_19",
+      "name": "F_organic_10",
+      "meaning": "organic 相 TROPINE ESTER 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 20,
+      "upstream_name": "o_20",
+      "name": "F_organic_11",
+      "meaning": "organic 相 SODIUM CHLORIDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 21,
+      "upstream_name": "o_21",
+      "name": "F_organic_12",
+      "meaning": "organic 相 BUFFER_SOLUTION 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 22,
+      "upstream_name": "o_22",
+      "name": "F_organic_13",
+      "meaning": "organic 相 TOLUENE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 23,
+      "upstream_name": "o_23",
+      "name": "F_aqueous_0",
+      "meaning": "aqueous 相 TROPINE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 24,
+      "upstream_name": "o_24",
+      "name": "F_aqueous_1",
+      "meaning": "aqueous 相 DIMETHYLFORMAMIDE (DMF) 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 25,
+      "upstream_name": "o_25",
+      "name": "F_aqueous_2",
+      "meaning": "aqueous 相 PHENYLACETYLCHLORIDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 26,
+      "upstream_name": "o_26",
+      "name": "F_aqueous_3",
+      "meaning": "aqueous 相 INTERMEDIATE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 27,
+      "upstream_name": "o_27",
+      "name": "F_aqueous_4",
+      "meaning": "aqueous 相 FORMALDEHYDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 28,
+      "upstream_name": "o_28",
+      "name": "F_aqueous_5",
+      "meaning": "aqueous 相 METHANOL 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 29,
+      "upstream_name": "o_29",
+      "name": "F_aqueous_6",
+      "meaning": "aqueous 相 SODIUM HYDROXIDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 30,
+      "upstream_name": "o_30",
+      "name": "F_aqueous_7",
+      "meaning": "aqueous 相 WATER 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 31,
+      "upstream_name": "o_31",
+      "name": "F_aqueous_8",
+      "meaning": "aqueous 相 ATROPINE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 32,
+      "upstream_name": "o_32",
+      "name": "F_aqueous_9",
+      "meaning": "aqueous 相 APOATROPINE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 33,
+      "upstream_name": "o_33",
+      "name": "F_aqueous_10",
+      "meaning": "aqueous 相 TROPINE ESTER 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 34,
+      "upstream_name": "o_34",
+      "name": "F_aqueous_11",
+      "meaning": "aqueous 相 SODIUM CHLORIDE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 35,
+      "upstream_name": "o_35",
+      "name": "F_aqueous_12",
+      "meaning": "aqueous 相 BUFFER_SOLUTION 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 36,
+      "upstream_name": "o_36",
+      "name": "F_aqueous_13",
+      "meaning": "aqueous 相 TOLUENE 的摩尔流量（z 代数状态）",
+      "unit": "mol/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 37,
+      "upstream_name": "o_37",
+      "name": "Q_organic",
+      "meaning": "分离器有机相体积流量，z[28]",
+      "unit": "L/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    },
+    {
+      "index": 38,
+      "upstream_name": "o_38",
+      "name": "Q_aqueous",
+      "meaning": "分离器水相体积流量，z[29]",
+      "unit": "L/min",
+      "group": "separator_algebraic",
+      "model_box_low": 0.0,
+      "model_box_high": 0.5
+    }
+  ],
+  "source": "verified unchanged observation layout; see model hashes",
+  "safety_thresholds": false
+}

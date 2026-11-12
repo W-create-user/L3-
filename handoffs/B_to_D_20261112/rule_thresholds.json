@@ -1,0 +1,81 @@
+{
+  "rules": [
+    {
+      "id": "R-01",
+      "status": "confirmed_software_contract_enabled",
+      "criterion": "reject missing, wrong-shape, non-numeric, NaN or Inf action",
+      "source": {
+        "path": "l3_system/agents/safety_rules.py",
+        "line": 13,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      }
+    },
+    {
+      "id": "R-02",
+      "status": "confirmed_model_box_enabled_not_industrial_safety_limit",
+      "criterion": "reject any action < live low or > live high; equality allowed",
+      "backend": "AtropineEnvGym",
+      "low": [
+        -0.0001574199995957315,
+        -0.0014623400056734681,
+        -0.00021811999613419175,
+        -0.003004539990797639
+      ],
+      "high": [
+        1.924762000271585e-05,
+        0.012211842462420464,
+        0.001821549842134118,
+        0.00035972922341898084
+      ],
+      "source": {
+        "path": "l3_system/agents/safety_rules.py",
+        "line": 28,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      },
+      "bound_source": {
+        "path": "vendor/smpl/smpl/envs/atropineenv.py",
+        "line": 245,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      }
+    },
+    {
+      "id": "STATE-INVALID",
+      "status": "confirmed_software_integrity_check_not_process_alarm",
+      "criterion": "reject wrong observation dimension or non-finite value",
+      "source": {
+        "path": "l3_system/agents/monitoring_agent.py",
+        "line": 77,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      }
+    },
+    {
+      "id": "R-03",
+      "status": "unconfirmed_disabled",
+      "threshold": null,
+      "criterion": "No validated per-variable process warning thresholds; do not infer them from Box, E-factor reward, sample extrema, or three seeds",
+      "source": {
+        "path": "l3_system/agents/safety_rules.py",
+        "line": 9,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      }
+    },
+    {
+      "id": "mab_switch",
+      "status": "confirmed_model_switch_semantics_not_safety_threshold",
+      "threshold": 0.5,
+      "criterion": "last action >= switch_threshold triggers capture-column switch",
+      "source": {
+        "path": "vendor/smpl/smpl/envs/mabenv.py",
+        "line": 359,
+        "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+      }
+    },
+    {
+      "id": "process_quality_energy_limits",
+      "status": "unconfirmed",
+      "threshold": null,
+      "criterion": "No site calibration, approved quality limit, energy bound or supervisor-reviewed safety threshold supplied"
+    }
+  ],
+  "warning": "Only interface/model constraints confirmed. No chemical-process safety certification. Atropine bounds must not be applied to mAb."
+}

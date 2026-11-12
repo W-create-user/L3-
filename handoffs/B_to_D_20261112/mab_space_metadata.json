@@ -1,0 +1,21 @@
+{
+  "dimension_observation": 1970,
+  "dimension_action": 9,
+  "source": "runs/mab_probe/report.json",
+  "per_variable_observation_dictionary_status": "unconfirmed; B03 not delivered",
+  "sample_period": {
+    "value": 60,
+    "unit": "min",
+    "status": "constructor_docstring_source_not_model_wide_unit_audit"
+  },
+  "initialization": {
+    "normalize": false,
+    "max_steps": 2,
+    "seed": 1112,
+    "initial_state_deviation_ratio": 0.0
+  },
+  "disturbance_injected": false,
+  "process_anomaly_label": null,
+  "thresholds_validated_for_mab": false,
+  "one_step_only": true
+}
