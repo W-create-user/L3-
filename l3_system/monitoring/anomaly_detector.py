@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 import pickle
 import hashlib
+from copy import deepcopy
+from .binding import fingerprint
 
 import numpy as np
 import sklearn
@@ -47,7 +49,7 @@ class AnomalyDetector:
         truth=[any(labels[i-self.window_size+1:i+1]) for i in range(self.window_size-1,len(values))]
         return np.asarray(windows),np.asarray(truth,dtype=bool)
 
-    def fit(self,episodes,*,label_scope):
+    def fit(self,episodes,*,label_scope,binding=None,receipt=None):
         if label_scope not in ('synthetic_fixture','sensor_fault','process_anomaly'):raise ValueError('explicit label scope required')
         groups={};ids=set();hashes={};splits={'train':[],'validation':[],'test':[]}
         for episode in episodes:
@@ -58,7 +60,7 @@ class AnomalyDetector:
             if episode.get('label_scope')!=label_scope:raise ValueError('do not mix sensor/process/fixture label scopes')
             if group in groups and groups[group]!=split:raise ValueError('lineage crosses splits')
             groups[group]=split;ids.add(eid)
-            signature=hashlib.sha256(json.dumps(episode['observations'],allow_nan=False).encode()).hexdigest()
+            signature=hashlib.sha256(json.dumps(np.asarray(episode['observations'],dtype=float).tolist(),allow_nan=False).encode()).hexdigest()
             if signature in hashes and hashes[signature]!=split:raise ValueError('identical trajectory crosses splits')
             hashes[signature]=split;splits[split].append(episode)
         if any(not value for value in splits.values()):raise ValueError('three nonempty episode splits required')
@@ -79,6 +81,8 @@ class AnomalyDetector:
             return (2*m['TP']/den if den else 0,float(threshold))
         self.threshold=float(max(candidates,key=quality))
         self.label_scope=label_scope
+        if binding is not None and len(binding['observation'])!=self.dimension:raise ValueError('binding dimension mismatch')
+        self.binding=deepcopy(binding)
         reports={}
         for split in ('validation','test'):
             episode_reports=[]
@@ -98,6 +102,8 @@ class AnomalyDetector:
             reports[split]={'episodes':episode_reports,'counts':{key:sum(r['confusion'][key] for r in episode_reports)
                                                               for key in ('TP','FP','FN','TN')}}
         self.card={'label_scope':label_scope,'window_size':self.window_size,'dimension':self.dimension,
+                   'binding':deepcopy(binding),'binding_sha256':fingerprint(binding) if binding is not None else None,
+                   'intake_receipt':deepcopy(receipt),
                    'seed':self.seed,'threshold':self.threshold,'threshold_source':'validation_only',
                    'scaler_source':'train_only','versions':{'sklearn':sklearn.__version__,'numpy':np.__version__},
                    'episodes':{split:[e['episode_id'] for e in subset] for split,subset in splits.items()},
@@ -121,12 +127,14 @@ class AnomalyDetector:
         (directory/'model_card.json').write_text(json.dumps(dict(self.card,model_sha256=hashlib.sha256(blob).hexdigest()),indent=2)+'\n')
 
     @classmethod
-    def load_trusted(cls,directory):
+    def load_trusted(cls,directory,*,expected_binding=None):
         """Pickle is executable: load ONLY artifacts created in your trusted training run."""
         directory=Path(directory);card=json.loads((directory/'model_card.json').read_text())
         blob=(directory/'model.pkl').read_bytes()
         if hashlib.sha256(blob).hexdigest()!=card['model_sha256']:raise ValueError('model hash mismatch')
         if card['versions']['sklearn']!=sklearn.__version__:raise ValueError('sklearn version mismatch')
+        if card['versions']['numpy']!=np.__version__:raise ValueError('numpy version mismatch')
         model=pickle.loads(blob)
         if not isinstance(model,cls):raise ValueError('unexpected model object')
+        if expected_binding is not None and getattr(model,'binding',None)!=expected_binding:raise ValueError('loaded model semantic binding mismatch')
         return model

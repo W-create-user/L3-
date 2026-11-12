@@ -29,8 +29,10 @@ def main():
     parser.add_argument('--label-scope',choices=['sensor_fault','process_anomaly'])
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--window-size',type=int,default=4)
+    parser.add_argument('--allow-unreviewed-exploration',action='store_true')
     args=parser.parse_args()
     if args.episodes and not args.label_scope:parser.error('real input requires explicit --label-scope')
+    if args.episodes and not args.allow_unreviewed_exploration:parser.error('use train_from_intake.py for reviewed training; raw input requires explicit exploration flag')
     if args.synthetic_demo:
         episodes=synthetic_episodes();scope='synthetic_fixture'
     else:
