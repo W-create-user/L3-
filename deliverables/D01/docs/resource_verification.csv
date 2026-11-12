@@ -1,0 +1,8 @@
+resource,observed_evidence,status,required_next_input,owner
+enterprise_DCS_data,project proposal section 8 claim only; no actual data or permission inspected,unverified,dataset sample and written permission scope and retention terms,B
+enterprise_alarm_rules,project proposal section 8 claim only; no rulebook inspected,unverified,versioned rulebook with variable units and reuse permission,B
+GPU_workstation,project proposal section 8 claim only; no workstation or reservation inspected,unverified,device model available memory software versions and booked time,B
+Atropine_training_episodes,archived comparison samples are offline candidate decisions; no D03 eligible dataset delivered,not_delivered,versioned multi-step normal training and labelled validation/test episodes,B05
+mAb_training_episodes,no B02/B03 run evidence inspected this turn; adapter inspected imports Atropine only,not_verified,reset and step evidence plus variable dictionary,B02_B03
+visual_and_text_dataset,no aligned multimodal training dataset delivered,not_delivered,source type generator version timestamps and label leakage review,B05_D
+training_storage,no durable dataset location quota or team access evidence inspected,unverified,dataset storage location quota backup and access policy,B_D
