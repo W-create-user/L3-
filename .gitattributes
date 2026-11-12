@@ -5,3 +5,4 @@
 *.npy binary
 *.png binary
 vendor/** -text
+handoffs/B_to_D_20261112/** -text
