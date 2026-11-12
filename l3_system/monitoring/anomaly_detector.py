@@ -8,6 +8,7 @@ import pickle
 import hashlib
 from copy import deepcopy
 from .binding import fingerprint
+from .event_metrics import evaluate_events,aggregate_events
 
 import numpy as np
 import sklearn
@@ -88,19 +89,17 @@ class AnomalyDetector:
             episode_reports=[]
             for episode,x,truth in data[split]:
                 score=-self.model.score_samples(self.scaler.transform(x));pred=score>=self.threshold
-                # Delay only for detected events; misses are separately retained.
-                onset=np.flatnonzero(truth);delay=None
-                if len(onset):
-                    end=int(onset[0])
-                    while end<len(truth) and truth[end]:end+=1
-                    hits=np.flatnonzero(pred[int(onset[0]):end])+int(onset[0])
-                    if len(hits):delay=int(hits[0]-onset[0])
+                event_report=evaluate_events(episode['labels'],pred,self.window_size)
+                first=event_report['events'][0] if event_report['events'] else None
+                delay=first['delay_records'] if first else None
                 episode_reports.append(dict(episode_id=episode['episode_id'],windows=len(truth),
                     confusion=confusion(truth,pred),first_event_delay_records=delay,
-                    first_event_missed=bool(truth.any() and delay is None),
+                    first_event_missed=first['missed'] if first else False,
+                    first_event_unscorable=bool(first and not first['scorable']),event_evaluation=event_report,
                     anomalous_episode_missed=bool(truth.any() and not np.any(pred&truth))))
             reports[split]={'episodes':episode_reports,'counts':{key:sum(r['confusion'][key] for r in episode_reports)
-                                                              for key in ('TP','FP','FN','TN')}}
+                                                              for key in ('TP','FP','FN','TN')},
+                            'event_summary':aggregate_events([r['event_evaluation'] for r in episode_reports])}
         self.card={'label_scope':label_scope,'window_size':self.window_size,'dimension':self.dimension,
                    'binding':deepcopy(binding),'binding_sha256':fingerprint(binding) if binding is not None else None,
                    'intake_receipt':deepcopy(receipt),
@@ -108,7 +107,7 @@ class AnomalyDetector:
                    'scaler_source':'train_only','versions':{'sklearn':sklearn.__version__,'numpy':np.__version__},
                    'episodes':{split:[e['episode_id'] for e in subset] for split,subset in splits.items()},
                    'evaluation':reports,'physical_safety_limit':False,'probability_calibrated':False,
-                   'limits':'Window counts are correlated; first-event delay is in records, not physical seconds. Labels and lineage declarations need independent review.'}
+                   'limits':'Window counts are correlated. EventEvaluation/1.0 uses raw label intervals, excludes post-event-tail credit and discloses warmup-unscorable events. Delay is in records, not seconds. Labels need independent review.'}
         return self.card
 
     def score(self,window):
