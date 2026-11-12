@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-12",
+  "base_commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+  "python": "3.12.14",
+  "command": "python -m unittest discover -s l3_system/tests -t . -v",
+  "tests_run": 106,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "baseline_tests": 86,
+  "new_goal_contract_tests": 20,
+  "real_smpl_run_this_turn": false,
+  "goal_evaluator_implemented": false,
+  "v2_runtime_integration": false,
+  "team_signoff": {
+    "B": "pending",
+    "C": "pending",
+    "D": "pending"
+  },
+  "scope": "local unit, contract and injected-failure tests; new tests use synthetic configuration; no process-goal performance validation",
+  "tested_file_sha256": {
+    "l3_system/planning/goals.py": "49b8f8176414c2306e679f1c8ddbb6f6ea9c416e8ad2d69e53a1d10a17be2a44",
+    "l3_system/tests/test_goal_spec.py": "d4b475be303e8a1b58db4b8c399d5e57130edee4dea2e727804ab1e36885b0c7",
+    "configs/goals/contract_fixture.json": "8efc7568f3afb01c0e9568ae2d112e8b8a7aa5955336037774bf060a58236f7b",
+    "configs/goals/contract_fixture_registry.json": "d7e5e16c0f63fdc02992e20ee7e954584440a607646815b12cf28632832d2f03"
+  }
+}
