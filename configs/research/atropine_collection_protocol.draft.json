@@ -1,0 +1,221 @@
+{
+  "schema_version": "D02CollectionProtocol/0.1",
+  "status": "draft",
+  "environment": "AtropineEnvGym",
+  "execution_authorized": false,
+  "R03_enabled": false,
+  "source": {
+    "runtime_commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+    "handoff_commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+    "environment": "AtropineEnvGym",
+    "normalize": false,
+    "uss_subtracted": true,
+    "observation_shape": [
+      39
+    ],
+    "action_shape": [
+      4
+    ]
+  },
+  "split_protocol": "D01-split/0.1",
+  "clock_policy": {
+    "simulation_period": {
+      "value": 10,
+      "unit": "min",
+      "basis": "handoffs/B_to_D_20261112/run_configs.json"
+    },
+    "simulation_time_basis": "count actual successful model steps; do not read obs[0] or wall clock",
+    "freshness_limit_seconds": null,
+    "raw_and_clipped_observations": "Request B to record pre-clipping values/saturation when feasible; retain returned observation and indicate unavailable raw fields."
+  },
+  "pilot_budget_proposal": {
+    "status": "team_proposal_not_executed_or_power_calculation",
+    "baseline_run_ids": [
+      "pilot-01",
+      "pilot-02",
+      "pilot-03",
+      "pilot-04",
+      "pilot-05",
+      "pilot-06"
+    ],
+    "seed_pool": [
+      1201,
+      1202,
+      1203,
+      1204,
+      1205,
+      1206
+    ],
+    "cycles_per_base_episode": 18,
+    "max_steps": 60,
+    "phases_proposed": [
+      {
+        "phase": "baseline",
+        "records": 5
+      },
+      {
+        "phase": "input_change",
+        "records": 3
+      },
+      {
+        "phase": "hold",
+        "records": 5
+      },
+      {
+        "phase": "recovery",
+        "records": 5
+      }
+    ],
+    "independence_claim": false,
+    "normal_label_auto_assign": false
+  },
+  "label_contract": {
+    "interface_violation": "Known software contract violation; not process fault truth.",
+    "sensor_fault": "Injected measurement fault with source interval and parameters; not latent process fault truth.",
+    "process_anomaly": "Requires independent process injection/criterion evidence; unavailable for current B package.",
+    "initial_process_anomaly_label": null,
+    "normal_label_basis_required": true,
+    "preflight_and_model_verdict_cannot_define_ground_truth": true
+  },
+  "scenario_families": [
+    {
+      "id": "INTERFACE",
+      "mode": "offline_contract_test",
+      "faults": [
+        "missing_action",
+        "wrong_shape",
+        "nonfinite_action",
+        "out_of_Box_candidate",
+        "missing_context",
+        "stale_context"
+      ],
+      "injection_site": "D review input or isolated test fixture; never execute rejected candidate",
+      "amplitude": null,
+      "amplitude_unit": null,
+      "start_step": null,
+      "end_step": null,
+      "process_anomaly_label": null,
+      "expected_oracle": "software contract; counted separately from process detection"
+    },
+    {
+      "id": "INPUT_RESPONSE",
+      "mode": "paired_isolated_simulation_plan",
+      "faults": [
+        "bounded_control_step_then_recovery"
+      ],
+      "injection_site": "candidate action in live model coordinates through B unique execution gateway",
+      "amplitude": null,
+      "amplitude_unit": null,
+      "start_step": null,
+      "end_step": null,
+      "process_anomaly_label": null,
+      "expected_oracle": "independent target review pending; input response is not automatically a process fault"
+    },
+    {
+      "id": "SENSOR",
+      "mode": "offline_replay_plan",
+      "faults": [
+        "bias",
+        "drift",
+        "stuck_value",
+        "missing_measurement"
+      ],
+      "injection_site": "copy of recorded observation stream; clean source retained",
+      "amplitude": null,
+      "amplitude_unit": null,
+      "start_step": null,
+      "end_step": null,
+      "process_anomaly_label": null,
+      "expected_oracle": "injection sidecar provides sensor_fault truth; offline replay does not validate closed-loop recovery"
+    },
+    {
+      "id": "PROCESS",
+      "mode": "blocked_pending_physical_injection_design",
+      "faults": [],
+      "injection_site": null,
+      "amplitude": null,
+      "amplitude_unit": null,
+      "start_step": null,
+      "end_step": null,
+      "process_anomaly_label": null,
+      "expected_oracle": "B physical injection and A02 criterion must be reviewed independently before any process label"
+    }
+  ],
+  "required_sidecars": {
+    "run": [
+      "code_commit",
+      "environment_backend",
+      "environment_config",
+      "policy_config",
+      "seed",
+      "initial_state_or_observation_hash_and_serialization",
+      "lineage_group",
+      "operator_or_automated_runner",
+      "runtime_dependencies",
+      "permissions_or_simulation_origin"
+    ],
+    "injection": [
+      "event_id",
+      "episode_id",
+      "source_episode_id",
+      "fault_scope",
+      "source_variable_index",
+      "coordinate",
+      "unit",
+      "requested_onset",
+      "actual_onset",
+      "actual_end",
+      "injection_parameters",
+      "independent_label_basis",
+      "generator_version",
+      "approved_by"
+    ],
+    "measurement": [
+      "pre_action_observation",
+      "candidate_action",
+      "executed_action",
+      "executed_flag",
+      "observation_after",
+      "request_id",
+      "state_version",
+      "simulation_time",
+      "collection_timestamp",
+      "terminated",
+      "truncated",
+      "reward",
+      "failure_reason",
+      "clipping_or_raw_availability"
+    ],
+    "label_separation": "Label sidecars and D verdicts are excluded from training inputs; derived images/text must not expose fault IDs or future information."
+  },
+  "split_policy": {
+    "group_before_windowing": true,
+    "derived_variants_follow_source_group": true,
+    "seed_alone_is_independence_evidence": false,
+    "exact_initial_state_and_trajectory_duplicates": "Group and disclose; near-duplicate grouping reviewed before split.",
+    "suggested_ratio": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "ratio_status": "proposal; actual group lists need B/C/D agreement",
+    "normal_training_only_for_iforest": true,
+    "test_set_retuning_allowed": false
+  },
+  "stop_policy": {
+    "keep_R01_R02_and_runtime_guards": true,
+    "known_process_fences": "keep enabled if later independently validated; do not disable for contrast",
+    "on_solver_error_or_unknown_execution": "stop; preserve failure; do not retry an uncertain action",
+    "no_automatic_resume": true,
+    "process_stopping_limits": null
+  },
+  "required_before_collection": [
+    "A02 objective and permitted domain",
+    "B action/sensor/process injection design and evidence",
+    "B initialization control and timing",
+    "B/D label review and B/C/D lineage/split agreement",
+    "A/B/C trusted clock and transport context",
+    "D dry-run contract and independent safety checks"
+  ],
+  "scientific_claims_allowed": false
+}

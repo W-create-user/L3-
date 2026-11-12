@@ -1,0 +1,423 @@
+{
+  "schema_version": "D02CandidateCatalog/0.1",
+  "status": "draft",
+  "runtime_export_allowed": false,
+  "source": {
+    "runtime_commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+    "handoff_commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+    "environment": "AtropineEnvGym",
+    "normalize": false,
+    "uss_subtracted": true,
+    "observation_shape": [
+      39
+    ],
+    "action_shape": [
+      4
+    ]
+  },
+  "confirmed_contracts": [
+    {
+      "rule_id": "R-01",
+      "scope": "software_input_conversion_shape_finiteness",
+      "status": "existing",
+      "note": "D np.asarray(dtype=float) can accept convertible numeric strings and booleans; B separately checks dtype."
+    },
+    {
+      "rule_id": "R-02",
+      "scope": "live_action_Box",
+      "status": "existing",
+      "note": "Inclusive model action domain, not industrial safety certification; use live bounds, not a copied table."
+    },
+    {
+      "rule_id": "STATE-INVALID",
+      "scope": "observation_integrity",
+      "status": "existing",
+      "note": "Shape check in check_action requires supplied observation_space."
+    }
+  ],
+  "candidates": [
+    {
+      "rule_id": "R-03-EFACTOR",
+      "kind": "range",
+      "enabled": false,
+      "source": "observation",
+      "index": 6,
+      "variable": "E_factor_current",
+      "unit": "dimensionless",
+      "coordinate": "raw_observation_normalize_false",
+      "unit_status": "source_documented_not_field_calibrated",
+      "threshold": {
+        "lower": null,
+        "upper": null
+      },
+      "basis_status": "process_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/observation_schema_verified.json",
+          "anchor": "fields[6]",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/observation_schema_verified.json"
+        },
+        {
+          "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+          "path": "vendor/smpl/smpl/envs/atropineenv.py",
+          "anchor": "_step observation assembly and clipping",
+          "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/vendor/smpl/smpl/envs/atropineenv.py"
+        }
+      ],
+      "acceptance_owner": [
+        "A",
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "A02 allowed operating domain and target",
+        "B model/process justification for limit",
+        "D boundary and recovery validation"
+      ],
+      "limitations": [
+        "Returned observations are clipped; in-Box values do not establish process safety."
+      ]
+    },
+    {
+      "rule_id": "R-03-Q-ORGANIC",
+      "kind": "range",
+      "enabled": false,
+      "source": "observation",
+      "index": 37,
+      "variable": "Q_organic",
+      "unit": "L/min",
+      "coordinate": "raw_observation_normalize_false",
+      "unit_status": "source_documented_not_field_calibrated",
+      "threshold": {
+        "lower": null,
+        "upper": null
+      },
+      "basis_status": "process_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/observation_schema_verified.json",
+          "anchor": "fields[37]",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/observation_schema_verified.json"
+        },
+        {
+          "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+          "path": "vendor/smpl/smpl/envs/atropineenv.py",
+          "anchor": "_step observation assembly and clipping",
+          "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/vendor/smpl/smpl/envs/atropineenv.py"
+        }
+      ],
+      "acceptance_owner": [
+        "A",
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "A02 allowed operating domain and target",
+        "B model/process justification for limit",
+        "D boundary and recovery validation"
+      ],
+      "limitations": [
+        "Returned observations are clipped; in-Box values do not establish process safety."
+      ]
+    },
+    {
+      "rule_id": "R-03-Q-AQUEOUS",
+      "kind": "range",
+      "enabled": false,
+      "source": "observation",
+      "index": 38,
+      "variable": "Q_aqueous",
+      "unit": "L/min",
+      "coordinate": "raw_observation_normalize_false",
+      "unit_status": "source_documented_not_field_calibrated",
+      "threshold": {
+        "lower": null,
+        "upper": null
+      },
+      "basis_status": "process_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/observation_schema_verified.json",
+          "anchor": "fields[38]",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/observation_schema_verified.json"
+        },
+        {
+          "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+          "path": "vendor/smpl/smpl/envs/atropineenv.py",
+          "anchor": "_step observation assembly and clipping",
+          "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/vendor/smpl/smpl/envs/atropineenv.py"
+        }
+      ],
+      "acceptance_owner": [
+        "A",
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "A02 allowed operating domain and target",
+        "B model/process justification for limit",
+        "D boundary and recovery validation"
+      ],
+      "limitations": [
+        "Returned observations are clipped; in-Box values do not establish process safety."
+      ]
+    },
+    {
+      "rule_id": "R-03-RATE-A0",
+      "kind": "rate",
+      "enabled": false,
+      "source": "action",
+      "index": 0,
+      "variable": "action[0]",
+      "unit": "B-declared model input unit per second",
+      "coordinate": "delta_from_USS",
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "threshold": {
+        "max_rate_per_second": null
+      },
+      "basis_status": "actuator_slew_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/action_dictionary.json",
+          "anchor": "backend=AtropineEnvGym,index=0",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/action_dictionary.json"
+        }
+      ],
+      "acceptance_owner": [
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "B rate-limit evidence and coordinate/unit convention",
+        "B initialization control and effective time",
+        "Last executed action and same-episode positive elapsed seconds"
+      ],
+      "limitations": [
+        "Do not use the previous rejected candidate as executed history.",
+        "If USS varies, delta slew is not absolute plant-input slew; require a revised coordinate convention."
+      ]
+    },
+    {
+      "rule_id": "R-03-RATE-A1",
+      "kind": "rate",
+      "enabled": false,
+      "source": "action",
+      "index": 1,
+      "variable": "action[1]",
+      "unit": "B-declared model input unit per second",
+      "coordinate": "delta_from_USS",
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "threshold": {
+        "max_rate_per_second": null
+      },
+      "basis_status": "actuator_slew_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/action_dictionary.json",
+          "anchor": "backend=AtropineEnvGym,index=1",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/action_dictionary.json"
+        }
+      ],
+      "acceptance_owner": [
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "B rate-limit evidence and coordinate/unit convention",
+        "B initialization control and effective time",
+        "Last executed action and same-episode positive elapsed seconds"
+      ],
+      "limitations": [
+        "Do not use the previous rejected candidate as executed history.",
+        "If USS varies, delta slew is not absolute plant-input slew; require a revised coordinate convention."
+      ]
+    },
+    {
+      "rule_id": "R-03-RATE-A2",
+      "kind": "rate",
+      "enabled": false,
+      "source": "action",
+      "index": 2,
+      "variable": "action[2]",
+      "unit": "B-declared model input unit per second",
+      "coordinate": "delta_from_USS",
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "threshold": {
+        "max_rate_per_second": null
+      },
+      "basis_status": "actuator_slew_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/action_dictionary.json",
+          "anchor": "backend=AtropineEnvGym,index=2",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/action_dictionary.json"
+        }
+      ],
+      "acceptance_owner": [
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "B rate-limit evidence and coordinate/unit convention",
+        "B initialization control and effective time",
+        "Last executed action and same-episode positive elapsed seconds"
+      ],
+      "limitations": [
+        "Do not use the previous rejected candidate as executed history.",
+        "If USS varies, delta slew is not absolute plant-input slew; require a revised coordinate convention."
+      ]
+    },
+    {
+      "rule_id": "R-03-RATE-A3",
+      "kind": "rate",
+      "enabled": false,
+      "source": "action",
+      "index": 3,
+      "variable": "action[3]",
+      "unit": "B-declared model input unit per second",
+      "coordinate": "delta_from_USS",
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "threshold": {
+        "max_rate_per_second": null
+      },
+      "basis_status": "actuator_slew_limit_unconfirmed",
+      "evidence": [
+        {
+          "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+          "path": "handoffs/B_to_D_20261112/action_dictionary.json",
+          "anchor": "backend=AtropineEnvGym,index=3",
+          "url": "https://github.com/W-create-user/L3-/blob/c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3/handoffs/B_to_D_20261112/action_dictionary.json"
+        }
+      ],
+      "acceptance_owner": [
+        "B",
+        "D"
+      ],
+      "required_inputs": [
+        "B rate-limit evidence and coordinate/unit convention",
+        "B initialization control and effective time",
+        "Last executed action and same-episode positive elapsed seconds"
+      ],
+      "limitations": [
+        "Do not use the previous rejected candidate as executed history.",
+        "If USS varies, delta slew is not absolute plant-input slew; require a revised coordinate convention."
+      ]
+    },
+    {
+      "rule_id": "R-03-FRESHNESS",
+      "kind": "freshness",
+      "enabled": false,
+      "source": "context",
+      "index": null,
+      "variable": "reviewed_at-observed_at",
+      "unit": "s in one trusted wall/monotonic clock domain",
+      "coordinate": "trusted_acquisition_clock",
+      "unit_status": "software_time_contract_to_be_agreed",
+      "threshold": {
+        "max_age_seconds": null
+      },
+      "basis_status": "latency_budget_unconfirmed",
+      "evidence": [
+        {
+          "commit": "8457fe7a847b758a019dc5d824b520c5f434e9ac",
+          "path": "l3_system/agents/process_rules.py",
+          "anchor": "ProcessRuleEngine.evaluate",
+          "url": "https://github.com/W-create-user/L3-/blob/8457fe7a847b758a019dc5d824b520c5f434e9ac/l3_system/agents/process_rules.py"
+        }
+      ],
+      "acceptance_owner": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "required_inputs": [
+        "A/B/C acquisition and transport latency budget",
+        "Trusted clock identity and cross-process clock contract",
+        "D stale/future/missing timestamp tests"
+      ],
+      "limitations": [
+        "Simulation sampling period is not a wall-clock freshness limit."
+      ]
+    }
+  ],
+  "excluded_from_first_batch": [
+    {
+      "indices": [
+        0
+      ],
+      "reason": "pre-increment step index, not physical minutes"
+    },
+    {
+      "indices": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reason": "USS references, not current candidate or executed inputs"
+    },
+    {
+      "indices": [
+        5
+      ],
+      "reason": "steady E-factor reference, not current process risk"
+    },
+    {
+      "indices": [
+        7,
+        8
+      ],
+      "reason": "unconfirmed model coordinates; no verified field sensor mapping"
+    },
+    {
+      "indices": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "reason": "retain raw model variables for analysis; production/safety target and independent limits not yet confirmed"
+    }
+  ],
+  "runtime_preconditions": {
+    "status": "existing_B_runtime_guards_not_new_R03",
+    "requirements": [
+      "adapter ready",
+      "episode not done",
+      "pending request state_version matches live state",
+      "no unresolved execution outcome before retry"
+    ],
+    "process_interlock_status": "pending explicit observed variable and verified precondition; no invented ready sensor"
+  }
+}
