@@ -39,6 +39,8 @@ def validate(data, root):
             errors.append(f'reversed event interval: {eid}')
         if episode['event_end_step'] >= episode['step_count']:
             errors.append(f'event interval outside episode: {eid}')
+        if episode['label_summary'] == 'normal' and (episode['event_start_step'] != 0 or episode['event_end_step'] != 0):
+            errors.append(f'normal episode must not declare an anomaly interval: {eid}')
         if split != 'excluded' and episode['label_summary'] == 'unknown':
             errors.append(f'unknown label cannot enter modelling splits: {eid}')
         for modality, artifacts in episode['artifacts'].items():

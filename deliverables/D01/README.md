@@ -56,3 +56,7 @@ python scripts/validate_manifest.py examples/data_manifest.draft.json --root exa
 ## D02 后续进展
 
 2026年11月12日继续实现了可配置过程围栏并接入既有审核链。详见 [D02说明](../../docs/D02_工艺规则与运行围栏.md) 和 evidence/d02/summary.json。工程规则已有合成测试，默认 Atropine 配置仍关闭；物理阈值、B03/A02输入、真实环境验收与D01外部资源核验依然待完成。上文首批交付状态描述保留为历史记录。
+
+## D01 数据接收工具后续进展
+
+新增 [数据接收与结构验收说明](docs/dataset_intake.md)、草案清单生成器、JSONL内容验收及原始B日志审计工具。66项D01测试通过，其中原22项清单测试加44项接收和归档测试；系统回归124项通过。归档审计不代表新仿真或已有可训练数据。完整结果在 evidence/d01_intake/summary.json（仓库根目录）。外部资源与团队确认仍待完成。
