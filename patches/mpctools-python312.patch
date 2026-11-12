@@ -1,0 +1,21 @@
+diff --git a/mpctools/util.py b/mpctools/util.py
+index 4063df4..e2f1772 100644
+--- a/mpctools/util.py
++++ b/mpctools/util.py
+@@ -3,6 +3,7 @@ import scipy.linalg
+ import casadi
+ import casadi.tools as ctools
+ import collections
++import collections.abc
+ import numpy as np
+ import pdb
+ import itertools
+@@ -464,7 +465,7 @@ def dummy_context(*args):
+ # __setitem__, and so results can be inconsistent. Instead, we use an abstract
+ # base class from the collections module. See Section 8.3.6 in the docs at
+ # https://docs.python.org/2/library/collections.html
+-class ArrayDict(collections.MutableMapping):
++class ArrayDict(collections.abc.MutableMapping):
+     """
+     Python dictionary of numpy arrays.
+ 
