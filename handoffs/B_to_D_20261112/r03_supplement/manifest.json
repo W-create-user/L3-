@@ -1,0 +1,24 @@
+{
+  "algorithm": "SHA256",
+  "files": {
+    "README.md": "327217af96611eac487bc8f34358b2f81ce4bdfbdc17a2a947e173cf3aa60e16",
+    "candidate_tests.log": "d6e06666a49f85830e546f908484dc4d8bdf9e5cd30cba4bb1df73df002f57d2",
+    "physical_training_gap.json": "c8a7a77d56f42f5b38a9e3902237838eac73ec7659b45bd5833fb005f58d51fe",
+    "regression_tests.log": "a50dc5d1b6d9b383d168bb169a5474e207fdbe40c751e22d2cd0df0392809d45",
+    "rule_candidate.json": "83951119c1ee1ba1412151a682a535723c80a8006f21e3673db80bd48eeb76f8",
+    "sensor_benchmark/episodes.json": "47edd290d0e72a5667b3c8c18c477aaf9795c84271e383b2675a0ce91b1247f1",
+    "sensor_benchmark/test_1501/trajectory.jsonl": "8ad08da8766cbaa178bdf834035d1937a81e8dc016ec0392871564910bffe422",
+    "sensor_benchmark/test_1502/trajectory.jsonl": "ec882e22fb5db73c07adc99d516cc7745b38c8464e1bea7aca21a167fe68c766",
+    "sensor_benchmark/test_1503/trajectory.jsonl": "584e64a40aae6d23bfc70aed61a2f31a0a69650476603b9a0d123906b09163e5",
+    "sensor_benchmark/train_1301/trajectory.jsonl": "3f9eeb6975637f7a165f73554c8e4bc9c0316d189aa4036d4b3a9ae82c17fc54",
+    "sensor_benchmark/train_1302/trajectory.jsonl": "08c0f221083012b6bac591733b7894de0e7b1485b77eed5ca27d5fb04c0f287e",
+    "sensor_benchmark/train_1303/trajectory.jsonl": "7b3452c29dd18194fec8db94c1b553476b43f60d064039b7f6aeb3d46f053fa3",
+    "sensor_benchmark/train_1304/trajectory.jsonl": "7ea2b139cbce51f0898f33170c0d9f2e19dc30979677f40dbd656650a4c003c7",
+    "sensor_benchmark/train_1305/trajectory.jsonl": "dbf0be14578ab011427cc1bd8091f99b617cd26f3cbf9855650f9beb15e9fa30",
+    "sensor_benchmark/train_1306/trajectory.jsonl": "19f83efad0bf504f05679398047190b02509e466c9cd78580a183b6d1663192a",
+    "sensor_benchmark/validation_1401/trajectory.jsonl": "67fef96293c4460bef5696dd22d80e9fba9684ddf8adfd394c43d7680797e79c",
+    "sensor_benchmark/validation_1402/trajectory.jsonl": "607a07829f3eff12bcec5e5ef4d2e6b74825fc206c06208015dc8472e22997a2",
+    "sensor_benchmark/validation_1403/trajectory.jsonl": "b80e2051801ec0b9b8c26d1d35d563d24c1997b255ff4654216560024ad84181",
+    "validation_cases.json": "971c18ab03f12c0d9e5a28a5fdfd8d5b0f81645c090cc4dff6036e505c7ca3d6"
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "created_utc": "2026-11-13T07:16:38.843693+00:00",
+  "label_scope": "known injected observation corruption only; not physical process health",
+  "physical_process_labels_available": false,
+  "physical_process_iforest_ready": false,
+  "sensor_fault_benchmark_available": true,
+  "horizon_steps": 30,
+  "sampling_period_min": 10,
+  "source_base_commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+  "collector_sha256": "f3f832093e662d13a82fa783d748e6e9c9041fa486990381eb2e789323d5240e",
+  "episodes": [
+    {
+      "episode_id": "train_1301",
+      "group_id": "initial_condition_seed_1301",
+      "split": "train",
+      "seed": 1301,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": null,
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "train_1301/trajectory.jsonl",
+      "initial_internal_state_sha256": "6e45018f089ccd23091c32c4ea3f9a18632dd256d948d88055f88d03f57a31dc",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "3f9eeb6975637f7a165f73554c8e4bc9c0316d189aa4036d4b3a9ae82c17fc54"
+    },
+    {
+      "episode_id": "train_1302",
+      "group_id": "initial_condition_seed_1302",
+      "split": "train",
+      "seed": 1302,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": null,
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "train_1302/trajectory.jsonl",
+      "initial_internal_state_sha256": "a5011a92a03556fde9e2495bba9ac8465cb8b2d985e7745271bc9632d8d05ff3",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "08c0f221083012b6bac591733b7894de0e7b1485b77eed5ca27d5fb04c0f287e"
+    },
+    {
+      "episode_id": "train_1303",
+      "group_id": "initial_condition_seed_1303",
+      "split": "train",
+      "seed": 1303,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": null,
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "train_1303/trajectory.jsonl",
+      "initial_internal_state_sha256": "d87f6bb243275cb3489e157dbd857cc3f0fc3a96e67fe2976e0d2386a4483f9e",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "7b3452c29dd18194fec8db94c1b553476b43f60d064039b7f6aeb3d46f053fa3"
+    },
+    {
+      "episode_id": "train_1304",
+      "group_id": "initial_condition_seed_1304",
+      "split": "train",
+      "seed": 1304,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": null,
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "train_1304/trajectory.jsonl",
+      "initial_internal_state_sha256": "06c66e8ba53ec38c0cf3732a9fc9ab6b87b4aabd79c7e53604c38e30aeed783d",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "7ea2b139cbce51f0898f33170c0d9f2e19dc30979677f40dbd656650a4c003c7"
+    },
+    {
+      "episode_id": "train_1305",
+      "group_id": "initial_condition_seed_1305",
+      "split": "train",
+      "seed": 1305,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": null,
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "train_1305/trajectory.jsonl",
+      "initial_internal_state_sha256": "f971280217a0224d4cd5d10faed799d0de986386dc6756b44d3555dbcab44328",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "dbf0be14578ab011427cc1bd8091f99b617cd26f3cbf9855650f9beb15e9fa30"
+    },
+    {
+      "episode_id": "train_1306",
+      "group_id": "initial_condition_seed_1306",
+      "split": "train",
+      "seed": 1306,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": null,
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "train_1306/trajectory.jsonl",
+      "initial_internal_state_sha256": "81907f571f9a4570295ab15816b86fbea1f28e8f1a5415c8a3cc641b108d803a",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "19f83efad0bf504f05679398047190b02509e466c9cd78580a183b6d1663192a"
+    },
+    {
+      "episode_id": "validation_1401",
+      "group_id": "initial_condition_seed_1401",
+      "split": "validation",
+      "seed": 1401,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": {
+        "target": "delivered_observation[6]",
+        "type": "multiplicative_sensor_bias",
+        "multiplier": 1.2,
+        "first_step": 10,
+        "last_step": 20,
+        "phase": "after real env.step; does not change environment state or action",
+        "basis": "B-designed synthetic sensor-fault benchmark; not A-approved physical anomaly"
+      },
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "validation_1401/trajectory.jsonl",
+      "initial_internal_state_sha256": "4ad64de8fe498082dd9f025180751db21f41d131bd1d8b4503c7ca227017f92e",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "67fef96293c4460bef5696dd22d80e9fba9684ddf8adfd394c43d7680797e79c"
+    },
+    {
+      "episode_id": "validation_1402",
+      "group_id": "initial_condition_seed_1402",
+      "split": "validation",
+      "seed": 1402,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": {
+        "target": "delivered_observation[6]",
+        "type": "multiplicative_sensor_bias",
+        "multiplier": 1.2,
+        "first_step": 10,
+        "last_step": 20,
+        "phase": "after real env.step; does not change environment state or action",
+        "basis": "B-designed synthetic sensor-fault benchmark; not A-approved physical anomaly"
+      },
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "validation_1402/trajectory.jsonl",
+      "initial_internal_state_sha256": "063e7475020e28e5d6b0558e71452e3a42651cf77e75dc6286ef118779f31938",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "607a07829f3eff12bcec5e5ef4d2e6b74825fc206c06208015dc8472e22997a2"
+    },
+    {
+      "episode_id": "validation_1403",
+      "group_id": "initial_condition_seed_1403",
+      "split": "validation",
+      "seed": 1403,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": {
+        "target": "delivered_observation[6]",
+        "type": "multiplicative_sensor_bias",
+        "multiplier": 1.2,
+        "first_step": 10,
+        "last_step": 20,
+        "phase": "after real env.step; does not change environment state or action",
+        "basis": "B-designed synthetic sensor-fault benchmark; not A-approved physical anomaly"
+      },
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "validation_1403/trajectory.jsonl",
+      "initial_internal_state_sha256": "79581a7a7bdf497ff576eb20714265f3849b03aa6af0fd3d3a942f1da1e424a5",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "b80e2051801ec0b9b8c26d1d35d563d24c1997b255ff4654216560024ad84181"
+    },
+    {
+      "episode_id": "test_1501",
+      "group_id": "initial_condition_seed_1501",
+      "split": "test",
+      "seed": 1501,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": {
+        "target": "delivered_observation[6]",
+        "type": "multiplicative_sensor_bias",
+        "multiplier": 1.2,
+        "first_step": 10,
+        "last_step": 20,
+        "phase": "after real env.step; does not change environment state or action",
+        "basis": "B-designed synthetic sensor-fault benchmark; not A-approved physical anomaly"
+      },
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "test_1501/trajectory.jsonl",
+      "initial_internal_state_sha256": "4b59b63903fbfb10ad47a42e9dd18257cabf07c60f2fae63e561dde9d861f0b6",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "8ad08da8766cbaa178bdf834035d1937a81e8dc016ec0392871564910bffe422"
+    },
+    {
+      "episode_id": "test_1502",
+      "group_id": "initial_condition_seed_1502",
+      "split": "test",
+      "seed": 1502,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": {
+        "target": "delivered_observation[6]",
+        "type": "multiplicative_sensor_bias",
+        "multiplier": 1.2,
+        "first_step": 10,
+        "last_step": 20,
+        "phase": "after real env.step; does not change environment state or action",
+        "basis": "B-designed synthetic sensor-fault benchmark; not A-approved physical anomaly"
+      },
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "test_1502/trajectory.jsonl",
+      "initial_internal_state_sha256": "897a7989b26d7343ec3e81f7914dfd4db9f49275804620b4c956f39bd118eedb",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "ec882e22fb5db73c07adc99d516cc7745b38c8464e1bea7aca21a167fe68c766"
+    },
+    {
+      "episode_id": "test_1503",
+      "group_id": "initial_condition_seed_1503",
+      "split": "test",
+      "seed": 1503,
+      "reset_count": 1,
+      "requested_steps": 30,
+      "complete": true,
+      "process_disturbance": null,
+      "process_health_label": null,
+      "fault": {
+        "target": "delivered_observation[6]",
+        "type": "multiplicative_sensor_bias",
+        "multiplier": 1.2,
+        "first_step": 10,
+        "last_step": 20,
+        "phase": "after real env.step; does not change environment state or action",
+        "basis": "B-designed synthetic sensor-fault benchmark; not A-approved physical anomaly"
+      },
+      "label_definition": {
+        "0": "no synthetic sensor corruption applied to this observation",
+        "1": "the declared synthetic sensor corruption was applied; independent of threshold or detector score"
+      },
+      "raw_trajectory": "test_1503/trajectory.jsonl",
+      "initial_internal_state_sha256": "4f5f91e8866ed1ecada14e50b115d0f6aa078bf2dc2f528322403ffdfc11c50f",
+      "initial_observation_sha256": "7705d9191290601d8be7ea142f81b200c5f7ec9318b0a77223ec5b819d05fe1d",
+      "recorded_steps": 30,
+      "stop_reason": "declared_30_step_budget",
+      "trajectory_sha256": "584e64a40aae6d23bfc70aed61a2f31a0a69650476603b9a0d123906b09163e5"
+    }
+  ],
+  "unique_initial_state_hashes": 12
+}

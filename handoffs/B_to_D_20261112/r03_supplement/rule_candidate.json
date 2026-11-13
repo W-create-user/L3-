@@ -1,0 +1,97 @@
+{
+  "id": "R03_ATROPINE_E_FACTOR_HIGH_CANDIDATE",
+  "runtime_enabled": false,
+  "approval_status": "B提出、待A/团队确认的实验设定；不是已批准规则",
+  "backend": "AtropineEnvGym",
+  "layout": "atropine-default39-v1",
+  "observation_dimension": 39,
+  "variables": {
+    "current": {
+      "index": 6,
+      "unit": "dimensionless modeled waste/product mass-flow ratio",
+      "normalized": false,
+      "steady_state_subtracted": false
+    },
+    "reference": {
+      "index": 5,
+      "unit": "dimensionless same ratio",
+      "normalized": false,
+      "steady_state_subtracted": false
+    }
+  },
+  "candidate_predicate": "observation[6] > 1.10 * observation[5]",
+  "candidate_relative_limit": 0.1,
+  "upper_source": "B提出待确认值，无源码数值/论文/现场安全审批依据；不由Box或样本极值推定",
+  "lower_limit": null,
+  "rate_limit": null,
+  "applicable_config": {
+    "normalize": false,
+    "uss_subtracted": true,
+    "observation_include_t": true,
+    "observation_include_action": false,
+    "observation_include_uss": true,
+    "observation_include_ess": true,
+    "observation_include_e": true,
+    "observation_include_kf": true,
+    "observation_include_z": true,
+    "observation_include_x": false
+  },
+  "scope": "Modeled process-efficiency indicator; not purity/energy/chemical safety. Lower E is not rejected by this upper-only candidate.",
+  "censoring_guard": "Require reference>0 and 1.10*reference<20; clip ceiling20 used ONLY to detect unobservable threshold, never as safety limit.",
+  "normalization_conversion": "For this source: o=(2*physical-(max+min))/(max-min+1e-8). Candidate normalized upper=(2*1.10*Eref-(max+min))/(max-min+1e-8). Current candidate rejects normalize=True, requires reverified per-field bounds before future use.",
+  "steady_subtracted_conversion": "If future returns delta_E=E-Eref, upper_delta=0.10*Eref; current returned E is NOT delta.",
+  "source_evidence": {
+    "formula": {
+      "path": "vendor/smpl/smpl/envs/models/atropine_process.py",
+      "line": 293,
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "file_sha256": "5165b6bf0556978af27cac7d810d5e37108fa64baccdd4fbdb2d416c9b91e88a"
+    },
+    "assembly": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 284,
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "file_sha256": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311"
+    },
+    "reference": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 260,
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "file_sha256": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311"
+    },
+    "clipping": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 485,
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "file_sha256": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311"
+    },
+    "normalization": {
+      "path": "vendor/smpl/smpl/envs/_runtime_utils.py",
+      "line": 6,
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "file_sha256": "3afc4129c147edd04ebf7900b3a1374166857631ae09e2ecd080b4ba0b49344e"
+    },
+    "disabled_R03": {
+      "path": "l3_system/agents/safety_rules.py",
+      "line": 9,
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "file_sha256": "acbab6f626576ad6e1f98520c0e53ffb9c1c3aa2b630b94f57d4bd983744aacb"
+    }
+  },
+  "disposition_proposal": {
+    "post_step_hit": "After A/D approval: record state and latch takeover/block NEW automatic cycles; cannot undo completed step. No unverified fallback action.",
+    "recovery": "Cause reviewed, operating target approved, valid fresh state, explicit human acknowledgement. Proposed 3 fresh consecutive states below upper is also unconfirmed; repeated reads of same state_version do not count.",
+    "approved": false
+  },
+  "mab": {
+    "status": "unconfirmed_not_applicable",
+    "observation_action_dimensions": [
+      1970,
+      9
+    ],
+    "variable_index": null,
+    "units": null,
+    "threshold": null,
+    "note": "Do not reuse Atropine indices, E-factor units or thresholds; one-step probe does not supply a physical rule."
+  }
+}

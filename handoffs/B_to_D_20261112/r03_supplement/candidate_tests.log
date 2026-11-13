@@ -1,0 +1,8 @@
+test_constructed_pass_and_breach_never_enable_runtime (l3_system.tests.test_r03_candidate_evidence.R03CandidateEvidenceTests.test_constructed_pass_and_breach_never_enable_runtime) ... ok
+test_no_reuse_for_mab_or_normalized_observations (l3_system.tests.test_r03_candidate_evidence.R03CandidateEvidenceTests.test_no_reuse_for_mab_or_normalized_observations) ... ok
+test_unobservable_threshold_and_invalid_data_are_not_passes (l3_system.tests.test_r03_candidate_evidence.R03CandidateEvidenceTests.test_unobservable_threshold_and_invalid_data_are_not_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

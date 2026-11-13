@@ -1,0 +1,56 @@
+{
+  "original_dataset": "user-uploaded B_中期交付_2026-11-06.zip/data/principal_300",
+  "existing_episodes": [
+    {
+      "episode_id": "baseline_seed1101",
+      "seed": "1101",
+      "requested_steps": "100",
+      "recorded_steps": "100",
+      "reset_count": "1",
+      "stop_reason": "requested_horizon",
+      "full_continuous_horizon": "True",
+      "terminated_rows": "0",
+      "truncated_rows": "0",
+      "state_anomaly_ground_truth_available": "False",
+      "input_design": "no injected changes"
+    },
+    {
+      "episode_id": "baseline_seed1102",
+      "seed": "1102",
+      "requested_steps": "100",
+      "recorded_steps": "100",
+      "reset_count": "1",
+      "stop_reason": "requested_horizon",
+      "full_continuous_horizon": "True",
+      "terminated_rows": "0",
+      "truncated_rows": "0",
+      "state_anomaly_ground_truth_available": "False",
+      "input_design": "no injected changes"
+    },
+    {
+      "episode_id": "legal_input_change",
+      "seed": "1101",
+      "requested_steps": "100",
+      "recorded_steps": "100",
+      "reset_count": "1",
+      "stop_reason": "requested_horizon",
+      "full_continuous_horizon": "True",
+      "terminated_rows": "0",
+      "truncated_rows": "0",
+      "state_anomaly_ground_truth_available": "False",
+      "input_design": "legal input changes, not a labeled dangerous condition"
+    }
+  ],
+  "eligible_confirmed_physical_process_episodes": 0,
+  "reason": "Original state_anomaly_ground_truth_available=False for all episodes; no injected change is not certified physical normality; legal input change is not a dangerous condition.",
+  "repeat_600_policy": "Repeats/derived windows are not new independent groups; group by original trajectory/initial-condition lineage.",
+  "physical_iforest_status": "blocked_pending_A_team_label_and_operating_envelope_definition",
+  "sensor_iforest_status": "new sensor_benchmark supports a scoped synthetic sensor-fault benchmark only; do not report it as physical process anomaly detection",
+  "required_A_team_decisions": [
+    "Define nominal process envelope and admissible operations",
+    "Approve positive physical fault mechanisms and magnitude/time window",
+    "Specify transition/recovery/ambiguous labels and episode eligibility",
+    "Approve label source independent of future detector score and candidate threshold"
+  ],
+  "mab_status": "No confirmed labels or complete independent trajectory set supplied; not ready"
+}
