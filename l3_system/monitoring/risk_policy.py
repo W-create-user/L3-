@@ -33,22 +33,34 @@ class RiskPolicy:
         if type(clean_observations)is not int or clean_observations<2:
             raise ValueError('recovery requires at least two independent state versions')
         self.required=clean_observations;self.episode=None;self.version=None
-        self.clean=0;self.latched=True;self.ack=False
+        self.clean=0;self.latched=True;self.ack=False;self.review=None
 
     def reset(self,episode_id):
         if not isinstance(episode_id,str) or not episode_id.strip():raise ValueError('episode ID required')
-        self.episode=episode_id;self.version=None;self.clean=0;self.latched=True;self.ack=False
+        self.episode=episode_id;self.version=None;self.clean=0;self.latched=True;self.ack=False;self.review=None
 
-    def acknowledge_review(self,episode_id):
-        if self.episode!=episode_id:raise ValueError('acknowledgement belongs to another episode')
+    def acknowledge_review(self,episode_id,*,state_version,reviewer_ref):
+        # Acknowledgement is auditable and bound to the latest evaluated state.
+        if (self.episode!=episode_id or self.version is None
+                or type(state_version)is not int or state_version!=self.version
+                or not isinstance(reviewer_ref,str) or not reviewer_ref.strip()):
+            raise ValueError('review requires current episode/version and a reviewer reference')
         self.ack=True
+        self.review={'episode_id':episode_id,'state_version':state_version,'reviewer_ref':reviewer_ref}
 
     def evaluate(self,evidence):
-        evidence.validate()
+        try:
+            if not isinstance(evidence,RiskEvidence):raise ValueError('RiskEvidence required')
+            evidence.validate()
+        except (ValueError,TypeError):
+            self._latch('invalid_evidence')
+            raise ValueError('invalid evidence revoked recovery; fresh review required') from None
         if self.episode is None:self.reset(evidence.episode_id)
-        if evidence.episode_id!=self.episode:raise ValueError('explicit reset required at episode boundary')
+        if evidence.episode_id!=self.episode:
+            self._latch('episode_mismatch')
+            raise ValueError('explicit reset required at episode boundary')
         if self.version is not None and evidence.state_version<=self.version:
-            self.latched=True;self.clean=0;self.ack=False
+            self.latched=True;self.clean=0;self.ack=False;self.review=None
             return self._result(3,'repeated_or_reordered_state')
         contiguous=self.version is None or evidence.state_version==self.version+1
         self.version=evidence.state_version
@@ -61,7 +73,7 @@ class RiskPolicy:
         if evidence.anomaly:
             return self._latch('statistical_anomaly_requires_review')
         if evidence.data_quality=='degraded':
-            self.clean=0;self.latched=True;self.ack=False
+            self.clean=0;self.latched=True;self.ack=False;self.review=None
             return self._result(2,'degraded_data')
         self.clean=self.clean+1 if contiguous else 1
         if self.latched and self.ack and self.clean>=self.required:self.latched=False
@@ -69,14 +81,14 @@ class RiskPolicy:
         return self._result(1,'eligible_for_action_gate_review')
 
     def _latch(self,reason):
-        self.latched=True;self.clean=0;self.ack=False
+        self.latched=True;self.clean=0;self.ack=False;self.review=None
         return self._result(3,reason)
 
     def _result(self,level,reason):
-        return {'schema_version':'D05RiskAdvisory/0.1','risk_level':level,
+        return {'schema_version':'D05RiskAdvisory/0.2','risk_level':level,
             'mode':{1:'request_review',2:'restricted',3:'takeover_requested'}[level],
             'automatic_execution_blocked':level!=1,'execution_authorized':False,
             'requires_action_gate':True,'reason':reason,'clean_observations':self.clean,
-            'review_acknowledged':self.ack,'state_version':self.version,
+            'review_acknowledged':self.ack,'review':dict(self.review) if self.review else None,'state_version':self.version,
             'episode_id':self.episode,'confidence_probability':None,
             'basis':'experimental evidence policy; no calibrated process reliability'}
