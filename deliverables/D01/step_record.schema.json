@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "D01Step ordered interaction record",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "D01Step/0.1"
+    },
+    "episode_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "step_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "simulation_time": {
+      "type": "number",
+      "minimum": 0
+    },
+    "simulation_time_unit": {
+      "const": "s"
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observation_before": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
+    },
+    "observation_after": {
+      "anyOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "number"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "candidate_action": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
+    },
+    "executed_action": {
+      "anyOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "number"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "executed": {
+      "type": "boolean"
+    },
+    "state_version_before": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "state_version_after": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reward": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "terminated": {
+      "type": "boolean"
+    },
+    "truncated": {
+      "type": "boolean"
+    },
+    "execution_status": {
+      "enum": [
+        "completed",
+        "rejected",
+        "failed"
+      ]
+    },
+    "failure_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "episode_id",
+    "step_index",
+    "simulation_time",
+    "simulation_time_unit",
+    "collected_at",
+    "observation_before",
+    "observation_after",
+    "candidate_action",
+    "executed_action",
+    "executed",
+    "state_version_before",
+    "state_version_after",
+    "reward",
+    "terminated",
+    "truncated",
+    "execution_status",
+    "failure_reason"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-11-12T07:04:50.638701+00:00",
+  "python": "3.12.14",
+  "base_commit": "090f5401fc886567a66b294110f9b2e7f6d91b9c",
+  "D01_tests": {
+    "passed": 66,
+    "failed": 0,
+    "original_manifest_tests": 22,
+    "new_intake_and_audit_tests": 44,
+    "command": "python -m unittest discover -s deliverables/D01/tests -v"
+  },
+  "system_regression": {
+    "passed": 124,
+    "failed": 0,
+    "command": "python -m unittest discover -s l3_system/tests -t . -v"
+  },
+  "data_status": "Only temporary synthetic unit-test fixtures were accepted. No real training dataset accepted.",
+  "archive_audit": {
+    "files": 3,
+    "reported_executed_calls": [
+      1,
+      5,
+      0
+    ],
+    "training_ready": false
+  },
+  "new_simulation_run": false,
+  "model_training": false,
+  "remaining": [
+    "B03 physical dictionary and A02 process targets",
+    "B05 independent labelled episodes",
+    "data permissions/GPU/storage evidence",
+    "A/B/C contract review"
+  ]
+}

@@ -208,7 +208,8 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         "bids_note": "One installed capable worker per role; local deterministic capability bids.",
         "all_C_locks_released": not scheduler.active_agent_tasks,
         "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
-        "r03_enabled": False,
+        "r03_enabled": bool(getattr(getattr(monitor, 'process_rules', None), 'enabled', False)),
+        "statistical_r03_enabled": bool(getattr(monitor, 'statistical_r03_enabled', False)),
     }
     emit("A_task_feedback", task=parent, summary=summary)
     return {"summary": summary, "parent_task": _plain(parent), "c_tasks": _plain(tasks),

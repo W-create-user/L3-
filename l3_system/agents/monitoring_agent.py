@@ -1,17 +1,21 @@
 """成员 D：MonitoringAgent v1.2，面向成员 A 的 ActionRequest/SafetyDecision 联调。"""
 import json
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 import numpy as np
 
 try:
-    from .safety_rules import validate_action, check_bounds
+    from .safety_rules import validate_action, check_bounds, observation_integrity_error
+    from .process_rules import ProcessRuleEngine
 except ImportError:  # 兼容直接运行 python agents/monitoring_agent.py
-    from safety_rules import validate_action, check_bounds
+    from safety_rules import validate_action, check_bounds, observation_integrity_error
+    from process_rules import ProcessRuleEngine
 
 
 class MonitoringAgent:
-    def __init__(self, action_space=None, observation_space=None):
+    def __init__(self, action_space=None, observation_space=None, *,
+                 process_rules=None, process_context_provider=None):
         self.logs = []
         self.observation_shape = (tuple(observation_space.shape)
                                   if observation_space is not None else None)
@@ -34,6 +38,18 @@ class MonitoringAgent:
                 np.any(self.action_min > self.action_max)):
             raise ValueError('动作空间上下界配置不合法')
         self.action_dim = int(np.prod(self.action_shape))
+        if process_rules is not None and not isinstance(process_rules, ProcessRuleEngine):
+            raise TypeError('process_rules must be a ProcessRuleEngine')
+        if process_context_provider is not None and not callable(process_context_provider):
+            raise TypeError('process_context_provider must be callable')
+        self.process_rules = process_rules
+        self.process_context_provider = process_context_provider
+        if process_rules is not None and process_rules.enabled:
+            if self.demo_mode or self.observation_shape is None:
+                raise ValueError('Enabled process rules require live action and observation spaces')
+            if (process_rules.action_shape != self.action_shape
+                    or process_rules.observation_shape != self.observation_shape):
+                raise ValueError('Process variable dictionary shapes do not match live spaces')
 
     def _response(self, status, level, rule_id, intervention, reason, task_id=None):
         result = {
@@ -43,12 +59,33 @@ class MonitoringAgent:
             'reason': reason, 'demo_mode': self.demo_mode,
             'task_id': task_id,
         }
+        if self.process_rules is not None and self.process_rules.enabled:
+            result.update(rule_version=self.process_rules.version, environment=self.process_rules.environment)
         self.logs.append(result)
         print(f'[MonitoringAgent] {task_id or "-"} | Level {level} | {status} | {reason}')
         return result
 
-    def check_action(self, state, candidate_action, task_id=None):
-        """兼容旧版接口；state 传入但 R-03 尚未启用。"""
+    def _process_review(self, state, action, task_id, process_context):
+        if self.process_rules is None or not self.process_rules.enabled:
+            return None
+        try:
+            # An installed provider is authoritative; requests cannot override its context.
+            if self.process_context_provider is not None:
+                process_context = self.process_context_provider(deepcopy(state), deepcopy(action))
+            violations = self.process_rules.evaluate(state, action, process_context)
+        except Exception as exc:
+            violations = [self.process_rules._violation(
+                'R-03-CONTEXT', f'Process review failed: {type(exc).__name__}')]
+        if violations:
+            first = violations[0]
+            result = self._response('Reject', 3, first['rule_id'], 'BLOCK', first['reason'], task_id)
+            result.update({k: first[k] for k in ('basis', 'suggestion', 'rule_version', 'environment')})
+            result['violations'] = violations
+            return result
+        return None
+
+    def check_action(self, state, candidate_action, task_id=None, *, process_context=None):
+        """R-01/R-02 precede optional, explicitly configured R-03 simulation fences."""
         if self.observation_shape is not None:
             error = self.observation_error(state)
             if error:
@@ -59,27 +96,30 @@ class MonitoringAgent:
         error = check_bounds(action, self.action_min, self.action_max)
         if error:
             return self._response('Reject', 3, 'R-02', 'BLOCK', error, task_id)
+        rejected = self._process_review(state, action, task_id, process_context)
+        if rejected is not None:
+            return rejected
+        process_enabled = self.process_rules is not None and self.process_rules.enabled
         return self._response('Pass', 0, None, 'ALLOW',
-                              '所有已启用的规则检查通过（R-03 未启用）', task_id)
+                              ('所有已启用的规则检查通过（含配置的 R-03 仿真围栏）' if process_enabled
+                               else '所有已启用的规则检查通过（R-03 未启用）'), task_id)
 
     def observation_error(self, observation):
         """Data integrity only; no invented physical thresholds or R-03 model."""
-        try:
-            values = np.asarray(observation)
-            if (values.dtype.kind not in 'fiu' or not np.isfinite(values).all()
-                    or (self.observation_shape is not None
-                        and values.shape != self.observation_shape)):
-                return '过程观测维度错误或包含非有限数值'
-        except (ValueError, TypeError):
-            return '过程观测无法解析为数值数组'
-        return None
+        return observation_integrity_error(observation, self.observation_shape)
 
-    def check_observation(self, observation, task_id=None):
+    def check_observation(self, observation, task_id=None, *, process_context=None):
         error = self.observation_error(observation)
+        if not error:
+            rejected = self._process_review(observation, None, task_id, process_context)
+            if rejected is not None:
+                return rejected
         return self._response('Reject' if error else 'Pass', 3 if error else 0,
                               'STATE-INVALID' if error else None,
                               'BLOCK' if error else 'ALLOW',
-                              error or '过程观测数据完整性检查通过（非工艺安全判定）', task_id)
+                              error or ('观测完整性与已配置状态围栏检查通过'
+                                        if self.process_rules is not None and self.process_rules.enabled
+                                        else '过程观测数据完整性检查通过（非工艺安全判定）'), task_id)
 
     def check_request(self, action_request, observation=None):
         """A 的统一入口：ActionRequest={'task_id':str,'action':数组}。
@@ -98,7 +138,8 @@ class MonitoringAgent:
                                         '缺少有效 task_id', task_id=None)
                 task_id = None
             else:
-                result = self.check_action(observation, action_request.get('action'), task_id)
+                result = self.check_action(observation, action_request.get('action'), task_id,
+                                           process_context=action_request.get('safety_context'))
         identity = {k: action_request.get(k) for k in ('request_id', 'subtask_id')} if isinstance(action_request, dict) else {}
         result.update(identity)
         return {
@@ -109,10 +150,11 @@ class MonitoringAgent:
             'reason': result['reason'],
             'risk_level': result['level'],
             'demo_mode': self.demo_mode,
+            **{k: deepcopy(result[k]) for k in ('basis', 'suggestion', 'rule_version', 'environment', 'violations') if k in result},
         }
 
     def get_logs(self):
-        return [x.copy() for x in self.logs]
+        return deepcopy(self.logs)
 
     def clear_logs(self):
         self.logs.clear()

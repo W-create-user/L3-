@@ -1,0 +1,8 @@
+resource,observed_evidence,status,required_next_input,owner
+enterprise_DCS_data,project proposal section 8 claim only; no actual data or permission inspected,unverified,Only if enterprise data or rules are used: actual sample/version and written permission scope,B
+enterprise_alarm_rules,project proposal section 8 claim only; no rulebook inspected,unverified,Only if enterprise data or rules are used: actual sample/version and written permission scope,B
+GPU_workstation,project proposal section 8 claim only; no workstation or reservation inspected,unverified,device model available memory software versions and booked time,B
+Atropine_training_episodes,B handoff c3dc5cc1 received: six configurations; eight executed calls and one rejected candidate; process labels null,received_partial_not_training_ready,B05 independent labelled episodes and split review,B05
+mAb_training_episodes,B handoff c3dc5cc1 includes 1970/9 reset and one-step evidence,probe_evidence_received_not_training_ready,B03 per-variable dictionary and B05 process-labelled multi-step episodes,B02_B03
+visual_and_text_dataset,no aligned multimodal training dataset delivered,not_delivered,source type generator version timestamps and label leakage review,B05_D
+training_storage,no durable dataset location quota or team access evidence inspected,unverified,dataset storage location quota backup and access policy,B_D

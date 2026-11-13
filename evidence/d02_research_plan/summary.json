@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-11-12T08:37:47.119173+00:00",
+  "D_branch_base": "8457fe7a847b758a019dc5d824b520c5f434e9ac",
+  "handoff_reference": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+  "draft_candidates": 8,
+  "scenario_families": 4,
+  "thresholds_filled": false,
+  "collection_authorized": false,
+  "R03_enabled": false,
+  "new_simulation_run": false,
+  "model_training": false,
+  "tests": {
+    "D01": {
+      "passed": 96,
+      "failed": 0,
+      "new_research_draft_tests": 20
+    },
+    "system": {
+      "passed": 124,
+      "failed": 0
+    }
+  },
+  "checks": [
+    "source-linked rule proposals",
+    "draft consistency validator",
+    "new document links"
+  ],
+  "scope": "Research planning and code only; no original or derived numerical trajectories are included."
+}
