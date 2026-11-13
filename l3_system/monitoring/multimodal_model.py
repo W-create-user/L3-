@@ -49,11 +49,18 @@ class FusionBaseline(nn.Module):
         self.register_buffer('series_mean',torch.zeros(39))
         self.register_buffer('series_std',torch.ones(39))
         self.vision=resnet18(weights=None)
+        for parameter in self.vision.parameters():parameter.requires_grad_(False)
         self.vision.fc=nn.Linear(self.vision.fc.in_features,width)
         self.temporal=nn.LSTM(39,width,batch_first=True)
         self.text=nn.Linear(text_dimension,width)
         self.attention=nn.Linear(width,1)
         self.classifier=nn.Linear(width*3 if mode=='concat' else width,1)
+
+    def train(self,mode=True):
+        super().train(mode)
+        # Frozen random backbone includes BatchNorm running statistics.
+        self.vision.eval()
+        return self
 
     def forward(self,series,images,text,mask):
         if mask.dtype!=torch.bool or mask.shape!=(len(series),3) or not mask.any(dim=1).all():
@@ -103,19 +110,21 @@ def train_baseline(batches,mode='attention',epochs=1,seed=17):
     torch.manual_seed(seed)
     train=batches['train']
     vocabulary=[t for t,m in zip(train.texts,train.mask[:,2]) if m]
-    if not vocabulary:raise ValueError('text baseline needs available training text')
+    # Fixed neutral vocabulary when this variant excludes text entirely.
+    # It is never derived from held-out text or labels.
+    vocabulary=vocabulary or ['unavailablemodality']
     vectorizer=TfidfVectorizer(max_features=256)
     vectorizer.fit(vocabulary)
     text={k:torch.from_numpy(vectorizer.transform([t if m else '' for t,m in zip(b.texts,b.mask[:,2])]).toarray()).float()
           for k,b in batches.items()}
     available=train.mask[:,2].numpy()
-    if set(train.labels.numpy()[available].tolist())!={0.,1.}:raise ValueError('text baseline needs both available training classes')
-    nb=MultinomialNB().fit(text['train'].numpy()[available],train.labels.numpy()[available])
+    nb=(MultinomialNB().fit(text['train'].numpy()[available],train.labels.numpy()[available])
+        if set(train.labels.numpy()[available].tolist())=={0.,1.} else None)
     model=FusionBaseline(len(vectorizer.vocabulary_),mode)
     available_series=train.series[train.mask[:,0]]
-    if not len(available_series):raise ValueError('time encoder needs available training observations')
-    model.series_mean.copy_(available_series.mean(dim=(0,1)))
-    model.series_std.copy_(available_series.std(dim=(0,1),unbiased=False).clamp_min(1e-6))
+    if len(available_series):
+        model.series_mean.copy_(available_series.mean(dim=(0,1)))
+        model.series_std.copy_(available_series.std(dim=(0,1),unbiased=False).clamp_min(1e-6))
     optimizer=torch.optim.Adam(model.parameters(),lr=0.001)
     losses=[]
     for _ in range(epochs):
@@ -131,7 +140,7 @@ def train_baseline(batches,mode='attention',epochs=1,seed=17):
         candidates=np.unique(np.r_[0.,scores['validation'],np.nextafter(float(max(scores['validation'])),math.inf)])
         threshold=max(candidates,key=lambda t:(f1_score(y,scores['validation']>=t,zero_division=0),float(t)))
         test=batches['test'];report={'mode':mode,'epochs':epochs,'losses':losses,'threshold':float(threshold),
-            'threshold_source':'validation_only','preprocessing_source':'training_only','pretrained_visual_weights':False,
+            'threshold_source':'validation_only','preprocessing_source':'training_only','pretrained_visual_weights':False,'visual_backbone_frozen':True,
             'test':metrics(test.labels.numpy(),scores['test']>=threshold),'ablations':{}}
         for column,name in enumerate(('time_only','image_only','text_only')):
             mask=torch.zeros_like(test.mask);mask[:,column]=test.mask[:,column]
@@ -144,7 +153,11 @@ def train_baseline(batches,mode='attention',epochs=1,seed=17):
             report['ablations'][name]=result
         valid=test.mask[:,2].numpy()
         report['text_naive_bayes']={'eligible_samples':int(valid.sum()),'abstained_samples':int((~valid).sum())}
-        if valid.any():report['text_naive_bayes'].update(metrics(test.labels.numpy()[valid],nb.predict(text['test'].numpy()[valid])))
+        if nb is not None and valid.any():
+            report['text_naive_bayes'].update(metrics(test.labels.numpy()[valid],nb.predict(text['test'].numpy()[valid])))
+        elif nb is None:
+            report['text_naive_bayes'].update(eligible_samples=0,abstained_samples=len(valid),
+                unavailable_reason='training text absent or lacks both classes')
     return model,vectorizer,nb,report
 
 

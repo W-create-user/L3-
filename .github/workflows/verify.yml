@@ -62,3 +62,4 @@ jobs:
         run: |
           python -m unittest discover -s deliverables/D04/tests -v
           python -m l3_system.monitoring.multimodal_model --synthetic-demo --output /tmp/d04-synthetic-report.json
+          python -m l3_system.monitoring.fusion_comparison --synthetic-demo --output /tmp/d04-comparison-report.json
