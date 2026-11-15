@@ -16,6 +16,20 @@ class ComparisonTests(unittest.TestCase):
             self.assertGreater(value['losses'][0],0)
         self.assertFalse(result['paired_comparison_established'])
 
+    def test_common_test_cohort_is_shared_without_changing_training(self):
+        batches=synthetic_batches();result=compare(batches,common_test_cohort=True)
+        self.assertEqual(result['test_cohort_samples'],4)
+        self.assertEqual(result['test_cohort_excluded_samples'],2)
+        self.assertEqual(len(batches['test'].labels),6)
+        for value in result['variants'].values():
+            self.assertEqual(value['sample_counts']['test']['eligible_samples'],4)
+            self.assertEqual(value['sample_counts']['test']['abstained_samples'],0)
+        self.assertFalse(result['paired_comparison_established'])
+
+    def test_common_cohort_empty_rejected(self):
+        batches=synthetic_batches();batches['test'].mask[:,1]=False
+        with self.assertRaises(ValueError):compare(batches,common_test_cohort=True)
+
     def test_missing_variant_samples_counted_not_filled(self):
         batches=synthetic_batches();original=batches['test'].mask.clone()
         batch,counts=subset(batches['test'],(1,))

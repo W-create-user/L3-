@@ -20,7 +20,17 @@ def subset(batch,columns):
     return result,{'input_samples':len(keep),'eligible_samples':len(indices),'abstained_samples':int((~keep).sum())}
 
 
-def compare(batches,*,epochs=1,seed=17):
+def compare(batches,*,epochs=1,seed=17,common_test_cohort=False):
+    if type(common_test_cohort)is not bool:raise ValueError('explicit cohort mode required')
+    # Selection depends only on pre-existing modality availability, not labels or scores.
+    test=batches['test'];common_mask=test.mask.all(dim=1)
+    common_indices=common_mask.nonzero().flatten().tolist()
+    if common_test_cohort and not common_indices:raise ValueError('no complete common test cohort')
+    if common_test_cohort:
+        common=Batch(test.series[common_mask].clone(),test.images[common_mask].clone(),
+            [test.texts[i] for i in common_indices],test.mask[common_mask].clone(),test.labels[common_mask].clone(),
+            [test.groups[i] for i in common_indices])
+        batches={**batches,'test':common}
     reports={}
     for name,(mode,columns) in VARIANTS.items():
         reduced={};counts={}
@@ -35,15 +45,19 @@ def compare(batches,*,epochs=1,seed=17):
             'text_naive_bayes':report['text_naive_bayes']}
     return {'schema_version':'D04Comparison/0.1','variants':reports,'epochs_per_variant':epochs,'seed':seed,
         'paired_comparison_established':False,'deployment_authorized':False,
-        'limits':'Available-case sample sets may differ. Independent retraining, not inference-only masking. Random frozen visual backbone has no pretrained semantics. Numerical superiority is not established.'}
+        'common_test_cohort':common_test_cohort,'original_test_samples':len(test.labels),
+        'test_cohort_samples':len(batches['test'].labels),
+        'test_cohort_excluded_samples':len(test.labels)-len(batches['test'].labels),
+        'limits':('Shared complete-case test subset excludes missing-modality cases; selection limits generalization. ' if common_test_cohort else 'Available-case test sample sets may differ. ')+ 'Independent retraining, not inference-only masking. Train/validation availability may differ. Random frozen visual backbone has no pretrained semantics. Numerical superiority is not established.'}
 
 
 if __name__=='__main__':
     import argparse,json
     from pathlib import Path
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--common-test-cohort',action='store_true')
     parser.add_argument('--synthetic-demo',action='store_true',required=True);parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();torch.set_num_threads(1)
-    result=compare(synthetic_batches());result['scope']='synthetic_engineering_only'
+    result=compare(synthetic_batches(),common_test_cohort=args.common_test_cohort);result['scope']='synthetic_engineering_only'
     with args.output.open('x') as stream:stream.write(json.dumps(result,indent=2,allow_nan=False)+'\n')
     print('Executed 7 independently retrained synthetic variants; no real process efficacy conclusion.')
