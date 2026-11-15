@@ -46,6 +46,14 @@ def save_bundle(directory,model,vectorizer,nb,*,binding,label_scope):
     if label_scope not in ('synthetic_fixture','sensor_fault','process_anomaly'):raise ValueError('explicit label scope required')
     if not isinstance(model,FusionBaseline) or not isinstance(vectorizer,TfidfVectorizer):raise ValueError('known D04 baseline required')
     if nb is not None and not isinstance(nb,MultinomialNB):raise ValueError('known text baseline required')
+    parameters=vectorizer.get_params()
+    # The baseline uses the stock word analyzer. Custom preprocessing cannot be
+    # represented safely by this numeric/JSON-only artifact contract.
+    if (parameters['input']!='content' or parameters['encoding']!='utf-8' or parameters['decode_error']!='strict'
+            or parameters['strip_accents'] is not None or parameters['stop_words'] is not None
+            or parameters['tokenizer'] is not None or parameters['preprocessor'] is not None
+            or parameters['analyzer']!='word' or parameters['dtype']!=np.float64):
+        raise ValueError('unsupported custom text preprocessing; no silent transform loss')
     n=len(vectorizer.vocabulary_)
     if n!=model.text.in_features or n<1 or n>256:raise ValueError('model/vocabulary dimensions differ')
     directory=Path(directory);directory.mkdir(parents=True,exist_ok=False)

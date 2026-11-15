@@ -45,6 +45,13 @@ class BundleTests(unittest.TestCase):
         self.receipt['card_sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
         with self.assertRaisesRegex(ValueError,'version'):self.load()
 
+    def test_custom_preprocessing_not_silently_lost(self):
+        vectorizer=deepcopy(self.vectorizer);vectorizer.set_params(stop_words='english')
+        target=self.root.parent/'unsupported'
+        with self.assertRaisesRegex(ValueError,'custom text preprocessing'):
+            save_bundle(target,self.model,vectorizer,self.nb,binding=self.binding,label_scope='synthetic_fixture')
+        self.assertFalse(target.exists())
+
     def test_no_overwrite(self):
         with self.assertRaises(FileExistsError):save_bundle(self.root,self.model,self.vectorizer,self.nb,binding=self.binding,label_scope='synthetic_fixture')
 
