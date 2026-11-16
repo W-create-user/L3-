@@ -1,0 +1,45 @@
+{
+  "schema_version": "ProcessRules/1.0",
+  "enabled": true,
+  "environment": "Atropine",
+  "version": "D-Atropine-isolated-exp-20261116-v1",
+  "observation_shape": [
+    39
+  ],
+  "action_shape": [
+    4
+  ],
+  "variables": {
+    "E_current": {
+      "source": "observation",
+      "index": 6,
+      "unit": "dimensionless",
+      "coordinate": "model_observation_normalize_false"
+    },
+    "E_reference": {
+      "source": "observation",
+      "index": 5,
+      "unit": "dimensionless",
+      "coordinate": "model_observation_normalize_false"
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "R-03-ATROPINE-EXPERIMENT-E",
+      "kind": "relative_upper",
+      "enabled": true,
+      "priority": 1,
+      "variable": "E_current",
+      "reference_variable": "E_reference",
+      "relative_margin": 0.1,
+      "observable_upper": 20.0,
+      "basis": {
+        "kind": "team_experiment",
+        "reference": "611a81fd4c78d206bf5f274261e0e713d8f10eb9:docs/R03_20261116_实验规则确认.md",
+        "reviewed_by": "project user confirmation recorded in PR9; no industrial certification",
+        "reviewed_on": "2026-11-16"
+      },
+      "suggestion": "Stop new automatic cycles; review cause, require 3 fresh valid states, released resources and human confirmation"
+    }
+  ]
+}

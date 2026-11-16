@@ -1,0 +1,135 @@
+{
+  "scope": "approved_isolated_Atropine_interface_baseline",
+  "episodes": [
+    {
+      "schema_version": "AtropineIsolatedExperiment/1.0",
+      "authorization_commit": "611a81fd4c78d206bf5f274261e0e713d8f10eb9",
+      "software_versions": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "casadi": "3.7.2",
+        "gym": "0.26.2",
+        "scipy": "1.17.0",
+        "requests": "2.34.2"
+      },
+      "code_file_sha256": {
+        "runtime.py": "1c6ecd31f61857196126eb8c9eb0d015856f2007704b95681fd1f20e210bf5e2",
+        "main.py": "e55371fb8e3f60d5f478bf3acec84faf6ce3ede5c4bcc9945af7f37a3754154b",
+        "execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+        "execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+        "monitoring/atropine_experiment.py": "8a7bf4a726c753163552d47570952fea2a665ea30e849c411e0644aa5765426e",
+        "agents/process_rules.py": "e4f146b584f7d4b42826a86d7ca65afebc3ead02b04792740f135eae7cdbefe0"
+      },
+      "experiment_enabled": true,
+      "industrial_safety_certified": false,
+      "fixture": false,
+      "config_sha256": "4acf1e46e985bd87571d9ef62cfe12564aa20bae3591ccaecc40eafc7051fffd",
+      "rule_config_sha256": "7687df9b417b724e7edbf9defaace1e576c28b89476650ef52fc7cd92d7c9617",
+      "source_file_sha256": {
+        "smpl/envs/atropineenv.py": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311",
+        "smpl/envs/models/atropine_process.py": "5165b6bf0556978af27cac7d810d5e37108fa64baccdd4fbdb2d416c9b91e88a",
+        "smpl/envs/_runtime_utils.py": "3afc4129c147edd04ebf7900b3a1374166857631ae09e2ecd080b4ba0b49344e",
+        "smpl/envs/utils.py": "0ea4f66ec000466a9e7c73a3c42b5ea014e80bf3fe5a7098ac207673edc4ae34",
+        "smpl/envs/helpers/constants.py": "9e65f95b8e7cc6d0127df01277e6a6e506978f3f0476b41d0002e0f46df4f935",
+        "smpl/envs/helpers/helper_funcs.py": "cca73f5854427aab253ac3c2b4abf985c9b0f24a7e392e33731a666c68c85c33",
+        "smpl/envs/models/config.py": "412c0b1bd029cdb85ac71a55227f1ddf1041046757144bb13732dcc2c32e9575",
+        "smpl/configdata/atropineenv/x0.txt": "e5e6e171e749b0bc763d1b9e939fd0655a151922a8e193f0396cc20445d16c6a",
+        "smpl/configdata/atropineenv/z0.txt": "6e855e7f095add34ff661a863f63bb7f0920dade25ce870695c9ee7c2f855dcd",
+        "smpl/configdata/atropineenv/model.npy": "e02df103c91bb8ca15e5775fb54e98ea5d5f4c0ef1cc7e9943fafdf0329d4f86"
+      },
+      "step_calls": 3,
+      "state": "autonomous",
+      "recovery_fresh_states": 0,
+      "automatic_recovery_sampling": false,
+      "seed": 1101
+    },
+    {
+      "schema_version": "AtropineIsolatedExperiment/1.0",
+      "authorization_commit": "611a81fd4c78d206bf5f274261e0e713d8f10eb9",
+      "software_versions": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "casadi": "3.7.2",
+        "gym": "0.26.2",
+        "scipy": "1.17.0",
+        "requests": "2.34.2"
+      },
+      "code_file_sha256": {
+        "runtime.py": "1c6ecd31f61857196126eb8c9eb0d015856f2007704b95681fd1f20e210bf5e2",
+        "main.py": "e55371fb8e3f60d5f478bf3acec84faf6ce3ede5c4bcc9945af7f37a3754154b",
+        "execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+        "execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+        "monitoring/atropine_experiment.py": "8a7bf4a726c753163552d47570952fea2a665ea30e849c411e0644aa5765426e",
+        "agents/process_rules.py": "e4f146b584f7d4b42826a86d7ca65afebc3ead02b04792740f135eae7cdbefe0"
+      },
+      "experiment_enabled": true,
+      "industrial_safety_certified": false,
+      "fixture": false,
+      "config_sha256": "4acf1e46e985bd87571d9ef62cfe12564aa20bae3591ccaecc40eafc7051fffd",
+      "rule_config_sha256": "7687df9b417b724e7edbf9defaace1e576c28b89476650ef52fc7cd92d7c9617",
+      "source_file_sha256": {
+        "smpl/envs/atropineenv.py": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311",
+        "smpl/envs/models/atropine_process.py": "5165b6bf0556978af27cac7d810d5e37108fa64baccdd4fbdb2d416c9b91e88a",
+        "smpl/envs/_runtime_utils.py": "3afc4129c147edd04ebf7900b3a1374166857631ae09e2ecd080b4ba0b49344e",
+        "smpl/envs/utils.py": "0ea4f66ec000466a9e7c73a3c42b5ea014e80bf3fe5a7098ac207673edc4ae34",
+        "smpl/envs/helpers/constants.py": "9e65f95b8e7cc6d0127df01277e6a6e506978f3f0476b41d0002e0f46df4f935",
+        "smpl/envs/helpers/helper_funcs.py": "cca73f5854427aab253ac3c2b4abf985c9b0f24a7e392e33731a666c68c85c33",
+        "smpl/envs/models/config.py": "412c0b1bd029cdb85ac71a55227f1ddf1041046757144bb13732dcc2c32e9575",
+        "smpl/configdata/atropineenv/x0.txt": "e5e6e171e749b0bc763d1b9e939fd0655a151922a8e193f0396cc20445d16c6a",
+        "smpl/configdata/atropineenv/z0.txt": "6e855e7f095add34ff661a863f63bb7f0920dade25ce870695c9ee7c2f855dcd",
+        "smpl/configdata/atropineenv/model.npy": "e02df103c91bb8ca15e5775fb54e98ea5d5f4c0ef1cc7e9943fafdf0329d4f86"
+      },
+      "step_calls": 3,
+      "state": "autonomous",
+      "recovery_fresh_states": 0,
+      "automatic_recovery_sampling": false,
+      "seed": 1102
+    },
+    {
+      "schema_version": "AtropineIsolatedExperiment/1.0",
+      "authorization_commit": "611a81fd4c78d206bf5f274261e0e713d8f10eb9",
+      "software_versions": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "casadi": "3.7.2",
+        "gym": "0.26.2",
+        "scipy": "1.17.0",
+        "requests": "2.34.2"
+      },
+      "code_file_sha256": {
+        "runtime.py": "1c6ecd31f61857196126eb8c9eb0d015856f2007704b95681fd1f20e210bf5e2",
+        "main.py": "e55371fb8e3f60d5f478bf3acec84faf6ce3ede5c4bcc9945af7f37a3754154b",
+        "execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+        "execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+        "monitoring/atropine_experiment.py": "8a7bf4a726c753163552d47570952fea2a665ea30e849c411e0644aa5765426e",
+        "agents/process_rules.py": "e4f146b584f7d4b42826a86d7ca65afebc3ead02b04792740f135eae7cdbefe0"
+      },
+      "experiment_enabled": true,
+      "industrial_safety_certified": false,
+      "fixture": false,
+      "config_sha256": "4acf1e46e985bd87571d9ef62cfe12564aa20bae3591ccaecc40eafc7051fffd",
+      "rule_config_sha256": "7687df9b417b724e7edbf9defaace1e576c28b89476650ef52fc7cd92d7c9617",
+      "source_file_sha256": {
+        "smpl/envs/atropineenv.py": "83ddd39a3d5a738237a915695ca4f594052a90e47e0578295af245ba4fa3a311",
+        "smpl/envs/models/atropine_process.py": "5165b6bf0556978af27cac7d810d5e37108fa64baccdd4fbdb2d416c9b91e88a",
+        "smpl/envs/_runtime_utils.py": "3afc4129c147edd04ebf7900b3a1374166857631ae09e2ecd080b4ba0b49344e",
+        "smpl/envs/utils.py": "0ea4f66ec000466a9e7c73a3c42b5ea014e80bf3fe5a7098ac207673edc4ae34",
+        "smpl/envs/helpers/constants.py": "9e65f95b8e7cc6d0127df01277e6a6e506978f3f0476b41d0002e0f46df4f935",
+        "smpl/envs/helpers/helper_funcs.py": "cca73f5854427aab253ac3c2b4abf985c9b0f24a7e392e33731a666c68c85c33",
+        "smpl/envs/models/config.py": "412c0b1bd029cdb85ac71a55227f1ddf1041046757144bb13732dcc2c32e9575",
+        "smpl/configdata/atropineenv/x0.txt": "e5e6e171e749b0bc763d1b9e939fd0655a151922a8e193f0396cc20445d16c6a",
+        "smpl/configdata/atropineenv/z0.txt": "6e855e7f095add34ff661a863f63bb7f0920dade25ce870695c9ee7c2f855dcd",
+        "smpl/configdata/atropineenv/model.npy": "e02df103c91bb8ca15e5775fb54e98ea5d5f4c0ef1cc7e9943fafdf0329d4f86"
+      },
+      "step_calls": 3,
+      "state": "autonomous",
+      "recovery_fresh_states": 0,
+      "automatic_recovery_sampling": false,
+      "seed": 1103
+    }
+  ],
+  "baseline_completed": true,
+  "no_physical_anomaly_ground_truth": true,
+  "raw_logs_publication_authorized": false,
+  "publication_note": "Aggregate baseline counts, version/config/source hashes only; full configuration and per-step logs remain local. No trajectory or learned/simulator weights included."
+}
