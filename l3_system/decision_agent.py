@@ -65,6 +65,16 @@ class DecisionAgent:
             ],
         }
 
+    def create_goal_plan(self, goal, registry, observation, history, *, capabilities, parent_plan_id=None):
+        """Build a numeric-goal HTN without invoking the physical executor.
+
+        Legacy create_task remains the supported local execution contract.
+        Numeric plans require the explicit goal dispatcher due in A05.
+        """
+        from l3_system.planning.methods import plan_goal
+        return plan_goal(goal, registry, observation, history,
+                         capabilities=capabilities, parent_plan_id=parent_plan_id)
+
     def recognize_goal(self, goal: str | dict[str, Any]) -> dict[str, Any]:
         if isinstance(goal, str):
             text = goal.strip()

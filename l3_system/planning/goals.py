@@ -137,3 +137,71 @@ def validate_goal_spec(goal, registry):
                 or action["range"]["upper"] > bounds["upper"]):
             raise ValueError(f"{name} range exceeds model bounds")
     return deepcopy(goal)
+
+
+def evaluate_goal(observation, history, goal, registry):
+    """Evaluate ordered, post-step samples; reset (step=0) never counts as hold.
+
+    Samples bind environment/registry/episode and carry the caller's explicit
+    safety_ok verdict. This is a numeric contract, not process-safety certification.
+    History is the complete earlier sample sequence for this goal, not rewards.
+    Invalid samples yield unevaluable, never success. Invalid specs raise.
+    """
+    goal = validate_goal_spec(goal, registry)
+    result = dict(status='unevaluable', achieved=False, in_range=False,
+                  deviation=None, consecutive_steps=0, remaining_steps=None,
+                  reason=None)
+    try:
+        if not isinstance(history, list):
+            raise ValueError('history must be a list')
+        samples = history + [observation]
+        previous = None
+        episode = None
+        count = 0
+        safe = True
+        variable = registry['variables'][goal['variable']]
+        low, high = goal['target_range']['lower'], goal['target_range']['upper']
+        for sample in samples:
+            _fields(sample, ('goal_id', 'environment_id', 'registry_version', 'episode_id',
+                             'step', 'observation', 'safety_ok'), 'sample')
+            for key in ('goal_id', 'environment_id', 'registry_version'):
+                if sample[key] != goal[key]:
+                    raise ValueError(f'sample {key} mismatch')
+            _text(sample['episode_id'], 'episode_id')
+            if episode is not None and sample['episode_id'] != episode:
+                raise ValueError('mixed episodes')
+            episode = sample['episode_id']
+            step = sample['step']
+            _integer(step, 0, 'step')
+            if (previous is None and step not in (0, 1)) or (previous is not None and step != previous + 1):
+                raise ValueError('history must be contiguous from step 0 or 1; no duplicate samples')
+            previous = step
+            if type(sample['safety_ok']) is not bool:
+                raise ValueError('explicit boolean safety_ok required')
+            safe = safe and sample['safety_ok']
+            vector = sample['observation']
+            if not isinstance(vector, (list, tuple)) or len(vector) != registry['observation_size']:
+                raise ValueError('observation shape mismatch')
+            for value in vector:
+                _number(value, 'observation value')
+            value = vector[variable['index']]
+            bounds = variable['bounds']
+            if bounds and not bounds['lower'] <= value <= bounds['upper']:
+                raise ValueError('goal variable outside declared domain')
+            inside = low <= value <= high
+            count = count + 1 if step > 0 and inside else 0
+        result.update(in_range=inside, deviation=value-low if value < low else value-high if value > high else 0,
+                      consecutive_steps=count, remaining_steps=max(0, goal['max_steps']-step))
+        if not safe:
+            result.update(status='failed', reason='safety_violation')
+        elif step > goal['max_steps']:
+            result.update(status='failed', reason='step_budget_exceeded')
+        elif count >= goal['hold_steps']:
+            result.update(status='succeeded', achieved=True)
+        elif step == goal['max_steps']:
+            result.update(status='failed', reason='goal_not_met_by_deadline')
+        else:
+            result.update(status='pending', reason='hold_window_incomplete' if inside else 'outside_target')
+    except ValueError as exc:
+        result.update(reason=str(exc))
+    return result

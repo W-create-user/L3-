@@ -1,0 +1,380 @@
+{
+  "schema_version": "2.0-draft",
+  "environment_id": "AtropineEnvGym",
+  "registry_version": "B-e0e12ec-atropine-1",
+  "evidence_ref": "https://github.com/W-create-user/L3-/tree/e0e12ec1aa577a66578887f436237dc14d25ee9d/handoffs/B_to_D_20261112/",
+  "observation_size": 39,
+  "action_size": 4,
+  "variables": {
+    "step_index_before_increment": {
+      "source": "observation",
+      "index": 0,
+      "unit": "step_index",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 100.0
+      }
+    },
+    "E_factor_steady": {
+      "source": "observation",
+      "index": 5,
+      "unit": "dimensionless",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 15.0
+      }
+    },
+    "E_factor_current": {
+      "source": "observation",
+      "index": 6,
+      "unit": "dimensionless",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 20.0
+      }
+    },
+    "F_organic_0": {
+      "source": "observation",
+      "index": 9,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_1": {
+      "source": "observation",
+      "index": 10,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_2": {
+      "source": "observation",
+      "index": 11,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_3": {
+      "source": "observation",
+      "index": 12,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_4": {
+      "source": "observation",
+      "index": 13,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_5": {
+      "source": "observation",
+      "index": 14,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_6": {
+      "source": "observation",
+      "index": 15,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_7": {
+      "source": "observation",
+      "index": 16,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_8": {
+      "source": "observation",
+      "index": 17,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_9": {
+      "source": "observation",
+      "index": 18,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_10": {
+      "source": "observation",
+      "index": 19,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_11": {
+      "source": "observation",
+      "index": 20,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_12": {
+      "source": "observation",
+      "index": 21,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_organic_13": {
+      "source": "observation",
+      "index": 22,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_0": {
+      "source": "observation",
+      "index": 23,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_1": {
+      "source": "observation",
+      "index": 24,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_2": {
+      "source": "observation",
+      "index": 25,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_3": {
+      "source": "observation",
+      "index": 26,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_4": {
+      "source": "observation",
+      "index": 27,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_5": {
+      "source": "observation",
+      "index": 28,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_6": {
+      "source": "observation",
+      "index": 29,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_7": {
+      "source": "observation",
+      "index": 30,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_8": {
+      "source": "observation",
+      "index": 31,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_9": {
+      "source": "observation",
+      "index": 32,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_10": {
+      "source": "observation",
+      "index": 33,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_11": {
+      "source": "observation",
+      "index": 34,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_12": {
+      "source": "observation",
+      "index": 35,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "F_aqueous_13": {
+      "source": "observation",
+      "index": 36,
+      "unit": "mol/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "Q_organic": {
+      "source": "observation",
+      "index": 37,
+      "unit": "L/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "Q_aqueous": {
+      "source": "observation",
+      "index": 38,
+      "unit": "L/min",
+      "coordinate": "model_observation_normalize_false",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 0.5
+      }
+    },
+    "Tropine_in_DMF_feed": {
+      "source": "action",
+      "index": 0,
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "bounds": {
+        "lower": -0.0001574199995957315,
+        "upper": 1.924762000271585e-05
+      }
+    },
+    "Phenylacetylchloride_feed": {
+      "source": "action",
+      "index": 1,
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "bounds": {
+        "lower": -0.0014623400056734681,
+        "upper": 0.012211842462420464
+      }
+    },
+    "external_stream_3": {
+      "source": "action",
+      "index": 2,
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "bounds": {
+        "lower": -0.00021811999613419175,
+        "upper": 0.001821549842134118
+      }
+    },
+    "external_stream_4": {
+      "source": "action",
+      "index": 3,
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "bounds": {
+        "lower": -0.003004539990797639,
+        "upper": 0.00035972922341898084
+      }
+    }
+  }
+}

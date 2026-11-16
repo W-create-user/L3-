@@ -1,0 +1,61 @@
+{
+  "source_commit": "e0e12ec1aa577a66578887f436237dc14d25ee9d",
+  "source_sha256": {
+    "handoffs/B_to_D_20261112/observation_schema_verified.json": "f70731fac3f3ca855b830e41962b158feb98358378b1d89e3cdb8be0efa3ed67",
+    "handoffs/B_to_D_20261112/action_dictionary.json": "0d680df0821d7dda1d67637f4dfe5ceef7888a7ab21fe904a3a417d40f53c14c"
+  },
+  "excluded_observations": [
+    {
+      "name": "USS_1",
+      "reason": "inferred_from_source_conversion"
+    },
+    {
+      "name": "USS_2",
+      "reason": "inferred_from_source_conversion"
+    },
+    {
+      "name": "USS_3",
+      "reason": "inferred_from_source_conversion"
+    },
+    {
+      "name": "USS_4",
+      "reason": "inferred_from_source_conversion"
+    },
+    {
+      "name": "estimator_x_1",
+      "reason": "unconfirmed"
+    },
+    {
+      "name": "estimator_x_2",
+      "reason": "unconfirmed"
+    }
+  ],
+  "action_unit_notes": {
+    "Tropine_in_DMF_feed": {
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "physical_value_formula": "request_delta + USS[index]",
+      "plant_L_per_min_formula": "(request_delta + USS[index])/1000"
+    },
+    "Phenylacetylchloride_feed": {
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "physical_value_formula": "request_delta + USS[index]",
+      "plant_L_per_min_formula": "(request_delta + USS[index])/1000"
+    },
+    "external_stream_3": {
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "physical_value_formula": "request_delta + USS[index]",
+      "plant_L_per_min_formula": "(request_delta + USS[index])/1000"
+    },
+    "external_stream_4": {
+      "unit_status": "source_conversion_inferred_not_field_calibrated",
+      "physical_value_formula": "request_delta + USS[index]",
+      "plant_L_per_min_formula": "(request_delta + USS[index])/1000"
+    }
+  },
+  "r03_enabled": false,
+  "limitations": [
+    "Model Box is not a process-safety threshold.",
+    "Action units retain B source-inference qualifications.",
+    "No approved production target or mAb per-variable registry supplied."
+  ]
+}

@@ -10,6 +10,7 @@ from pathlib import Path
 
 from l3_system.agents.scheduling_agent import SchedulingAgent
 from l3_system.decision_agent import DecisionAgent
+from l3_system.planning.replanning import ReplanningController
 
 
 class MultiAgentSystem:
@@ -45,6 +46,7 @@ class MultiAgentSystem:
         if self.state != 'autonomous':
             raise RuntimeError('Human confirmation is required before another cycle')
         attempts = []
+        recovery = ReplanningController(max_action_regenerations=self.max_action_regenerations)
         try:
             for attempt in range(self.max_action_regenerations + 1):
                 generator = (lambda obs, space, unused: action_generator(obs, space, attempt)) if action_generator else None
@@ -55,15 +57,26 @@ class MultiAgentSystem:
                 attempts.append(result)
                 self.history.append(result)
                 summary = result['summary']
+                result['parent_plan_id'] = attempts[-2]['summary']['task_id'] if len(attempts) > 1 else None
+                result['root_plan_id'] = attempts[0]['summary']['task_id']
                 if summary['run_status'] == 'completed':
                     if self.state == 'restricted':
                         self._transition('autonomous', 'reviewed_replacement_completed', task_id=summary['task_id'])
                     break
                 # Only an explicitly rejected, unexecuted candidate can be replaced.
                 # Never repeat an uncertain/failed physical step or checker error.
-                if (summary['failure_reason'] == 'safety_rejected'
-                        and summary['step_delta'] == 0 and action_generator is not None
+                failure = {**summary, 'execution_status': 'failed',
+                           'task_id': result['root_plan_id'], 'subtask_id': 'candidate',
+                           'executed': False if summary['step_delta'] == 0 else True,
+                           'step_called': summary['step_delta'] != 0}
+                classification = recovery.classify(failure)
+                summary['failure_classification'] = classification
+                if (classification['action'] == 'regenerate'
+                        and summary.get('all_C_locks_released') is True
+                        and not self.executor._pending
+                        and action_generator is not None
                         and attempt < self.max_action_regenerations):
+                    recovery.record_action_regeneration(failure)
                     self._transition('restricted', 'regenerate_rejected_candidate',
                                      task_id=summary['task_id'], attempt=attempt + 1)
                     continue

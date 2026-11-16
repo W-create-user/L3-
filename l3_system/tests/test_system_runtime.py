@@ -54,6 +54,8 @@ class SystemRuntimeTests(unittest.TestCase):
             return space.high + 1 if attempt == 0 else (space.low + space.high)/2
         result = self.system.run_cycle(action_generator=proposal)
         self.assertEqual(seen, [0, 1])
+        self.assertEqual(result['parent_plan_id'], result['recovery_attempts'][0]['summary']['task_id'])
+        self.assertEqual(result['root_plan_id'], result['parent_plan_id'])
         self.assertEqual(result['summary']['system_state'], 'autonomous')
         self.assertEqual(result['summary']['action_regenerations'], 1)
         self.assertEqual(result['recovery_attempts'][0]['summary']['step_delta'], 0)
