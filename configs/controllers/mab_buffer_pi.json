@@ -1,0 +1,26 @@
+{
+  "research_only": true,
+  "production_target_approved": false,
+  "name": "mab_buffer_PI_candidate_20261116",
+  "setpoint_dm": 15.0,
+  "kp_L_min_per_dm": 0.2777777777777778,
+  "ki_L_min_per_dm_min": 4.62962962962963e-05,
+  "kd_L_min_min_per_dm": 0.0,
+  "sampling_period_min": 60,
+  "horizon_steps": 10,
+  "target_tolerance_dm": 0.05,
+  "hold_steps": 3,
+  "source": "mab_helpers.py _pcontroller gives Kp=uscale[7]/(60*xscale[17]); ki=kp/6000 is a B research setting, not a tuned production parameter",
+  "tuning_seed": 1610,
+  "evaluation_seeds": [
+    1611,
+    1612
+  ],
+  "initial_buffer_offset_dm": 0.3,
+  "anti_windup": "conditional integration; state commits only on successful execution",
+  "scope": "PI special case of PID (Kd=0), simulated buffer-level recovery only; other axes steady; no capture optimization or R03",
+  "evaluation_initial_buffer_offsets_dm": {
+    "1611": 0.15,
+    "1612": -0.2
+  }
+}

@@ -5,3 +5,4 @@
 *.npy binary
 *.png binary
 vendor/** -text
+docs/data_dictionary.csv -text

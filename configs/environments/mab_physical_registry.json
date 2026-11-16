@@ -1,0 +1,110 @@
+{
+  "schema_version": "2.0-draft",
+  "environment_id": "MAbEnvGym",
+  "registry_version": "B-mab-physical-research-20261116-1",
+  "evidence_ref": "docs/data_dictionary.csv",
+  "observation_size": 1970,
+  "action_size": 9,
+  "variables": {
+    "buffer_height": {
+      "source": "observation",
+      "index": 17,
+      "unit": "dm",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 49.99999809265137
+      }
+    },
+    "F_in": {
+      "source": "action",
+      "index": 0,
+      "unit": "L/min",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 17.351357638835907,
+        "upper": 50.0
+      }
+    },
+    "F_1": {
+      "source": "action",
+      "index": 1,
+      "unit": "L/min",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 17.355358600616455,
+        "upper": 50.0
+      }
+    },
+    "F_r": {
+      "source": "action",
+      "index": 2,
+      "unit": "L/min",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 0.004001138950116001,
+        "upper": 50.0
+      }
+    },
+    "F_2": {
+      "source": "action",
+      "index": 3,
+      "unit": "L/min",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 17.351357638835907,
+        "upper": 50.0
+      }
+    },
+    "GLC_in": {
+      "source": "action",
+      "index": 4,
+      "unit": "mM",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 1599.998950958252,
+        "upper": 2000.0
+      }
+    },
+    "GLN_in": {
+      "source": "action",
+      "index": 5,
+      "unit": "mM",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 10.396975092589855,
+        "upper": 2000.0
+      }
+    },
+    "Tc": {
+      "source": "action",
+      "index": 6,
+      "unit": "degC",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 29.59999442100525,
+        "upper": 50.0
+      }
+    },
+    "buffer_outlet": {
+      "source": "action",
+      "index": 7,
+      "unit": "L/min",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 17.351357638835907,
+        "upper": 50.0
+      }
+    },
+    "capture_switch": {
+      "source": "action",
+      "index": 8,
+      "unit": "dimensionless",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    }
+  }
+}

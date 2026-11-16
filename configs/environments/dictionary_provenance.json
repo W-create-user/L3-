@@ -1,0 +1,16 @@
+{
+  "dictionary_sha256": "f2cca8b9db66a14d612d5b96e08f2046ac0537050df64a13a0ae044863e1f276",
+  "rows": 2022,
+  "unit_scope": "source declared/inferred only, not field calibrated",
+  "mab_reshape": "index=19+13*axial_node+compartment; 150 nodes, 13 compartments; last index1969 separate integral",
+  "mab_control_pair": {
+    "observation_index": 17,
+    "action_index": 7,
+    "equation": "dh/dt=(F_in_buffer-F_out_buffer)/Ac_buffer",
+    "source": [
+      "vendor/smpl/smpl/envs/helpers/mab_helpers.py",
+      515
+    ]
+  },
+  "unconfirmed": "q1/q2 state units, accumulation integral physical mass conversion, reliable process ranges and real sensor equivalence"
+}
