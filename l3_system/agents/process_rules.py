@@ -13,7 +13,10 @@ import numpy as np
 
 
 def _number(value):
-    return type(value) in (int, float) and math.isfinite(value)
+    try:
+        return type(value) in (int, float) and math.isfinite(value)
+    except OverflowError:
+        return False
 
 
 def _text(value):
@@ -65,7 +68,8 @@ class ProcessRuleEngine:
         specific = {'range': {'variable', 'lower', 'upper'},
                     'rate': {'variable', 'max_rate_per_second'},
                     'precondition': {'variable', 'equals'},
-                    'freshness': {'max_age_seconds'}}
+                    'freshness': {'max_age_seconds'},
+                    'relative_upper': {'variable','reference_variable','relative_margin','observable_upper'}}
         for rule in c['rules']:
             if not isinstance(rule, dict) or rule.get('kind') not in specific:
                 raise ValueError('unknown process rule kind')
@@ -95,6 +99,17 @@ class ProcessRuleEngine:
                     raise ValueError('unknown rule variable')
                 if kind == 'rate' and c['variables'][rule['variable']]['source'] != 'action':
                     raise ValueError('rate rule must target an action variable')
+            if kind == 'relative_upper':
+                reference=rule['reference_variable']
+                if reference not in c['variables'] or reference==rule['variable']:
+                    raise ValueError('distinct known relative reference required')
+                target=c['variables'][rule['variable']];ref=c['variables'][reference]
+                if (target['source']!='observation' or ref['source']!='observation'
+                        or any(target[k]!=ref[k] for k in ('unit','coordinate'))):
+                    raise ValueError('relative variables require matching observation units/coordinates')
+                if (not _number(rule['relative_margin']) or rule['relative_margin']<0
+                        or not _number(rule['observable_upper']) or rule['observable_upper']<=0):
+                    raise ValueError('finite nonnegative margin and positive observable ceiling required')
             if kind == 'range':
                 if not all(_number(rule[k]) for k in ('lower', 'upper')) or rule['lower'] > rule['upper']:
                     raise ValueError('invalid finite range')
@@ -163,6 +178,7 @@ class ProcessRuleEngine:
         required = {r['variable'] for r in self._rules if r['kind'] != 'freshness'
                     and (action is not None or r['kind'] != 'precondition')
                     and (action is not None or self._config['variables'][r['variable']]['source'] != 'action')}
+        required.update(r['reference_variable'] for r in self._rules if r['kind']=='relative_upper')
         for name in required:
             var = self._config['variables'][name]
             supplied = context.get('variables', {}).get(name) if isinstance(context.get('variables'), dict) else None
@@ -183,7 +199,16 @@ class ProcessRuleEngine:
                 if var['source'] not in arrays:
                     continue
                 value = float(arrays[var['source']][var['index']])
-                if kind == 'range':
+                if kind == 'relative_upper':
+                    refvar=self._config['variables'][rule['reference_variable']]
+                    reference=float(arrays['observation'][refvar['index']])
+                    upper=(1+rule['relative_margin'])*reference
+                    if reference<=0 or not math.isfinite(upper) or upper>=rule['observable_upper']:
+                        violations.append(self._violation(rule['rule_id'],
+                            'Relative upper cannot be evaluated: nonpositive reference or censored/nonfinite limit',rule=rule))
+                        continue
+                    violated=value>upper  # Equality does not breach an upper-only rule.
+                elif kind == 'range':
                     violated = not rule['lower'] <= value <= rule['upper']
                 elif kind == 'precondition':
                     violated = value != rule['equals']
