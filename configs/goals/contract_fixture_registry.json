@@ -1,0 +1,12 @@
+{
+  "schema_version": "2.0-draft",
+  "environment_id": "SYNTHETIC_CONTRACT_ONLY",
+  "registry_version": "fixture-1",
+  "evidence_ref": "synthetic fixture for validation only; no physical interpretation",
+  "observation_size": 1,
+  "action_size": 1,
+  "variables": {
+    "test_concentration": {"source": "observation", "index": 0, "unit": "test_unit", "coordinate": "synthetic_absolute", "bounds": {"lower": 0.0, "upper": 5.0}},
+    "test_feed": {"source": "action", "index": 0, "unit": "test_action_unit", "coordinate": "synthetic_delta", "bounds": {"lower": -1.0, "upper": 1.0}}
+  }
+}

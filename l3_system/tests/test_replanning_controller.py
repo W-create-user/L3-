@@ -21,18 +21,19 @@ class ReplanningControllerTests(unittest.TestCase):
             "exclude_failed_agent": False})
         controller = ReplanningController()
         result = {"task_id": "P-REPLAN", "subtask_id": "P-REPLAN-01",
-                  "execution_status": "rejected", "safety_decision": {"rule_id": "R-02"}}
+                  "execution_status": "rejected", "executed": False, "step_called": False, "safety_decision": {"rule_id": "R-02"}}
         outcome = controller.retry_assignment(self.scheduler, result, self.initial_bids)
         self.assertEqual(outcome["assignment_status"], "action_regeneration_required")
         self.assertEqual(controller.action_regenerations, {})
 
-    def test_execution_timeout_can_reassign_to_alternative(self):
+    def test_proven_unexecuted_timeout_can_reassign_after_release(self):
         self.scheduler.update_feedback({"task_id": "P-REPLAN", "subtask_id": "P-REPLAN-01",
             "execution_status": "failed", "failure_reason": "execution_timeout",
             "exclude_failed_agent": True})
         controller = ReplanningController()
         result = {"task_id": "P-REPLAN", "subtask_id": "P-REPLAN-01",
-                  "execution_status": "failed", "failure_reason": "execution_timeout"}
+                  "execution_status": "failed", "failure_reason": "execution_timeout",
+                  "executed": False, "step_called": False, "release_confirmed": True}
         bids = [
             {"task_id": "P-REPLAN", "subtask_id": "P-REPLAN-01", "agent_id": "ExecutionAgent-01",
              "estimated_cost": .1, "capability_match": .99, "load": .1},

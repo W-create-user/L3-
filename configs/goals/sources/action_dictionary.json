@@ -1,0 +1,260 @@
+[
+  {
+    "backend": "AtropineEnvGym",
+    "index": 0,
+    "name": "Tropine_in_DMF_feed",
+    "unit": "mL/min (inferred from model u/1000 -> L/min)",
+    "unit_status": "source_conversion_inferred_not_field_calibrated",
+    "request_scale": "delta_from_USS",
+    "physical_value_formula": "request_delta + USS[index]",
+    "plant_L_per_min_formula": "(request_delta + USS[index])/1000",
+    "uss": 0.4078,
+    "low": -0.0001574199995957315,
+    "high": 1.924762000271585e-05,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 407,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    },
+    "unit_source": {
+      "path": "vendor/smpl/smpl/envs/models/atropine_process.py",
+      "line": 336,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "AtropineEnvGym",
+    "index": 1,
+    "name": "Phenylacetylchloride_feed",
+    "unit": "mL/min (inferred from model u/1000 -> L/min)",
+    "unit_status": "source_conversion_inferred_not_field_calibrated",
+    "request_scale": "delta_from_USS",
+    "physical_value_formula": "request_delta + USS[index]",
+    "plant_L_per_min_formula": "(request_delta + USS[index])/1000",
+    "uss": 0.1089,
+    "low": -0.0014623400056734681,
+    "high": 0.012211842462420464,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 407,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    },
+    "unit_source": {
+      "path": "vendor/smpl/smpl/envs/models/atropine_process.py",
+      "line": 340,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "AtropineEnvGym",
+    "index": 2,
+    "name": "external_stream_3",
+    "unit": "mL/min (inferred from model u/1000 -> L/min)",
+    "unit_status": "source_conversion_inferred_not_field_calibrated",
+    "request_scale": "delta_from_USS",
+    "physical_value_formula": "request_delta + USS[index]",
+    "plant_L_per_min_formula": "(request_delta + USS[index])/1000",
+    "uss": 0.3888,
+    "low": -0.00021811999613419175,
+    "high": 0.001821549842134118,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 407,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    },
+    "unit_source": {
+      "path": "vendor/smpl/smpl/envs/models/atropine_process.py",
+      "line": 375,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "AtropineEnvGym",
+    "index": 3,
+    "name": "external_stream_4",
+    "unit": "mL/min (inferred from model u/1000 -> L/min)",
+    "unit_status": "source_conversion_inferred_not_field_calibrated",
+    "request_scale": "delta_from_USS",
+    "physical_value_formula": "request_delta + USS[index]",
+    "plant_L_per_min_formula": "(request_delta + USS[index])/1000",
+    "uss": 0.2126,
+    "low": -0.003004539990797639,
+    "high": 0.00035972922341898084,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "line": 407,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    },
+    "unit_source": {
+      "path": "vendor/smpl/smpl/envs/models/atropine_process.py",
+      "line": 382,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 0,
+    "name": "F_in",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 50.0,
+    "low": 0.34702715277671814,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 1,
+    "name": "F_1",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 50.0,
+    "low": 0.3471071720123291,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 2,
+    "name": "F_r",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 50.0,
+    "low": 8.002277900232002e-05,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 3,
+    "name": "F_2",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 50.0,
+    "low": 0.34702715277671814,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 4,
+    "name": "GLC_in",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 2000.0,
+    "low": 0.799999475479126,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 5,
+    "name": "GLN_in",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 2000.0,
+    "low": 0.005198487546294928,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 6,
+    "name": "Tc",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 50.0,
+    "low": 0.591999888420105,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 7,
+    "name": "buffer_outlet_flow",
+    "unit": "unconfirmed",
+    "unit_status": "requires_B03_per_variable_verification",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 50.0,
+    "low": 0.34702715277671814,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  },
+  {
+    "backend": "MAbEnvGym",
+    "index": 8,
+    "name": "capture_column_switch",
+    "unit": "dimensionless_switch",
+    "unit_status": "source_threshold_semantics",
+    "request_scale": "physical_value/uscale[index]",
+    "physical_value_formula": "model_action * uscale[index]",
+    "uscale": 1.0,
+    "low": 0.0,
+    "high": 1.0,
+    "normalize": false,
+    "source": {
+      "path": "vendor/smpl/smpl/envs/mabenv.py",
+      "line": 175,
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972"
+    }
+  }
+]

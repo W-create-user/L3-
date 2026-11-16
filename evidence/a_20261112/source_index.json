@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-12",
+  "main": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+  "b_handoff": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+  "d_work": "b966f8af63cf3cf2370b10eec752501219da1a71",
+  "files": [
+    {
+      "path": "l3_system/decision_agent.py",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "6e3ce87605bf520a8efa0423535d1e6c9d91a8d9"
+    },
+    {
+      "path": "l3_system/main.py",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "af74f9e0e14e7a23344bf2390bf9ff7e6e4a0e4e"
+    },
+    {
+      "path": "l3_system/runtime.py",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "604737398483e3323b8ed3d8ac978719201ecacd"
+    },
+    {
+      "path": "l3_system/execution/task_contract.py",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "0353d3c2c1e77d1f35195f420ff1d41c7f8584a6"
+    },
+    {
+      "path": "l3_system/adapters/b_to_d_adapter.py",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "79be0c30ce5fb59175d1c6271ee968e9e250e1d4"
+    },
+    {
+      "path": "l3_system/adapters/feedback_adapter.py",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "5fa0a775081f4ea5fe1b31e3a5168f79bab236d0"
+    },
+    {
+      "path": "docs/需求验收矩阵.md",
+      "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+      "blob_sha": "4e041115d0519d748927b7a58f049c522882cad7"
+    },
+    {
+      "path": "handoffs/B_to_D_20261112/README.md",
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "blob_sha": "60838bc57d7cf601d9fc6199d3565130590fd536"
+    },
+    {
+      "path": "handoffs/B_to_D_20261112/action_dictionary.json",
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "blob_sha": "c010c970cb46984a1847b4388534a4526314babe"
+    },
+    {
+      "path": "handoffs/B_to_D_20261112/observation_schema_verified.json",
+      "commit": "c3dc5cc12d5f5bdd2ae39673bcf74529a24912d3",
+      "blob_sha": "f1a4f61bd21614de340c3a130f0d677879149ede"
+    },
+    {
+      "path": "deliverables/D01/README.md",
+      "commit": "b966f8af63cf3cf2370b10eec752501219da1a71",
+      "blob_sha": "0068598f9be7c8edc441a03861d8a3d760c50349"
+    },
+    {
+      "path": "docs/D02_工艺规则与运行围栏.md",
+      "commit": "b966f8af63cf3cf2370b10eec752501219da1a71",
+      "blob_sha": "3ca3683e96c70274e0a6b8482344e17545e2fb3d"
+    },
+    {
+      "path": "docs/D03_孤立森林训练与统计R03.md",
+      "commit": "b966f8af63cf3cf2370b10eec752501219da1a71",
+      "blob_sha": "29ca2b8faa5ee53705a88f04283478781eb17564"
+    }
+  ]
+}
