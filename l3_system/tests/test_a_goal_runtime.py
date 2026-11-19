@@ -3,6 +3,9 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
+
+import numpy as np
 
 from l3_system.agents.monitoring_agent import MonitoringAgent
 from l3_system.execution import ExecutionAgent
@@ -66,6 +69,45 @@ class NumericGoalRuntimeTests(unittest.TestCase):
         self.assertEqual(self.adapter.step_calls, 1)
         self.assertEqual(self.system.state, "takeover_requested")
         self.assertFalse(self.system.scheduler.active_agent_tasks)
+
+    def use_b03_projection_fixture(self):
+        # Reduced mock of B03 metadata so normal CI need not install optional MPCTools.
+        self.adapter.metadata = {
+            "environment_id": "MAbEnvGym", "adapter_schema_version": "B03/1.0",
+            "normalize": False, "uss_subtracted": False,
+            "observation_coordinate": "physical_divided_by_xscale",
+            "action_coordinate": "physical_divided_by_uscale",
+        }
+        self.adapter._xscale = np.full(39, 10.0)
+        self.adapter.action_coordinates = SimpleNamespace(to_physical=lambda vector: np.asarray(vector) * 5)
+        self.registry["environment_id"] = self.goal["environment_id"] = "MAbEnvGym"
+        self.goal["coordinate"] = "physical_projection"
+        for variable in self.registry["variables"].values():
+            variable["coordinate"] = "physical_projection"
+        for action in self.goal["allowed_actions"].values():
+            action["coordinate"] = "physical_projection"
+        self.goal["target_range"] = {"lower": 0.1, "upper": 0.4}
+
+    def test_projection_changes_goal_evidence_but_not_model_input(self):
+        self.use_b03_projection_fixture()
+        policy_inputs = []
+
+        def policy(raw, *_):
+            policy_inputs.append(raw[6])
+            return [0] * 4
+
+        result = run_numeric_goal(self.system, self.goal, self.registry, environment="MAbEnvGym", policy=policy)
+        self.assertEqual(result["summary"]["status"], "succeeded")
+        self.assertEqual(policy_inputs, [0.0, 0.01])
+        self.assertEqual([sample["observation"][6] for sample in result["samples"]], [0.0, 0.1, 0.2])
+
+    def test_projection_enforces_physical_action_limit_before_step(self):
+        self.use_b03_projection_fixture()
+        result = run_numeric_goal(self.system, self.goal, self.registry, environment="MAbEnvGym",
+                                  policy=lambda *_: [0.001] * 4)
+        self.assertEqual(result["summary"]["status"], "failed")
+        self.assertEqual(self.adapter.step_calls, 0)
+        self.assertFalse(self.system.executor._pending)
 
     def test_web_operations_require_current_form_and_explicit_resume(self):
         import re
