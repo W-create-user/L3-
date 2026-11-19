@@ -15,11 +15,12 @@ from l3_system.planning.replanning import ReplanningController
 
 class MultiAgentSystem:
     def __init__(self, *, executor, monitor, scheduler=None, decision=None,
-                 event_path=None, max_action_regenerations=0):
+                 event_path=None, max_action_regenerations=0, bid_provider=None):
         if type(max_action_regenerations) is not int or max_action_regenerations < 0:
             raise ValueError('max_action_regenerations must be a nonnegative integer')
         if getattr(monitor, 'demo_mode', True):
             raise ValueError('A live-space monitor is required')
+        self.bid_provider = bid_provider
         self.executor = executor
         self.monitor = monitor
         self.scheduler = scheduler if scheduler is not None else SchedulingAgent()
@@ -41,7 +42,7 @@ class MultiAgentSystem:
         self.transitions.append(record)
         self.state = state
 
-    def run_cycle(self, goal='执行一次仿真控制任务', *, action_generator=None):
+    def run_cycle(self, goal='执行一次仿真控制任务', *, action_generator=None, goal_cycle=None):
         from l3_system.main import run_control_cycle
         if self.state != 'autonomous':
             raise RuntimeError('Human confirmation is required before another cycle')
@@ -53,7 +54,8 @@ class MultiAgentSystem:
                 result = run_control_cycle(
                     goal=goal, executor=self.executor, monitor=self.monitor,
                     scheduler=self.scheduler, decision=self.decision,
-                    action_generator=generator, event_path=self.event_path)
+                    action_generator=generator, event_path=self.event_path, goal_cycle=goal_cycle,
+                    **({"bid_provider": self.bid_provider} if self.bid_provider else {}))
                 attempts.append(result)
                 self.history.append(result)
                 summary = result['summary']
@@ -71,7 +73,7 @@ class MultiAgentSystem:
                            'step_called': summary['step_delta'] != 0}
                 classification = recovery.classify(failure)
                 summary['failure_classification'] = classification
-                if (classification['action'] == 'regenerate'
+                if (goal_cycle is None and classification['action'] == 'regenerate'
                         and summary.get('all_C_locks_released') is True
                         and not self.executor._pending
                         and action_generator is not None
@@ -103,8 +105,8 @@ class MultiAgentSystem:
             raise ValueError('operator and reason must be non-empty strings')
         if type(reset) is not bool:
             raise ValueError('reset must be boolean')
-        if self.scheduler.active_agent_tasks:
-            raise RuntimeError('Outstanding assignments must be resolved before resuming')
+        if self.scheduler.active_agent_tasks or self.executor._pending:
+            raise RuntimeError('Outstanding assignments or action requests must be resolved before resuming')
         if reset:
             self._transition('takeover_requested', 'human_requested_new_episode', operator=operator, note=reason)
             self.executor.reset(seed=seed)

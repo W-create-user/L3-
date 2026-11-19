@@ -1,4 +1,4 @@
-"""A02 draft GoalSpec validation, deliberately not wired to physical execution.
+"""A02 GoalSpec validation and evaluation for simulation goals.
 
 The variable registry is supplied by a trusted, versioned B/D handoff. Matching
 metadata does not prove physical calibration, reachability or safety approval.
