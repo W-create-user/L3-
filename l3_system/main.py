@@ -24,6 +24,9 @@ from l3_system.execution import EnvironmentAdapter, ExecutionAgent
 OWNER_BY_TASK = {
     "collect_observation": EXECUTOR_ID,
     "evaluate_goal": "DecisionAgent-01",
+    "select_hold_policy": "DecisionAgent-01",
+    "select_adjust_policy": "DecisionAgent-01",
+    "verify_goal": "DecisionAgent-01",
     "evaluate_state": "DecisionAgent-01",
     "return_state_result": "DecisionAgent-01",
     "generate_action_intent": "DecisionAgent-01",
@@ -58,7 +61,8 @@ def _default_action_generator(observation, action_space, attempt=0):
 
 
 def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
-                      scheduler=None, decision=None, action_generator=None, event_path=None):
+                      scheduler=None, decision=None, action_generator=None, event_path=None,
+                      goal_cycle=None, bid_provider=None):
     """Run one HTN chain. Every awarded stage returns terminal feedback to C.
 
     B owns pending ActionRequests and invalidates them on use/reset. D reviews
@@ -70,10 +74,11 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
     if executor_id != EXECUTOR_ID:
         raise ValueError(f"Configured executor identity must be {EXECUTOR_ID!r}")
     decision = decision if decision is not None else DecisionAgent()
-    parent = decision.task_to_dict(decision.create_task(goal))
+    parent = (goal_cycle.parent_task() if goal_cycle is not None
+              else decision.task_to_dict(decision.create_task(goal)))
     # Do not report a production goal as satisfied when its predicates have no
     # implementation. The finite MVP only verifies its documented task chain.
-    if (parent['preconditions']
+    if goal_cycle is None and (parent['preconditions']
             or parent['completion_criteria'] != ['all_subtasks_completed']
             or set(parent['constraints']) - {'environment'}
             or parent['constraints'].get('environment', 'AtropineEnv') != 'AtropineEnv'):
@@ -82,7 +87,17 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
     scheduler = scheduler if scheduler is not None else SchedulingAgent()
     scheduler.register_tasks(tasks)
     checker = make_d_safety_checker(monitor)
-    generator = action_generator or _default_action_generator
+    metadata = getattr(executor.adapter, "metadata", {})
+    is_mab = metadata.get("environment_id") == "MAbEnvGym"
+    if action_generator is not None:
+        generator, controller_note = action_generator, "Caller-supplied simulation policy."
+    elif is_mab:
+        # B03's verification script uses this source reference for its steady-run case.
+        reference_action = executor.adapter._env.steady_actions.copy()
+        generator = lambda *_: reference_action.copy()
+        controller_note = "B03 mAb steady reference action."
+    else:
+        generator, controller_note = _default_action_generator, "Atropine space midpoint interface baseline."
     events, stages = [], []
     event_file = Path(event_path) if event_path else None
     if event_file:
@@ -95,7 +110,8 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
             with event_file.open("a", encoding="utf-8") as stream:
                 stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + "\n")
     before = executor.adapter.step_calls
-    observation = request = review = execution = None
+    observation = goal_cycle.observation if goal_cycle is not None else None
+    request = review = execution = None
     failure = None
     execution_subtask = next((s for s in parent["subtasks"]
                               if s["name"] == "execute_approved_action"), None)
@@ -106,12 +122,16 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         try:
             if sid not in {t["subtask_id"] for t in scheduler.ready_tasks()}:
                 raise RuntimeError("HTN dependency not completed")
-            bids = configured_bids(task)
+            bids = (configured_bids if bid_provider is None else bid_provider)(task)
             awarded = scheduler.schedule(task, bids)
             assignment = scheduler.assignment_for_execution(awarded)
             assert_winner(assignment, OWNER_BY_TASK[name])
             if assignment["task_id"] != parent["task_id"] or assignment["subtask_id"] != sid:
                 raise ValueError("Assignment identity mismatch")
+            if goal_cycle is not None:
+                if name == "execute_approved_action":
+                    goal_cycle.facts["resource_available"] = True
+                goal_cycle.require_ready(name)
             emit("assignment_awarded", subtask_id=sid, task_type=name,
                  bids=bids, assignment=assignment, ranked_bids=awarded.get("ranked_bids", []))
             if name == "collect_observation":
@@ -126,12 +146,21 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
             elif name in {"evaluate_goal", "evaluate_state"}:
                 if observation is None:
                     raise ValueError("Missing current observation")
-                payload = {"evaluation": "finite_current_observation", "numeric_process_target": None}
+                payload = ({"evaluation": goal_cycle.plan.evaluation,
+                            "numeric_process_target": goal_cycle.target_range}
+                           if goal_cycle is not None else
+                           {"evaluation": "finite_current_observation", "numeric_process_target": None})
+            elif name in {"select_hold_policy", "select_adjust_policy"}:
+                payload = {"policy": goal_cycle.plan.method}
+            elif name == "verify_goal":
+                payload = {"evaluation": goal_cycle.plan.evaluation}
             elif name == "return_state_result":
                 payload = {"observation": observation}
             elif name == "generate_action_intent":
                 action = generator(observation, executor.adapter.action_space, 0)
                 request = executor.prepare_action(parent, action=action, subtask=execution_subtask)
+                if goal_cycle is not None:
+                    goal_cycle.check_action(request["action"])
                 if executor.adapter.step_calls != before:
                     raise RuntimeError("Preparing an action advanced the environment")
                 payload = {"request": request}
@@ -148,8 +177,11 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                     raise RuntimeError("No approved preflight review")
                 # Fresh synchronous review is bound to the original pending request.
                 final_review = checker(copy.deepcopy(request), executor.get_observation())
+                if goal_cycle is not None:
+                    goal_cycle.require_dispatch()
                 execution = executor.execute_action(request, final_review)
-                if execution.get("task_id") != parent["task_id"] or execution.get("subtask_id") != sid:
+                if (execution.get("task_id") != parent["task_id"] or execution.get("subtask_id") != sid
+                        or execution.get("request_id") != request["request_id"]):
                     raise ValueError("B feedback identity mismatch")
                 feedback = execution_result_to_feedback(execution)
                 if feedback is None or feedback["execution_status"] not in {"completed", "failed"}:
@@ -159,20 +191,25 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                     reason = "safety_rejected"
                 payload = {"execution_result": execution}
             elif name == "verify_result":
-                if not (execution and execution.get("success") is True
+                if not (execution and execution.get("request_id") == request["request_id"]
+                        and execution.get("state_version") == executor.adapter.state_version
+                        and execution.get("success") is True
                         and execution.get("executed") is True
                         and executor.adapter.step_calls - before == 1):
                     raise RuntimeError("Expected exactly one successful environment step")
                 state_review = monitor.check_observation(executor.get_observation(), parent["task_id"])
-                if not state_review["approved"]:
+                if state_review["approved"] is not True:
                     status, reason = "failed", "invalid_post_execution_observation"
                 payload = {"verified": status == "completed", "step_delta": 1,
                            "state_review": state_review}
             else:
                 raise ValueError(f"Unsupported HTN stage: {name}")
+            if goal_cycle is not None and status == "completed":
+                goal_cycle.complete(name)
         except Exception as exc:
             status = "failed"
-            reason = "safety_review_error" if name == "safety_review" else "module_error"
+            reason = ("goal_deadline_exceeded" if isinstance(exc, TimeoutError) else
+                      "safety_review_error" if name == "safety_review" else "module_error")
             payload = {"exception_type": type(exc).__name__, "exception": str(exc)}
             emit("module_error", subtask_id=sid, task_type=name, **payload)
         feedback = {"task_id": parent["task_id"], "subtask_id": sid,
@@ -207,9 +244,12 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         "d_demo_mode": monitor.demo_mode, "bids_are_live": False,
         "bids_note": "One installed capable worker per role; local deterministic capability bids.",
         "all_C_locks_released": not scheduler.active_agent_tasks,
-        "controller_note": "Space midpoint is an interface baseline, not optimized process control.",
+        "controller_note": controller_note,
         "r03_enabled": False,
     }
+    if goal_cycle is not None:
+        summary.update(goal_id=goal_cycle.plan.goal_id, htn_method=goal_cycle.plan.method,
+                       parent_plan_id=goal_cycle.plan.parent_plan_id)
     emit("A_task_feedback", task=parent, summary=summary)
     return {"summary": summary, "parent_task": _plain(parent), "c_tasks": _plain(tasks),
             "stage_results": stages, "events": events,
@@ -246,16 +286,23 @@ def execute_awarded_subtask(*, parent_task, c_task, assignment, scheduler,
     return {"execution_result": result, "scheduler_feedback": feedback_result}
 
 def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=1101,
-             max_steps=60, output_dir=None, cycles=1, scenario="normal"):
+             max_steps=60, output_dir=None, cycles=1, scenario="normal",
+             environment="AtropineEnvGym", goal_spec=None, goal_registry=None, timeout_seconds=None):
     if type(cycles) is not int or cycles < 1:
         raise ValueError("cycles must be a positive integer")
     if scenario not in {"normal", "reject", "inspect"}:
         raise ValueError("Unknown scenario")
+    if (goal_spec is None) != (goal_registry is None):
+        raise ValueError("goal_spec and goal_registry must be supplied together")
+    if goal_spec is not None and (scenario != "normal" or cycles != 1):
+        raise ValueError("A numeric goal manages its own cycles and requires the normal scenario")
+    from l3_system.planning.goal_runtime import open_environment
     out = Path(output_dir) if output_dir else Path("outputs") / (datetime.now().strftime("%Y%m%d_%H%M%S_") + uuid4().hex[:8])
     out.mkdir(parents=True, exist_ok=False)
     monitor = None
     try:
-        with EnvironmentAdapter(source_dir=source_dir, max_steps=max_steps) as adapter:
+        with open_environment(environment, source_dir=source_dir, max_steps=max_steps,
+                              atropine_factory=EnvironmentAdapter) as adapter:
             monitor = MonitoringAgent(action_space=adapter.action_space,
                                       observation_space=adapter.observation_space)
             executor = ExecutionAgent(adapter, log_path=out / "B_events.jsonl")
@@ -264,6 +311,16 @@ def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=110
             system = MultiAgentSystem(executor=executor, monitor=monitor,
                                       event_path=out / "events.jsonl")
             results = []
+            if goal_spec is not None:
+                from l3_system.planning.goal_runtime import run_numeric_goal
+                result = run_numeric_goal(system, goal_spec, goal_registry,
+                                          environment=environment, timeout_seconds=timeout_seconds)
+                result["summary"].update(seed=seed, adapter_max_steps=max_steps,
+                                         total_step_calls=adapter.step_calls)
+                (out / "result.json").write_text(json.dumps(_plain(result), ensure_ascii=False, indent=2),
+                                                 encoding="utf-8")
+                monitor.export_logs(out / "D_reviews.jsonl")
+                return result
             for cycle in range(cycles):
                 if adapter.done:
                     break
@@ -274,7 +331,7 @@ def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=110
                 if result["summary"]["run_status"] != "completed":
                     break
             summary = dict(results[-1]["summary"])
-            summary.update({"environment": "SMPL.AtropineEnvGym", "seed": seed,
+            summary.update({"environment": f"SMPL.{environment}", "seed": seed,
                             "scenario": scenario, "requested_cycles": cycles,
                             "finished_cycles": len(results), "total_step_calls": adapter.step_calls,
                             "observation_space_shape": list(adapter.observation_space.shape),
@@ -305,15 +362,27 @@ def main(argv=None):
     parser.add_argument("--cycles", type=int, default=1)
     parser.add_argument("--output-dir", "--output", dest="output_dir")
     parser.add_argument("--offline-preview", action="store_true")
+    parser.add_argument("--environment", choices=["AtropineEnvGym", "MAbEnvGym"], default="AtropineEnvGym")
+    parser.add_argument("--goal-spec", type=Path)
+    parser.add_argument("--goal-registry", type=Path)
+    parser.add_argument("--goal-timeout", type=float, help="Wall-clock seconds for an explicitly configured numeric goal")
     args = parser.parse_args(argv)
     if args.offline_preview:
         goal = "检查当前仿真状态" if args.scenario == "inspect" else "执行一次仿真控制任务"
         print(json.dumps(DecisionAgent.task_to_dict(DecisionAgent().create_task(goal)), ensure_ascii=False, indent=2))
         return
     result = run_live(source_dir=args.source_dir, seed=args.seed, max_steps=args.max_steps,
-                      output_dir=args.output_dir, cycles=args.cycles, scenario=args.scenario)
+                      output_dir=args.output_dir, cycles=args.cycles, scenario=args.scenario,
+                      environment=args.environment,
+                      goal_spec=json.loads(args.goal_spec.read_text(encoding="utf-8")) if args.goal_spec else None,
+                      goal_registry=json.loads(args.goal_registry.read_text(encoding="utf-8")) if args.goal_registry else None,
+                      timeout_seconds=args.goal_timeout)
     summary = result["summary"]
     print(json.dumps(summary, ensure_ascii=False, indent=2))
+    if args.goal_spec:
+        if summary["status"] != "succeeded":
+            raise SystemExit(1)
+        return
     expected_reject = (args.scenario == "reject" and summary["failure_reason"] == "safety_rejected"
                        and summary["total_step_calls"] == 0)
     completed = (summary["run_status"] == "completed" and summary["finished_cycles"] == args.cycles)

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L3 仿真控制台</title>
+<style>
+body { margin: 2rem auto; max-width: 46rem; padding: 0 1rem; font: 1rem/1.6 system-ui, sans-serif; color: #172b30; background: #f5f9f8; }
+section { padding: 1rem 1.25rem; margin: 1rem 0; border: 1px solid #bdccc8; border-radius: .6rem; background: white; }
+h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
+label { display: block; margin-bottom: .75rem; }
+input, button { font: inherit; padding: .35rem .6rem; }
+button { background: #07645a; color: white; border: 1px solid #07645a; border-radius: .35rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>
+<main>
+<h1>L3 仿真控制台</h1>
+<section>
+<h2>运行状态</h2>
+<p>{{ environment }} · {{ state }} · 第 {{ step }} 步</p>
+{% if latest %}<p>最近任务 <code>{{ latest.task_id }}</code> · {{ latest.run_status }}{% if latest.failure_reason %} · {{ latest.failure_reason }}{% endif %}</p>{% endif %}
+{% if state in ["autonomous", "takeover_requested"] %}
+<form method="post" action="{{ '/resume' if state == 'takeover_requested' else '/cycle' }}">
+  <input type="hidden" name="token" value="{{ token }}">
+  <input type="hidden" name="revision" value="{{ revision }}">
+  {% if state == "takeover_requested" %}
+  <label>操作人 <input name="operator" required></label>
+  <label>恢复原因 <input name="reason" required></label>
+  <button>确认恢复</button>
+  {% else %}<button>执行一个仿真周期</button>{% endif %}
+</form>
+{% endif %}
+</section>
+{% if stages %}<section><h2>最近周期</h2>
+<ul>{% for stage in stages %}<li>{{ stage.task_type }} · {{ stage.execution_status }}
+{% if stage.safety_decision is defined %} · 审核 {{ stage.safety_decision.decision }}{% endif %}</li>{% endfor %}</ul>
+<p>占用资源 {{ active_workers | join('、') if active_workers else '无' }}</p>
+</section>{% endif %}
+<section><h2>最新观测</h2>
+{% if observation is not none %}<pre>{{ observation | tojson }}</pre>{% else %}<p>暂无有效观测。</p>{% endif %}
+</section>
+{% if transitions %}<section><h2>状态变更</h2><ul>
+{% for event in transitions | reverse %}<li>{{ event.timestamp }} · {{ event.state }} · {{ event.reason }}</li>{% endfor %}
+</ul></section>{% endif %}
+</main>
+</html>

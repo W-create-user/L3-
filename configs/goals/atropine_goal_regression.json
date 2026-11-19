@@ -1,0 +1,49 @@
+{
+  "schema_version": "2.0-draft",
+  "goal_id": "atropine-midpoint-regression",
+  "environment_id": "AtropineEnvGym",
+  "registry_version": "B-e0e12ec-atropine-1",
+  "variable": "E_factor_current",
+  "unit": "dimensionless",
+  "coordinate": "model_observation_normalize_false",
+  "target_range": {
+    "lower": 12.0,
+    "upper": 15.0
+  },
+  "max_steps": 5,
+  "hold_steps": 2,
+  "allowed_actions": {
+    "Tropine_in_DMF_feed": {
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "range": {
+        "lower": -0.0001574199995957315,
+        "upper": 1.924762000271585e-05
+      }
+    },
+    "Phenylacetylchloride_feed": {
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "range": {
+        "lower": -0.0014623400056734681,
+        "upper": 0.012211842462420464
+      }
+    },
+    "external_stream_3": {
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "range": {
+        "lower": -0.00021811999613419175,
+        "upper": 0.001821549842134118
+      }
+    },
+    "external_stream_4": {
+      "unit": "mL/min (inferred from model u/1000 -> L/min)",
+      "coordinate": "delta_from_USS",
+      "range": {
+        "lower": -0.003004539990797639,
+        "upper": 0.00035972922341898084
+      }
+    }
+  }
+}
