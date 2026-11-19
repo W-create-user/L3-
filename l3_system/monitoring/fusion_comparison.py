@@ -20,7 +20,8 @@ def subset(batch,columns):
     return result,{'input_samples':len(keep),'eligible_samples':len(indices),'abstained_samples':int((~keep).sum())}
 
 
-def compare(batches,*,epochs=1,seed=17,common_test_cohort=False):
+def compare(batches,*,epochs=1,seed=17,common_test_cohort=False,artifact_writer=None):
+    if artifact_writer is not None and not callable(artifact_writer):raise ValueError('artifact writer must be callable')
     if type(common_test_cohort)is not bool:raise ValueError('explicit cohort mode required')
     # Selection depends only on pre-existing modality availability, not labels or scores.
     test=batches['test'];common_mask=test.mask.all(dim=1)
@@ -35,7 +36,8 @@ def compare(batches,*,epochs=1,seed=17,common_test_cohort=False):
     for name,(mode,columns) in VARIANTS.items():
         reduced={};counts={}
         for split,batch in batches.items():reduced[split],counts[split]=subset(batch,columns)
-        _,_,_,report=train_baseline(reduced,mode=mode,epochs=epochs,seed=seed)
+        model,vectorizer,nb,report=train_baseline(reduced,mode=mode,epochs=epochs,seed=seed)
+        artifact=artifact_writer(name,model,vectorizer,nb,reduced['validation']) if artifact_writer else None
         # Individual metrics use available-case denominators; no ranking across
         # different denominators is justified without a separate paired analysis.
         reports[name]={'training':'independent_retraining','modality_columns':list(columns),
@@ -43,6 +45,7 @@ def compare(batches,*,epochs=1,seed=17,common_test_cohort=False):
             'test':report['test'],'losses':report['losses'],
             'visual_backbone_frozen':report['visual_backbone_frozen'],
             'text_naive_bayes':report['text_naive_bayes']}
+        if artifact is not None:reports[name]['private_artifact_receipt']=artifact
     return {'schema_version':'D04Comparison/0.1','variants':reports,'epochs_per_variant':epochs,'seed':seed,
         'paired_comparison_established':False,'deployment_authorized':False,
         'common_test_cohort':common_test_cohort,'original_test_samples':len(test.labels),
