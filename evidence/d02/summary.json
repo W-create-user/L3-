@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-11-12T06:41:02.617629+00:00",
+  "python": "3.12.14",
+  "base_main_commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+  "system_tests": {
+    "passed": 124,
+    "failed": 0,
+    "existing": 86,
+    "new_process_rule_tests": 38,
+    "command": "python -m unittest discover -s l3_system/tests -t . -v"
+  },
+  "d01_tests": {
+    "passed": 22,
+    "failed": 0,
+    "command": "python -m unittest discover -s deliverables/D01/tests -v"
+  },
+  "test_environment": "FakeAdapter; synthetic fixture limits only",
+  "real_smpl_rerun": false,
+  "physical_rule_config_enabled": false,
+  "isolation_forest_training": false,
+  "multimodal_training": false,
+  "task_status": {
+    "D01": "tooling first version; resource verification and team confirmation pending",
+    "D02": "engine integrated and tested; physical dictionary thresholds and real environment verification pending",
+    "D03_D04": "not trained; awaiting B05 dataset"
+  },
+  "source_sha256": {
+    "l3_system/agents/process_rules.py": "16c3e20f15005fbf82e00b7f005a20eaaad5a33d0b687ecfe056938ce90cf169",
+    "l3_system/agents/monitoring_agent.py": "c4ee7c9852819b97552bf67db4b8bc106e5191099b21836288febc60af2ed622",
+    "l3_system/main.py": "326b9ae5a1cc9e915ddfa36cd6c0090b8e5764e51eed6409d4ab763368f80f8d",
+    "l3_system/tests/test_process_rules.py": "bff12a9c9934bcdf900b0963a959a977c7cbb1b21f1a69746b47145e550147c0",
+    "configs/safety/atropine.disabled.json": "f69fc60a284117c7e02c7d3d955be2c0bf45bffed62be96236da77dbe7fd0906",
+    ".github/workflows/verify.yml": "5dec95823050cbc3669bb4b3dd529d34b4330b940453ba8c925252ea7779d2c4",
+    "docs/D02_工艺规则与运行围栏.md": "de9a7a0380975b15c0a407844782e72d174a2ca85f4917e956aeec5dc676fbcd"
+  }
+}

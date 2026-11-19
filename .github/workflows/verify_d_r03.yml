@@ -1,0 +1,27 @@
+name: D approved isolated R03 experiment
+on:
+  pull_request:
+    paths:
+      - 'l3_system/monitoring/atropine_experiment.py'
+      - 'l3_system/agents/process_rules.py'
+      - 'configs/safety/atropine_experiment_20261116.json'
+      - 'deliverables/D01/tests/test_atropine_experiment.py'
+      - '.github/workflows/verify_d_r03.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  approved-atropine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: D recovery and gating protocol fixtures
+        run: python -m unittest discover -s deliverables/D01/tests -p test_atropine_experiment.py -v
+      - name: Real approved midpoint baseline, no raw artifact upload
+        run: python -m l3_system.monitoring.atropine_experiment --enable-approved-experiment --output /tmp/d-approved-r03

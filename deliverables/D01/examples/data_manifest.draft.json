@@ -1,0 +1,13 @@
+{
+  "schema_version": "D01/0.1",
+  "status": "draft",
+  "dataset_id": "PENDING_B05_COLLECTION",
+  "created_at": "2026-11-12T22:00:00+08:00",
+  "code_commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+  "collection_config_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "variable_dictionary_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "permission_evidence": "PENDING dataset provenance and permission review",
+  "alignment_tolerance_steps": 0,
+  "split_protocol_version": "D01-split/0.1",
+  "episodes": []
+}

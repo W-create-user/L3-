@@ -1,0 +1,67 @@
+{
+  "repository": "W-create-user/L3-",
+  "commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+  "checked_date": "2026-11-12",
+  "files": [
+    {
+      "path": "l3_system/agents/safety_rules.py",
+      "git_blob_sha": "8dc409669ece8b2bcb53d369a3d2fc3cde96e316",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/agents/safety_rules.py"
+    },
+    {
+      "path": "l3_system/agents/monitoring_agent.py",
+      "git_blob_sha": "1fdf57ab431bf79f45268d0b93d70aed9f2327f2",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/agents/monitoring_agent.py"
+    },
+    {
+      "path": "l3_system/execution/environment_adapter.py",
+      "git_blob_sha": "32a043dd6d042667180d8a6bd4dc027ad6017593",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/execution/environment_adapter.py"
+    },
+    {
+      "path": "l3_system/adapters/b_to_d_adapter.py",
+      "git_blob_sha": "79be0c30ce5fb59175d1c6271ee968e9e250e1d4",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/adapters/b_to_d_adapter.py"
+    },
+    {
+      "path": "l3_system/execution/safety_bridge.py",
+      "git_blob_sha": "7369b9aad19863d62f8573fce22c449947e112b9",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/execution/safety_bridge.py"
+    },
+    {
+      "path": "l3_system/runtime.py",
+      "git_blob_sha": "604737398483e3323b8ed3d8ac978719201ecacd",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/runtime.py"
+    },
+    {
+      "path": "l3_system/main.py",
+      "git_blob_sha": "af74f9e0e14e7a23344bf2390bf9ff7e6e4a0e4e",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/l3_system/main.py"
+    },
+    {
+      "path": "experiments/compare.py",
+      "git_blob_sha": "900148d656c1cf597dfb40f29e8c88fd5c1e7102",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/experiments/compare.py"
+    },
+    {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "git_blob_sha": "0415c86aaf0c607d55247532f9ea884be15e9b7e",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/vendor/smpl/smpl/envs/atropineenv.py"
+    },
+    {
+      "path": "evidence/review/comparison/safety_samples.csv",
+      "git_blob_sha": "3af469691a8049ea7afa6f9a7111207eea75089f",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/evidence/review/comparison/safety_samples.csv"
+    },
+    {
+      "path": "evidence/review/comparison/summary.json",
+      "git_blob_sha": "c2ff0193f04285de48b6259ba2c0e975ece7f59d",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/evidence/review/comparison/summary.json"
+    },
+    {
+      "path": "evidence/session_integration/summary.json",
+      "git_blob_sha": "23ce5300ea5d86eae9b3759401b7bbb1e813d0e5",
+      "url": "https://github.com/W-create-user/L3-/blob/2e88c200afa4698b0dc13a9d2260fbaf44d56972/evidence/session_integration/summary.json"
+    }
+  ]
+}

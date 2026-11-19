@@ -1,0 +1,10 @@
+{
+  "schema_version": "ProcessRules/1.0",
+  "enabled": false,
+  "environment": "Atropine",
+  "version": "D02-pending-B03-A02-20261112",
+  "observation_shape": [39],
+  "action_shape": [4],
+  "variables": {},
+  "rules": []
+}

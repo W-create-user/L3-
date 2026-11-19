@@ -1,0 +1,100 @@
+{
+  "schema_version": "D07ExperimentDraft/0.1",
+  "status": "draft",
+  "execution_authorized": false,
+  "freeze_target_date": "2026-11-24",
+  "environment": "AtropineEnvGym",
+  "source_scope": "future formal experiments; sensor-bias pilot at B 6e2b62b is not this preregistered experiment",
+  "arms": [
+    "traditional_controller",
+    "single_agent",
+    "four_agent"
+  ],
+  "conditions": [
+    {
+      "id": "nominal",
+      "definition_ref": null,
+      "pair_seeds": [
+        26001,
+        26002,
+        26003,
+        26004,
+        26005,
+        26006,
+        26007,
+        26008,
+        26009,
+        26010
+      ]
+    },
+    {
+      "id": "sensor_fault",
+      "definition_ref": null,
+      "pair_seeds": [
+        26011,
+        26012,
+        26013,
+        26014,
+        26015,
+        26016,
+        26017,
+        26018,
+        26019,
+        26020
+      ]
+    },
+    {
+      "id": "process_disturbance",
+      "definition_ref": null,
+      "pair_seeds": [
+        26021,
+        26022,
+        26023,
+        26024,
+        26025,
+        26026,
+        26027,
+        26028,
+        26029,
+        26030
+      ]
+    }
+  ],
+  "episodes_per_condition_per_arm": 10,
+  "independent_learning_seeds": [
+    17,
+    29,
+    43
+  ],
+  "pairing": "same condition, initial-state definition, reset seed, goal and simulated horizon across arms; runtime order randomized with recorded seed",
+  "goal_contract_ref": null,
+  "controller_definitions_ref": null,
+  "resource_registry_ref": null,
+  "simulation_horizon_records": null,
+  "wall_clock_budget_seconds": null,
+  "run_order_seed": null,
+  "primary_metric": {
+    "name": "task_success_rate",
+    "numerator": "started episodes meeting goal, deadline and specified safety constraints",
+    "denominator": "all validly started episodes; execution failures count as failures"
+  },
+  "secondary_metrics": [
+    "paired_simulated_makespan",
+    "process_constraint_violations",
+    "recovery_records",
+    "sensor_detection_precision_recall_fpr",
+    "raw_event_detection_delay"
+  ],
+  "exclusion_policy": "Only corrupt/unreadable evidence may be excluded from computable analysis; record every exclusion separately with original started denominator. Never drop failed or slow runs.",
+  "detector_policy": "normal-only training when independently labelled for that scope; preprocessing fit train only, thresholds validation only; test not used for tuning; shared lineage cannot cross splits",
+  "safety_policy": "isolation simulation/offline replay only for gate ablation; preserve physical/device boundaries; no unknown result retry",
+  "analysis_policy": "paired episode-level analysis with reported counts; windows are correlated, not independent trials; absent energy/quality definitions remain unreported",
+  "required_confirmations": {
+    "A_goal_and_recovery": null,
+    "B_conditions_controls_and_budget": null,
+    "C_resources_and_scheduling": null,
+    "D_labels_splits_and_metrics": null
+  },
+  "power_guarantee": false,
+  "approval_record_ref": null
+}

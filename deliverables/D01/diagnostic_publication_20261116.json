@@ -1,0 +1,19 @@
+{
+  "schema_version": "DPublicationScope/1.0",
+  "authorization_commit": "611a81fd4c78d206bf5f274261e0e713d8f10eb9",
+  "authorization_path": "docs/D_20261116_诊断公开授权.md",
+  "source_report_name": "D_20261115_diagnostics_acceptance.md",
+  "source_report_sha256": "aa5141c7427166c6450b1da63530baf1c81e82687447785f86335c63c50194ca",
+  "summary_path": "deliverables/D01/D_20261116_授权诊断摘要.md",
+  "summary_sha256": "85b2ef002e4e8d71089dd8ecac58e532befa84beaedd6da23d6073d88a001f33",
+  "source_data_commit": "6e2b62bbe61f2bee690d55b045ee12d6a6e4497a",
+  "contents": [
+    "aggregate_diagnostics",
+    "statistics",
+    "source_paths_commit_ids_and_hashes"
+  ],
+  "raw_trajectories_included": false,
+  "per_step_observation_actions_included": false,
+  "model_weights_included": false,
+  "source_report_version_type": "verified_current_content_sha256_snapshot"
+}

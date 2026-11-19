@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-11-12T06:14:05.708192+00:00",
+  "python": "3.12.14",
+  "test_command": "python -m unittest discover -s tests -v",
+  "unittest_exit_code": 0,
+  "unittest_output": "test_alignment (test_d01_manifest.ManifestTests.test_alignment) ... ok\ntest_artifact_corruption (test_d01_manifest.ManifestTests.test_artifact_corruption) ... ok\ntest_bad_event_interval (test_d01_manifest.ManifestTests.test_bad_event_interval) ... ok\ntest_cross_episode_derivation (test_d01_manifest.ManifestTests.test_cross_episode_derivation) ... ok\ntest_draft_rejected (test_d01_manifest.ManifestTests.test_draft_rejected) ... ok\ntest_duplicate_episode (test_d01_manifest.ManifestTests.test_duplicate_episode) ... ok\ntest_empty_splits_rejected (test_d01_manifest.ManifestTests.test_empty_splits_rejected) ... ok\ntest_event_outside_episode (test_d01_manifest.ManifestTests.test_event_outside_episode) ... ok\ntest_identical_bytes_leakage (test_d01_manifest.ManifestTests.test_identical_bytes_leakage) ... ok\ntest_iforest_cannot_use_validation (test_d01_manifest.ManifestTests.test_iforest_cannot_use_validation) ... ok\ntest_label_as_input (test_d01_manifest.ManifestTests.test_label_as_input) ... ok\ntest_lineage_leakage (test_d01_manifest.ManifestTests.test_lineage_leakage) ... ok\ntest_missing_artifact (test_d01_manifest.ManifestTests.test_missing_artifact) ... ok\ntest_missing_field (test_d01_manifest.ManifestTests.test_missing_field) ... ok\ntest_missing_timeseries (test_d01_manifest.ManifestTests.test_missing_timeseries) ... ok\ntest_no_source_reference (test_d01_manifest.ManifestTests.test_no_source_reference) ... ok\ntest_path_escape (test_d01_manifest.ManifestTests.test_path_escape) ... ok\ntest_supervised_train_allows_labeled_anomaly (test_d01_manifest.ManifestTests.test_supervised_train_allows_labeled_anomaly) ... ok\ntest_train_contamination (test_d01_manifest.ManifestTests.test_train_contamination) ... ok\ntest_unknown_label (test_d01_manifest.ManifestTests.test_unknown_label) ... ok\ntest_valid_contract (test_d01_manifest.ManifestTests.test_valid_contract) ... ok\ntest_zero_placeholder_hash (test_d01_manifest.ManifestTests.test_zero_placeholder_hash) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 0.024s\n\nOK\n",
+  "source_snapshot_checks": [
+    {
+      "path": "l3_system/agents/safety_rules.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "l3_system/agents/monitoring_agent.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "l3_system/execution/environment_adapter.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "l3_system/adapters/b_to_d_adapter.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "l3_system/execution/safety_bridge.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "l3_system/runtime.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "l3_system/main.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "experiments/compare.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "vendor/smpl/smpl/envs/atropineenv.py",
+      "git_blob_matches": true
+    },
+    {
+      "path": "evidence/review/comparison/safety_samples.csv",
+      "git_blob_matches": true
+    },
+    {
+      "path": "evidence/review/comparison/summary.json",
+      "git_blob_matches": true
+    },
+    {
+      "path": "evidence/session_integration/summary.json",
+      "git_blob_matches": true
+    }
+  ],
+  "draft_manifest_expected_rejection": true,
+  "simulation_rerun": false,
+  "model_training_performed": false,
+  "historical_86_tests_rerun": false
+}

@@ -1,0 +1,37 @@
+name: D readonly archive takeover replay
+on:
+  pull_request:
+    paths:
+      - 'l3_system/monitoring/atropine_replay.py'
+      - 'deliverables/D01/tests/test_atropine_replay.py'
+      - '.github/workflows/verify_d_archive_replay.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  readonly-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 6e2b62bbe61f2bee690d55b045ee12d6a6e4497a
+          path: .d-inputs/B
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt -r requirements-monitoring.txt
+      - name: D replay structural fixtures
+        run: python -m unittest discover -s deliverables/D01/tests -p test_atropine_replay.py -v
+      - name: Verified B archive, no simulator or raw artifact upload
+        run: |
+          python -m l3_system.monitoring.atropine_replay \
+            --package-root .d-inputs/B/handoffs/B_to_D_20261112/r03_supplement \
+            --evidence-root .d-inputs/B \
+            --action-dictionary .d-inputs/B/handoffs/B_to_D_20261112/action_dictionary.json \
+            --output /tmp/d-r03-readonly-replay

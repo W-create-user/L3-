@@ -1,0 +1,341 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "D01 episode dataset manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "D01/0.1"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "ready_for_review"
+      ]
+    },
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "code_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "collection_config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "variable_dictionary_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "permission_evidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alignment_tolerance_steps": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "split_protocol_version": {
+      "const": "D01-split/0.1"
+    },
+    "episodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "episode_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lineage_group": {
+            "type": "string",
+            "minLength": 1
+          },
+          "split": {
+            "enum": [
+              "train",
+              "validation",
+              "test",
+              "excluded"
+            ]
+          },
+          "environment": {
+            "enum": [
+              "Atropine",
+              "mAb"
+            ]
+          },
+          "environment_config_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "not": {
+              "const": "0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "seed": {
+            "type": "integer"
+          },
+          "initial_state_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "not": {
+              "const": "0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          },
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "step_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "label_summary": {
+            "enum": [
+              "normal",
+              "injected_anomaly",
+              "unknown"
+            ]
+          },
+          "label_source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "event_start_step": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "event_end_step": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "artifacts": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "timeseries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$",
+                      "not": {
+                        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+                      }
+                    },
+                    "source_kind": {
+                      "enum": [
+                        "native_simulation",
+                        "derived",
+                        "synthetic",
+                        "authorized_external"
+                      ]
+                    },
+                    "derived_from": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "generator_version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "alignment_max_error_steps": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "label_free_input_confirmed": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "sha256",
+                    "source_kind",
+                    "derived_from",
+                    "generator_version",
+                    "alignment_max_error_steps",
+                    "label_free_input_confirmed"
+                  ]
+                }
+              },
+              "visual": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$",
+                      "not": {
+                        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+                      }
+                    },
+                    "source_kind": {
+                      "enum": [
+                        "native_simulation",
+                        "derived",
+                        "synthetic",
+                        "authorized_external"
+                      ]
+                    },
+                    "derived_from": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "generator_version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "alignment_max_error_steps": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "label_free_input_confirmed": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "sha256",
+                    "source_kind",
+                    "derived_from",
+                    "generator_version",
+                    "alignment_max_error_steps",
+                    "label_free_input_confirmed"
+                  ]
+                }
+              },
+              "text": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$",
+                      "not": {
+                        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+                      }
+                    },
+                    "source_kind": {
+                      "enum": [
+                        "native_simulation",
+                        "derived",
+                        "synthetic",
+                        "authorized_external"
+                      ]
+                    },
+                    "derived_from": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "generator_version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "alignment_max_error_steps": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "label_free_input_confirmed": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "sha256",
+                    "source_kind",
+                    "derived_from",
+                    "generator_version",
+                    "alignment_max_error_steps",
+                    "label_free_input_confirmed"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "timeseries",
+              "visual",
+              "text"
+            ]
+          },
+          "iforest_train": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "episode_id",
+          "lineage_group",
+          "split",
+          "environment",
+          "environment_config_sha256",
+          "seed",
+          "initial_state_sha256",
+          "scenario_id",
+          "step_count",
+          "label_summary",
+          "label_source",
+          "event_start_step",
+          "event_end_step",
+          "artifacts",
+          "iforest_train"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "dataset_id",
+    "created_at",
+    "code_commit",
+    "collection_config_sha256",
+    "variable_dictionary_sha256",
+    "permission_evidence",
+    "alignment_tolerance_steps",
+    "split_protocol_version",
+    "episodes"
+  ]
+}
