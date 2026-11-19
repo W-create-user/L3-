@@ -50,8 +50,10 @@ class StatisticalIntegrationTests(unittest.TestCase):
         result=self.system.run_cycle()
         self.assertEqual(result['summary']['run_status'],'completed')
         self.assertEqual(self.adapter.step_calls,1)
-        self.assertTrue(result['summary']['statistical_r03_enabled'])
-        self.assertFalse(result['summary']['r03_enabled'])
+        from l3_system.monitoring.status import monitor_status
+        status=monitor_status(self.monitor)
+        self.assertTrue(status['statistical_r03_enabled'])
+        self.assertFalse(status['r03_enabled'])
 
     def test_anomaly_requests_takeover_and_cannot_resume_until_rechecked(self):
         self.adapter._obs[:]=100

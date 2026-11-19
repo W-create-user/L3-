@@ -15,6 +15,7 @@ from l3_system.agents.monitoring_agent import MonitoringAgent
 from l3_system.agents.process_rules import ProcessRuleEngine
 from l3_system.execution import ExecutionAgent
 from l3_system.runtime import MultiAgentSystem
+from .runtime_compatibility import require_supported_runtime
 from l3_system.execution.local_policy import space_midpoint
 
 AUTHORIZATION='611a81fd4c78d206bf5f274261e0e713d8f10eb9'
@@ -141,8 +142,7 @@ class ExperimentMonitor(MonitoringAgent):
 class AtropineExperimentSession:
     def __init__(self,adapter,output_dir,*,enable_approved_experiment=False,fixture=False,clock=time.monotonic):
         if enable_approved_experiment is not True:raise ValueError('explicit approved-isolated-experiment opt-in required')
-        if not fixture and hashlib.sha256((Path(__file__).resolve().parents[1]/'runtime.py').read_bytes()).hexdigest()!=APPROVED_A_RUNTIME_SHA256:
-            raise ValueError('approved A runtime required; use the combined main/PR workspace, do not silently run an older A baseline')
+        if not fixture:require_supported_runtime()
         self.output_dir=Path(output_dir);self.output_dir.mkdir(parents=True,exist_ok=False)
         self.source=ObservedAdapter(adapter,fixture=fixture,clock=clock)
         self.latched=False;self.reason=None;self.recovery=[];self.events=[];self.last_recovery_version=None

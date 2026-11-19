@@ -206,7 +206,8 @@ class ProcessIntegrationTests(unittest.TestCase):
         result=run_control_cycle(goal='执行一次控制任务',executor=self.executor,monitor=self.monitor)
         self.assertEqual(result['summary']['run_status'],'completed')
         self.assertEqual(self.adapter.step_calls,1)
-        self.assertTrue(result['summary']['r03_enabled'])
+        from l3_system.monitoring.status import monitor_status
+        self.assertTrue(monitor_status(self.monitor)['r03_enabled'])
 
     def test_process_reject_stops_full_chain_before_step(self):
         self.adapter._obs[0]=1

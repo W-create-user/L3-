@@ -12,7 +12,8 @@ from l3_system.agents.monitoring_agent import MonitoringAgent
 from l3_system.agents.process_rules import ProcessRuleEngine
 from l3_system.execution import ExecutionAgent
 from l3_system.runtime import MultiAgentSystem
-from .atropine_experiment import experiment_config,APPROVED_A_RUNTIME_SHA256,AUTHORIZATION
+from .atropine_experiment import experiment_config,AUTHORIZATION
+from .runtime_compatibility import require_supported_runtime
 
 ACTION_DICTIONARY_SHA256='0d680df0821d7dda1d67637f4dfe5ceef7888a7ab21fe904a3a417d40f53c14c'
 
@@ -129,8 +130,7 @@ def run_reviewed(package_root,evidence_root,action_dictionary,output_dir):
     import sys
     sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'deliverables/D01/scripts'))
     from review_r03_supplement import review,safe_path
-    if hashlib.sha256((Path(__file__).resolve().parents[1]/'runtime.py').read_bytes()).hexdigest()!=APPROVED_A_RUNTIME_SHA256:
-        raise ValueError('use approved A/D combined workspace for this archive protocol validation')
+    runtime_review=require_supported_runtime()
     _,receipt=review(package_root,evidence_root)
     raw=Path(action_dictionary).read_bytes()
     if hashlib.sha256(raw).hexdigest()!=ACTION_DICTIONARY_SHA256:raise ValueError('fixed B action dictionary mismatch')
@@ -151,7 +151,7 @@ def run_reviewed(package_root,evidence_root,action_dictionary,output_dir):
     report={'schema_version':'AtropineTakeoverArchiveReplay/1.0','authorization_commit':AUTHORIZATION,
         'actor_code_sha256':{name:hashlib.sha256((Path(__file__).resolve().parents[1]/name).read_bytes()).hexdigest()
           for name in ('runtime.py','main.py','execution/execution_agent.py','execution/safety_bridge.py','agents/scheduling_agent.py','agents/process_rules.py','monitoring/atropine_replay.py')},
-        'input_receipt':receipt,'action_dictionary_sha256':ACTION_DICTIONARY_SHA256,'episodes':reports,
+        'A_runtime_compatibility':runtime_review,'input_receipt':receipt,'action_dictionary_sha256':ACTION_DICTIONARY_SHA256,'episodes':reports,
         'input_integrity_verified':True,'source_package_unchanged':True,'new_simulator_steps':0,'live_recovery_exercised':False,
         'limits':'Archived steps were already executed before this replay. Versions here are replay-local record indices, not current live B state. Normal archive states are reviewed only; no passing action is executed. Takeover and stale/cancelled-request probes invoke actual A/B/C/D code on a permanently non-executing archive adapter.'}
     (output_dir/'summary.json').write_text(json.dumps(report,indent=2,allow_nan=False)+'\n')
