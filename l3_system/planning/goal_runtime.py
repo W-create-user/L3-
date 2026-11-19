@@ -4,6 +4,8 @@ import math
 import time
 from uuid import uuid4
 
+import numpy as np
+
 from .goals import evaluate_goal, validate_goal_spec, validate_registry
 
 
@@ -27,10 +29,68 @@ def open_environment(environment, *, source_dir=None, max_steps=60, atropine_fac
     raise ValueError(f"Unknown environment: {environment}")
 
 
+class GoalCoordinates:
+    """Keep model coordinates at the B/D boundary and project only for GoalSpec."""
+
+    def __init__(self, adapter, registry):
+        self.observation_scale = None
+        self.action_coordinates = None
+        metadata = getattr(adapter, "metadata", None)
+        environment = registry["environment_id"]
+        if metadata is None and environment == "AtropineEnvGym":
+            return  # Legacy Atropine adapters do not expose backend metadata.
+        if not isinstance(metadata, dict):
+            raise ValueError("Missing B adapter environment metadata")
+        if metadata.get("environment_id") != environment:
+            raise ValueError("B adapter environment does not match the goal registry")
+        for source in ("observation", "action"):
+            coordinates = {v["coordinate"] for v in registry["variables"].values() if v["source"] == source}
+            native = metadata.get(f"{source}_coordinate")
+            if coordinates == {native}:
+                continue
+            if (coordinates != {"physical_projection"} or environment != "MAbEnvGym"
+                    or metadata.get("adapter_schema_version") != "B03/1.0"
+                    or metadata.get("normalize") is not False
+                    or metadata.get("uss_subtracted") is not False
+                    or native != f"physical_divided_by_{'x' if source == 'observation' else 'u'}scale"):
+                raise ValueError(f"Unsupported {source} coordinates for the B adapter")
+            if source == "observation":
+                scale = np.asarray(adapter._xscale, dtype=float)
+                if (scale.shape != adapter.observation_space.shape
+                        or not np.isfinite(scale).all() or np.any(scale <= 0)):
+                    raise ValueError("Invalid B03 observation projection")
+                self.observation_scale = scale.copy()
+            else:
+                transform = adapter.action_coordinates
+                # Validate the full transform before the first candidate is scheduled.
+                self._numeric_vector(transform.to_physical(adapter.action_space.low),
+                                     adapter.action_space.shape)
+                self.action_coordinates = transform
+
+    @staticmethod
+    def _numeric_vector(values, shape):
+        values = np.asarray(values)
+        if values.shape != shape or values.dtype.kind not in "fiu" or not np.isfinite(values).all():
+            raise ValueError("Goal projection requires a finite numeric vector in the live shape")
+        return values
+
+    def observation(self, raw):
+        if self.observation_scale is None:
+            return raw
+        values = self._numeric_vector(raw, self.observation_scale.shape)
+        return self._numeric_vector(values * self.observation_scale, values.shape).tolist()
+
+    def action(self, raw):
+        if self.action_coordinates is None:
+            return raw
+        return self.action_coordinates.to_physical(raw)
+
+
 class GoalCycle:
-    def __init__(self, plan, sample, goal, registry, adapter, state_version, deadline):
+    def __init__(self, plan, sample, raw_observation, goal, registry, adapter, coordinates, state_version, deadline):
         self.plan = plan
-        self.observation = sample["observation"]
+        self.observation = raw_observation
+        self.coordinates = coordinates
         self.target_range = goal["target_range"]
         self.adapter = adapter
         self.state_version = state_version
@@ -74,8 +134,9 @@ class GoalCycle:
         self.complete_ids.add(name)
 
     def check_action(self, action):
+        projected = self.coordinates.action(action)
         for index, limits in self.action_limits:
-            if not limits["lower"] <= action[index] <= limits["upper"]:
+            if not limits["lower"] <= projected[index] <= limits["upper"]:
                 raise ValueError(f"Candidate outside goal action range at index {index}")
 
     def require_dispatch(self):
@@ -93,14 +154,7 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
             or adapter.observation_space.shape != (registry["observation_size"],)
             or adapter.action_space.shape != (registry["action_size"],)):
         raise ValueError("Live environment does not match the goal registry")
-    metadata = getattr(adapter, "metadata", None)
-    if metadata is not None:
-        if metadata.get("environment_id") != environment:
-            raise ValueError("B adapter environment does not match the goal registry")
-        for variable in registry["variables"].values():
-            coordinate = metadata.get(f'{variable["source"]}_coordinate')
-            if variable["coordinate"] != coordinate:
-                raise ValueError("B adapter coordinates differ from the registry; explicit projection is required")
+    coordinates = GoalCoordinates(adapter, registry)
     if timeout_seconds is not None and (
         type(timeout_seconds) not in (int, float) or not math.isfinite(timeout_seconds) or timeout_seconds <= 0
     ):
@@ -111,17 +165,15 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
     episode = str(uuid4())
     cycles, samples, plans = [], [], []
 
-    def sample(safety_ok):
+    def sample(raw, step, safety_ok):
         return {"goal_id": goal["goal_id"], "environment_id": environment,
                 "registry_version": registry["registry_version"], "episode_id": episode,
-                "step": adapter.step_count, "observation": system.executor.get_observation(),
-                "safety_ok": safety_ok}
+                "step": step, "observation": coordinates.observation(raw), "safety_ok": safety_ok}
 
     version = adapter.state_version
-    initial_sample = sample(False)
-    initial = system.monitor.check_observation(initial_sample["observation"], goal["goal_id"])
-    initial_sample["safety_ok"] = initial.get("approved") is True
-    samples.append(initial_sample)
+    raw_observation = system.executor.get_observation()
+    initial = system.monitor.check_observation(raw_observation, goal["goal_id"])
+    samples.append(sample(raw_observation, adapter.step_count, initial.get("approved") is True))
     while True:
         evaluation = evaluate_goal(samples[-1], samples[:-1], goal, registry)
         if deadline is not None and time.monotonic() >= deadline:
@@ -140,7 +192,8 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
             parent_plan_id=plans[-1]["plan_id"] if plans else None,
         )
         plans.append(asdict(plan))
-        driver = GoalCycle(plan, samples[-1], goal, registry, adapter, version, deadline)
+        driver = GoalCycle(plan, samples[-1], raw_observation, goal, registry, adapter,
+                           coordinates, version, deadline)
         result = system.run_cycle(action_generator=policy, goal_cycle=driver)
         cycles.append(result)
         if result["summary"]["run_status"] != "completed":
@@ -151,8 +204,8 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
         execution = next(stage["execution_result"] for stage in result["stage_results"]
                          if stage["task_type"] == "execute_approved_action")
         version = execution["state_version"]
-        samples.append({**samples[-1], "step": execution["step_count"],
-                        "observation": execution["observation"], "safety_ok": True})
+        raw_observation = execution["observation"]
+        samples.append(sample(raw_observation, execution["step_count"], True))
 
     return {"summary": {**evaluation, "goal_id": goal["goal_id"], "environment": environment,
                         "step_count": adapter.step_count, "system_state": system.state,
