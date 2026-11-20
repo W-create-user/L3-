@@ -99,6 +99,23 @@ class ExecutionAgent:
         self._record('assignment_result', result=result)
         return result
 
+    def _backend_metadata(self):
+        metadata = getattr(self.adapter, 'metadata', None)
+        if metadata is None:
+            # Legacy third-party/test stand-ins are explicitly unknown, never mislabeled Atropine.
+            return {'environment': 'unregistered_adapter', 'normalize': None,
+                    'uss_subtracted': None, 'metadata_verified': False}
+        if not isinstance(metadata, dict):
+            raise ValueError('Adapter must expose explicit backend metadata')
+        result = copy.deepcopy(metadata)
+        identity = result.get('environment', result.get('environment_id'))
+        if not isinstance(identity, str) or not identity.strip():
+            raise ValueError('Adapter must expose explicit environment identity')
+        # A's reduced B03 fixtures/third-party adapters may declare the ID only.
+        # Never infer identity or coordinates from observation/action dimensions.
+        result['environment'] = identity
+        return result
+
     def prepare_action(self, task, *, action=None, action_policy=None, subtask=None):
         """Pure preparation with respect to SMPL: no reset and no step."""
         self.adapter.require_ready()
@@ -149,6 +166,7 @@ class ExecutionAgent:
         # Deliberately preserve out-of-range finite candidates for D's R-02 review.
         # The adapter still enforces live bounds again immediately before env.step.
         action = self.adapter.coerce_candidate(action)
+        backend_metadata = self._backend_metadata()
         request = {
             'schema_version': '1.2',
             'request_id': str(uuid4()),
@@ -165,9 +183,11 @@ class ExecutionAgent:
             'observation': observation,
             'state_version': self.adapter.state_version,
             'step_count': self.adapter.step_count,
-            'environment': 'SMPL.AtropineEnvGym',
-            'normalize': False,
-            'uss_subtracted': True,
+            'environment': backend_metadata['environment'],
+            'normalize': backend_metadata.get('normalize'),
+            'uss_subtracted': backend_metadata.get('uss_subtracted'),
+            'backend_metadata': backend_metadata,
+            'episode_id': backend_metadata.get('episode_id'),
             'action_space': {
                 'shape': list(self.adapter.action_space.shape),
                 'dtype': str(self.adapter.action_space.dtype),
