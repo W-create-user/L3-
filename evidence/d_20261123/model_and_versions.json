@@ -1,0 +1,21 @@
+{
+  "model_sha256": "105922a1a0c03098f63365fe61609835c72d307ec85ec6b306d45e04dd85c1c5",
+  "trusted_model_loaded": true,
+  "score_smoke_training_window": {
+    "anomaly_score": 0.7555970456732687,
+    "threshold": 0.3786226470729572,
+    "anomalous": true,
+    "label_scope": "sensor_fault",
+    "is_probability": false
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.8.0",
+    "casadi": "3.7.2",
+    "gym": "0.26.2",
+    "Flask": "3.1.2",
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu"
+  },
+  "test_re_evaluated": false
+}

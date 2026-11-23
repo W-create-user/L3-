@@ -1,0 +1,18 @@
+{
+  "schema_version": "R03ActivationReview/0.1",
+  "status": "draft",
+  "runtime_enabled": false,
+  "environment": "Atropine",
+  "rule_kind": "relative_e_factor_candidate",
+  "relative_upper": null,
+  "approved_operating_config_ref": null,
+  "goal_contract_ref": null,
+  "threshold_basis_ref": null,
+  "team_confirmation_ref": null,
+  "disposition_ref": null,
+  "recovery_ref": null,
+  "fresh_context_contract_ref": null,
+  "boundary_test_record_ref": null,
+  "rollback_version_ref": null,
+  "note": "Preflight completeness only. No automatic activation or runtime configuration export."
+}

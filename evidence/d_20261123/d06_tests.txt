@@ -1,0 +1,6 @@
+test_http_and_session_failure_paths_preserve_action_gate (test_acceptance.TakeoverAcceptanceTests.test_http_and_session_failure_paths_preserve_action_gate) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.130s
+
+OK

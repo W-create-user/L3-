@@ -1,0 +1,80 @@
+{
+  "kind": "archive_structure_audit_not_new_simulation",
+  "code_commit": "090f5401fc886567a66b294110f9b2e7f6d91b9c",
+  "files": [
+    {
+      "path": "evidence/current/smpl/normal_1101/B_events.jsonl",
+      "sha256": "f6e5a8de21186ef88c81033fd2480f2be74cc68cb5dd897883cd59e9213f1002",
+      "event_records": 5,
+      "reset_records": 1,
+      "reset_details": [
+        {
+          "seed": 1101,
+          "observation_dimension": 39,
+          "state_version": 1
+        }
+      ],
+      "outcome_records": 1,
+      "executed_calls_reported": 1,
+      "rejected_candidates": 0,
+      "consistency_errors": [],
+      "training_ready": false,
+      "missing_for_D01_intake": [
+        "D01Step normalized records with verified simulation-time units",
+        "reviewed physical variable dictionary",
+        "independent anomaly labels and split review",
+        "dataset provenance and permission review"
+      ]
+    },
+    {
+      "path": "evidence/current/smpl/continuous_5/B_events.jsonl",
+      "sha256": "38b10130e5db1eeaeeafab7ca992fbd8ccea8d4e5fa288dcec335d0e081f2817",
+      "event_records": 17,
+      "reset_records": 1,
+      "reset_details": [
+        {
+          "seed": 1101,
+          "observation_dimension": 39,
+          "state_version": 1
+        }
+      ],
+      "outcome_records": 5,
+      "executed_calls_reported": 5,
+      "rejected_candidates": 0,
+      "consistency_errors": [],
+      "training_ready": false,
+      "missing_for_D01_intake": [
+        "D01Step normalized records with verified simulation-time units",
+        "reviewed physical variable dictionary",
+        "independent anomaly labels and split review",
+        "dataset provenance and permission review"
+      ]
+    },
+    {
+      "path": "evidence/current/smpl/reject_1101/B_events.jsonl",
+      "sha256": "e605040d10ee7d05fe4725db90db8be13473083b361f0c6382d5d7263060b616",
+      "event_records": 5,
+      "reset_records": 1,
+      "reset_details": [
+        {
+          "seed": 1101,
+          "observation_dimension": 39,
+          "state_version": 1
+        }
+      ],
+      "outcome_records": 1,
+      "executed_calls_reported": 0,
+      "rejected_candidates": 1,
+      "consistency_errors": [],
+      "training_ready": false,
+      "missing_for_D01_intake": [
+        "D01Step normalized records with verified simulation-time units",
+        "reviewed physical variable dictionary",
+        "independent anomaly labels and split review",
+        "dataset provenance and permission review"
+      ]
+    }
+  ],
+  "independent_training_episode_count": null,
+  "limits": "Reset and execution counts do not establish independent samples or process safety."
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": "DResearchEvidenceAudit/1.0",
+  "sensor_evaluation": {
+    "validation": {
+      "episodes": 3,
+      "window_counts": {
+        "TP": 42,
+        "FP": 18,
+        "FN": 0,
+        "TN": 21
+      },
+      "normal_window_denominator": 39,
+      "window_false_positive_rate": 0.46153846153846156,
+      "window_recall": 1.0,
+      "episode_normal_window_false_positive_rates": [
+        0.46153846153846156,
+        0.46153846153846156,
+        0.46153846153846156
+      ],
+      "raw_events": 3,
+      "detected_raw_events": 3,
+      "missed_raw_events": 0,
+      "unscorable_raw_events": 0,
+      "whole_uncorrupted_episodes": 0,
+      "whole_normal_episode_false_alarm_rate": null,
+      "population_confidence_interval": null,
+      "uncertainty_reason": "Few declared source episodes; statistical independence and operating coverage unverified. Overlapping windows are not independent trials."
+    },
+    "test": {
+      "episodes": 3,
+      "window_counts": {
+        "TP": 39,
+        "FP": 18,
+        "FN": 3,
+        "TN": 21
+      },
+      "normal_window_denominator": 39,
+      "window_false_positive_rate": 0.46153846153846156,
+      "window_recall": 0.9285714285714286,
+      "episode_normal_window_false_positive_rates": [
+        0.46153846153846156,
+        0.46153846153846156,
+        0.46153846153846156
+      ],
+      "raw_events": 3,
+      "detected_raw_events": 3,
+      "missed_raw_events": 0,
+      "unscorable_raw_events": 0,
+      "whole_uncorrupted_episodes": 0,
+      "whole_normal_episode_false_alarm_rate": null,
+      "population_confidence_interval": null,
+      "uncertainty_reason": "Few declared source episodes; statistical independence and operating coverage unverified. Overlapping windows are not independent trials."
+    }
+  },
+  "checkpoints_verified": 21,
+  "acceptance_items": [
+    {
+      "item": "frozen sensor baseline reproducibility",
+      "status": "verified",
+      "evidence": "exact report equality; private model hash comparison separately recorded"
+    },
+    {
+      "item": "derived three-branch training and checkpoint restoration",
+      "status": "engineering_verified",
+      "evidence": "21 independently trained models; exact validation logit roundtrips"
+    },
+    {
+      "item": "independent sensor-fault research acceptance",
+      "status": "evidence_insufficient",
+      "missing": "untouched independent source groups, whole-normal validation/test episodes, prespecified acceptance criteria and one final frozen evaluation"
+    },
+    {
+      "item": "physical process anomaly detection",
+      "status": "evidence_insufficient",
+      "missing": "physically justified anomaly labels and operating envelope; sensor bias is not physical truth"
+    },
+    {
+      "item": "independent visual/text sensing capability",
+      "status": "not_evaluated",
+      "missing": "causal independent camera/log data; numeric-derived modalities cannot establish this capability"
+    },
+    {
+      "item": "mAb physical R-03",
+      "status": "not_evaluated",
+      "missing": "separate confirmed variable units, operating conditions, threshold sources and labelled cases"
+    },
+    {
+      "item": "project success >=90% and makespan reduction >=20%",
+      "status": "not_evaluated",
+      "missing": "frozen physical goal/deadline definitions and matched started-run ledger with all failures"
+    },
+    {
+      "item": "independent final acceptance",
+      "status": "not_signed",
+      "missing": "separate reviewer reproduction and final evidence sign-off"
+    }
+  ],
+  "all_research_requirements_passed": false,
+  "deployment_authorized": false,
+  "thresholds_changed": false,
+  "test_used_for_tuning": false,
+  "limits": "Reproduction reuses previously inspected data. This report records evidence gaps; it neither invents physical thresholds nor certifies research success.",
+  "frozen_model_sha256": "6c949d96b49576f608fa769f1c01cf7e86629842ae4baf1cbb0fdcd66d62c949",
+  "frozen_model_bytes_reproduced_identically": true,
+  "input_sha256": {
+    "original": "de209ce8c830dcf804ed1d7bb6fab96cf06c435fa6fb53c9fc39209d279e6b3d",
+    "reproduced": "de209ce8c830dcf804ed1d7bb6fab96cf06c435fa6fb53c9fc39209d279e6b3d",
+    "fusion": "ea72bd5951576aeef9f0453591826baadcca6b1b983189e37667ec4f6e20a2af"
+  }
+}

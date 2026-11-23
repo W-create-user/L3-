@@ -1,0 +1,1299 @@
+{
+  "schema_version": "D04DerivedSensorStudy/1.0",
+  "source_receipt": {
+    "source_commit": "6e2b62bbe61f2bee690d55b045ee12d6a6e4497a",
+    "manifest_sha256": "394c5b992ff0b9f65192953abefed65b2ce2032ece5e4f727afc8d9a5da2a2c0",
+    "episodes_sha256": "47edd290d0e72a5667b3c8c18c477aaf9795c84271e383b2675a0ce91b1247f1",
+    "manifest_files_verified": 19,
+    "episode_counts": {
+      "train": 6,
+      "validation": 3,
+      "test": 3
+    },
+    "successful_steps": 360,
+    "sensor_fault_positive_steps": 66,
+    "source_observation_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "excluded_feature": "observation[0] clock; reset rows; all metadata/raw audit channels",
+    "label_scope": "sensor_fault",
+    "normal_meaning": "no declared artificial sensor corruption, not confirmed physical health",
+    "runtime_enabled": false,
+    "deployment_authorized": false,
+    "physical_process_labels_available": false,
+    "candidate_cases_checked": 2,
+    "independence_limit": "Distinct declared seeds/initial hashes/trajectories; statistical independence and broad operating coverage not established"
+  },
+  "derived_data_receipt": {
+    "recipe": "D-sensor-derived-modalities/1.0",
+    "source_scope": "B artificial sensor bias; physical labels unavailable",
+    "train_augmentation": "one clean and one D-only obs[6]*1.2 view at original sample indices 9..19, same lineage/split",
+    "clock_input": "source observation[0] excluded; model column0 fixed zero",
+    "display_scaling": "original uncorrupted train mean/std only; z clipped +/-4 solely for visualization",
+    "visual_and_text_source": "causal numeric window only; derived modalities, not independent camera/log data",
+    "cross_split_identical_assets_masked": {
+      "train": {
+        "image": 0,
+        "text": 0
+      },
+      "validation": {
+        "image": 0,
+        "text": 0
+      },
+      "test": {
+        "image": 0,
+        "text": 0
+      }
+    },
+    "windows": {
+      "train": 324,
+      "validation": 81,
+      "test": 81
+    },
+    "groups": {
+      "train": 6,
+      "validation": 3,
+      "test": 3
+    },
+    "scaler_sha256": "1c874a6166a661294268bac1fc8fd2d873b845839105ef6b87fdde907e6285a5",
+    "previously_inspected_test": true,
+    "acceptance_scope": "exploratory only; new independent holdout required"
+  },
+  "runs": [
+    {
+      "schema_version": "D04Comparison/0.1",
+      "variants": {
+        "full_concat": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5095527768135071,
+          "test": {
+            "tn": 10,
+            "fp": 29,
+            "fn": 30,
+            "tp": 12,
+            "f1": 0.2891566265060241
+          },
+          "losses": [
+            0.7221185564994812
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "76c31ee0a3edf572a6dbd850009db254c84c58995a717bc05cc7289e79351dad",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "9179ec32f12cad1bdb09bb47e25395b13fc24a640f51613e426f01c657e27fe1",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "full_attention": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.550727128982544,
+          "test": {
+            "tn": 9,
+            "fp": 30,
+            "fn": 32,
+            "tp": 10,
+            "f1": 0.24390243902439024
+          },
+          "losses": [
+            0.7605195641517639
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "ce20229ad88125f2083fd43715cf489218bf45b9e106707a237f516fe06c4195",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "4dae19bc2ac518780521564d11d023b807ecb12aeaf0ecdc286e131c9310ffca",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "time_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5214929580688477,
+          "test": {
+            "tn": 6,
+            "fp": 33,
+            "fn": 8,
+            "tp": 34,
+            "f1": 0.6238532110091743
+          },
+          "losses": [
+            0.7265254855155945
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "390c570eceef893f83bab0e6877d7e330c54cf7ad72b1e1431ea099ff2724f1c",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "8e30e14708d8c234f684bd4084648b10f8ee2526e818703813a52b0c02738b5a",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "image_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5145897269248962,
+          "test": {
+            "tn": 1,
+            "fp": 38,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6885245901639344
+          },
+          "losses": [
+            0.7213741540908813
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "5a3f8aa94cb193a099be39a8fa04677907b71ffe336c9b39c30c930e10e6b771",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "ba070cd1297617e2ac87e8ef791011bc3a91d1c579339c517104c80040bc8f03",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "text_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5193977952003479,
+          "test": {
+            "tn": 15,
+            "fp": 24,
+            "fn": 3,
+            "tp": 39,
+            "f1": 0.7428571428571429
+          },
+          "losses": [
+            0.7145344614982605
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "6c8d80f0aa0771340f3e6f44adca23fa9da721c30676f70eb6341f4657ef5102",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "ebbb412a8f77e854c072020c567d1aa8d7c6faa36b5b4c255f6530cbc6655923",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "without_image": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5533050298690796,
+          "test": {
+            "tn": 11,
+            "fp": 28,
+            "fn": 29,
+            "tp": 13,
+            "f1": 0.3132530120481928
+          },
+          "losses": [
+            0.7580844759941101
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "ae15257ebcdd9ff7199efab6d8147a7e894e3b6df7c217cea994db50576df4ef",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "bd8c2cab4a9ab8807f1f03c5d443bde71c0606c9be2eee3cbe1f5a7e3ae20e64",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "without_text": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5453833341598511,
+          "test": {
+            "tn": 6,
+            "fp": 33,
+            "fn": 6,
+            "tp": 36,
+            "f1": 0.6486486486486487
+          },
+          "losses": [
+            0.7612817287445068
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "7957f2a77385efe87a69a2bc7f7e16f60a7cab61f1567af5cadf11e0714b69c2",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "662b7cacdfb1435c25ca6b7327ccb1680bf3c3bdd624cd85a294c20c9256e425",
+            "validation_roundtrip_exact": true
+          }
+        }
+      },
+      "epochs_per_variant": 1,
+      "seed": 17,
+      "paired_comparison_established": false,
+      "deployment_authorized": false,
+      "common_test_cohort": true,
+      "original_test_samples": 81,
+      "test_cohort_samples": 81,
+      "test_cohort_excluded_samples": 0,
+      "limits": "Shared complete-case test subset excludes missing-modality cases; selection limits generalization. Independent retraining, not inference-only masking. Train/validation availability may differ. Random frozen visual backbone has no pretrained semantics. Numerical superiority is not established."
+    },
+    {
+      "schema_version": "D04Comparison/0.1",
+      "variants": {
+        "full_concat": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.503810465335846,
+          "test": {
+            "tn": 23,
+            "fp": 16,
+            "fn": 6,
+            "tp": 36,
+            "f1": 0.7659574468085106
+          },
+          "losses": [
+            0.7160670757293701
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "ac165281077ea47779eacc16012daa86377dec938dea400ba2261e39f88bddcd",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "6b2ee4884995e6f9531270738f65ecc473d60587f8cb29e523a81911ca605e39",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "full_attention": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5226030349731445,
+          "test": {
+            "tn": 21,
+            "fp": 18,
+            "fn": 2,
+            "tp": 40,
+            "f1": 0.8
+          },
+          "losses": [
+            0.7218658328056335
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "81acc1bde19741c86096e0cfd46054dc112725adeb42aaed1a33f2aa20ff4a13",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "c9807964a4cd7f0599d02e278b4e14a97fb3fba2121cbcc7380523daf45d2372",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "time_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.48880594968795776,
+          "test": {
+            "tn": 27,
+            "fp": 12,
+            "fn": 39,
+            "tp": 3,
+            "f1": 0.10526315789473684
+          },
+          "losses": [
+            0.6738352179527283
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "c6aaed69e66c52921326118bba0256e926f9b446a89b789f155ffa0f1fd4cae9",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "0cd4e906cbda47bd4fa537163b2a731f4b72055c71b648242722ec701949e7e9",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "image_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.46722373366355896,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.6772624254226685
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "05453e1962de61e8a1790c383bf2243cbfa9008fb984789718ad930acd3b0f96",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "8a71dabe77f94ddaf989012a67106f192fe71674886170e5e0bcd226c924ace3",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "text_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5251543521881104,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.7223582863807678
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "128c9b92a97310b247ad2d094e8ccedd75a481bdb438d17f729dcd6e9e5991e3",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "fff04bd1e9f73b618fbba9405fdf6122868a027d746cebe9f088269c4b02c5d5",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "without_image": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.5254809856414795,
+          "test": {
+            "tn": 17,
+            "fp": 22,
+            "fn": 2,
+            "tp": 40,
+            "f1": 0.7692307692307693
+          },
+          "losses": [
+            0.7185858488082886
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "54e5ad1f23c987316438edf1d42a91afd229de99dba98a71d4581ce62153ff8e",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "f263e9c877bf273516e6af7f8e86490f61e77295adece17ca72275fb64131c6e",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "without_text": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4814480245113373,
+          "test": {
+            "tn": 26,
+            "fp": 13,
+            "fn": 37,
+            "tp": 5,
+            "f1": 0.16666666666666666
+          },
+          "losses": [
+            0.6825811862945557
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "5d3691146672a6e034087cddf9fb04cb9195ab127af266ba4c71b27494b206b6",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "182f9fdbb88727293ad3190c9f318df9986723cf618d03bb41ea615ea74c6880",
+            "validation_roundtrip_exact": true
+          }
+        }
+      },
+      "epochs_per_variant": 1,
+      "seed": 29,
+      "paired_comparison_established": false,
+      "deployment_authorized": false,
+      "common_test_cohort": true,
+      "original_test_samples": 81,
+      "test_cohort_samples": 81,
+      "test_cohort_excluded_samples": 0,
+      "limits": "Shared complete-case test subset excludes missing-modality cases; selection limits generalization. Independent retraining, not inference-only masking. Train/validation availability may differ. Random frozen visual backbone has no pretrained semantics. Numerical superiority is not established."
+    },
+    {
+      "schema_version": "D04Comparison/0.1",
+      "variants": {
+        "full_concat": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.43012678623199463,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.6692503690719604
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "0c4f2a4a0a6b0f69c6e6d539f439ca395c9ff11c5655271524606c5dbe9b38e9",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "51921888ff45dce9f49625db14cd8810f08a28c6093b850b1ae68c6ad3e472fe",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "full_attention": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.41581976413726807,
+          "test": {
+            "tn": 1,
+            "fp": 38,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6885245901639344
+          },
+          "losses": [
+            0.640846848487854
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "8792e8052f45a2ac90e58c09d2724474b4163303bbb40dfaa3a07d02a9a2fedc",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "b7b51d2a3a486534413325e8ba4d79d8925076b77e5347ec608ff97090caeaa0",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "time_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4583878815174103,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.686163604259491
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "a4a2270268d4328bd04d4572ca51c225281117282bc28e6d0b657c3d8f369f4b",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "e23ba0d65d094f363284dde4ec3c5102b500a5ee0ec2808ab5396cc84b1d6127",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "image_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4570394456386566,
+          "test": {
+            "tn": 7,
+            "fp": 32,
+            "fn": 1,
+            "tp": 41,
+            "f1": 0.7130434782608696
+          },
+          "losses": [
+            0.6660175323486328
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "81cac9c5efd92c3b859b2de0c8270969bf09b1d3095d4173b2fd3187c86e66dc",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "844ad4e0ed34d58610a3e72e95381905b936a85c23e85a805c64d55319ba0e5c",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "text_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4637051522731781,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.6626355648040771
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "233d980166176b822d63169d5a824b0c4893069de9084b0d1d070c586fabf24f",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "ce55a71ccebc9b58a0df26f2332d9ee1cedec2959c27310fe0e1f2b496c404d5",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "without_image": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4139992594718933,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.6412360072135925
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 81,
+            "abstained_samples": 0,
+            "tn": 39,
+            "fp": 0,
+            "fn": 42,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "75724ad6ef8b7f8629c18a698216bdf2100b0ab3e464aeab3dc1da49d65e6705",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "0c7de637ff483574529230422bd55b23491f2477deb279c48fa79e183db2afc8",
+            "validation_roundtrip_exact": true
+          }
+        },
+        "without_text": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 324,
+              "eligible_samples": 324,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 81,
+              "eligible_samples": 81,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.44863176345825195,
+          "test": {
+            "tn": 0,
+            "fp": 39,
+            "fn": 0,
+            "tp": 42,
+            "f1": 0.6829268292682927
+          },
+          "losses": [
+            0.6822950839996338
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 81,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "card_sha256": "adf2fd265ed9e2084ac10bcc8a7e083064cc66cf6e8e5347f3fc3ba0da5c9e31",
+            "binding_sha256": "7a84258e5a0728c39e81ccc6d854d8a02f106cfab9adb7ebe8543bb9043258d0",
+            "deployment_authorized": false,
+            "weights_sha256": "61a9055a2665a2fb119e1a08e9e326f4518f9c1314dbc8441cb3b6b56efcf36e",
+            "validation_roundtrip_exact": true
+          }
+        }
+      },
+      "epochs_per_variant": 1,
+      "seed": 43,
+      "paired_comparison_established": false,
+      "deployment_authorized": false,
+      "common_test_cohort": true,
+      "original_test_samples": 81,
+      "test_cohort_samples": 81,
+      "test_cohort_excluded_samples": 0,
+      "limits": "Shared complete-case test subset excludes missing-modality cases; selection limits generalization. Independent retraining, not inference-only masking. Train/validation availability may differ. Random frozen visual backbone has no pretrained semantics. Numerical superiority is not established."
+    }
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "trained_models": 21,
+  "original_inputs_unchanged": true,
+  "scope": "previously inspected B simulation sensor-fault data; D-derived image/text and training augmentation; exploratory only",
+  "physical_efficacy_established": false,
+  "independent_research_acceptance_passed": false,
+  "limits": "Images/text derive from the same numeric window, not independent sensors. Test was inspected previously. Train augmentation matches B injection recipe. No threshold or model selected using this test; no production or physical safety claim.",
+  "code_sha256": {
+    "l3_system/monitoring/sensor_fusion_data.py": "5b388227441a9b118ee63a7da587f9f2398dea71a4c3ff34c166b380f3b0928e",
+    "l3_system/monitoring/fusion_comparison.py": "dd686e6bce5598226cf25a4f4e013144588014d787ccce46ede4d3ee38467803",
+    "l3_system/monitoring/multimodal_model.py": "6708c1d96f871f2291fb4763db83e6231403f70c5aa83c460a5d3e56988dfee1",
+    "deliverables/D01/scripts/run_derived_sensor_fusion.py": "caeeff49df8fb710fa3df2b12f853f2048673662b0b8bb63f6d460b7eab70775"
+  },
+  "summary": {
+    "full_concat": {
+      "f1_initialization_mean": 0.5793469675276092,
+      "f1_initialization_sd": 0.2547181704923019,
+      "false_positive_rates": [
+        0.7435897435897436,
+        0.41025641025641024,
+        1.0
+      ]
+    },
+    "full_attention": {
+      "f1_initialization_mean": 0.5774756763961082,
+      "f1_initialization_sd": 0.2942108432187979,
+      "false_positive_rates": [
+        0.7692307692307693,
+        0.46153846153846156,
+        0.9743589743589743
+      ]
+    },
+    "time_only": {
+      "f1_initialization_mean": 0.4706810660574013,
+      "f1_initialization_sd": 0.31783660707671657,
+      "false_positive_rates": [
+        0.8461538461538461,
+        0.3076923076923077,
+        1.0
+      ]
+    },
+    "image_only": {
+      "f1_initialization_mean": 0.6948316325643655,
+      "f1_initialization_sd": 0.01601834025472511,
+      "false_positive_rates": [
+        0.9743589743589743,
+        1.0,
+        0.8205128205128205
+      ]
+    },
+    "text_only": {
+      "f1_initialization_mean": 0.7029036004645761,
+      "f1_initialization_sd": 0.03460078268314132,
+      "false_positive_rates": [
+        0.6153846153846154,
+        1.0,
+        1.0
+      ]
+    },
+    "without_image": {
+      "f1_initialization_mean": 0.5884702035157516,
+      "f1_initialization_sd": 0.24221987815356916,
+      "false_positive_rates": [
+        0.717948717948718,
+        0.5641025641025641,
+        1.0
+      ]
+    },
+    "without_text": {
+      "f1_initialization_mean": 0.49941404819453605,
+      "f1_initialization_sd": 0.2886769186337701,
+      "false_positive_rates": [
+        0.8461538461538461,
+        0.3333333333333333,
+        1.0
+      ]
+    }
+  }
+}

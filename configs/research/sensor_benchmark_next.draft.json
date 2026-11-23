@@ -1,0 +1,418 @@
+{
+  "schema_version": "SensorBenchmarkNext/0.1",
+  "status": "draft",
+  "execution_authorized": false,
+  "label_scope": "artificial sensor bias only; physical health remains null",
+  "horizon_steps": 60,
+  "feature_source": "delivered observation; exclude observation[0] and all audit/label/seed metadata",
+  "lineage_policy": "clean/corrupt/derived/replayed views of one source retain same group and split",
+  "test_policy": "do not load reserved test in exploration; freeze candidates and validation threshold before one final evaluation",
+  "collector_review_ref": null,
+  "budget_confirmation_ref": null,
+  "episodes": [
+    {
+      "episode_id": "train_16001",
+      "group_id": "new_source_seed_16001",
+      "split": "train",
+      "seed": 16001,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16002",
+      "group_id": "new_source_seed_16002",
+      "split": "train",
+      "seed": 16002,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16003",
+      "group_id": "new_source_seed_16003",
+      "split": "train",
+      "seed": 16003,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16004",
+      "group_id": "new_source_seed_16004",
+      "split": "train",
+      "seed": 16004,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16005",
+      "group_id": "new_source_seed_16005",
+      "split": "train",
+      "seed": 16005,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16006",
+      "group_id": "new_source_seed_16006",
+      "split": "train",
+      "seed": 16006,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16007",
+      "group_id": "new_source_seed_16007",
+      "split": "train",
+      "seed": 16007,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "train_16008",
+      "group_id": "new_source_seed_16008",
+      "split": "train",
+      "seed": 16008,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17001",
+      "group_id": "new_source_seed_17001",
+      "split": "validation",
+      "seed": 17001,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17002",
+      "group_id": "new_source_seed_17002",
+      "split": "validation",
+      "seed": 17002,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17003",
+      "group_id": "new_source_seed_17003",
+      "split": "validation",
+      "seed": 17003,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17004",
+      "group_id": "new_source_seed_17004",
+      "split": "validation",
+      "seed": 17004,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17005",
+      "group_id": "new_source_seed_17005",
+      "split": "validation",
+      "seed": 17005,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17006",
+      "group_id": "new_source_seed_17006",
+      "split": "validation",
+      "seed": 17006,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17007",
+      "group_id": "new_source_seed_17007",
+      "split": "validation",
+      "seed": 17007,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.05,
+        "first_step": 8,
+        "last_step": 13,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17008",
+      "group_id": "new_source_seed_17008",
+      "split": "validation",
+      "seed": 17008,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.1,
+        "first_step": 19,
+        "last_step": 28,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17009",
+      "group_id": "new_source_seed_17009",
+      "split": "validation",
+      "seed": 17009,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.2,
+        "first_step": 34,
+        "last_step": 41,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17010",
+      "group_id": "new_source_seed_17010",
+      "split": "validation",
+      "seed": 17010,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 0.9,
+        "first_step": 12,
+        "last_step": 25,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17011",
+      "group_id": "new_source_seed_17011",
+      "split": "validation",
+      "seed": 17011,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 0.8,
+        "first_step": 27,
+        "last_step": 31,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "validation_17012",
+      "group_id": "new_source_seed_17012",
+      "split": "validation",
+      "seed": 17012,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.15,
+        "first_step": 43,
+        "last_step": 51,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18001",
+      "group_id": "new_source_seed_18001",
+      "split": "test",
+      "seed": 18001,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18002",
+      "group_id": "new_source_seed_18002",
+      "split": "test",
+      "seed": 18002,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18003",
+      "group_id": "new_source_seed_18003",
+      "split": "test",
+      "seed": 18003,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18004",
+      "group_id": "new_source_seed_18004",
+      "split": "test",
+      "seed": 18004,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18005",
+      "group_id": "new_source_seed_18005",
+      "split": "test",
+      "seed": 18005,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18006",
+      "group_id": "new_source_seed_18006",
+      "split": "test",
+      "seed": 18006,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": null,
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18007",
+      "group_id": "new_source_seed_18007",
+      "split": "test",
+      "seed": 18007,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.05,
+        "first_step": 8,
+        "last_step": 13,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18008",
+      "group_id": "new_source_seed_18008",
+      "split": "test",
+      "seed": 18008,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.1,
+        "first_step": 19,
+        "last_step": 28,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18009",
+      "group_id": "new_source_seed_18009",
+      "split": "test",
+      "seed": 18009,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.2,
+        "first_step": 34,
+        "last_step": 41,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18010",
+      "group_id": "new_source_seed_18010",
+      "split": "test",
+      "seed": 18010,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 0.9,
+        "first_step": 12,
+        "last_step": 25,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18011",
+      "group_id": "new_source_seed_18011",
+      "split": "test",
+      "seed": 18011,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 0.8,
+        "first_step": 27,
+        "last_step": 31,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    },
+    {
+      "episode_id": "test_18012",
+      "group_id": "new_source_seed_18012",
+      "split": "test",
+      "seed": 18012,
+      "reset_count": 1,
+      "horizon_steps": 60,
+      "fault": {
+        "observation_index": 6,
+        "kind": "multiplicative_bias",
+        "multiplier": 1.15,
+        "first_step": 43,
+        "last_step": 51,
+        "application": "post_step_delivered_only"
+      },
+      "physical_health_label": null
+    }
+  ]
+}
