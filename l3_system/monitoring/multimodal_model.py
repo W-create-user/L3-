@@ -1,7 +1,8 @@
 """Optional D04 CPU baseline. Inputs must already pass causal/lineage review.
 
 This module does not authorize simulator actions or infer physical safety limits.
-Torch/torchvision are optional dependencies; no downloaded pretrained weights.
+Torch/torchvision are optional dependencies. Pretrained weights are explicit
+caller-supplied tensors; default tests never download external weights.
 """
 from dataclasses import dataclass
 import math
@@ -42,13 +43,16 @@ class Batch:
 
 
 class FusionBaseline(nn.Module):
-    def __init__(self,text_dimension,mode='attention',width=16):
+    def __init__(self,text_dimension,mode='attention',width=16,*,visual_state=None,visual_pretrained=False):
         super().__init__()
         if mode not in ('concat','attention') or text_dimension<1:raise ValueError('invalid fusion configuration')
         self.mode=mode
         self.register_buffer('series_mean',torch.zeros(39))
         self.register_buffer('series_std',torch.ones(39))
         self.vision=resnet18(weights=None)
+        if visual_state is not None:
+            self.vision.load_state_dict(visual_state,strict=True)
+        self.visual_pretrained=bool(visual_state is not None or visual_pretrained)
         for parameter in self.vision.parameters():parameter.requires_grad_(False)
         self.vision.fc=nn.Linear(self.vision.fc.in_features,width)
         self.temporal=nn.LSTM(39,width,batch_first=True)
@@ -71,6 +75,10 @@ class FusionBaseline(nn.Module):
         text=torch.where(mask[:,2,None],text,torch.zeros_like(text))
         series=(series-self.series_mean)/self.series_std
         temporal=self.temporal(series)[0][:,-1,:]
+        if self.visual_pretrained:
+            mean=images.new_tensor([.485,.456,.406])[None,:,None,None]
+            std=images.new_tensor([.229,.224,.225])[None,:,None,None]
+            images=(images-mean)/std
         embeddings=torch.stack((temporal,self.vision(images),self.text(text)),dim=1)
         embeddings=embeddings.masked_fill(~mask[:,:,None],0)
         if self.mode=='attention':
@@ -99,7 +107,7 @@ def metrics(labels,predictions):
     return {'tn':int(tn),'fp':int(fp),'fn':int(fn),'tp':int(tp),'f1':float(f1_score(labels,predictions,zero_division=0))}
 
 
-def train_baseline(batches,mode='attention',epochs=1,seed=17):
+def train_baseline(batches,mode='attention',epochs=1,seed=17,*,visual_state=None):
     """Fit transforms only on train; select binary decision threshold on validation.
 
     This API expects reviewed labels. A tensor or mask is not a provenance receipt.
@@ -120,7 +128,7 @@ def train_baseline(batches,mode='attention',epochs=1,seed=17):
     available=train.mask[:,2].numpy()
     nb=(MultinomialNB().fit(text['train'].numpy()[available],train.labels.numpy()[available])
         if set(train.labels.numpy()[available].tolist())=={0.,1.} else None)
-    model=FusionBaseline(len(vectorizer.vocabulary_),mode)
+    model=FusionBaseline(len(vectorizer.vocabulary_),mode,visual_state=visual_state)
     available_series=train.series[train.mask[:,0]]
     if len(available_series):
         model.series_mean.copy_(available_series.mean(dim=(0,1)))
@@ -140,7 +148,7 @@ def train_baseline(batches,mode='attention',epochs=1,seed=17):
         candidates=np.unique(np.r_[0.,scores['validation'],np.nextafter(float(max(scores['validation'])),math.inf)])
         threshold=max(candidates,key=lambda t:(f1_score(y,scores['validation']>=t,zero_division=0),float(t)))
         test=batches['test'];report={'mode':mode,'epochs':epochs,'losses':losses,'threshold':float(threshold),
-            'threshold_source':'validation_only','preprocessing_source':'training_only','pretrained_visual_weights':False,'visual_backbone_frozen':True,
+            'threshold_source':'validation_only','preprocessing_source':'training_only','pretrained_visual_weights':model.visual_pretrained,'visual_backbone_frozen':True,
             'test':metrics(test.labels.numpy(),scores['test']>=threshold),'ablations':{}}
         for column,name in enumerate(('time_only','image_only','text_only')):
             mask=torch.zeros_like(test.mask);mask[:,column]=test.mask[:,column]

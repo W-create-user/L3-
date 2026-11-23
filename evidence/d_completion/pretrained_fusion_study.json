@@ -1,0 +1,1829 @@
+{
+  "schema_version": "D04PretrainedStudy/1.0",
+  "config": {
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "epochs": 20,
+    "stride": 8,
+    "source_receipt": {
+      "recipe": "D-sensor-derived-modalities/1.0",
+      "source_scope": "B artificial sensor bias; physical labels unavailable",
+      "train_augmentation": "one clean and one D-only obs[6]*1.2 view at original sample indices 9..19, same lineage/split",
+      "clock_input": "source observation[0] excluded; model column0 fixed zero",
+      "display_scaling": "original uncorrupted train mean/std only; z clipped +/-4 solely for visualization",
+      "visual_and_text_source": "causal numeric window only; derived modalities, not independent camera/log data",
+      "cross_split_identical_assets_masked": {
+        "train": {
+          "image": 0,
+          "text": 0
+        },
+        "validation": {
+          "image": 0,
+          "text": 0
+        },
+        "test": {
+          "image": 0,
+          "text": 0
+        }
+      },
+      "windows": {
+        "train": 912,
+        "validation": 684,
+        "test": 684
+      },
+      "groups": {
+        "train": 8,
+        "validation": 12,
+        "test": 12
+      },
+      "scaler_sha256": "335879a234a5f23957ac96810e8e0cadc6bccbb8a5b68bd140f8cddf1acd89d7",
+      "previously_inspected_test": true,
+      "acceptance_scope": "exploratory only; new independent holdout required"
+    },
+    "binding": {
+      "schema_version": "AnomalyBinding/1.0",
+      "environment": "Atropine",
+      "collection_config_sha256": "e3480330854b9a4a961dcefe87df78a102c446141290eaab0f988a8c8b61735d",
+      "observation": [
+        {
+          "index": 0,
+          "name": "D_excluded_clock_zero",
+          "unit": "excluded",
+          "coordinate": "D zero padding"
+        },
+        {
+          "index": 1,
+          "name": "Atropine_model_observation_1",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 2,
+          "name": "Atropine_model_observation_2",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 3,
+          "name": "Atropine_model_observation_3",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 4,
+          "name": "Atropine_model_observation_4",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 5,
+          "name": "Atropine_model_observation_5",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 6,
+          "name": "Atropine_model_observation_6",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 7,
+          "name": "Atropine_model_observation_7",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 8,
+          "name": "Atropine_model_observation_8",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 9,
+          "name": "Atropine_model_observation_9",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 10,
+          "name": "Atropine_model_observation_10",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 11,
+          "name": "Atropine_model_observation_11",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 12,
+          "name": "Atropine_model_observation_12",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 13,
+          "name": "Atropine_model_observation_13",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 14,
+          "name": "Atropine_model_observation_14",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 15,
+          "name": "Atropine_model_observation_15",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 16,
+          "name": "Atropine_model_observation_16",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 17,
+          "name": "Atropine_model_observation_17",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 18,
+          "name": "Atropine_model_observation_18",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 19,
+          "name": "Atropine_model_observation_19",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 20,
+          "name": "Atropine_model_observation_20",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 21,
+          "name": "Atropine_model_observation_21",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 22,
+          "name": "Atropine_model_observation_22",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 23,
+          "name": "Atropine_model_observation_23",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 24,
+          "name": "Atropine_model_observation_24",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 25,
+          "name": "Atropine_model_observation_25",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 26,
+          "name": "Atropine_model_observation_26",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 27,
+          "name": "Atropine_model_observation_27",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 28,
+          "name": "Atropine_model_observation_28",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 29,
+          "name": "Atropine_model_observation_29",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 30,
+          "name": "Atropine_model_observation_30",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 31,
+          "name": "Atropine_model_observation_31",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 32,
+          "name": "Atropine_model_observation_32",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 33,
+          "name": "Atropine_model_observation_33",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 34,
+          "name": "Atropine_model_observation_34",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 35,
+          "name": "Atropine_model_observation_35",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 36,
+          "name": "Atropine_model_observation_36",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 37,
+          "name": "Atropine_model_observation_37",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        },
+        {
+          "index": 38,
+          "name": "Atropine_model_observation_38",
+          "unit": "model coordinate; physical calibration not established",
+          "coordinate": "normalize_false"
+        }
+      ],
+      "action": [
+        {
+          "index": 0,
+          "name": "Atropine_model_action_0",
+          "unit": "model coordinate",
+          "coordinate": "uss_subtracted"
+        },
+        {
+          "index": 1,
+          "name": "Atropine_model_action_1",
+          "unit": "model coordinate",
+          "coordinate": "uss_subtracted"
+        },
+        {
+          "index": 2,
+          "name": "Atropine_model_action_2",
+          "unit": "model coordinate",
+          "coordinate": "uss_subtracted"
+        },
+        {
+          "index": 3,
+          "name": "Atropine_model_action_3",
+          "unit": "model coordinate",
+          "coordinate": "uss_subtracted"
+        }
+      ]
+    },
+    "pretrained_weights_sha256": "b034095027bc621f24dc776985ae14266a553b068d1a7d49fd78901e5cfe87c6",
+    "weights_source": "torchvision ResNet18 IMAGENET1K_V1",
+    "test_previously_inspected": true,
+    "scope": "fixed-budget derived-modality engineering study, not independent research acceptance"
+  },
+  "runs": [
+    {
+      "schema_version": "D04Comparison/0.1",
+      "variants": {
+        "full_concat": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.10545653849840164,
+          "test": {
+            "tn": 68,
+            "fp": 9,
+            "fn": 4,
+            "tp": 5,
+            "f1": 0.43478260869565216
+          },
+          "losses": [
+            0.6721861958503723,
+            0.6166229248046875,
+            0.5672122240066528,
+            0.5238394737243652,
+            0.4863034188747406,
+            0.4543253481388092,
+            0.4275363087654114,
+            0.40547266602516174,
+            0.3875933289527893,
+            0.37331336736679077,
+            0.3620368540287018,
+            0.35318395495414734,
+            0.34620943665504456,
+            0.34061694145202637,
+            0.33596864342689514,
+            0.331891268491745,
+            0.32807862758636475,
+            0.324290931224823,
+            0.32035091519355774,
+            0.3161383867263794
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "29850df78d8d4a4c98f8bcd6908dd35da5d04cfdab4363cc6fa0cfec26901d59",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "8cd7a8bda85e975ec2c8c4c59fe393523b47bcbd91ef2007bc51bf42e5a8a59a"
+          }
+        },
+        "full_attention": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.0828360989689827,
+          "test": {
+            "tn": 65,
+            "fp": 12,
+            "fn": 4,
+            "tp": 5,
+            "f1": 0.38461538461538464
+          },
+          "losses": [
+            0.7480157613754272,
+            0.7063044905662537,
+            0.6654630899429321,
+            0.6256539225578308,
+            0.5870800614356995,
+            0.5500591397285461,
+            0.5150359272956848,
+            0.48256033658981323,
+            0.4532279372215271,
+            0.42757904529571533,
+            0.40598946809768677,
+            0.3885902464389801,
+            0.37522098422050476,
+            0.36541059613227844,
+            0.35841649770736694,
+            0.3533318042755127,
+            0.3492279350757599,
+            0.34528639912605286,
+            0.3408852219581604,
+            0.33563148975372314
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "657034192ac66db1ea18eb389fbfd5c3b5c5dd6e733d83f67a46e9bc841677e6",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "0d0a928b5f5fdb84327cd6e2e4366305123933efbd58ffde3e5abb4495cc15b5"
+          }
+        },
+        "time_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4750754237174988,
+          "test": {
+            "tn": 33,
+            "fp": 44,
+            "fn": 0,
+            "tp": 9,
+            "f1": 0.2903225806451613
+          },
+          "losses": [
+            0.7256981134414673,
+            0.7234357595443726,
+            0.7211594581604004,
+            0.7188671231269836,
+            0.7165548801422119,
+            0.7142170667648315,
+            0.711847186088562,
+            0.7094398140907288,
+            0.7069898247718811,
+            0.7044923901557922,
+            0.7019428610801697,
+            0.6993361115455627,
+            0.6966667771339417,
+            0.6939291954040527,
+            0.691117525100708,
+            0.6882257461547852,
+            0.6852476596832275,
+            0.6821771860122681,
+            0.6790080070495605,
+            0.6757343411445618
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "85451f9e3ea638703661691ee9a71d249ab925e61d645261277555d0987826ff",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "a0410b430a7ec4709cbf40330f8031bfe97239f507a8fa906f24dec61071660b"
+          }
+        },
+        "image_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.10180147737264633,
+          "test": {
+            "tn": 68,
+            "fp": 9,
+            "fn": 3,
+            "tp": 6,
+            "f1": 0.5
+          },
+          "losses": [
+            0.6146953701972961,
+            0.5702086091041565,
+            0.5306687951087952,
+            0.49581989645957947,
+            0.4654929041862488,
+            0.43950381875038147,
+            0.41757825016975403,
+            0.3993625044822693,
+            0.3844527006149292,
+            0.37241366505622864,
+            0.3627931773662567,
+            0.35513585805892944,
+            0.34899935126304626,
+            0.34397023916244507,
+            0.3396773040294647,
+            0.33580097556114197,
+            0.33207887411117554,
+            0.32830679416656494,
+            0.32433679699897766,
+            0.3200724720954895
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "93122031b245e129695780afa769dd271f859bbb313a673e18550ecced72f7b2",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "4059ecb6ef9454a6567b6fbf931776ded4af654df358d0ab794d827ec8a98e24"
+          }
+        },
+        "text_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.48100346326828003,
+          "test": {
+            "tn": 21,
+            "fp": 56,
+            "fn": 1,
+            "tp": 8,
+            "f1": 0.2191780821917808
+          },
+          "losses": [
+            0.7255018949508667,
+            0.7225521206855774,
+            0.7196142077445984,
+            0.7166832089424133,
+            0.7137549519538879,
+            0.7108234763145447,
+            0.7078830599784851,
+            0.7049298882484436,
+            0.701961100101471,
+            0.6989750862121582,
+            0.6959700584411621,
+            0.6929441094398499,
+            0.6898956298828125,
+            0.6868225932121277,
+            0.6837230324745178,
+            0.6805948615074158,
+            0.6774364113807678,
+            0.6742459535598755,
+            0.6710214614868164,
+            0.6677618026733398
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "9c15fc51a6a617e4220add54815f1135f91e755452812dd075da38c84eae82f8",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "b3b36836b91d1697c94e1693ee61694ca47f4bb87c7e3136fb6a717ed486aac6"
+          }
+        },
+        "without_image": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.49270278215408325,
+          "test": {
+            "tn": 35,
+            "fp": 42,
+            "fn": 1,
+            "tp": 8,
+            "f1": 0.2711864406779661
+          },
+          "losses": [
+            0.7926245331764221,
+            0.7879453301429749,
+            0.7832838892936707,
+            0.778637170791626,
+            0.7740002870559692,
+            0.7693668603897095,
+            0.7647305727005005,
+            0.7600847482681274,
+            0.7554233074188232,
+            0.7507411241531372,
+            0.7460333108901978,
+            0.7412950992584229,
+            0.7365224957466125,
+            0.7317113280296326,
+            0.7268581986427307,
+            0.7219599485397339,
+            0.7170138359069824,
+            0.7120170593261719,
+            0.7069669961929321,
+            0.7018614411354065
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "e089e3265cc25ed7dcef3da1de00fa946247276ac43ec6559ee344c2a6aff2d7",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "11dd4cd93f853aacc833ca7803bd1ad3b1d2e979a1e63510f7fb591f5b2aa626"
+          }
+        },
+        "without_text": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.11419816315174103,
+          "test": {
+            "tn": 62,
+            "fp": 15,
+            "fn": 6,
+            "tp": 3,
+            "f1": 0.2222222222222222
+          },
+          "losses": [
+            0.7739691734313965,
+            0.7290825843811035,
+            0.6891241073608398,
+            0.653256893157959,
+            0.6206921339035034,
+            0.590624213218689,
+            0.5623812675476074,
+            0.5355129241943359,
+            0.5097894668579102,
+            0.48518258333206177,
+            0.4618293046951294,
+            0.4399835467338562,
+            0.4199548661708832,
+            0.40203747153282166,
+            0.38644322752952576,
+            0.3732548654079437,
+            0.3624017536640167,
+            0.3536583483219147,
+            0.3466678857803345,
+            0.3409861922264099
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "1d7480303469253154804882f1d6e1726634f9dc12cf2513af1d42ad497f0011",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "93257addfddf10f48d2455ecf05ef3dc803e22c18f073dacdb2283143e4b5f7c"
+          }
+        }
+      },
+      "epochs_per_variant": 20,
+      "seed": 17,
+      "paired_comparison_established": false,
+      "deployment_authorized": false,
+      "common_test_cohort": true,
+      "original_test_samples": 86,
+      "test_cohort_samples": 86,
+      "test_cohort_excluded_samples": 0,
+      "pretrained_visual_weights": true,
+      "limits": "Shared complete-case test subset excludes missing-modality cases; selection limits generalization. Independent retraining, not inference-only masking. Train/validation availability may differ. Derived numeric images do not establish independent visual sensing. Numerical superiority is not established."
+    },
+    {
+      "schema_version": "D04Comparison/0.1",
+      "variants": {
+        "full_concat": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.10658751428127289,
+          "test": {
+            "tn": 68,
+            "fp": 9,
+            "fn": 6,
+            "tp": 3,
+            "f1": 0.2857142857142857
+          },
+          "losses": [
+            0.8001555800437927,
+            0.7302663326263428,
+            0.667513370513916,
+            0.6116993427276611,
+            0.5626505017280579,
+            0.520088255405426,
+            0.48364174365997314,
+            0.4528696537017822,
+            0.4272706210613251,
+            0.406294584274292,
+            0.389358788728714,
+            0.3758683502674103,
+            0.365237832069397,
+            0.3569096624851227,
+            0.3503681719303131,
+            0.34514856338500977,
+            0.34084373712539673,
+            0.3371066153049469,
+            0.3336513042449951,
+            0.3302510678768158
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "bf2ea82e6f218c340d098f677b30bfe9da3b1c07ff5edc6bf1382f4da532e532",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "a947793e683fd151e1e33d679f18dd6365f9095ff2796f0ca5ecea302395927d"
+          }
+        },
+        "full_attention": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.07337944209575653,
+          "test": {
+            "tn": 4,
+            "fp": 73,
+            "fn": 1,
+            "tp": 8,
+            "f1": 0.17777777777777778
+          },
+          "losses": [
+            0.7750219106674194,
+            0.7508745789527893,
+            0.72989422082901,
+            0.710283100605011,
+            0.6909467577934265,
+            0.671329915523529,
+            0.6510053277015686,
+            0.6295947432518005,
+            0.6067937016487122,
+            0.5824493169784546,
+            0.5566514134407043,
+            0.5297738313674927,
+            0.5024555325508118,
+            0.4755280613899231,
+            0.4499000012874603,
+            0.4264264702796936,
+            0.40579110383987427,
+            0.38842344284057617,
+            0.3744511306285858,
+            0.36369457840919495
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "091985ecedcd576e46726a64cd0b46ade45106504f6c19ff8258b0f5dd4da35a",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "3aeba0761deee54d64cd654605e36055d8493658a0b5a7456f1922037b3dab74"
+          }
+        },
+        "time_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4716570973396301,
+          "test": {
+            "tn": 71,
+            "fp": 6,
+            "fn": 6,
+            "tp": 3,
+            "f1": 0.3333333333333333
+          },
+          "losses": [
+            0.6663568615913391,
+            0.6635823249816895,
+            0.6608363389968872,
+            0.6581072211265564,
+            0.6553842425346375,
+            0.6526618599891663,
+            0.6499369144439697,
+            0.6472062468528748,
+            0.6444665789604187,
+            0.6417143940925598,
+            0.638945460319519,
+            0.6361554265022278,
+            0.6333393454551697,
+            0.6304918527603149,
+            0.6276079416275024,
+            0.6246820688247681,
+            0.6217091679573059,
+            0.6186842918395996,
+            0.6156026124954224,
+            0.6124598979949951
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "59e85772beac996996c164712551fe0951d7f421f1f9eeb8bfd15c7d41da8b5c",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "b3e293b6a5e47fa7f4fee892b849d4c3b58745e3d09017db943815f9c0f1bb45"
+          }
+        },
+        "image_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.14267121255397797,
+          "test": {
+            "tn": 68,
+            "fp": 9,
+            "fn": 8,
+            "tp": 1,
+            "f1": 0.10526315789473684
+          },
+          "losses": [
+            0.6849069595336914,
+            0.6485853791236877,
+            0.614912211894989,
+            0.5836506485939026,
+            0.5547344088554382,
+            0.5281181931495667,
+            0.5037378668785095,
+            0.4815218150615692,
+            0.4614000618457794,
+            0.4433026909828186,
+            0.42715340852737427,
+            0.4128635823726654,
+            0.40032893419265747,
+            0.3894287943840027,
+            0.3800261914730072,
+            0.37196967005729675,
+            0.36509576439857483,
+            0.3592327833175659,
+            0.3542054295539856,
+            0.3498399555683136
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "182df8e0aa557b0f3e92a28cdc17c98e7ffd76cfd55c0de38f292fa7cfbd8a36",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "529d4d3c94136f8b1d7dd593b6e9502be32fc7a31777689d8d8f5bd2c8c93631"
+          }
+        },
+        "text_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4825485050678253,
+          "test": {
+            "tn": 33,
+            "fp": 44,
+            "fn": 3,
+            "tp": 6,
+            "f1": 0.2033898305084746
+          },
+          "losses": [
+            0.7391759753227234,
+            0.7353958487510681,
+            0.7316358685493469,
+            0.7278881669044495,
+            0.7241494655609131,
+            0.7204186916351318,
+            0.7166953682899475,
+            0.7129787802696228,
+            0.7092678546905518,
+            0.7055615782737732,
+            0.7018584609031677,
+            0.6981565356254578,
+            0.6944536566734314,
+            0.6907474398612976,
+            0.6870351433753967,
+            0.6833140254020691,
+            0.679581344127655,
+            0.6758347153663635,
+            0.672071635723114,
+            0.6682898998260498
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "c8d4a830390e6def27407da211c38e5285479600d9c8dc5bfd2650566416b9b9",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "2399a90c4ff9c71df9d164f239d8bcd85adf7d2ceaa4211008ea087147a68168"
+          }
+        },
+        "without_image": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.49992984533309937,
+          "test": {
+            "tn": 64,
+            "fp": 13,
+            "fn": 7,
+            "tp": 2,
+            "f1": 0.16666666666666666
+          },
+          "losses": [
+            0.7336529493331909,
+            0.7305607199668884,
+            0.7274557948112488,
+            0.7243339419364929,
+            0.7211921811103821,
+            0.7180278897285461,
+            0.7148385047912598,
+            0.7116212248802185,
+            0.7083736062049866,
+            0.7050924897193909,
+            0.7017749547958374,
+            0.6984173059463501,
+            0.6950162649154663,
+            0.6915683150291443,
+            0.6880699396133423,
+            0.6845178604125977,
+            0.6809093356132507,
+            0.6772421002388,
+            0.6735138893127441,
+            0.6697234511375427
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "2684516a393d0d71bad27e89a4cedee007be5006571c058e876de249126fbd28",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "93a2b5444bb97bb9071fa9ee9b116a56ef23170dc3d2c34f93c869478c200335"
+          }
+        },
+        "without_text": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.10245432704687119,
+          "test": {
+            "tn": 69,
+            "fp": 8,
+            "fn": 4,
+            "tp": 5,
+            "f1": 0.45454545454545453
+          },
+          "losses": [
+            0.6832232475280762,
+            0.63682621717453,
+            0.5983416438102722,
+            0.5660254955291748,
+            0.5379759669303894,
+            0.5125517845153809,
+            0.4885803759098053,
+            0.46539878845214844,
+            0.44283655285835266,
+            0.4211283028125763,
+            0.4007636308670044,
+            0.3823072612285614,
+            0.36622458696365356,
+            0.3527505695819855,
+            0.341824471950531,
+            0.33310189843177795,
+            0.32602810859680176,
+            0.31994006037712097,
+            0.31416264176368713,
+            0.308088093996048
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "e3f7a488f2e5215b61e4278190afa5632a228080f69dc268241ec6320b717629",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "21a731c85dfef20a6b42b48f8196940a177fdf671985c8b8b1712df834b1a274"
+          }
+        }
+      },
+      "epochs_per_variant": 20,
+      "seed": 29,
+      "paired_comparison_established": false,
+      "deployment_authorized": false,
+      "common_test_cohort": true,
+      "original_test_samples": 86,
+      "test_cohort_samples": 86,
+      "test_cohort_excluded_samples": 0,
+      "pretrained_visual_weights": true,
+      "limits": "Shared complete-case test subset excludes missing-modality cases; selection limits generalization. Independent retraining, not inference-only masking. Train/validation availability may differ. Derived numeric images do not establish independent visual sensing. Numerical superiority is not established."
+    },
+    {
+      "schema_version": "D04Comparison/0.1",
+      "variants": {
+        "full_concat": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.11934357136487961,
+          "test": {
+            "tn": 73,
+            "fp": 4,
+            "fn": 6,
+            "tp": 3,
+            "f1": 0.375
+          },
+          "losses": [
+            0.6595545411109924,
+            0.6013075709342957,
+            0.5504959225654602,
+            0.5066988468170166,
+            0.46952202916145325,
+            0.43847742676734924,
+            0.4129721224308014,
+            0.39234086871147156,
+            0.37588581442832947,
+            0.3629136383533478,
+            0.35276174545288086,
+            0.34481510519981384,
+            0.3385167121887207,
+            0.33337557315826416,
+            0.3289715647697449,
+            0.3249579668045044,
+            0.32106074690818787,
+            0.3170747458934784,
+            0.31285783648490906,
+            0.30832329392433167
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "b461c6b3fb1f4441045adf9037ed4f009858fc027e9bb299c7744223feb596cc",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "eceba691bc249df13313e756f207cd89a0105519cf4e79ae165878d6d8d1dac8"
+          }
+        },
+        "full_attention": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.10044582188129425,
+          "test": {
+            "tn": 68,
+            "fp": 9,
+            "fn": 4,
+            "tp": 5,
+            "f1": 0.43478260869565216
+          },
+          "losses": [
+            0.603785514831543,
+            0.5815093517303467,
+            0.5605378150939941,
+            0.5400919914245605,
+            0.5197498202323914,
+            0.49932828545570374,
+            0.4788662791252136,
+            0.45854946970939636,
+            0.43868201971054077,
+            0.4196650981903076,
+            0.40194886922836304,
+            0.3859734833240509,
+            0.3721003532409668,
+            0.3605174720287323,
+            0.35116082429885864,
+            0.3436928689479828,
+            0.3375466763973236,
+            0.33202359080314636,
+            0.32642611861228943,
+            0.3201884627342224
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "ca9a78c3aa92cb01f17bf2377d7536a6a47992f0f322e83edd9e496a33f7066f",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "54f4b00e02ca450bad50c15bbe15dff93fd77092461528fc085f72b2fc8ef9ea"
+          }
+        },
+        "time_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.45255663990974426,
+          "test": {
+            "tn": 63,
+            "fp": 14,
+            "fn": 5,
+            "tp": 4,
+            "f1": 0.2962962962962963
+          },
+          "losses": [
+            0.6771204471588135,
+            0.6743447184562683,
+            0.6715990900993347,
+            0.6688805818557739,
+            0.6661859750747681,
+            0.6635110974311829,
+            0.6608505249023438,
+            0.658196747303009,
+            0.655541718006134,
+            0.6528770327568054,
+            0.6501946449279785,
+            0.6474875807762146,
+            0.644749641418457,
+            0.6419749855995178,
+            0.6391586661338806,
+            0.6362954378128052,
+            0.6333805322647095,
+            0.630409836769104,
+            0.627379298210144,
+            0.6242853999137878
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "a91686006d1a336bc2f32f149202f3ee0fc56fadb9b32e0493250267392b2dfc",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "96348a436ca446c43baeb4416d68059b065103b367cfdc6f288444e55a7da621"
+          }
+        },
+        "image_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.11435411125421524,
+          "test": {
+            "tn": 71,
+            "fp": 6,
+            "fn": 4,
+            "tp": 5,
+            "f1": 0.5
+          },
+          "losses": [
+            0.6018195748329163,
+            0.5603272914886475,
+            0.523526132106781,
+            0.4912290871143341,
+            0.46322476863861084,
+            0.43924272060394287,
+            0.41895148158073425,
+            0.40198349952697754,
+            0.3879554569721222,
+            0.37647634744644165,
+            0.36715129017829895,
+            0.35958799719810486,
+            0.35340625047683716,
+            0.3482489287853241,
+            0.34379202127456665,
+            0.33975306153297424,
+            0.3358960449695587,
+            0.3320342004299164,
+            0.3280288875102997,
+            0.3237869143486023
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "011cb0132b47c8b399f626829fb7ff9a511303af1e764e7852d96f94dcbbc4d3",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "fbd45d248e9c1d2fe80fa288001674aab565a76f5afcc0ed2c0be7977743ca6f"
+          }
+        },
+        "text_only": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.4233054220676422,
+          "test": {
+            "tn": 14,
+            "fp": 63,
+            "fn": 0,
+            "tp": 9,
+            "f1": 0.2222222222222222
+          },
+          "losses": [
+            0.6419911980628967,
+            0.639549195766449,
+            0.6371153593063354,
+            0.6346873044967651,
+            0.6322616934776306,
+            0.6298338174819946,
+            0.6274003982543945,
+            0.6249589323997498,
+            0.6225071549415588,
+            0.6200424432754517,
+            0.6175618767738342,
+            0.6150619983673096,
+            0.6125393509864807,
+            0.6099907159805298,
+            0.6074130535125732,
+            0.6048039197921753,
+            0.6021612882614136,
+            0.5994835495948792,
+            0.596769392490387,
+            0.594017744064331
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "6d49f9a6b0cbb8afdc3b69e387c974c1d9de9896adea28aff700498de102b4b8",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "85b1f98025ad1258ddf971875f3d4371440b977ae1ea0ac452f705d8c83a5b05"
+          }
+        },
+        "without_image": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            2
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.39970967173576355,
+          "test": {
+            "tn": 64,
+            "fp": 13,
+            "fn": 6,
+            "tp": 3,
+            "f1": 0.24
+          },
+          "losses": [
+            0.6060445308685303,
+            0.6027070879936218,
+            0.5993973016738892,
+            0.5961097478866577,
+            0.5928412079811096,
+            0.5895892977714539,
+            0.5863507986068726,
+            0.5831217169761658,
+            0.5798971652984619,
+            0.5766721367835999,
+            0.573441743850708,
+            0.5702010989189148,
+            0.5669454336166382,
+            0.5636704564094543,
+            0.5603718757629395,
+            0.5570462942123413,
+            0.5536903738975525,
+            0.5503014326095581,
+            0.5468770265579224,
+            0.5434149503707886
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 86,
+            "abstained_samples": 0,
+            "tn": 77,
+            "fp": 0,
+            "fn": 9,
+            "tp": 0,
+            "f1": 0.0
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "b8d2325650fdeefd789a654a66cd7464756f426803070322d292373f1657abba",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "0aefe64b2a5eb14582fca486199682236ca92776bd3be05627c32364f33ee725"
+          }
+        },
+        "without_text": {
+          "training": "independent_retraining",
+          "modality_columns": [
+            0,
+            1
+          ],
+          "sample_counts": {
+            "train": {
+              "input_samples": 114,
+              "eligible_samples": 114,
+              "abstained_samples": 0
+            },
+            "validation": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            },
+            "test": {
+              "input_samples": 86,
+              "eligible_samples": 86,
+              "abstained_samples": 0
+            }
+          },
+          "threshold_source": "validation_only",
+          "threshold": 0.09390059858560562,
+          "test": {
+            "tn": 69,
+            "fp": 8,
+            "fn": 4,
+            "tp": 5,
+            "f1": 0.45454545454545453
+          },
+          "losses": [
+            0.6769077777862549,
+            0.637353241443634,
+            0.5993934869766235,
+            0.5625649094581604,
+            0.5273281335830688,
+            0.49434855580329895,
+            0.464322566986084,
+            0.43785417079925537,
+            0.41536977887153625,
+            0.39705243706703186,
+            0.3827696144580841,
+            0.37203896045684814,
+            0.36408552527427673,
+            0.357980340719223,
+            0.352798730134964,
+            0.34774941205978394,
+            0.3422517478466034,
+            0.33595871925354004,
+            0.3287374675273895,
+            0.32062992453575134
+          ],
+          "visual_backbone_frozen": true,
+          "text_naive_bayes": {
+            "eligible_samples": 0,
+            "abstained_samples": 86,
+            "unavailable_reason": "training text absent or lacks both classes"
+          },
+          "private_artifact_receipt": {
+            "factor_card_sha256": "c51c1d8b68df5217888b05e773ba844e6edc637bbe31e52fac30d61e41a4b539",
+            "validation_roundtrip_exact": true,
+            "shared_visual_sha256": "faff9a84237f65168b7266a9e80411daeb88e9d9a7cad24f3afb6cceb43f742c",
+            "heads_sha256": "013e35a4e553c44be67b11182b4810235d3b60d885098b0d1625bd59fa42337a"
+          }
+        }
+      },
+      "epochs_per_variant": 20,
+      "seed": 43,
+      "paired_comparison_established": false,
+      "deployment_authorized": false,
+      "common_test_cohort": true,
+      "original_test_samples": 86,
+      "test_cohort_samples": 86,
+      "test_cohort_excluded_samples": 0,
+      "pretrained_visual_weights": true,
+      "limits": "Shared complete-case test subset excludes missing-modality cases; selection limits generalization. Independent retraining, not inference-only masking. Train/validation availability may differ. Derived numeric images do not establish independent visual sensing. Numerical superiority is not established."
+    }
+  ],
+  "models_trained": 21,
+  "sample_counts": {
+    "train": 114,
+    "validation": 86,
+    "test": 86
+  },
+  "original_data_sha256": "e3480330854b9a4a961dcefe87df78a102c446141290eaab0f988a8c8b61735d",
+  "pretrained_visual_weights": true,
+  "visual_input": "numeric-derived heatmaps at 32x32, not camera images",
+  "original_inputs_modified": false,
+  "independent_research_acceptance": false,
+  "limits": "Pretrained ImageNet features are not industrial visual validation. Fixed 20-epoch budget is not convergence evidence. Previously inspected test is an engineering comparison only."
+}

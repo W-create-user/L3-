@@ -1,0 +1,7 @@
+{
+  "source_episodes": 68,
+  "distinct_initial_state_hashes": 68,
+  "duplicates": [],
+  "statistical_independence_established": false,
+  "scope": "32 original episodes plus 36 subsequent holdout episodes; no overlapping-window trial inflation"
+}

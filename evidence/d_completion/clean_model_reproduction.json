@@ -1,0 +1,10 @@
+{
+  "trained_in_fresh_python_environment": true,
+  "source_test_loaded": false,
+  "expected_model_sha256": "181c5604f8f54277ef98a029abb169f6382b7a19a189b0269996088198f20bb1",
+  "reproduced_model_sha256": "181c5604f8f54277ef98a029abb169f6382b7a19a189b0269996088198f20bb1",
+  "model_bytes_identical": true,
+  "development_sample_scores_identical": true,
+  "sample_windows_checked": 20,
+  "independent_person_signoff": false
+}

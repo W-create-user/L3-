@@ -20,7 +20,7 @@ def subset(batch,columns):
     return result,{'input_samples':len(keep),'eligible_samples':len(indices),'abstained_samples':int((~keep).sum())}
 
 
-def compare(batches,*,epochs=1,seed=17,common_test_cohort=False,artifact_writer=None):
+def compare(batches,*,epochs=1,seed=17,common_test_cohort=False,artifact_writer=None,visual_state=None):
     if artifact_writer is not None and not callable(artifact_writer):raise ValueError('artifact writer must be callable')
     if type(common_test_cohort)is not bool:raise ValueError('explicit cohort mode required')
     # Selection depends only on pre-existing modality availability, not labels or scores.
@@ -36,7 +36,7 @@ def compare(batches,*,epochs=1,seed=17,common_test_cohort=False,artifact_writer=
     for name,(mode,columns) in VARIANTS.items():
         reduced={};counts={}
         for split,batch in batches.items():reduced[split],counts[split]=subset(batch,columns)
-        model,vectorizer,nb,report=train_baseline(reduced,mode=mode,epochs=epochs,seed=seed)
+        model,vectorizer,nb,report=train_baseline(reduced,mode=mode,epochs=epochs,seed=seed,visual_state=visual_state)
         artifact=artifact_writer(name,model,vectorizer,nb,reduced['validation']) if artifact_writer else None
         # Individual metrics use available-case denominators; no ranking across
         # different denominators is justified without a separate paired analysis.
@@ -51,7 +51,8 @@ def compare(batches,*,epochs=1,seed=17,common_test_cohort=False,artifact_writer=
         'common_test_cohort':common_test_cohort,'original_test_samples':len(test.labels),
         'test_cohort_samples':len(batches['test'].labels),
         'test_cohort_excluded_samples':len(test.labels)-len(batches['test'].labels),
-        'limits':('Shared complete-case test subset excludes missing-modality cases; selection limits generalization. ' if common_test_cohort else 'Available-case test sample sets may differ. ')+ 'Independent retraining, not inference-only masking. Train/validation availability may differ. Random frozen visual backbone has no pretrained semantics. Numerical superiority is not established.'}
+        'pretrained_visual_weights':visual_state is not None,
+        'limits':('Shared complete-case test subset excludes missing-modality cases; selection limits generalization. ' if common_test_cohort else 'Available-case test sample sets may differ. ')+ 'Independent retraining, not inference-only masking. Train/validation availability may differ. Derived numeric images do not establish independent visual sensing. Numerical superiority is not established.'}
 
 
 if __name__=='__main__':

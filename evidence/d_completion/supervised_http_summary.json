@@ -1,0 +1,217 @@
+{
+  "schema_version": "D05HTTPAcceptance/1.0",
+  "passed": true,
+  "real_SMPL": true,
+  "risk_model_sha256": "181c5604f8f54277ef98a029abb169f6382b7a19a189b0269996088198f20bb1",
+  "events": [
+    {
+      "route": "/cycle",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "restricted",
+      "step_calls": 0
+    },
+    {
+      "route": "/sample",
+      "status": 403,
+      "step_delta": 0,
+      "mode": "restricted",
+      "step_calls": 0
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 1
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 2
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 3
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 4
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 5
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 6
+    },
+    {
+      "route": "/confirm",
+      "status": 303,
+      "step_delta": 0,
+      "mode": "request_review",
+      "step_calls": 6
+    },
+    {
+      "route": "/confirm",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "request_review",
+      "step_calls": 6
+    },
+    {
+      "route": "/confirm",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "request_review",
+      "step_calls": 6
+    },
+    {
+      "route": "/cycle",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "request_review",
+      "step_calls": 7
+    },
+    {
+      "route": "/probe",
+      "status": 303,
+      "step_delta": 0,
+      "mode": "takeover_requested",
+      "step_calls": 7
+    },
+    {
+      "route": "/confirm",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "takeover_requested",
+      "step_calls": 7
+    },
+    {
+      "route": "/cycle",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "takeover_requested",
+      "step_calls": 7
+    },
+    {
+      "route": "/sample",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "takeover_requested",
+      "step_calls": 7
+    },
+    {
+      "route": "/restart",
+      "status": 303,
+      "step_delta": 0,
+      "mode": "restricted",
+      "step_calls": 7
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 8
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 9
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 10
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 11
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 12
+    },
+    {
+      "route": "/sample",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "restricted",
+      "step_calls": 13
+    },
+    {
+      "route": "/confirm",
+      "status": 303,
+      "step_delta": 0,
+      "mode": "request_review",
+      "step_calls": 13
+    },
+    {
+      "route": "/cycle",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "request_review",
+      "step_calls": 14
+    },
+    {
+      "route": "/cycle",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "request_review",
+      "step_calls": 15
+    },
+    {
+      "route": "/cycle",
+      "status": 303,
+      "step_delta": 1,
+      "mode": "takeover_requested",
+      "step_calls": 16
+    },
+    {
+      "route": "/confirm",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "takeover_requested",
+      "step_calls": 16
+    },
+    {
+      "route": "/cycle",
+      "status": 409,
+      "step_delta": 0,
+      "mode": "takeover_requested",
+      "step_calls": 16
+    }
+  ],
+  "total_step_calls": 16,
+  "browser_render_verified": false,
+  "operator_simulated": true,
+  "browser_blocker": "Local Chromium launch syscall denied; cloud localhost connection refused and subsequent browser URL policy rejected. No bypass attempted.",
+  "physical_safety_certified": false,
+  "new_episode_recovery_not_same_episode": true
+}

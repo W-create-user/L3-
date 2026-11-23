@@ -1,0 +1,124 @@
+{
+  "schema_version": "DMAbModelEnvelope/1.0",
+  "passed": true,
+  "cases": [
+    {
+      "name": "lower_boundary",
+      "approved": true,
+      "executed": false,
+      "label_scope": "D boundary fixture, not physical anomaly"
+    },
+    {
+      "name": "upper_boundary",
+      "approved": true,
+      "executed": false,
+      "label_scope": "D boundary fixture, not physical anomaly"
+    },
+    {
+      "name": "below_model_envelope",
+      "approved": false,
+      "executed": false,
+      "label_scope": "D boundary fixture, not physical anomaly"
+    },
+    {
+      "name": "above_model_envelope",
+      "approved": false,
+      "executed": false,
+      "label_scope": "D boundary fixture, not physical anomaly"
+    },
+    {
+      "name": "unit_mismatch",
+      "approved": false,
+      "executed": false
+    },
+    {
+      "name": "coordinate_mismatch",
+      "approved": false,
+      "executed": false
+    }
+  ],
+  "actual_mab_steps": 3,
+  "steps": [
+    {
+      "step_count": 1,
+      "state_version": 2,
+      "buffer_level_model": 5.0,
+      "buffer_level_dm": 15.0,
+      "clipped_indices": [
+        7,
+        16
+      ]
+    },
+    {
+      "step_count": 2,
+      "state_version": 3,
+      "buffer_level_model": 5.0,
+      "buffer_level_dm": 15.0,
+      "clipped_indices": [
+        7,
+        16
+      ]
+    },
+    {
+      "step_count": 3,
+      "state_version": 4,
+      "buffer_level_model": 5.0,
+      "buffer_level_dm": 15.0,
+      "clipped_indices": [
+        7,
+        16
+      ]
+    }
+  ],
+  "config": {
+    "schema_version": "ProcessRules/1.0",
+    "enabled": true,
+    "environment": "mAb",
+    "version": "D-mAb-model-envelope-1",
+    "observation_shape": [
+      1970
+    ],
+    "action_shape": [
+      9
+    ],
+    "variables": {
+      "buffer_level_scaled": {
+        "source": "observation",
+        "index": 17,
+        "unit": "dm / xscale[17]",
+        "coordinate": "physical_divided_by_xscale"
+      }
+    },
+    "rules": [
+      {
+        "rule_id": "R-03-MAB-MODEL-BUFFER",
+        "kind": "range",
+        "enabled": true,
+        "priority": 1,
+        "basis": {
+          "kind": "model_definition",
+          "reference": "MAbEnvGym normalize=False; physical xlb/xub divided by xscale; not physical safety bounds",
+          "reviewed_by": "D source audit",
+          "reviewed_on": "2026-11-23"
+        },
+        "suggestion": "stop simulation and inspect model context; no physical shutdown claim",
+        "variable": "buffer_level_scaled",
+        "lower": 0.0,
+        "upper": 16.66666603088379
+      }
+    ]
+  },
+  "source_sha256": "57f569fab8b3b59a68e69c036e2894554d66183fbf220b1b08e5ed45d093615b",
+  "model_buffer_bounds_scaled": [
+    0.0,
+    16.66666603088379
+  ],
+  "physical_conversion": {
+    "index": 17,
+    "scale": 3,
+    "physical_unit": "dm"
+  },
+  "B_code_modified": false,
+  "physical_safety_R03_accepted": false,
+  "limits": "Simulator bounds and clipped observations do not establish field hazard limits, raw physical-state safety, or physical anomaly truth."
+}

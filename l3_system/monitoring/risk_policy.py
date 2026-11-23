@@ -48,6 +48,18 @@ class RiskPolicy:
         self.ack=True
         self.review={'episode_id':episode_id,'state_version':state_version,'reviewer_ref':reviewer_ref}
 
+    def confirm_recovery(self,episode_id,*,state_version,reviewer_ref):
+        """Confirm after enough existing clean states, without inventing a new state.
+
+        Caller must still check authoritative current context and the action gate.
+        Acknowledgement does not collect samples or execute a control action.
+        """
+        if self.clean<self.required:
+            raise ValueError('fresh clean observation history is incomplete')
+        self.acknowledge_review(episode_id,state_version=state_version,reviewer_ref=reviewer_ref)
+        self.latched=False
+        return self._result(1,'reviewed_clean_history_requires_action_gate')
+
     def evaluate(self,evidence):
         try:
             if not isinstance(evidence,RiskEvidence):raise ValueError('RiskEvidence required')

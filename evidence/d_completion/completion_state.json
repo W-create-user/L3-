@@ -1,0 +1,93 @@
+{
+  "schema_version": "DCompletionState/1.0",
+  "scope": "D engineering delivery and evidence, not entire-project research acceptance",
+  "base_commit": "cd7ad73842d9621aa7b9d3f45b9cb079e9794033",
+  "unique_clean_environment_tests_passed": 503,
+  "items": [
+    {
+      "task": "D01",
+      "engineering": "source manifests and datasets verified",
+      "remaining": "field data and external resource claims unverified"
+    },
+    {
+      "task": "D02",
+      "engineering": "Atropine rules and real mAb model-envelope/unit checks verified",
+      "remaining": "mAb field hazard limits and physical anomaly truth absent"
+    },
+    {
+      "task": "D03",
+      "engineering": "frozen residual/IF model meets declared final sensor-bias holdout criteria",
+      "remaining": "general operating coverage and physical health detection unverified"
+    },
+    {
+      "task": "D04",
+      "engineering": "official pretrained trunk, 21 models x20 epochs, 7 ablations, exact artifact restoration",
+      "remaining": "independent field modalities absent; superiority not supported"
+    },
+    {
+      "task": "D05",
+      "engineering": "sensor-label calibration and three-level D supervision HTTP integrated with unchanged A/B/C",
+      "remaining": "physical safety probability not estimated or certified"
+    },
+    {
+      "task": "D06",
+      "engineering": "29 real-model HTTP checks and fault/recovery tests verified",
+      "remaining": "browser launch/network/policy blocked; no browser video or human study"
+    },
+    {
+      "task": "D07",
+      "engineering": "D monitoring protocol and final model frozen before new holdout",
+      "remaining": "whole-project production experiment definitions/signoffs incomplete"
+    },
+    {
+      "task": "D08",
+      "engineering": "paired sensor-episode analysis, conditional uncertainty and exported figures",
+      "remaining": "full production/energy/efficiency analysis requires production experiments"
+    },
+    {
+      "task": "D09",
+      "engineering": "D method chapter and claim-to-evidence review prepared",
+      "remaining": "full manuscript and external publication/authorization proof not present"
+    },
+    {
+      "task": "D10",
+      "engineering": "fresh Python environment and byte-identical model reproduction completed",
+      "remaining": "separate human reviewer and final project signoff absent"
+    }
+  ],
+  "other_member_sources_modified": false,
+  "all_project_requirements_passed": false,
+  "automatic_step_retry": false,
+  "source_sha256": {
+    "l3_system/monitoring/residual_train.py": "fecb9e3c4c4ac79eeab69575d7a9415ea77e47b4ba3bdb0efc9267b7faceac00",
+    "l3_system/monitoring/sensor_exploration.py": "ce95542265d76f0912ff26fd4cd2dfc9df879750b27db67977254bee75ea8cef",
+    "l3_system/monitoring/__init__.py": "a1dcc54284fce349f35b25b153a6a44d4111c29b5505ef9a103fb290c507f0a0",
+    "l3_system/monitoring/anomaly_detector.py": "c3285920cadfc48f9a1a55e85f1400945f1ed23e149aef10e1135a9c4ce69166",
+    "l3_system/monitoring/residual_detector.py": "d7ef4c19d1b29d48ecbce33fad44ff2eae5afa6fa5238aaf045ef11a4e94698c",
+    "l3_system/monitoring/supervision_console.py": "7d53d81c2cbb0639afc7fb0db353863ac6bfa67aec6a3168a2ea30b775275142",
+    "l3_system/monitoring/sensor_benchmark.py": "f9f4354bd595732034231b1279efd0e43016e036fe045344585d7a1afb92e471",
+    "l3_system/monitoring/fusion_comparison.py": "f4ee67b85a37a532504bb5d4e1ff6ab00bd4c75b0c9d0d3b1bc3f86540f4f4da",
+    "l3_system/monitoring/runtime_compatibility.py": "f617e7c4be87942c32cabdc8936c81ac1b5d641f7579b1f672c8f844f6611143",
+    "l3_system/monitoring/residual_study.py": "cd6956f744327d58191767c59520960471abd3e986d3c4dcf061d75edcefafdc",
+    "l3_system/monitoring/atropine_replay.py": "c24d0ddbca8bac942e7995e06304b82749a4ca9f618d2b031f7558425b081400",
+    "l3_system/monitoring/takeover_acceptance.py": "613b0adc3b4db4b51bec429d0a2c1156de05812b872187d251ed6852a609c224",
+    "l3_system/monitoring/paired_analysis.py": "d8ce2262a78033e10ad9dab616c64bc3c966eb49eab0c09f7abe6e446fbcc1c9",
+    "l3_system/monitoring/factored_fusion.py": "738f92eb143e7f253f5bac1694686a38cc109875f4701e52cfa390822fecbd34",
+    "l3_system/monitoring/fusion_study.py": "a4ec3abc46c290a9690c439ac927cdd3500a8ded6247a23fd7d646a48c833692",
+    "l3_system/monitoring/statistical_monitor.py": "257d6f0d0a68bbfdc8caeb3e8e7eb83895faf599173754a230927b2277eafb28",
+    "l3_system/monitoring/event_metrics.py": "fc6021614ff6b5400c68d69ce9921218deacc36ed4a0454f4777fc26e8cd2c91",
+    "l3_system/monitoring/observation_window.py": "e517032125f73d4a1f1881b51c5f52f5fc5db81cc042f8afb46aa7e443ab5a1d",
+    "l3_system/monitoring/atropine_experiment.py": "a38b602317d221ebea0abaccc30d5d2b6eb81bf52d8ded424774039623bac09f",
+    "l3_system/monitoring/fusion_bundle.py": "410266ca543b3be5eaf69eef2e65b8c3e18a75cef4664377d89dc1a9652cad65",
+    "l3_system/monitoring/multimodal_model.py": "59f51de0431efa8781ef8058d0585ff1723243e0ffed595cc4700ff875f2ed4b",
+    "l3_system/monitoring/multimodal_alignment.py": "316b1292600e038e473d21e5b45216f325c2dc9bd450cefae1712166257ec5d3",
+    "l3_system/monitoring/status.py": "c21e39a9f6ac51d8940e84bef86f71d94a25ecfec677628b99e5121f784fa8f4",
+    "l3_system/monitoring/binding.py": "9f509c985c136474df06dd40788b291b9f3656304a8ede16730cb43c6b9bae3a",
+    "l3_system/monitoring/multimodal_intake.py": "0ae81465f8d3c016d1a8388ff89d987041a2c18f40c4f0d6c1bd65f559dd80c9",
+    "l3_system/monitoring/research_acceptance.py": "656fefe8e8720919a64f62cf6b6ed56b92966876aeb58e4e99d1ff45fedf397d",
+    "l3_system/monitoring/sensor_fusion_data.py": "5b388227441a9b118ee63a7da587f9f2398dea71a4c3ff34c166b380f3b0928e",
+    "l3_system/monitoring/supervised_session.py": "42a772d539ef43a45e637a3aeeba4c0c23f167285ba3f6419bab4cf93ae31447",
+    "l3_system/monitoring/experiment_readiness.py": "a9264ef8e7e0a45d852af07b07b5232893f3f8d28e0fccd0a0ebe058f8f95d68",
+    "l3_system/monitoring/risk_policy.py": "4e104b919efcfaeccdfe52f4a842a8a05ab3b19f1f624d83d167eb9e8dd4cf39"
+  }
+}

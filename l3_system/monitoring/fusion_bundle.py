@@ -71,7 +71,7 @@ def save_bundle(directory,model,vectorizer,nb,*,binding,label_scope):
           'label_scope':label_scope,'mode':model.mode,'width':model.text.out_features,'versions':_versions(),
           'files':{name:_sha(directory/name) for name in ('weights.pt','text.json')},
           'scope':'trusted_offline_experimental_only','deployment_authorized':False,
-          'pretrained_visual_weights':False,'probability_calibrated':False}
+          'pretrained_visual_weights':model.visual_pretrained,'probability_calibrated':False}
     _json(directory/'card.json',card)
     return {'card_sha256':_sha(directory/'card.json'),'binding_sha256':fingerprint(binding),'deployment_authorized':False}
 
@@ -111,7 +111,7 @@ def load_trusted_bundle(directory,*,expected_card_sha256,expected_binding):
             setattr(nb,key,value)
         if nb.classes_.tolist()!=[0.,1.]:raise ValueError('binary baseline classes required')
         nb.n_features_in_=n
-    model=FusionBaseline(n,mode=card['mode'],width=card['width'])
+    model=FusionBaseline(n,mode=card['mode'],width=card['width'],visual_pretrained=card.get('pretrained_visual_weights',False))
     tensors=torch.load(directory/'weights.pt',map_location='cpu',weights_only=True)
     if any(not torch.isfinite(value).all() for value in tensors.values()):raise ValueError('nonfinite checkpoint')
     model.load_state_dict(tensors,strict=True);model.eval()
