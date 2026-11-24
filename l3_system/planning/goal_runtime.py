@@ -86,6 +86,10 @@ class GoalCoordinates:
         return self.action_coordinates.to_physical(raw)
 
 
+class GoalDeadlineExceeded(TimeoutError):
+    """The A numeric-goal deadline expired before dispatch."""
+
+
 class GoalCycle:
     def __init__(self, plan, sample, raw_observation, goal, registry, adapter, coordinates, state_version, deadline):
         self.plan = plan
@@ -141,7 +145,7 @@ class GoalCycle:
 
     def require_dispatch(self):
         if self.deadline is not None and time.monotonic() >= self.deadline:
-            raise TimeoutError("Goal deadline reached before dispatch")
+            raise GoalDeadlineExceeded("Goal deadline reached before dispatch")
         if self.adapter.state_version != self.state_version:
             raise RuntimeError("Observation changed since goal planning")
 
@@ -161,6 +165,21 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
         raise ValueError("Goal timeout must be finite and positive")
     if system.state != "autonomous" or adapter.step_count != 0:
         raise RuntimeError("Numeric goal requires an autonomous session at a fresh reset")
+    stateful_policy = policy is not None and callable(getattr(policy, "predict", None))
+    if stateful_policy and not all(callable(getattr(policy, method, None)) for method in ("reset", "commit")):
+        raise ValueError("Stateful policies require reset/predict/commit")
+    proposal_pending = False
+    if stateful_policy:
+        policy.reset()
+        def policy_callback(raw, space, attempt=0):
+            nonlocal proposal_pending
+            action = policy.predict(raw, space)
+            proposal_pending = True
+            return action
+    else:
+        if policy is not None and not callable(policy):
+            raise ValueError("Policy must be callable or implement reset/predict/commit")
+        policy_callback = policy
     deadline = None if timeout_seconds is None else time.monotonic() + timeout_seconds
     episode = str(uuid4())
     cycles, samples, plans = [], [], []
@@ -194,7 +213,21 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
         plans.append(asdict(plan))
         driver = GoalCycle(plan, samples[-1], raw_observation, goal, registry, adapter,
                            coordinates, version, deadline)
-        result = system.run_cycle(action_generator=policy, goal_cycle=driver)
+        proposal_pending = False
+        try:
+            result = system.run_cycle(action_generator=policy_callback, goal_cycle=driver)
+        except Exception:
+            if stateful_policy and proposal_pending:
+                policy.commit(False)
+            raise
+        if stateful_policy and proposal_pending:
+            executed = (result["summary"]["run_status"] == "completed"
+                        and result["summary"].get("step_delta") == 1)
+            try:
+                policy.commit(executed)
+            except Exception as error:
+                system._transition("takeover_requested", "policy_commit_failed", error_type=type(error).__name__)
+                raise
         cycles.append(result)
         if result["summary"]["run_status"] != "completed":
             evaluation.update(status="failed", achieved=False, reason=result["summary"]["failure_reason"])
@@ -209,6 +242,7 @@ def run_numeric_goal(system, goal, registry, *, environment, timeout_seconds=Non
 
     return {"summary": {**evaluation, "goal_id": goal["goal_id"], "environment": environment,
                         "step_count": adapter.step_count, "system_state": system.state,
-                        "r03_enabled": False, "production_acceptance": False},
+                        "r03_enabled": getattr(getattr(system.monitor, "process_rules", None), "enabled", False),
+                        "production_acceptance": False},
             "goal_spec": goal, "registry": registry, "episode_id": episode,
             "plans": plans, "samples": samples, "cycles": cycles}

@@ -40,6 +40,27 @@ class NumericGoalRuntimeTests(unittest.TestCase):
         self.assertEqual(result["plans"][1]["parent_plan_id"], result["plans"][0]["plan_id"])
         self.assertTrue(all(cycle["summary"]["all_C_locks_released"] for cycle in result["cycles"]))
 
+    def test_policy_state_updates_only_for_completed_execution_cycles(self):
+        from unittest.mock import Mock
+
+        policy = Mock()
+        policy.predict.return_value = [0] * 4
+        result = self.run_goal(policy=policy)
+        self.assertEqual(result["summary"]["status"], "succeeded")
+        policy.reset.assert_called_once_with()
+        self.assertEqual(policy.predict.call_count, 2)
+        self.assertEqual([call.args for call in policy.commit.call_args_list], [(True,), (True,)])
+
+    def test_policy_rejection_discards_proposed_state(self):
+        from unittest.mock import Mock
+
+        policy = Mock()
+        policy.predict.return_value = [0.5] * 4
+        result = self.run_goal(policy=policy)
+        self.assertEqual(result["summary"]["status"], "failed")
+        self.assertEqual(self.adapter.step_calls, 0)
+        policy.commit.assert_called_once_with(False)
+
     def test_prepared_candidate_outside_goal_range_does_not_step(self):
         result = self.run_goal(policy=lambda *_: [0.5] * 4)
         self.assertEqual(result["summary"]["status"], "failed")
@@ -111,7 +132,7 @@ class NumericGoalRuntimeTests(unittest.TestCase):
 
     def test_web_operations_require_current_form_and_explicit_resume(self):
         import re
-        client = create_app(self.system, environment="AtropineEnvGym").test_client()
+        client = create_app(self.system, environment="AtropineEnvGym", separate_confirmation=True).test_client()
         page = client.get("/").get_data(as_text=True)
         token = re.search(r'name="token" value="([^"]+)"', page)[1]
         self.assertEqual(client.post("/cycle", data={"revision": "0"}).status_code, 403)
@@ -122,7 +143,9 @@ class NumericGoalRuntimeTests(unittest.TestCase):
 
         self.system._transition("takeover_requested", "test")
         self.assertEqual(client.post("/resume", data={**form, "revision": "1"}).status_code, 400)
-        self.assertEqual(client.post("/resume", data={**form, "revision": "2",
-                                                    "operator": "test", "reason": "checked"}).status_code, 303)
+        operator = {"operator": "test", "reason": "checked"}
+        self.assertEqual(client.post("/resume", data={**form, **operator, "revision": "2"}).status_code, 409)
+        self.assertEqual(client.post("/confirm", data={**form, **operator, "revision": "3"}).status_code, 303)
+        self.assertEqual(client.post("/resume", data={**form, **operator, "revision": "4"}).status_code, 303)
         self.assertEqual(self.system.state, "autonomous")
         self.assertEqual(self.adapter.step_calls, 1)

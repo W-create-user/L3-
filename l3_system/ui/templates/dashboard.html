@@ -18,15 +18,35 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 <h2>运行状态</h2>
 <p>{{ environment }} · {{ state }} · 第 {{ step }} 步</p>
 {% if latest %}<p>最近任务 <code>{{ latest.task_id }}</code> · {{ latest.run_status }}{% if latest.failure_reason %} · {{ latest.failure_reason }}{% endif %}</p>{% endif %}
-{% if state in ["autonomous", "takeover_requested"] %}
-<form method="post" action="{{ '/resume' if state == 'takeover_requested' else '/cycle' }}">
+{% if goal %}<p>目标 {{ goal.variable }} [{{ goal.target_range.lower }}, {{ goal.target_range.upper }}] {{ goal.unit }}</p>{% endif %}
+{% if numeric_result %}<p>数值目标 {{ numeric_result.status }} · {{ numeric_result.reason or '判据达成' }}</p>{% endif %}
+{% if state == "autonomous" %}
+<form method="post" action="{{ url_for('operate', operation='cycle') }}">
   <input type="hidden" name="token" value="{{ token }}">
   <input type="hidden" name="revision" value="{{ revision }}">
-  {% if state == "takeover_requested" %}
+  <button>{{ '运行数值目标' if goal else '执行一个仿真周期' }}</button>
+</form>
+{% endif %}
+{% if state in ["autonomous", "takeover_requested"] %}
+<form method="post">
+  <input type="hidden" name="token" value="{{ token }}">
+  <input type="hidden" name="revision" value="{{ revision }}">
   <label>操作人 <input name="operator" required></label>
-  <label>恢复原因 <input name="reason" required></label>
-  <button>确认恢复</button>
-  {% else %}<button>执行一个仿真周期</button>{% endif %}
+  <label>原因 <input name="reason" required></label>
+  {% if state == "autonomous" %}
+  <button formaction="{{ url_for('operate', operation='pause') }}">请求暂停</button>
+  {% else %}
+  <button formaction="{{ url_for('operate', operation='confirm') }}">确认接管</button>
+  {% if goal %}
+  <label>目标下限 <input type="number" step="any" name="lower" value="{{ goal.target_range.lower }}"></label>
+  <label>目标上限 <input type="number" step="any" name="upper" value="{{ goal.target_range.upper }}"></label>
+  <button formaction="{{ url_for('operate', operation='revise') }}">修订目标</button>
+  {% endif %}
+  {% if acknowledged or not separate_confirmation %}
+  <label><input type="checkbox" name="reset" value="yes"> 明确开始新仿真回合</label>
+  <button formaction="{{ url_for('operate', operation='resume') }}">确认恢复</button>
+  {% endif %}
+  {% endif %}
 </form>
 {% endif %}
 </section>
@@ -35,11 +55,32 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 {% if stage.safety_decision is defined %} · 审核 {{ stage.safety_decision.decision }}{% endif %}</li>{% endfor %}</ul>
 <p>占用资源 {{ active_workers | join('、') if active_workers else '无' }}</p>
 </section>{% endif %}
+<section><h2>最新审核</h2>
+{% if review %}<p>风险级别 {{ review.risk_level | default(review.level) }} · {{ review.decision | default(review.status) }} · {{ review.rule_id or '无触发规则' }}<br>{{ review.reason }}</p>{% else %}<p>尚无审核记录。</p>{% endif %}
+</section>
 <section><h2>最新观测</h2>
+<p>来源 {{ environment }} 适配器 · 最近会话更新 {{ updated_at }}</p>
+{% if points %}
+<p>{{ 'E-factor（模型观测）' if environment == 'AtropineEnvGym' else '缓冲罐液位（模型坐标）' }} · 最近执行样本</p>
+<canvas id="observation-trend" width="650" height="140" style="max-width:100%" aria-label="最近执行观测曲线"></canvas>
+<p>最近成功步骤 {{ points | map(attribute=0) | join('、') }}</p>
+<script>
+const values = {{ points | tojson }}.map(point => point[1]);
+const canvas = document.getElementById("observation-trend");
+const context = canvas.getContext("2d");
+const low = Math.min(...values), range = Math.max(...values) - low;
+context.strokeStyle = context.fillStyle = "#07645a";
+const points = values.map((value, index) => [18 + 610 * index / Math.max(1, values.length - 1), range ? 120 - 100 * (value - low) / range : 70]);
+context.beginPath();
+points.forEach(([x, y], index) => index ? context.lineTo(x, y) : context.moveTo(x, y));
+context.stroke();
+points.forEach(([x, y]) => { context.beginPath(); context.arc(x, y, 3, 0, 2 * Math.PI); context.fill(); });
+</script>
+{% endif %}
 {% if observation is not none %}<pre>{{ observation | tojson }}</pre>{% else %}<p>暂无有效观测。</p>{% endif %}
 </section>
 {% if transitions %}<section><h2>状态变更</h2><ul>
-{% for event in transitions | reverse %}<li>{{ event.timestamp }} · {{ event.state }} · {{ event.reason }}</li>{% endfor %}
+{% for event in transitions | reverse %}<li>{{ event.timestamp }} · {{ event.state }} · {{ event.reason }}{% if event.task_id %} · {{ event.task_id }}{% endif %}</li>{% endfor %}
 </ul></section>{% endif %}
 </main>
 </html>

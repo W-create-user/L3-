@@ -55,6 +55,14 @@ def configured_bids(task):
              "estimated_cost": 1.0, "capability_match": 1.0, "load": 0.0}]
 
 
+class NoAvailableWorker(RuntimeError):
+    """C did not award a worker to the ready subtask."""
+
+
+class DependencyBlocked(RuntimeError):
+    """The scheduler did not release the subtask's prerequisites."""
+
+
 def _default_action_generator(observation, action_space, attempt=0):
     from l3_system.execution.local_policy import space_midpoint
     return space_midpoint(observation, action_space)
@@ -73,6 +81,8 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         raise RuntimeError("Formal run requires D initialized with the live action_space")
     if executor_id != EXECUTOR_ID:
         raise ValueError(f"Configured executor identity must be {EXECUTOR_ID!r}")
+    from l3_system.planning.goal_runtime import GoalDeadlineExceeded
+
     decision = decision if decision is not None else DecisionAgent()
     parent = (goal_cycle.parent_task() if goal_cycle is not None
               else decision.task_to_dict(decision.create_task(goal)))
@@ -119,11 +129,17 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         sid, name = subtask["subtask_id"], subtask["name"]
         started = time.perf_counter()
         status, reason, payload = "completed", None, {}
+        dispatch_started = False
+        collecting_bids = False
         try:
             if sid not in {t["subtask_id"] for t in scheduler.ready_tasks()}:
-                raise RuntimeError("HTN dependency not completed")
+                raise DependencyBlocked("HTN dependency not completed")
+            collecting_bids = True
             bids = (configured_bids if bid_provider is None else bid_provider)(task)
+            collecting_bids = False
             awarded = scheduler.schedule(task, bids)
+            if awarded["assignment_status"] == "unassigned":
+                raise NoAvailableWorker("No eligible bid for the subtask")
             assignment = scheduler.assignment_for_execution(awarded)
             assert_winner(assignment, OWNER_BY_TASK[name])
             if assignment["task_id"] != parent["task_id"] or assignment["subtask_id"] != sid:
@@ -179,6 +195,7 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                 final_review = checker(copy.deepcopy(request), executor.get_observation())
                 if goal_cycle is not None:
                     goal_cycle.require_dispatch()
+                dispatch_started = final_review["decision"] == "pass"
                 execution = executor.execute_action(request, final_review)
                 if (execution.get("task_id") != parent["task_id"] or execution.get("subtask_id") != sid
                         or execution.get("request_id") != request["request_id"]):
@@ -197,9 +214,12 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                         and execution.get("executed") is True
                         and executor.adapter.step_calls - before == 1):
                     raise RuntimeError("Expected exactly one successful environment step")
-                state_review = monitor.check_observation(executor.get_observation(), parent["task_id"])
+                observed = executor.get_observation()
+                state_review = monitor.check_observation(observed, parent["task_id"])
                 if state_review["approved"] is not True:
                     status, reason = "failed", "invalid_post_execution_observation"
+                elif not np.array_equal(execution.get("observation"), observed):
+                    status, reason = "failed", "execution_result_unknown"
                 payload = {"verified": status == "completed", "step_delta": 1,
                            "state_review": state_review}
             else:
@@ -208,16 +228,31 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
                 goal_cycle.complete(name)
         except Exception as exc:
             status = "failed"
-            reason = ("goal_deadline_exceeded" if isinstance(exc, TimeoutError) else
-                      "safety_review_error" if name == "safety_review" else "module_error")
+            if dispatch_started:
+                reason = "execution_result_unknown"
+            elif isinstance(exc, GoalDeadlineExceeded):
+                reason = "goal_deadline_exceeded"
+            elif collecting_bids and isinstance(exc, TimeoutError):
+                reason = "message_timeout"
+            elif isinstance(exc, NoAvailableWorker) or (collecting_bids and isinstance(exc, ConnectionError)):
+                reason = "no_resource"
+            elif isinstance(exc, DependencyBlocked):
+                reason = "dependency_blocked"
+            else:
+                reason = "safety_review_error" if name == "safety_review" else "module_error"
             payload = {"exception_type": type(exc).__name__, "exception": str(exc)}
             emit("module_error", subtask_id=sid, task_type=name, **payload)
         feedback = {"task_id": parent["task_id"], "subtask_id": sid,
                     "execution_status": status, "failure_reason": reason,
                     "exclude_failed_agent": False}
-        scheduler.update_feedback(feedback)
-        if scheduler.get_active_assignment(parent["task_id"], sid) is not None:
-            raise RuntimeError("Terminal feedback did not release C's lock")
+        try:
+            scheduler.update_feedback(feedback)
+            if scheduler.get_active_assignment(parent["task_id"], sid) is not None:
+                raise RuntimeError("Terminal feedback did not release C's lock")
+        except Exception:
+            if request is not None:
+                executor.cancel_action_request(request["request_id"], "feedback_release_unconfirmed")
+            raise
         stages.append({"subtask_id": sid, "task_type": name, "execution_status": status,
                        "duration_seconds": time.perf_counter() - started, **_plain(payload)})
         emit("subtask_completed" if status == "completed" else "subtask_failed",
@@ -242,10 +277,11 @@ def run_control_cycle(*, goal, executor, monitor, executor_id=EXECUTOR_ID,
         "step_calls": executor.adapter.step_calls, "step_delta": executor.adapter.step_calls - before,
         "step_count": executor.adapter.step_count, "executor_id": executor_id,
         "d_demo_mode": monitor.demo_mode, "bids_are_live": False,
-        "bids_note": "One installed capable worker per role; local deterministic capability bids.",
+        "bids_note": ("Caller-supplied bids; execution is limited to the installed role owners."
+                      if bid_provider is not None else "One installed capable worker per role; local deterministic bids."),
         "all_C_locks_released": not scheduler.active_agent_tasks,
         "controller_note": controller_note,
-        "r03_enabled": False,
+        "r03_enabled": getattr(getattr(monitor, "process_rules", None), "enabled", False),
     }
     if goal_cycle is not None:
         summary.update(goal_id=goal_cycle.plan.goal_id, htn_method=goal_cycle.plan.method,
@@ -287,7 +323,8 @@ def execute_awarded_subtask(*, parent_task, c_task, assignment, scheduler,
 
 def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=1101,
              max_steps=60, output_dir=None, cycles=1, scenario="normal",
-             environment="AtropineEnvGym", goal_spec=None, goal_registry=None, timeout_seconds=None):
+             environment="AtropineEnvGym", goal_spec=None, goal_registry=None, timeout_seconds=None,
+             bid_provider=None):
     if type(cycles) is not int or cycles < 1:
         raise ValueError("cycles must be a positive integer")
     if scenario not in {"normal", "reject", "inspect"}:
@@ -309,7 +346,7 @@ def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=110
             executor.reset(seed=seed)
             from l3_system.runtime import MultiAgentSystem
             system = MultiAgentSystem(executor=executor, monitor=monitor,
-                                      event_path=out / "events.jsonl")
+                                      event_path=out / "events.jsonl", bid_provider=bid_provider)
             results = []
             if goal_spec is not None:
                 from l3_system.planning.goal_runtime import run_numeric_goal
