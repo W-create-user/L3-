@@ -1,0 +1,8 @@
+{
+  "indices": {
+    "7": 7.124619316734027e-08,
+    "16": 9.210639140277976e-09
+  },
+  "meaning": "Maximum raw upper exceedance in model-scaled coordinates; upper bound 1 at these two indices. Numerical magnitude is disclosed, not recast as a physical hazard label.",
+  "buffer_index_17_clipped": false
+}

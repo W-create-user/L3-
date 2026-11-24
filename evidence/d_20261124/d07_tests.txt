@@ -1,0 +1,15 @@
+test_exact_counts_and_zero_improvement_without_production_claim (test_mab_audit.MAbAuditTests.test_exact_counts_and_zero_improvement_without_production_claim) ... ok
+test_failure_remains_in_started_denominator (test_mab_audit.MAbAuditTests.test_failure_remains_in_started_denominator) ... ok
+test_initial_state_mismatch_is_rejected (test_mab_audit.MAbAuditTests.test_initial_state_mismatch_is_rejected) ... ok
+test_missing_run_is_rejected (test_mab_audit.MAbAuditTests.test_missing_run_is_rejected) ... ok
+test_out_of_bounds_action_and_version_gap_are_rejected (test_mab_audit.MAbAuditTests.test_out_of_bounds_action_and_version_gap_are_rejected) ... ok
+test_raw_state_violation_cannot_be_hidden_by_success_label (test_mab_audit.MAbAuditTests.test_raw_state_violation_cannot_be_hidden_by_success_label) ... ok
+test_duplicate_seeds_and_implicit_order_are_rejected (test_readiness.ReadinessTests.test_duplicate_seeds_and_implicit_order_are_rejected) ... ok
+test_existing_engineering_goal_is_hashed_but_not_production_acceptance (test_readiness.ReadinessTests.test_existing_engineering_goal_is_hashed_but_not_production_acceptance) ... ok
+test_missing_and_outside_references_block (test_readiness.ReadinessTests.test_missing_and_outside_references_block) ... ok
+test_pairing_and_random_order_reproduce_without_launch (test_readiness.ReadinessTests.test_pairing_and_random_order_reproduce_without_launch) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.444s
+
+OK

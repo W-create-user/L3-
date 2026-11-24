@@ -1,0 +1,774 @@
+{
+  "schema_version": "D07MAbPaired/1.0",
+  "scope": "isolated model buffer-goal recovery, not full production acceptance",
+  "frozen_before_runs": true,
+  "conditions": {
+    "nominal": "steady source state with seeded buffer offset in [-.03,.03] dm",
+    "sensor_fault": "same initial range; add .10 dm only to controller measurement during first 3 action predictions; never change goal truth or D observations",
+    "process_disturbance": "source-state initial buffer offset with random sign and magnitude [.15,.30] dm; not a continuous process disturbance"
+  },
+  "goal": {
+    "variable": "buffer_height",
+    "target_dm": [
+      14.95,
+      15.05
+    ],
+    "hold_poststeps": 3,
+    "max_steps": 10,
+    "wall_budget_seconds": 90
+  },
+  "controller": {
+    "setpoint_dm": 15.0,
+    "kp_L_min_per_dm": 0.3272492347489368,
+    "ki_L_min_per_dm_min": 0.0,
+    "kd_L_min_min_per_dm": 0.0,
+    "sampling_period_min": 60.0,
+    "basis": "mab_helpers D_bf=5 dm, dh/dt=(F_in-F_out)/Ac, dt=60 min. D research proportional cancellation; not missing B private PI configuration."
+  },
+  "arms": {
+    "traditional_controller": "D stateless proportional formula through unchanged B executor and D gate",
+    "single_agent": "B BufferLevelPID with the same P-only parameters through B executor and D gate; no A/C",
+    "four_agent": "unchanged A numeric goal planner and C local CNP plus same B P policy and D model-envelope gate"
+  },
+  "fairness": "same initial internal state, candidate equations, measurement perturbation, goal, horizon and model gate; source C has one executor, so no multi-resource efficiency claim",
+  "primary_metric": "success / all validly started runs; execution failure or timeout counts as failure",
+  "efficiency_metric": "paired simulated minutes to goal, successful complete pairs separately counted; software wall time separate",
+  "exclusions": "none for failures; initialization failures retained as not-started with reason and planned denominator",
+  "energy_metric": null,
+  "physical_safety_certified": false,
+  "whole_project_joint_signoff": false,
+  "source_sha256": {
+    "l3_system/runtime.py": "abb830c145fd422f44faad583569cdb8aa508af47aff88ab804b558c53db0f21",
+    "l3_system/main.py": "6f54128db1047b9bc97c34048d667b97df6fe4d4f8ce3efd9595eba60070da78",
+    "l3_system/planning/goal_runtime.py": "b96d0824d92c3c1ce5567eac1a023d93330e070994e722a9b74b7ee2044cde52",
+    "l3_system/agents/scheduling_agent.py": "69b9faab33ea3a25602c2a4e529a3185de456abe6cdf87738654cbd12289dc43",
+    "l3_system/algorithms/cnp_protocol.py": "a13589f69935bff2d0169f441f761966e2c75bf78dfa43cfdfa52b8043a03c17",
+    "l3_system/execution/mab_adapter.py": "4bdc76da1443cf34a37eb6a90302814606ebfe93bcabc366942d560b1d23a9e5",
+    "l3_system/execution/execution_agent.py": "5b6a9d82c52b3f254ed88b360802f149f168d6999287e6252d1ef4bded8d367a",
+    "l3_system/execution/controllers/policies.py": "babc65181224d7fe1fd43c5cecbffc54d0c4451db235e0c7a8155db9a19bc8e5",
+    "vendor/smpl/smpl/envs/helpers/mab_helpers.py": "57f569fab8b3b59a68e69c036e2894554d66183fbf220b1b08e5ed45d093615b",
+    "deliverables/D07/scripts/run_mab_paired.py": "928291db10a4092c97065b6a5d0cf5c51bc6800f6a94e2a0e5b314e3638728aa"
+  },
+  "runs": [
+    {
+      "run_id": "process_disturbance-26021-single_agent",
+      "pair_id": "process_disturbance-26021",
+      "condition": "process_disturbance",
+      "seed": 26021,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.1717862807267852
+    },
+    {
+      "run_id": "process_disturbance-26021-traditional_controller",
+      "pair_id": "process_disturbance-26021",
+      "condition": "process_disturbance",
+      "seed": 26021,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.1717862807267852
+    },
+    {
+      "run_id": "sensor_fault-26014-single_agent",
+      "pair_id": "sensor_fault-26014",
+      "condition": "sensor_fault",
+      "seed": 26014,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.020475623418611755
+    },
+    {
+      "run_id": "nominal-26010-traditional_controller",
+      "pair_id": "nominal-26010",
+      "condition": "nominal",
+      "seed": 26010,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.015733697695142185
+    },
+    {
+      "run_id": "nominal-26001-four_agent",
+      "pair_id": "nominal-26001",
+      "condition": "nominal",
+      "seed": 26001,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.027168546726581706
+    },
+    {
+      "run_id": "sensor_fault-26017-single_agent",
+      "pair_id": "sensor_fault-26017",
+      "condition": "sensor_fault",
+      "seed": 26017,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.004333977815432599
+    },
+    {
+      "run_id": "process_disturbance-26028-four_agent",
+      "pair_id": "process_disturbance-26028",
+      "condition": "process_disturbance",
+      "seed": 26028,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.16190286202546444
+    },
+    {
+      "run_id": "nominal-26004-traditional_controller",
+      "pair_id": "nominal-26004",
+      "condition": "nominal",
+      "seed": 26004,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.01187176756461341
+    },
+    {
+      "run_id": "process_disturbance-26027-four_agent",
+      "pair_id": "process_disturbance-26027",
+      "condition": "process_disturbance",
+      "seed": 26027,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.27923621559712075
+    },
+    {
+      "run_id": "sensor_fault-26011-traditional_controller",
+      "pair_id": "sensor_fault-26011",
+      "condition": "sensor_fault",
+      "seed": 26011,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.01516391309038573
+    },
+    {
+      "run_id": "process_disturbance-26029-traditional_controller",
+      "pair_id": "process_disturbance-26029",
+      "condition": "process_disturbance",
+      "seed": 26029,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.15191650716315203
+    },
+    {
+      "run_id": "sensor_fault-26014-traditional_controller",
+      "pair_id": "sensor_fault-26014",
+      "condition": "sensor_fault",
+      "seed": 26014,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.020475623418611755
+    },
+    {
+      "run_id": "process_disturbance-26022-four_agent",
+      "pair_id": "process_disturbance-26022",
+      "condition": "process_disturbance",
+      "seed": 26022,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.2095464219929788
+    },
+    {
+      "run_id": "process_disturbance-26022-traditional_controller",
+      "pair_id": "process_disturbance-26022",
+      "condition": "process_disturbance",
+      "seed": 26022,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.2095464219929788
+    },
+    {
+      "run_id": "sensor_fault-26012-traditional_controller",
+      "pair_id": "sensor_fault-26012",
+      "condition": "sensor_fault",
+      "seed": 26012,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.0020325156702528865
+    },
+    {
+      "run_id": "nominal-26001-traditional_controller",
+      "pair_id": "nominal-26001",
+      "condition": "nominal",
+      "seed": 26001,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.027168546726581706
+    },
+    {
+      "run_id": "sensor_fault-26018-single_agent",
+      "pair_id": "sensor_fault-26018",
+      "condition": "sensor_fault",
+      "seed": 26018,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.024611088369013746
+    },
+    {
+      "run_id": "nominal-26008-single_agent",
+      "pair_id": "nominal-26008",
+      "condition": "nominal",
+      "seed": 26008,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.02680249994778463
+    },
+    {
+      "run_id": "nominal-26005-traditional_controller",
+      "pair_id": "nominal-26005",
+      "condition": "nominal",
+      "seed": 26005,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.02514248649218815
+    },
+    {
+      "run_id": "process_disturbance-26023-single_agent",
+      "pair_id": "process_disturbance-26023",
+      "condition": "process_disturbance",
+      "seed": 26023,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.23234531051484408
+    },
+    {
+      "run_id": "sensor_fault-26016-four_agent",
+      "pair_id": "sensor_fault-26016",
+      "condition": "sensor_fault",
+      "seed": 26016,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.009687336495443954
+    },
+    {
+      "run_id": "sensor_fault-26012-single_agent",
+      "pair_id": "sensor_fault-26012",
+      "condition": "sensor_fault",
+      "seed": 26012,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.0020325156702528865
+    },
+    {
+      "run_id": "process_disturbance-26025-traditional_controller",
+      "pair_id": "process_disturbance-26025",
+      "condition": "process_disturbance",
+      "seed": 26025,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.2577052881826372
+    },
+    {
+      "run_id": "process_disturbance-26024-traditional_controller",
+      "pair_id": "process_disturbance-26024",
+      "condition": "process_disturbance",
+      "seed": 26024,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.2618658217320884
+    },
+    {
+      "run_id": "process_disturbance-26024-four_agent",
+      "pair_id": "process_disturbance-26024",
+      "condition": "process_disturbance",
+      "seed": 26024,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.2618658217320884
+    },
+    {
+      "run_id": "nominal-26002-traditional_controller",
+      "pair_id": "nominal-26002",
+      "condition": "nominal",
+      "seed": 26002,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.02020795541115291
+    },
+    {
+      "run_id": "sensor_fault-26015-four_agent",
+      "pair_id": "sensor_fault-26015",
+      "condition": "sensor_fault",
+      "seed": 26015,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.019167947446015257
+    },
+    {
+      "run_id": "nominal-26002-four_agent",
+      "pair_id": "nominal-26002",
+      "condition": "nominal",
+      "seed": 26002,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.02020795541115291
+    },
+    {
+      "run_id": "nominal-26006-traditional_controller",
+      "pair_id": "nominal-26006",
+      "condition": "nominal",
+      "seed": 26006,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.020376439716654975
+    },
+    {
+      "run_id": "process_disturbance-26029-four_agent",
+      "pair_id": "process_disturbance-26029",
+      "condition": "process_disturbance",
+      "seed": 26029,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.15191650716315203
+    },
+    {
+      "run_id": "sensor_fault-26020-traditional_controller",
+      "pair_id": "sensor_fault-26020",
+      "condition": "sensor_fault",
+      "seed": 26020,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.02508159189261875
+    },
+    {
+      "run_id": "process_disturbance-26030-traditional_controller",
+      "pair_id": "process_disturbance-26030",
+      "condition": "process_disturbance",
+      "seed": 26030,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.2929365414793021
+    },
+    {
+      "run_id": "process_disturbance-26022-single_agent",
+      "pair_id": "process_disturbance-26022",
+      "condition": "process_disturbance",
+      "seed": 26022,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.2095464219929788
+    },
+    {
+      "run_id": "nominal-26004-single_agent",
+      "pair_id": "nominal-26004",
+      "condition": "nominal",
+      "seed": 26004,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.01187176756461341
+    },
+    {
+      "run_id": "sensor_fault-26017-four_agent",
+      "pair_id": "sensor_fault-26017",
+      "condition": "sensor_fault",
+      "seed": 26017,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.004333977815432599
+    },
+    {
+      "run_id": "sensor_fault-26013-traditional_controller",
+      "pair_id": "sensor_fault-26013",
+      "condition": "sensor_fault",
+      "seed": 26013,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.02097573636421795
+    },
+    {
+      "run_id": "nominal-26010-four_agent",
+      "pair_id": "nominal-26010",
+      "condition": "nominal",
+      "seed": 26010,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.015733697695142185
+    },
+    {
+      "run_id": "nominal-26002-single_agent",
+      "pair_id": "nominal-26002",
+      "condition": "nominal",
+      "seed": 26002,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.02020795541115291
+    },
+    {
+      "run_id": "sensor_fault-26019-single_agent",
+      "pair_id": "sensor_fault-26019",
+      "condition": "sensor_fault",
+      "seed": 26019,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.01206260131711194
+    },
+    {
+      "run_id": "sensor_fault-26014-four_agent",
+      "pair_id": "sensor_fault-26014",
+      "condition": "sensor_fault",
+      "seed": 26014,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.020475623418611755
+    },
+    {
+      "run_id": "nominal-26003-traditional_controller",
+      "pair_id": "nominal-26003",
+      "condition": "nominal",
+      "seed": 26003,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.02771145480400991
+    },
+    {
+      "run_id": "nominal-26005-single_agent",
+      "pair_id": "nominal-26005",
+      "condition": "nominal",
+      "seed": 26005,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.02514248649218815
+    },
+    {
+      "run_id": "sensor_fault-26015-traditional_controller",
+      "pair_id": "sensor_fault-26015",
+      "condition": "sensor_fault",
+      "seed": 26015,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.019167947446015257
+    },
+    {
+      "run_id": "sensor_fault-26017-traditional_controller",
+      "pair_id": "sensor_fault-26017",
+      "condition": "sensor_fault",
+      "seed": 26017,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.004333977815432599
+    },
+    {
+      "run_id": "sensor_fault-26018-four_agent",
+      "pair_id": "sensor_fault-26018",
+      "condition": "sensor_fault",
+      "seed": 26018,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.024611088369013746
+    },
+    {
+      "run_id": "nominal-26003-four_agent",
+      "pair_id": "nominal-26003",
+      "condition": "nominal",
+      "seed": 26003,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.02771145480400991
+    },
+    {
+      "run_id": "sensor_fault-26011-single_agent",
+      "pair_id": "sensor_fault-26011",
+      "condition": "sensor_fault",
+      "seed": 26011,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.01516391309038573
+    },
+    {
+      "run_id": "process_disturbance-26026-four_agent",
+      "pair_id": "process_disturbance-26026",
+      "condition": "process_disturbance",
+      "seed": 26026,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.20020073530313084
+    },
+    {
+      "run_id": "nominal-26006-single_agent",
+      "pair_id": "nominal-26006",
+      "condition": "nominal",
+      "seed": 26006,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.020376439716654975
+    },
+    {
+      "run_id": "nominal-26009-traditional_controller",
+      "pair_id": "nominal-26009",
+      "condition": "nominal",
+      "seed": 26009,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.015214639502124906
+    },
+    {
+      "run_id": "process_disturbance-26026-single_agent",
+      "pair_id": "process_disturbance-26026",
+      "condition": "process_disturbance",
+      "seed": 26026,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.20020073530313084
+    },
+    {
+      "run_id": "nominal-26009-four_agent",
+      "pair_id": "nominal-26009",
+      "condition": "nominal",
+      "seed": 26009,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.015214639502124906
+    },
+    {
+      "run_id": "sensor_fault-26012-four_agent",
+      "pair_id": "sensor_fault-26012",
+      "condition": "sensor_fault",
+      "seed": 26012,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.0020325156702528865
+    },
+    {
+      "run_id": "nominal-26009-single_agent",
+      "pair_id": "nominal-26009",
+      "condition": "nominal",
+      "seed": 26009,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.015214639502124906
+    },
+    {
+      "run_id": "process_disturbance-26028-traditional_controller",
+      "pair_id": "process_disturbance-26028",
+      "condition": "process_disturbance",
+      "seed": 26028,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.16190286202546444
+    },
+    {
+      "run_id": "process_disturbance-26028-single_agent",
+      "pair_id": "process_disturbance-26028",
+      "condition": "process_disturbance",
+      "seed": 26028,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.16190286202546444
+    },
+    {
+      "run_id": "process_disturbance-26021-four_agent",
+      "pair_id": "process_disturbance-26021",
+      "condition": "process_disturbance",
+      "seed": 26021,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.1717862807267852
+    },
+    {
+      "run_id": "process_disturbance-26027-single_agent",
+      "pair_id": "process_disturbance-26027",
+      "condition": "process_disturbance",
+      "seed": 26027,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.27923621559712075
+    },
+    {
+      "run_id": "sensor_fault-26020-single_agent",
+      "pair_id": "sensor_fault-26020",
+      "condition": "sensor_fault",
+      "seed": 26020,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.02508159189261875
+    },
+    {
+      "run_id": "process_disturbance-26026-traditional_controller",
+      "pair_id": "process_disturbance-26026",
+      "condition": "process_disturbance",
+      "seed": 26026,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.20020073530313084
+    },
+    {
+      "run_id": "process_disturbance-26029-single_agent",
+      "pair_id": "process_disturbance-26029",
+      "condition": "process_disturbance",
+      "seed": 26029,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.15191650716315203
+    },
+    {
+      "run_id": "sensor_fault-26016-single_agent",
+      "pair_id": "sensor_fault-26016",
+      "condition": "sensor_fault",
+      "seed": 26016,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.009687336495443954
+    },
+    {
+      "run_id": "process_disturbance-26027-traditional_controller",
+      "pair_id": "process_disturbance-26027",
+      "condition": "process_disturbance",
+      "seed": 26027,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.27923621559712075
+    },
+    {
+      "run_id": "nominal-26003-single_agent",
+      "pair_id": "nominal-26003",
+      "condition": "nominal",
+      "seed": 26003,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.02771145480400991
+    },
+    {
+      "run_id": "nominal-26007-four_agent",
+      "pair_id": "nominal-26007",
+      "condition": "nominal",
+      "seed": 26007,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.01283672917625573
+    },
+    {
+      "run_id": "nominal-26004-four_agent",
+      "pair_id": "nominal-26004",
+      "condition": "nominal",
+      "seed": 26004,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.01187176756461341
+    },
+    {
+      "run_id": "nominal-26006-four_agent",
+      "pair_id": "nominal-26006",
+      "condition": "nominal",
+      "seed": 26006,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.020376439716654975
+    },
+    {
+      "run_id": "sensor_fault-26011-four_agent",
+      "pair_id": "sensor_fault-26011",
+      "condition": "sensor_fault",
+      "seed": 26011,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.01516391309038573
+    },
+    {
+      "run_id": "process_disturbance-26023-traditional_controller",
+      "pair_id": "process_disturbance-26023",
+      "condition": "process_disturbance",
+      "seed": 26023,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.23234531051484408
+    },
+    {
+      "run_id": "process_disturbance-26025-single_agent",
+      "pair_id": "process_disturbance-26025",
+      "condition": "process_disturbance",
+      "seed": 26025,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.2577052881826372
+    },
+    {
+      "run_id": "sensor_fault-26019-traditional_controller",
+      "pair_id": "sensor_fault-26019",
+      "condition": "sensor_fault",
+      "seed": 26019,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.01206260131711194
+    },
+    {
+      "run_id": "sensor_fault-26013-single_agent",
+      "pair_id": "sensor_fault-26013",
+      "condition": "sensor_fault",
+      "seed": 26013,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.02097573636421795
+    },
+    {
+      "run_id": "nominal-26001-single_agent",
+      "pair_id": "nominal-26001",
+      "condition": "nominal",
+      "seed": 26001,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.027168546726581706
+    },
+    {
+      "run_id": "process_disturbance-26024-single_agent",
+      "pair_id": "process_disturbance-26024",
+      "condition": "process_disturbance",
+      "seed": 26024,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.2618658217320884
+    },
+    {
+      "run_id": "process_disturbance-26030-single_agent",
+      "pair_id": "process_disturbance-26030",
+      "condition": "process_disturbance",
+      "seed": 26030,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.2929365414793021
+    },
+    {
+      "run_id": "nominal-26008-traditional_controller",
+      "pair_id": "nominal-26008",
+      "condition": "nominal",
+      "seed": 26008,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.02680249994778463
+    },
+    {
+      "run_id": "sensor_fault-26016-traditional_controller",
+      "pair_id": "sensor_fault-26016",
+      "condition": "sensor_fault",
+      "seed": 26016,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": -0.009687336495443954
+    },
+    {
+      "run_id": "nominal-26005-four_agent",
+      "pair_id": "nominal-26005",
+      "condition": "nominal",
+      "seed": 26005,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.02514248649218815
+    },
+    {
+      "run_id": "nominal-26010-single_agent",
+      "pair_id": "nominal-26010",
+      "condition": "nominal",
+      "seed": 26010,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.015733697695142185
+    },
+    {
+      "run_id": "process_disturbance-26025-four_agent",
+      "pair_id": "process_disturbance-26025",
+      "condition": "process_disturbance",
+      "seed": 26025,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.2577052881826372
+    },
+    {
+      "run_id": "sensor_fault-26019-four_agent",
+      "pair_id": "sensor_fault-26019",
+      "condition": "sensor_fault",
+      "seed": 26019,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.01206260131711194
+    },
+    {
+      "run_id": "sensor_fault-26018-traditional_controller",
+      "pair_id": "sensor_fault-26018",
+      "condition": "sensor_fault",
+      "seed": 26018,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.024611088369013746
+    },
+    {
+      "run_id": "process_disturbance-26030-four_agent",
+      "pair_id": "process_disturbance-26030",
+      "condition": "process_disturbance",
+      "seed": 26030,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.2929365414793021
+    },
+    {
+      "run_id": "sensor_fault-26020-four_agent",
+      "pair_id": "sensor_fault-26020",
+      "condition": "sensor_fault",
+      "seed": 26020,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.02508159189261875
+    },
+    {
+      "run_id": "nominal-26007-single_agent",
+      "pair_id": "nominal-26007",
+      "condition": "nominal",
+      "seed": 26007,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": 0.01283672917625573
+    },
+    {
+      "run_id": "sensor_fault-26015-single_agent",
+      "pair_id": "sensor_fault-26015",
+      "condition": "sensor_fault",
+      "seed": 26015,
+      "arm": "single_agent",
+      "initial_buffer_offset_dm": -0.019167947446015257
+    },
+    {
+      "run_id": "sensor_fault-26013-four_agent",
+      "pair_id": "sensor_fault-26013",
+      "condition": "sensor_fault",
+      "seed": 26013,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.02097573636421795
+    },
+    {
+      "run_id": "nominal-26008-four_agent",
+      "pair_id": "nominal-26008",
+      "condition": "nominal",
+      "seed": 26008,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": -0.02680249994778463
+    },
+    {
+      "run_id": "nominal-26007-traditional_controller",
+      "pair_id": "nominal-26007",
+      "condition": "nominal",
+      "seed": 26007,
+      "arm": "traditional_controller",
+      "initial_buffer_offset_dm": 0.01283672917625573
+    },
+    {
+      "run_id": "process_disturbance-26023-four_agent",
+      "pair_id": "process_disturbance-26023",
+      "condition": "process_disturbance",
+      "seed": 26023,
+      "arm": "four_agent",
+      "initial_buffer_offset_dm": 0.23234531051484408
+    }
+  ]
+}
