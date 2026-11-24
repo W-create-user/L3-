@@ -1,0 +1,31 @@
+{
+  "schema_version": "D24CompletionUpdate/1.0",
+  "closed_in_this_update": [
+    "fixed mAb buffer-goal comparison protocol",
+    "90 real model runs / 30 matched triplets",
+    "raw pre-clip goal/action/version/resource audit",
+    "simulated makespan comparison and explicit negative efficiency result"
+  ],
+  "result": {
+    "started": 90,
+    "succeeded_within_buffer_goal_scope": 90,
+    "actual_model_steps": 360,
+    "paired_triplets": 30,
+    "simulated_makespan_improvement": 0.0,
+    "efficiency_target_20_percent_met": false
+  },
+  "software_checks": {
+    "D07_tests_passed": 10,
+    "new_corruption_tests": 6,
+    "prior_full_clean_baseline_tests": 503,
+    "prior_baseline_rerun_claimed": false
+  },
+  "other_members_source_modified": false,
+  "full_project_acceptance": false,
+  "unclosed": [
+    "browser rendering/recording blocked by environment policy",
+    "field hazard thresholds and independent field modalities not verified",
+    "whole-project production conditions and signatures incomplete",
+    "external publication/authorization and independent final reviewer evidence absent"
+  ]
+}

@@ -1,0 +1,363 @@
+test_duplicate_result (test_archive_audit.ArchiveAuditTests.test_duplicate_result) ... ok
+test_malformed_request_identity_does_not_crash (test_archive_audit.ArchiveAuditTests.test_malformed_request_identity_does_not_crash) ... ok
+test_missing_request (test_archive_audit.ArchiveAuditTests.test_missing_request) ... ok
+test_multiple_calls_are_one_reset_record (test_archive_audit.ArchiveAuditTests.test_multiple_calls_are_one_reset_record) ... ok
+test_rejected_candidate_never_counted_as_execution (test_archive_audit.ArchiveAuditTests.test_rejected_candidate_never_counted_as_execution) ... ok
+test_rejected_cannot_be_executed (test_archive_audit.ArchiveAuditTests.test_rejected_cannot_be_executed) ... ok
+test_reset_cannot_erase_pending_request (test_archive_audit.ArchiveAuditTests.test_reset_cannot_erase_pending_request) ... ok
+test_wrong_task (test_archive_audit.ArchiveAuditTests.test_wrong_task) ... ok
+test_controller_change_cannot_bypass_approved_baseline (test_atropine_experiment.AtropineExperimentTests.test_controller_change_cannot_bypass_approved_baseline) ... ok
+test_duplicate_and_one_bad_state_cannot_fill_recovery (test_atropine_experiment.AtropineExperimentTests.test_duplicate_and_one_bad_state_cannot_fill_recovery) ... ok
+test_equality_allows_single_reviewed_step (test_atropine_experiment.AtropineExperimentTests.test_equality_allows_single_reviewed_step) ... ok
+test_external_untracked_version_or_config_change_blocks (test_atropine_experiment.AtropineExperimentTests.test_external_untracked_version_or_config_change_blocks) ... ok
+test_invalid_reference_and_censoring_do_not_pass (test_atropine_experiment.AtropineExperimentTests.test_invalid_reference_and_censoring_do_not_pass) ... ok
+test_optin_and_real_backend_guard (test_atropine_experiment.AtropineExperimentTests.test_optin_and_real_backend_guard) ... ok
+test_pending_request_prevents_human_resume (test_atropine_experiment.AtropineExperimentTests.test_pending_request_prevents_human_resume) ... ok
+test_post_step_breach_latches_without_undo_or_second_step (test_atropine_experiment.AtropineExperimentTests.test_post_step_breach_latches_without_undo_or_second_step) ... ok
+test_preflight_breach_blocks_and_reset_not_recovery (test_atropine_experiment.AtropineExperimentTests.test_preflight_breach_blocks_and_reset_not_recovery) ... ok
+test_reference_data_age_invalidates_recovery (test_atropine_experiment.AtropineExperimentTests.test_reference_data_age_invalidates_recovery) ... ok
+test_rule_context_before_raw_step_cannot_be_bypassed (test_atropine_experiment.AtropineExperimentTests.test_rule_context_before_raw_step_cannot_be_bypassed) ... ok
+test_stale_missing_or_unobserved_source_cannot_pass (test_atropine_experiment.AtropineExperimentTests.test_stale_missing_or_unobserved_source_cannot_pass) ... ok
+test_three_states_resources_and_human_then_fresh_action_gate (test_atropine_experiment.AtropineExperimentTests.test_three_states_resources_and_human_then_fresh_action_gate) ... ok
+test_unknown_execution_not_retried (test_atropine_experiment.AtropineExperimentTests.test_unknown_execution_not_retried) ... ok
+test_versioned_config_matches_experiment_code (test_atropine_experiment.AtropineExperimentTests.test_versioned_config_matches_experiment_code) ... ok
+test_actual_actors_block_cycle_and_both_old_request_paths (test_atropine_replay.AtropineReplayTests.test_actual_actors_block_cycle_and_both_old_request_paths) ... ok
+test_clean_archive_not_executed_as_if_it_were_a_model (test_atropine_replay.AtropineReplayTests.test_clean_archive_not_executed_as_if_it_were_a_model) ... ok
+test_input_is_read_only_and_observation_is_copied (test_atropine_replay.AtropineReplayTests.test_input_is_read_only_and_observation_is_copied) ... ok
+test_reset_step_and_rewind_are_forbidden (test_atropine_replay.AtropineReplayTests.test_reset_step_and_rewind_are_forbidden) ... ok
+test_different_action_coordinates_rejected (test_b_handoff_adapter.BAdapterTests.test_different_action_coordinates_rejected) ... ok
+test_disabled_rules_have_no_thresholds (test_b_handoff_adapter.BAdapterTests.test_disabled_rules_have_no_thresholds) ... ok
+test_environment_spaces_not_mixed (test_b_handoff_adapter.BAdapterTests.test_environment_spaces_not_mixed) ... ok
+test_hashes_and_tampering (test_b_handoff_adapter.BAdapterTests.test_hashes_and_tampering) ... ok
+test_mab_cannot_use_atropine_adapter (test_b_handoff_adapter.BAdapterTests.test_mab_cannot_use_atropine_adapter) ... ok
+test_modified_previous_observation_rejected (test_b_handoff_adapter.BAdapterTests.test_modified_previous_observation_rejected) ... ok
+test_rejected_raw_observation_not_forged_as_step_output (test_b_handoff_adapter.BAdapterTests.test_rejected_raw_observation_not_forged_as_step_output) ... ok
+test_request_action_keeps_delta_coordinates (test_b_handoff_adapter.BAdapterTests.test_request_action_keeps_delta_coordinates) ... ok
+test_uncertain_units_not_rewritten_as_confirmed (test_b_handoff_adapter.BAdapterTests.test_uncertain_units_not_rewritten_as_confirmed) ... ok
+test_wrong_task_and_time_rejected (test_b_handoff_adapter.BAdapterTests.test_wrong_task_and_time_rejected) ... ok
+test_alignment (test_d01_manifest.ManifestTests.test_alignment) ... ok
+test_artifact_corruption (test_d01_manifest.ManifestTests.test_artifact_corruption) ... ok
+test_bad_event_interval (test_d01_manifest.ManifestTests.test_bad_event_interval) ... ok
+test_cross_episode_derivation (test_d01_manifest.ManifestTests.test_cross_episode_derivation) ... ok
+test_draft_rejected (test_d01_manifest.ManifestTests.test_draft_rejected) ... ok
+test_duplicate_episode (test_d01_manifest.ManifestTests.test_duplicate_episode) ... ok
+test_empty_splits_rejected (test_d01_manifest.ManifestTests.test_empty_splits_rejected) ... ok
+test_event_outside_episode (test_d01_manifest.ManifestTests.test_event_outside_episode) ... ok
+test_identical_bytes_leakage (test_d01_manifest.ManifestTests.test_identical_bytes_leakage) ... ok
+test_iforest_cannot_use_validation (test_d01_manifest.ManifestTests.test_iforest_cannot_use_validation) ... ok
+test_label_as_input (test_d01_manifest.ManifestTests.test_label_as_input) ... ok
+test_lineage_leakage (test_d01_manifest.ManifestTests.test_lineage_leakage) ... ok
+test_missing_artifact (test_d01_manifest.ManifestTests.test_missing_artifact) ... ok
+test_missing_field (test_d01_manifest.ManifestTests.test_missing_field) ... ok
+test_missing_timeseries (test_d01_manifest.ManifestTests.test_missing_timeseries) ... ok
+test_no_source_reference (test_d01_manifest.ManifestTests.test_no_source_reference) ... ok
+test_path_escape (test_d01_manifest.ManifestTests.test_path_escape) ... ok
+test_supervised_train_allows_labeled_anomaly (test_d01_manifest.ManifestTests.test_supervised_train_allows_labeled_anomaly) ... ok
+test_train_contamination (test_d01_manifest.ManifestTests.test_train_contamination) ... ok
+test_unknown_label (test_d01_manifest.ManifestTests.test_unknown_label) ... ok
+test_valid_contract (test_d01_manifest.ManifestTests.test_valid_contract) ... ok
+test_zero_placeholder_hash (test_d01_manifest.ManifestTests.test_zero_placeholder_hash) ... ok
+test_bad_dictionary_declaration (test_dataset_intake.DatasetIntakeTests.test_bad_dictionary_declaration) ... ok
+test_boolean_is_not_numeric (test_dataset_intake.DatasetIntakeTests.test_boolean_is_not_numeric) ... ok
+test_collection_clock (test_dataset_intake.DatasetIntakeTests.test_collection_clock) ... ok
+test_collection_time_requires_timezone (test_dataset_intake.DatasetIntakeTests.test_collection_time_requires_timezone) ... ok
+test_completed_cannot_have_error (test_dataset_intake.DatasetIntakeTests.test_completed_cannot_have_error) ... ok
+test_completed_requires_outputs (test_dataset_intake.DatasetIntakeTests.test_completed_requires_outputs) ... ok
+test_config_file_hash (test_dataset_intake.DatasetIntakeTests.test_config_file_hash) ... ok
+test_dictionary_environment (test_dataset_intake.DatasetIntakeTests.test_dictionary_environment) ... ok
+test_dictionary_file_hash (test_dataset_intake.DatasetIntakeTests.test_dictionary_file_hash) ... ok
+test_dictionary_required_indices_and_units (test_dataset_intake.DatasetIntakeTests.test_dictionary_required_indices_and_units) ... ok
+test_episode_identity (test_dataset_intake.DatasetIntakeTests.test_episode_identity) ... ok
+test_executed_action_dimensions (test_dataset_intake.DatasetIntakeTests.test_executed_action_dimensions) ... ok
+test_failed_needs_reason (test_dataset_intake.DatasetIntakeTests.test_failed_needs_reason) ... ok
+test_intake_cli_failure_exit (test_dataset_intake.DatasetIntakeTests.test_intake_cli_failure_exit) ... ok
+test_intake_cli_success_report (test_dataset_intake.DatasetIntakeTests.test_intake_cli_success_report) ... ok
+test_intake_report_cannot_overwrite_input (test_dataset_intake.DatasetIntakeTests.test_intake_report_cannot_overwrite_input) ... ok
+test_missing_row_field (test_dataset_intake.DatasetIntakeTests.test_missing_row_field) ... ok
+test_no_records_after_termination (test_dataset_intake.DatasetIntakeTests.test_no_records_after_termination) ... ok
+test_nonfinite_json (test_dataset_intake.DatasetIntakeTests.test_nonfinite_json) ... ok
+test_normal_label_cannot_declare_anomaly_interval (test_dataset_intake.DatasetIntakeTests.test_normal_label_cannot_declare_anomaly_interval) ... ok
+test_observation_dimensions (test_dataset_intake.DatasetIntakeTests.test_observation_dimensions) ... ok
+test_prepare_cli_never_overwrites_spec (test_dataset_intake.DatasetIntakeTests.test_prepare_cli_never_overwrites_spec) ... ok
+test_prepare_cli_produces_unapproved_draft (test_dataset_intake.DatasetIntakeTests.test_prepare_cli_produces_unapproved_draft) ... ok
+test_prepare_hashes_draft_and_preserves_original (test_dataset_intake.DatasetIntakeTests.test_prepare_hashes_draft_and_preserves_original) ... ok
+test_prepare_refuses_path_escape (test_dataset_intake.DatasetIntakeTests.test_prepare_refuses_path_escape) ... ok
+test_record_count (test_dataset_intake.DatasetIntakeTests.test_record_count) ... ok
+test_record_order (test_dataset_intake.DatasetIntakeTests.test_record_order) ... ok
+test_rejected_cannot_execute (test_dataset_intake.DatasetIntakeTests.test_rejected_cannot_execute) ... ok
+test_rejected_valid_no_advance (test_dataset_intake.DatasetIntakeTests.test_rejected_valid_no_advance) ... ok
+test_simulation_clock (test_dataset_intake.DatasetIntakeTests.test_simulation_clock) ... ok
+test_termination_flags_exclusive (test_dataset_intake.DatasetIntakeTests.test_termination_flags_exclusive) ... ok
+test_unexecuted_cannot_fake_outputs (test_dataset_intake.DatasetIntakeTests.test_unexecuted_cannot_fake_outputs) ... ok
+test_unknown_fields_label_leakage (test_dataset_intake.DatasetIntakeTests.test_unknown_fields_label_leakage) ... ok
+test_unsupported_clock_unit (test_dataset_intake.DatasetIntakeTests.test_unsupported_clock_unit) ... ok
+test_valid_structure (test_dataset_intake.DatasetIntakeTests.test_valid_structure) ... ok
+test_version_continuity (test_dataset_intake.DatasetIntakeTests.test_version_continuity) ... ok
+test_aggregate_preserves_all_denominators (test_event_metrics.EventMetricTests.test_aggregate_preserves_all_denominators) ... ok
+test_delay_measured_from_raw_onset (test_event_metrics.EventMetricTests.test_delay_measured_from_raw_onset) ... ok
+test_dilated_windows_do_not_merge_distinct_raw_events (test_event_metrics.EventMetricTests.test_dilated_windows_do_not_merge_distinct_raw_events) ... ok
+test_empty_aggregate_is_explicit (test_event_metrics.EventMetricTests.test_empty_aggregate_is_explicit) ... ok
+test_event_spanning_warmup_keeps_true_onset (test_event_metrics.EventMetricTests.test_event_spanning_warmup_keeps_true_onset) ... ok
+test_last_sample_event_evaluated (test_event_metrics.EventMetricTests.test_last_sample_event_evaluated) ... ok
+test_later_miss_not_hidden_by_first_detection (test_event_metrics.EventMetricTests.test_later_miss_not_hidden_by_first_detection) ... ok
+test_no_alarms_keeps_miss (test_event_metrics.EventMetricTests.test_no_alarms_keeps_miss) ... ok
+test_normal_episode_false_alarm_separate_denominator (test_event_metrics.EventMetricTests.test_normal_episode_false_alarm_separate_denominator) ... ok
+test_numeric_truth_and_wrong_lengths_rejected (test_event_metrics.EventMetricTests.test_numeric_truth_and_wrong_lengths_rejected) ... ok
+test_post_event_window_tail_is_not_detection (test_event_metrics.EventMetricTests.test_post_event_window_tail_is_not_detection) ... ok
+test_warmup_unscorable_not_silent_miss_or_zero_delay (test_event_metrics.EventMetricTests.test_warmup_unscorable_not_silent_miss_or_zero_delay) ... ok
+test_declared_confirmations_do_not_authorize_run (test_experiment_draft.ExperimentDraftTests.test_declared_confirmations_do_not_authorize_run) ... ok
+test_draft_has_missing_inputs_and_never_claims_frozen (test_experiment_draft.ExperimentDraftTests.test_draft_has_missing_inputs_and_never_claims_frozen) ... ok
+test_duplicate_or_boolean_seeds_rejected (test_experiment_draft.ExperimentDraftTests.test_duplicate_or_boolean_seeds_rejected) ... ok
+test_frozen_status_rejected (test_experiment_draft.ExperimentDraftTests.test_frozen_status_rejected) ... ok
+test_non_object_rejected (test_experiment_draft.ExperimentDraftTests.test_non_object_rejected) ... ok
+test_abnormal_train_rejected (test_isolation_forest.ForestTests.test_abnormal_train_rejected) ... ok
+test_explicit_opt_in_required (test_isolation_forest.ForestTests.test_explicit_opt_in_required) ... ok
+test_feature_finite_and_shape (test_isolation_forest.ForestTests.test_feature_finite_and_shape) ... ok
+test_group_crossing_rejected (test_isolation_forest.ForestTests.test_group_crossing_rejected) ... ok
+test_hard_reject_and_missing_window_block (test_isolation_forest.ForestTests.test_hard_reject_and_missing_window_block) ... ok
+test_no_leakage_from_test_values_to_threshold_or_scaler (test_isolation_forest.ForestTests.test_no_leakage_from_test_values_to_threshold_or_scaler) ... ok
+test_report_keeps_episode_denominators (test_isolation_forest.ForestTests.test_report_keeps_episode_denominators) ... ok
+test_scope_mixing_rejected (test_isolation_forest.ForestTests.test_scope_mixing_rejected) ... ok
+test_training_and_roundtrip (test_isolation_forest.ForestTests.test_training_and_roundtrip) ... ok
+test_ambiguous_multiview_refused (test_multimodal_alignment.AlignmentTests.test_ambiguous_multiview_refused) ... ok
+test_asset_reuse_cross_split_refused (test_multimodal_alignment.AlignmentTests.test_asset_reuse_cross_split_refused) ... ok
+test_backend_and_dimensions_not_mixed (test_multimodal_alignment.AlignmentTests.test_backend_and_dimensions_not_mixed) ... ok
+test_changed_binding_not_silently_accepted (test_multimodal_alignment.AlignmentTests.test_changed_binding_not_silently_accepted) ... ok
+test_cli_local_output (test_multimodal_alignment.AlignmentTests.test_cli_local_output) ... ok
+test_content_review_declaration_required (test_multimodal_alignment.AlignmentTests.test_content_review_declaration_required) ... ok
+test_cross_episode_derivation_refused (test_multimodal_alignment.AlignmentTests.test_cross_episode_derivation_refused) ... ok
+test_exact_alignment_and_mask (test_multimodal_alignment.AlignmentTests.test_exact_alignment_and_mask) ... ok
+test_future_asset_not_used (test_multimodal_alignment.AlignmentTests.test_future_asset_not_used) ... ok
+test_generated_future_content_refused (test_multimodal_alignment.AlignmentTests.test_generated_future_content_refused) ... ok
+test_hash_mismatch_refused (test_multimodal_alignment.AlignmentTests.test_hash_mismatch_refused) ... ok
+test_label_asset_not_input (test_multimodal_alignment.AlignmentTests.test_label_asset_not_input) ... ok
+test_label_fields_not_observation_features (test_multimodal_alignment.AlignmentTests.test_label_fields_not_observation_features) ... ok
+test_late_available_image_not_used_early (test_multimodal_alignment.AlignmentTests.test_late_available_image_not_used_early) ... ok
+test_missing_modalities_are_supported (test_multimodal_alignment.AlignmentTests.test_missing_modalities_are_supported) ... ok
+test_no_mutation_of_inputs (test_multimodal_alignment.AlignmentTests.test_no_mutation_of_inputs) ... ok
+test_path_escape_refused (test_multimodal_alignment.AlignmentTests.test_path_escape_refused) ... ok
+test_returned_values_do_not_alias_source (test_multimodal_alignment.AlignmentTests.test_returned_values_do_not_alias_source) ... ok
+test_same_series_cross_split_refused (test_multimodal_alignment.AlignmentTests.test_same_series_cross_split_refused) ... ok
+test_same_source_group_cross_split_refused (test_multimodal_alignment.AlignmentTests.test_same_source_group_cross_split_refused) ... ok
+test_bound_statistical_entry_rejects_warmup_and_independently_stale_context (test_observation_window.ObservationWindowTests.test_bound_statistical_entry_rejects_warmup_and_independently_stale_context) ... ok
+test_episode_reset_cannot_mix_records (test_observation_window.ObservationWindowTests.test_episode_reset_cannot_mix_records) ... ok
+test_gap_discards_old_context_and_requires_new_window (test_observation_window.ObservationWindowTests.test_gap_discards_old_context_and_requires_new_window) ... ok
+test_independent_live_context_detects_stale_collector (test_observation_window.ObservationWindowTests.test_independent_live_context_detects_stale_collector) ... ok
+test_input_and_output_are_copied (test_observation_window.ObservationWindowTests.test_input_and_output_are_copied) ... ok
+test_invalid_observation_clears_window (test_observation_window.ObservationWindowTests.test_invalid_observation_clears_window) ... ok
+test_placeholder_binding_rejected (test_observation_window.ObservationWindowTests.test_placeholder_binding_rejected) ... ok
+test_replay_invalidates_prior_ready_packet (test_observation_window.ObservationWindowTests.test_replay_invalidates_prior_ready_packet) ... ok
+test_warmup_and_bound_packet (test_observation_window.ObservationWindowTests.test_warmup_and_bound_packet) ... ok
+test_failures_count_and_groups_are_units (test_paired_analysis.PairedAnalysisTests.test_failures_count_and_groups_are_units) ... ok
+test_input_order_does_not_change_sampling (test_paired_analysis.PairedAnalysisTests.test_input_order_does_not_change_sampling) ... ok
+test_invalid_time_rejected (test_paired_analysis.PairedAnalysisTests.test_invalid_time_rejected) ... ok
+test_pair_mismatch_rejected (test_paired_analysis.PairedAnalysisTests.test_pair_mismatch_rejected) ... ok
+test_repeated_calls_reproducible (test_paired_analysis.PairedAnalysisTests.test_repeated_calls_reproducible) ... ok
+test_time_reduction_not_success_claim (test_paired_analysis.PairedAnalysisTests.test_time_reduction_not_success_claim) ... ok
+test_unknown_outcome_not_treated_as_success (test_paired_analysis.PairedAnalysisTests.test_unknown_outcome_not_treated_as_success) ... ok
+test_unpaired_and_duplicate_rejected (test_paired_analysis.PairedAnalysisTests.test_unpaired_and_duplicate_rejected) ... ok
+test_boundary_and_censoring (test_r03_supplement.SupplementTests.test_boundary_and_censoring) ... ok
+test_changed_schedule_rejected (test_r03_supplement.SupplementTests.test_changed_schedule_rejected) ... ok
+test_fixed_source_mismatch_rejected (test_r03_supplement.SupplementTests.test_fixed_source_mismatch_rejected) ... ok
+test_group_leak_rejected (test_r03_supplement.SupplementTests.test_group_leak_rejected) ... ok
+test_path_escape_rejected (test_r03_supplement.SupplementTests.test_path_escape_rejected) ... ok
+test_physical_label_cannot_be_inferred (test_r03_supplement.SupplementTests.test_physical_label_cannot_be_inferred) ... ok
+test_physical_rule_cannot_be_enabled (test_r03_supplement.SupplementTests.test_physical_rule_cannot_be_enabled) ... ok
+test_pin_cannot_silently_change (test_r03_supplement.SupplementTests.test_pin_cannot_silently_change) ... ok
+test_scoped_receipt_and_projection (test_r03_supplement.SupplementTests.test_scoped_receipt_and_projection) ... ok
+test_configuration_snapshot_isolated (test_relative_process_rule.RelativeRuleTests.test_configuration_snapshot_isolated) ... ok
+test_configuration_units_reference_and_numbers (test_relative_process_rule.RelativeRuleTests.test_configuration_units_reference_and_numbers) ... ok
+test_equality_and_breach (test_relative_process_rule.RelativeRuleTests.test_equality_and_breach) ... ok
+test_full_chain_breach_never_steps (test_relative_process_rule.RelativeRuleTests.test_full_chain_breach_never_steps) ... ok
+test_no_implicit_experimental_enable (test_relative_process_rule.RelativeRuleTests.test_no_implicit_experimental_enable) ... ok
+test_reference_guard_and_observability (test_relative_process_rule.RelativeRuleTests.test_reference_guard_and_observability) ... ok
+test_reference_metadata_is_required (test_relative_process_rule.RelativeRuleTests.test_reference_metadata_is_required) ... ok
+test_state_review_applies_and_hard_rejection_wins (test_relative_process_rule.RelativeRuleTests.test_state_review_applies_and_hard_rejection_wins) ... ok
+test_denominator_fraud_rejected (test_research_acceptance.AcceptanceTests.test_denominator_fraud_rejected) ... ok
+test_failed_checkpoint_rejected (test_research_acceptance.AcceptanceTests.test_failed_checkpoint_rejected) ... ok
+test_mismatch_rejected (test_research_acceptance.AcceptanceTests.test_mismatch_rejected) ... ok
+test_reproduction_does_not_become_research_acceptance (test_research_acceptance.AcceptanceTests.test_reproduction_does_not_become_research_acceptance) ... ok
+test_evidence_required (test_research_plan.ResearchPlanTests.test_evidence_required) ... ok
+test_guards_not_disabled_for_experiments (test_research_plan.ResearchPlanTests.test_guards_not_disabled_for_experiments) ... ok
+test_interface_rejection_is_not_process_truth (test_research_plan.ResearchPlanTests.test_interface_rejection_is_not_process_truth) ... ok
+test_no_auto_normal_labels (test_research_plan.ResearchPlanTests.test_no_auto_normal_labels) ... ok
+test_no_backend_reuse (test_research_plan.ResearchPlanTests.test_no_backend_reuse) ... ok
+test_no_claims_from_draft (test_research_plan.ResearchPlanTests.test_no_claims_from_draft) ... ok
+test_no_coordinate_rescaling (test_research_plan.ResearchPlanTests.test_no_coordinate_rescaling) ... ok
+test_no_duplicate_rule (test_research_plan.ResearchPlanTests.test_no_duplicate_rule) ... ok
+test_no_enabled_candidate (test_research_plan.ResearchPlanTests.test_no_enabled_candidate) ... ok
+test_no_implicit_collection_approval (test_research_plan.ResearchPlanTests.test_no_implicit_collection_approval) ... ok
+test_no_model_defined_ground_truth (test_research_plan.ResearchPlanTests.test_no_model_defined_ground_truth) ... ok
+test_no_unverified_limit (test_research_plan.ResearchPlanTests.test_no_unverified_limit) ... ok
+test_no_wrong_variable_index (test_research_plan.ResearchPlanTests.test_no_wrong_variable_index) ... ok
+test_phase_budget_matches_total (test_research_plan.ResearchPlanTests.test_phase_budget_matches_total) ... ok
+test_process_injection_point_not_invented (test_research_plan.ResearchPlanTests.test_process_injection_point_not_invented) ... ok
+test_published_draft_is_consistent_but_disabled (test_research_plan.ResearchPlanTests.test_published_draft_is_consistent_but_disabled) ... ok
+test_seed_not_proof_of_independence (test_research_plan.ResearchPlanTests.test_seed_not_proof_of_independence) ... ok
+test_sensor_replay_is_not_closed_loop (test_research_plan.ResearchPlanTests.test_sensor_replay_is_not_closed_loop) ... ok
+test_simulation_period_not_freshness_budget (test_research_plan.ResearchPlanTests.test_simulation_period_not_freshness_budget) ... ok
+test_splits_follow_original_lineage (test_research_plan.ResearchPlanTests.test_splits_follow_original_lineage) ... ok
+test_ack_alone_never_recovers (test_risk_policy.RiskPolicyTests.test_ack_alone_never_recovers) ... ok
+test_all_critical_evidence_blocks (test_risk_policy.RiskPolicyTests.test_all_critical_evidence_blocks) ... ok
+test_bad_types_rejected (test_risk_policy.RiskPolicyTests.test_bad_types_rejected) ... ok
+test_clean_alone_never_recovers (test_risk_policy.RiskPolicyTests.test_clean_alone_never_recovers) ... ok
+test_degraded_blocks (test_risk_policy.RiskPolicyTests.test_degraded_blocks) ... ok
+test_gap_not_counted_consecutive (test_risk_policy.RiskPolicyTests.test_gap_not_counted_consecutive) ... ok
+test_invalid_evidence_revokes_recovered_status (test_risk_policy.RiskPolicyTests.test_invalid_evidence_revokes_recovered_status) ... ok
+test_new_episode_requires_reset_and_review (test_risk_policy.RiskPolicyTests.test_new_episode_requires_reset_and_review) ... ok
+test_old_review_invalid_after_critical_event (test_risk_policy.RiskPolicyTests.test_old_review_invalid_after_critical_event) ... ok
+test_recovery_still_requires_gate (test_risk_policy.RiskPolicyTests.test_recovery_still_requires_gate) ... ok
+test_replay_revokes_recovery (test_risk_policy.RiskPolicyTests.test_replay_revokes_recovery) ... ok
+test_review_bound_to_current_version (test_risk_policy.RiskPolicyTests.test_review_bound_to_current_version) ... ok
+test_only_exact_reviewed_bytes_match (test_runtime_compatibility.RuntimeCompatibilityTests.test_only_exact_reviewed_bytes_match) ... ok
+test_status_is_not_a_safety_decision (test_runtime_compatibility.RuntimeCompatibilityTests.test_status_is_not_a_safety_decision) ... ok
+test_unknown_runtime_fails_closed (test_runtime_compatibility.RuntimeCompatibilityTests.test_unknown_runtime_fails_closed) ... ok
+test_bad_lengths_and_nan_rejected (test_sensor_diagnostics.DiagnosticTests.test_bad_lengths_and_nan_rejected) ... ok
+test_pre_event_alarms_are_false_positives (test_sensor_diagnostics.DiagnosticTests.test_pre_event_alarms_are_false_positives) ... ok
+test_raw_event_and_tail_are_separate (test_sensor_diagnostics.DiagnosticTests.test_raw_event_and_tail_are_separate) ... ok
+test_shadow_never_authorizes_and_keeps_audit_views_separate (test_sensor_diagnostics.DiagnosticTests.test_shadow_never_authorizes_and_keeps_audit_views_separate) ... ok
+test_uncorrupted_reference_does_not_mean_physical_normal (test_sensor_diagnostics.DiagnosticTests.test_uncorrupted_reference_does_not_mean_physical_normal) ... ok
+test_changed_clock_cannot_disguise_duplicate_trajectory (test_sensor_exploration.ExplorationTests.test_changed_clock_cannot_disguise_duplicate_trajectory) ... ok
+test_clock_feature_and_bad_features_rejected (test_sensor_exploration.ExplorationTests.test_clock_feature_and_bad_features_rejected) ... ok
+test_grid_actually_fits_with_validation_fpr_budget (test_sensor_exploration.ExplorationTests.test_grid_actually_fits_with_validation_fpr_budget) ... ok
+test_test_split_explicitly_rejected (test_sensor_exploration.ExplorationTests.test_test_split_explicitly_rejected) ... ok
+test_threshold_zero_fpr_can_abstain_all (test_sensor_exploration.ExplorationTests.test_threshold_zero_fpr_can_abstain_all) ... ok
+test_training_fault_and_absent_whole_clean_controls_rejected (test_sensor_exploration.ExplorationTests.test_training_fault_and_absent_whole_clean_controls_rejected) ... ok
+test_activation_template_never_authorizes (test_sensor_exploration.NextPlanTests.test_activation_template_never_authorizes) ... ok
+test_nonexecutable_plan (test_sensor_exploration.NextPlanTests.test_nonexecutable_plan) ... ok
+test_training_contamination_and_enabled_plan_rejected (test_sensor_exploration.NextPlanTests.test_training_contamination_and_enabled_plan_rejected) ... ok
+test_bias_remains_finite_and_is_not_detected_by_integrity (test_sensor_replay.SensorReplayTests.test_bias_remains_finite_and_is_not_detected_by_integrity) ... ok
+test_clean_source_and_spec_never_mutated (test_sensor_replay.SensorReplayTests.test_clean_source_and_spec_never_mutated) ... ok
+test_cli_offline_success (test_sensor_replay.SensorReplayTests.test_cli_offline_success) ... ok
+test_different_source_episode_or_order_rejected (test_sensor_replay.SensorReplayTests.test_different_source_episode_or_order_rejected) ... ok
+test_drift_per_record_starts_at_first_increment (test_sensor_replay.SensorReplayTests.test_drift_per_record_starts_at_first_increment) ... ok
+test_duplicate_event_ids_rejected (test_sensor_replay.SensorReplayTests.test_duplicate_event_ids_rejected) ... ok
+test_file_roundtrip_preserves_lineage_split_source_and_no_simulator_calls (test_sensor_replay.SensorReplayTests.test_file_roundtrip_preserves_lineage_split_source_and_no_simulator_calls) ... ok
+test_future_stuck_reference_rejected (test_sensor_replay.SensorReplayTests.test_future_stuck_reference_rejected) ... ok
+test_hash_mismatch_creates_no_output (test_sensor_replay.SensorReplayTests.test_hash_mismatch_creates_no_output) ... ok
+test_injection_overflow_rejected_before_output (test_sensor_replay.SensorReplayTests.test_injection_overflow_rejected_before_output) ... ok
+test_invalid_windows_and_indices_rejected (test_sensor_replay.SensorReplayTests.test_invalid_windows_and_indices_rejected) ... ok
+test_labels_separate_from_features_and_no_process_truth (test_sensor_replay.SensorReplayTests.test_labels_separate_from_features_and_no_process_truth) ... ok
+test_missing_is_nullable_and_integrity_rejected (test_sensor_replay.SensorReplayTests.test_missing_is_nullable_and_integrity_rejected) ... ok
+test_multiple_variables_can_overlap (test_sensor_replay.SensorReplayTests.test_multiple_variables_can_overlap) ... ok
+test_output_directory_never_overwritten (test_sensor_replay.SensorReplayTests.test_output_directory_never_overwritten) ... ok
+test_overlapping_same_variable_rejected (test_sensor_replay.SensorReplayTests.test_overlapping_same_variable_rejected) ... ok
+test_placeholder_hashes_and_live_mode_rejected (test_sensor_replay.SensorReplayTests.test_placeholder_hashes_and_live_mode_rejected) ... ok
+test_process_label_cannot_be_supplied_in_spec (test_sensor_replay.SensorReplayTests.test_process_label_cannot_be_supplied_in_spec) ... ok
+test_shared_integrity_predicate_matches_monitor (test_sensor_replay.SensorReplayTests.test_shared_integrity_predicate_matches_monitor) ... ok
+test_source_must_be_clean (test_sensor_replay.SensorReplayTests.test_source_must_be_clean) ... ok
+test_stuck_can_be_active_without_changed_value (test_sensor_replay.SensorReplayTests.test_stuck_can_be_active_without_changed_value) ... ok
+test_stuck_uses_clean_reference_and_recovers (test_sensor_replay.SensorReplayTests.test_stuck_uses_clean_reference_and_recovers) ... ok
+test_wrong_unit_coordinate_or_environment_rejected (test_sensor_replay.SensorReplayTests.test_wrong_unit_coordinate_or_environment_rejected) ... ok
+test_zero_boolean_and_nonfinite_amplitudes_rejected (test_sensor_replay.SensorReplayTests.test_zero_boolean_and_nonfinite_amplitudes_rejected) ... ok
+test_anomaly_requests_takeover_and_cannot_resume_until_rechecked (test_statistical_integration.StatisticalIntegrationTests.test_anomaly_requests_takeover_and_cannot_resume_until_rechecked) ... ok
+test_final_review_sees_window_change (test_statistical_integration.StatisticalIntegrationTests.test_final_review_sees_window_change) ... ok
+test_hard_reject_does_not_invoke_model (test_statistical_integration.StatisticalIntegrationTests.test_hard_reject_does_not_invoke_model) ... ok
+test_healthy_full_chain_one_step (test_statistical_integration.StatisticalIntegrationTests.test_healthy_full_chain_one_step) ... ok
+test_legacy_entry_cannot_bypass_learned_gate (test_statistical_integration.StatisticalIntegrationTests.test_legacy_entry_cannot_bypass_learned_gate) ... ok
+test_malformed_score_blocks_and_one_log_per_review (test_statistical_integration.StatisticalIntegrationTests.test_malformed_score_blocks_and_one_log_per_review) ... ok
+test_duplicate_confirmation_does_not_execute (test_takeover_fault_matrix.TakeoverFaultMatrixTests.test_duplicate_confirmation_does_not_execute) ... ok
+test_nan_observation_and_ended_episode_block_resume (test_takeover_fault_matrix.TakeoverFaultMatrixTests.test_nan_observation_and_ended_episode_block_resume) ... ok
+test_resume_does_not_bypass_new_action_gate_and_transitions_are_timestamped (test_takeover_fault_matrix.TakeoverFaultMatrixTests.test_resume_does_not_bypass_new_action_gate_and_transitions_are_timestamped) ... [MonitoringAgent] TASK-524f3163 | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] TASK-3e8a6599 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-3e8a6599 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] - | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-3e8a6599 | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] TASK-56d0c37f | Level 3 | Reject | Process review failed: RuntimeError
+[MonitoringAgent] TASK-38e2668d | Level 3 | Reject | Process review failed: RuntimeError
+[MonitoringAgent] - | Level 3 | Reject | Relative upper cannot be evaluated: nonpositive reference or censored/nonfinite limit
+[MonitoringAgent] - | Level 3 | Reject | Relative upper cannot be evaluated: nonpositive reference or censored/nonfinite limit
+[MonitoringAgent] TASK-1d3091ae | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] TASK-62a50dbb | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-62a50dbb | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] - | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-62a50dbb | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] TASK-fbf5fb92 | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] TASK-40544c77 | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] TASK-d166cc93 | Level 3 | Reject | Process review failed: RuntimeError
+[MonitoringAgent] TASK-7aac8e81 | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] TASK-cc5cf44b | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] TASK-fa57bb80 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-fa57bb80 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] - | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] replay-prior-fixture | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-48e9887c | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] T | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] fixture | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] fixture | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] fixture | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-ce787742 | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 3 | Reject | Process fence violated: relative_upper
+[MonitoringAgent] - | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-46e68a68 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-0496489a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-0496489a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-0496489a | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-b0816376 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b0816376 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] T | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-5d41b479 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5d41b479 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5d41b479 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] - | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-8ff542c9 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-acd0fda5 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 3 | Reject | 过程观测维度错误或包含非有限数值
+[MonitoringAgent] TASK-ee1de458 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-4e55811a | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]ok
+test_stale_prepared_request_cannot_use_old_approval (test_takeover_fault_matrix.TakeoverFaultMatrixTests.test_stale_prepared_request_cannot_use_old_approval) ... ok
+test_stale_window_blocks_ack_then_fresh_review_allows_resume_only (test_takeover_fault_matrix.TakeoverFaultMatrixTests.test_stale_window_blocks_ack_then_fresh_review_allows_resume_only) ... ok
+test_unreleased_assignment_blocks_resume (test_takeover_fault_matrix.TakeoverFaultMatrixTests.test_unreleased_assignment_blocks_resume) ... ok
+test_binding_rejects_same_dimension_different_semantics (test_training_bridge.TrainingBridgeTests.test_binding_rejects_same_dimension_different_semantics) ... ok
+test_bridge_uses_pre_action_observation_only (test_training_bridge.TrainingBridgeTests.test_bridge_uses_pre_action_observation_only) ... ok
+test_context_episode_and_versions_required (test_training_bridge.TrainingBridgeTests.test_context_episode_and_versions_required) ... ok
+test_exact_label_coverage_required (test_training_bridge.TrainingBridgeTests.test_exact_label_coverage_required) ... ok
+test_int_float_duplicate_trajectories_rejected (test_training_bridge.TrainingBridgeTests.test_int_float_duplicate_trajectories_rejected) ... ok
+test_label_alignment_cannot_use_future_result (test_training_bridge.TrainingBridgeTests.test_label_alignment_cannot_use_future_result) ... ok
+test_label_summary_conflict_rejected (test_training_bridge.TrainingBridgeTests.test_label_summary_conflict_rejected) ... ok
+test_null_or_interface_label_scope_refused (test_training_bridge.TrainingBridgeTests.test_null_or_interface_label_scope_refused) ... ok
+test_review_and_normal_basis_required (test_training_bridge.TrainingBridgeTests.test_review_and_normal_basis_required) ... ok
+test_whole_intake_to_bound_training (test_training_bridge.TrainingBridgeTests.test_whole_intake_to_bound_training) ... ok
+
+----------------------------------------------------------------------
+Ran 274 tests in 1.951s
+
+OK
+
+[MonitoringAgent] stale-fixture | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-61efc5f1 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-9acc14bb | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）

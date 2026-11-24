@@ -1,0 +1,27 @@
+test_alignment (test_d01_manifest.ManifestTests.test_alignment) ... ok
+test_artifact_corruption (test_d01_manifest.ManifestTests.test_artifact_corruption) ... ok
+test_bad_event_interval (test_d01_manifest.ManifestTests.test_bad_event_interval) ... ok
+test_cross_episode_derivation (test_d01_manifest.ManifestTests.test_cross_episode_derivation) ... ok
+test_draft_rejected (test_d01_manifest.ManifestTests.test_draft_rejected) ... ok
+test_duplicate_episode (test_d01_manifest.ManifestTests.test_duplicate_episode) ... ok
+test_empty_splits_rejected (test_d01_manifest.ManifestTests.test_empty_splits_rejected) ... ok
+test_event_outside_episode (test_d01_manifest.ManifestTests.test_event_outside_episode) ... ok
+test_identical_bytes_leakage (test_d01_manifest.ManifestTests.test_identical_bytes_leakage) ... ok
+test_iforest_cannot_use_validation (test_d01_manifest.ManifestTests.test_iforest_cannot_use_validation) ... ok
+test_label_as_input (test_d01_manifest.ManifestTests.test_label_as_input) ... ok
+test_lineage_leakage (test_d01_manifest.ManifestTests.test_lineage_leakage) ... ok
+test_missing_artifact (test_d01_manifest.ManifestTests.test_missing_artifact) ... ok
+test_missing_field (test_d01_manifest.ManifestTests.test_missing_field) ... ok
+test_missing_timeseries (test_d01_manifest.ManifestTests.test_missing_timeseries) ... ok
+test_no_source_reference (test_d01_manifest.ManifestTests.test_no_source_reference) ... ok
+test_path_escape (test_d01_manifest.ManifestTests.test_path_escape) ... ok
+test_supervised_train_allows_labeled_anomaly (test_d01_manifest.ManifestTests.test_supervised_train_allows_labeled_anomaly) ... ok
+test_train_contamination (test_d01_manifest.ManifestTests.test_train_contamination) ... ok
+test_unknown_label (test_d01_manifest.ManifestTests.test_unknown_label) ... ok
+test_valid_contract (test_d01_manifest.ManifestTests.test_valid_contract) ... ok
+test_zero_placeholder_hash (test_d01_manifest.ManifestTests.test_zero_placeholder_hash) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.028s
+
+OK

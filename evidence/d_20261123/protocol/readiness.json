@@ -1,0 +1,30 @@
+{
+  "schema_version": "D07Readiness/1.0",
+  "run_count": 90,
+  "paired_condition_seed_groups": 30,
+  "run_order_seed": 261123,
+  "reference_sha256": {
+    "goal_contract_ref": {
+      "path": "configs/goals/atropine_goal_regression.json",
+      "sha256": "6f32a30284f32715488f7b2e001597b249286c5bd64b7d5d454347f5768f58a5"
+    }
+  },
+  "blockers": [
+    "A_goal_and_recovery",
+    "B_conditions_controls_and_budget",
+    "C_resources_and_scheduling",
+    "approval_record_ref",
+    "condition:nominal",
+    "condition:process_disturbance",
+    "condition:sensor_fault",
+    "controller_definitions_ref",
+    "engineering_regression_goal_not_production_acceptance",
+    "resource_registry_ref"
+  ],
+  "formal_experiment_ready": false,
+  "execution_authorized": false,
+  "frozen": false,
+  "limits": "D preparation only. External approvals are not authenticated by this checker; planned runs are not measurements.",
+  "plan_sha256": "588c8624a1d118d8383835afa7d21f1d085d04d962d68ef543a65e8dbb7c8d6d",
+  "ledger_sha256": "39ff723a83bac628869ea1797bf39d416db25d3c6d58192c77ca5b1353db6468"
+}

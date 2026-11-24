@@ -1,0 +1,705 @@
+{
+  "schema_version": "DResidualHoldout/1.0",
+  "plan_sha256": "b1430153220db81aa65f95c6b86a6ea5771cbae359f1791e88d5c24af45e4f10",
+  "frozen_model_sha256": "181c5604f8f54277ef98a029abb169f6382b7a19a189b0269996088198f20bb1",
+  "initial_state_hashes_unique": 12,
+  "steps": 720,
+  "test_evaluations": 1,
+  "test_used_for_selection": false,
+  "result": {
+    "episodes": [
+      {
+        "episode_id": "holdout_48001",
+        "counts": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "TN": 57,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [],
+          "event_count": 0,
+          "scorable_event_count": 0,
+          "unscorable_event_count": 0,
+          "detected_event_count": 0,
+          "missed_event_count": 0,
+          "scorable_event_recall": null,
+          "window_count": 57,
+          "normal_window_count": 57,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": true,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": true,
+        "any_alarm": false
+      },
+      {
+        "episode_id": "holdout_48002",
+        "counts": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "TN": 57,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [],
+          "event_count": 0,
+          "scorable_event_count": 0,
+          "unscorable_event_count": 0,
+          "detected_event_count": 0,
+          "missed_event_count": 0,
+          "scorable_event_recall": null,
+          "window_count": 57,
+          "normal_window_count": 57,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": true,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": true,
+        "any_alarm": false
+      },
+      {
+        "episode_id": "holdout_48003",
+        "counts": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "TN": 57,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [],
+          "event_count": 0,
+          "scorable_event_count": 0,
+          "unscorable_event_count": 0,
+          "detected_event_count": 0,
+          "missed_event_count": 0,
+          "scorable_event_recall": null,
+          "window_count": 57,
+          "normal_window_count": 57,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": true,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": true,
+        "any_alarm": false
+      },
+      {
+        "episode_id": "holdout_48004",
+        "counts": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "TN": 57,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [],
+          "event_count": 0,
+          "scorable_event_count": 0,
+          "unscorable_event_count": 0,
+          "detected_event_count": 0,
+          "missed_event_count": 0,
+          "scorable_event_recall": null,
+          "window_count": 57,
+          "normal_window_count": 57,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": true,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": true,
+        "any_alarm": false
+      },
+      {
+        "episode_id": "holdout_48005",
+        "counts": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "TN": 57,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [],
+          "event_count": 0,
+          "scorable_event_count": 0,
+          "unscorable_event_count": 0,
+          "detected_event_count": 0,
+          "missed_event_count": 0,
+          "scorable_event_recall": null,
+          "window_count": 57,
+          "normal_window_count": 57,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": true,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": true,
+        "any_alarm": false
+      },
+      {
+        "episode_id": "holdout_48006",
+        "counts": {
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "TN": 57,
+          "precision": null,
+          "recall": null,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [],
+          "event_count": 0,
+          "scorable_event_count": 0,
+          "unscorable_event_count": 0,
+          "detected_event_count": 0,
+          "missed_event_count": 0,
+          "scorable_event_recall": null,
+          "window_count": 57,
+          "normal_window_count": 57,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": true,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": true,
+        "any_alarm": false
+      },
+      {
+        "episode_id": "holdout_48007",
+        "counts": {
+          "TP": 11,
+          "FP": 0,
+          "FN": 0,
+          "TN": 46,
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [
+            {
+              "event_index": 0,
+              "start_record": 7,
+              "end_record": 14,
+              "scorable": true,
+              "onset_before_first_window": false,
+              "eligible_start_record": 7,
+              "first_detection_record": 7,
+              "detected": true,
+              "missed": false,
+              "delay_records": 0
+            }
+          ],
+          "event_count": 1,
+          "scorable_event_count": 1,
+          "unscorable_event_count": 0,
+          "detected_event_count": 1,
+          "missed_event_count": 0,
+          "scorable_event_recall": 1.0,
+          "window_count": 57,
+          "normal_window_count": 46,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": false,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48008",
+        "counts": {
+          "TP": 15,
+          "FP": 0,
+          "FN": 0,
+          "TN": 42,
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [
+            {
+              "event_index": 0,
+              "start_record": 16,
+              "end_record": 27,
+              "scorable": true,
+              "onset_before_first_window": false,
+              "eligible_start_record": 16,
+              "first_detection_record": 16,
+              "detected": true,
+              "missed": false,
+              "delay_records": 0
+            }
+          ],
+          "event_count": 1,
+          "scorable_event_count": 1,
+          "unscorable_event_count": 0,
+          "detected_event_count": 1,
+          "missed_event_count": 0,
+          "scorable_event_recall": 1.0,
+          "window_count": 57,
+          "normal_window_count": 42,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": false,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48009",
+        "counts": {
+          "TP": 18,
+          "FP": 0,
+          "FN": 0,
+          "TN": 39,
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [
+            {
+              "event_index": 0,
+              "start_record": 29,
+              "end_record": 43,
+              "scorable": true,
+              "onset_before_first_window": false,
+              "eligible_start_record": 29,
+              "first_detection_record": 29,
+              "detected": true,
+              "missed": false,
+              "delay_records": 0
+            }
+          ],
+          "event_count": 1,
+          "scorable_event_count": 1,
+          "unscorable_event_count": 0,
+          "detected_event_count": 1,
+          "missed_event_count": 0,
+          "scorable_event_recall": 1.0,
+          "window_count": 57,
+          "normal_window_count": 39,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": false,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48010",
+        "counts": {
+          "TP": 13,
+          "FP": 0,
+          "FN": 0,
+          "TN": 44,
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [
+            {
+              "event_index": 0,
+              "start_record": 9,
+              "end_record": 18,
+              "scorable": true,
+              "onset_before_first_window": false,
+              "eligible_start_record": 9,
+              "first_detection_record": 9,
+              "detected": true,
+              "missed": false,
+              "delay_records": 0
+            }
+          ],
+          "event_count": 1,
+          "scorable_event_count": 1,
+          "unscorable_event_count": 0,
+          "detected_event_count": 1,
+          "missed_event_count": 0,
+          "scorable_event_recall": 1.0,
+          "window_count": 57,
+          "normal_window_count": 44,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": false,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48011",
+        "counts": {
+          "TP": 21,
+          "FP": 0,
+          "FN": 0,
+          "TN": 36,
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [
+            {
+              "event_index": 0,
+              "start_record": 22,
+              "end_record": 39,
+              "scorable": true,
+              "onset_before_first_window": false,
+              "eligible_start_record": 22,
+              "first_detection_record": 22,
+              "detected": true,
+              "missed": false,
+              "delay_records": 0
+            }
+          ],
+          "event_count": 1,
+          "scorable_event_count": 1,
+          "unscorable_event_count": 0,
+          "detected_event_count": 1,
+          "missed_event_count": 0,
+          "scorable_event_recall": 1.0,
+          "window_count": 57,
+          "normal_window_count": 36,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": false,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48012",
+        "counts": {
+          "TP": 18,
+          "FP": 0,
+          "FN": 0,
+          "TN": 39,
+          "precision": 1.0,
+          "recall": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "event": {
+          "schema_version": "EventEvaluation/1.0",
+          "event_definition": "maximal contiguous true intervals in raw sample labels",
+          "events": [
+            {
+              "event_index": 0,
+              "start_record": 38,
+              "end_record": 52,
+              "scorable": true,
+              "onset_before_first_window": false,
+              "eligible_start_record": 38,
+              "first_detection_record": 38,
+              "detected": true,
+              "missed": false,
+              "delay_records": 0
+            }
+          ],
+          "event_count": 1,
+          "scorable_event_count": 1,
+          "unscorable_event_count": 0,
+          "detected_event_count": 1,
+          "missed_event_count": 0,
+          "scorable_event_recall": 1.0,
+          "window_count": 57,
+          "normal_window_count": 39,
+          "false_alarm_window_count": 0,
+          "all_normal_episode": false,
+          "all_normal_episode_with_alarm": false,
+          "delay_unit": "interaction_records; not physical seconds",
+          "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      }
+    ],
+    "counts": {
+      "TP": 96,
+      "FP": 0,
+      "FN": 0,
+      "TN": 588
+    },
+    "events": {
+      "event_count": 6,
+      "scorable_event_count": 6,
+      "unscorable_event_count": 0,
+      "detected_event_count": 6,
+      "missed_event_count": 0,
+      "window_count": 684,
+      "normal_window_count": 588,
+      "false_alarm_window_count": 0,
+      "episode_count": 12,
+      "all_normal_episode_count": 6,
+      "all_normal_episode_with_alarm_count": 0,
+      "scorable_event_recall": 1.0,
+      "detected_events_with_delay": 6,
+      "mean_delay_records_among_detected": 0.0,
+      "limits": "Detected-only delay excludes misses; report missed and unscorable counts alongside it. Windows are correlated."
+    },
+    "whole_normal_episodes": 6,
+    "whole_normal_with_alarm": 0,
+    "brier_score": 0.00017523270216972828,
+    "ece": 0.0013145894281366014,
+    "calibration_bins": [
+      {
+        "count": 584,
+        "mean_probability": 0.0004043395694026078,
+        "label_rate": 0.0
+      },
+      {
+        "count": 4,
+        "mean_probability": 0.15994887655761783,
+        "label_rate": 0.0
+      },
+      {
+        "count": 96,
+        "mean_probability": 0.9997578192282933,
+        "label_rate": 1.0
+      }
+    ],
+    "confidence_interpretation": "correlated window diagnostic; not independent probability validation"
+  },
+  "baseline": {
+    "episodes": [
+      {
+        "episode_id": "holdout_48001",
+        "counts": {
+          "TP": 0,
+          "FP": 22,
+          "FN": 0,
+          "TN": 35,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.38596491228070173
+        },
+        "whole_normal": true,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48002",
+        "counts": {
+          "TP": 0,
+          "FP": 24,
+          "FN": 0,
+          "TN": 33,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.42105263157894735
+        },
+        "whole_normal": true,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48003",
+        "counts": {
+          "TP": 0,
+          "FP": 23,
+          "FN": 0,
+          "TN": 34,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.40350877192982454
+        },
+        "whole_normal": true,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48004",
+        "counts": {
+          "TP": 0,
+          "FP": 22,
+          "FN": 0,
+          "TN": 35,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.38596491228070173
+        },
+        "whole_normal": true,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48005",
+        "counts": {
+          "TP": 0,
+          "FP": 24,
+          "FN": 0,
+          "TN": 33,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.42105263157894735
+        },
+        "whole_normal": true,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48006",
+        "counts": {
+          "TP": 0,
+          "FP": 21,
+          "FN": 0,
+          "TN": 36,
+          "precision": 0.0,
+          "recall": null,
+          "false_positive_rate": 0.3684210526315789
+        },
+        "whole_normal": true,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48007",
+        "counts": {
+          "TP": 11,
+          "FP": 15,
+          "FN": 0,
+          "TN": 31,
+          "precision": 0.4230769230769231,
+          "recall": 1.0,
+          "false_positive_rate": 0.32608695652173914
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48008",
+        "counts": {
+          "TP": 10,
+          "FP": 13,
+          "FN": 5,
+          "TN": 29,
+          "precision": 0.43478260869565216,
+          "recall": 0.6666666666666666,
+          "false_positive_rate": 0.30952380952380953
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48009",
+        "counts": {
+          "TP": 2,
+          "FP": 25,
+          "FN": 16,
+          "TN": 14,
+          "precision": 0.07407407407407407,
+          "recall": 0.1111111111111111,
+          "false_positive_rate": 0.6410256410256411
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48010",
+        "counts": {
+          "TP": 13,
+          "FP": 12,
+          "FN": 0,
+          "TN": 32,
+          "precision": 0.52,
+          "recall": 1.0,
+          "false_positive_rate": 0.2727272727272727
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48011",
+        "counts": {
+          "TP": 10,
+          "FP": 19,
+          "FN": 11,
+          "TN": 17,
+          "precision": 0.3448275862068966,
+          "recall": 0.47619047619047616,
+          "false_positive_rate": 0.5277777777777778
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      },
+      {
+        "episode_id": "holdout_48012",
+        "counts": {
+          "TP": 0,
+          "FP": 25,
+          "FN": 18,
+          "TN": 14,
+          "precision": 0.0,
+          "recall": 0.0,
+          "false_positive_rate": 0.6410256410256411
+        },
+        "whole_normal": false,
+        "any_alarm": true
+      }
+    ],
+    "counts": {
+      "TP": 46,
+      "FP": 245,
+      "FN": 50,
+      "TN": 343
+    }
+  },
+  "engineering_criteria_passed": true,
+  "window_recall": 1.0,
+  "normal_window_fpr": 0.0,
+  "whole_normal_episode_fpr": 0.0,
+  "physical_safety_certified": false,
+  "production_metrics_evaluated": false,
+  "population_independence_established": false
+}

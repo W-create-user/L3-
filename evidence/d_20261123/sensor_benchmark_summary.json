@@ -1,0 +1,1137 @@
+{
+  "schema_version": "DNextSensorResult/1.0",
+  "collection_manifest_sha256": "e3480330854b9a4a961dcefe87df78a102c446141290eaab0f988a8c8b61735d",
+  "episode_counts": {
+    "train": 8,
+    "validation": 12,
+    "test": 12
+  },
+  "total_steps": 1920,
+  "model": {
+    "label_scope": "sensor_fault",
+    "window_size": 4,
+    "dimension": 39,
+    "binding_sha256": null,
+    "intake_receipt": null,
+    "seed": 1201,
+    "threshold": 0.3786226470729572,
+    "threshold_source": "validation_only",
+    "scaler_source": "train_only",
+    "versions": {
+      "sklearn": "1.8.0",
+      "numpy": "1.26.4"
+    },
+    "episodes": {
+      "train": [
+        "train_16001",
+        "train_16002",
+        "train_16003",
+        "train_16004",
+        "train_16005",
+        "train_16006",
+        "train_16007",
+        "train_16008"
+      ],
+      "validation": [
+        "validation_17001",
+        "validation_17002",
+        "validation_17003",
+        "validation_17004",
+        "validation_17005",
+        "validation_17006",
+        "validation_17007",
+        "validation_17008",
+        "validation_17009",
+        "validation_17010",
+        "validation_17011",
+        "validation_17012"
+      ],
+      "test": [
+        "test_18001",
+        "test_18002",
+        "test_18003",
+        "test_18004",
+        "test_18005",
+        "test_18006",
+        "test_18007",
+        "test_18008",
+        "test_18009",
+        "test_18010",
+        "test_18011",
+        "test_18012"
+      ]
+    },
+    "evaluation": {
+      "validation": {
+        "episodes": [
+          {
+            "episode_id": "validation_17001",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 26,
+              "FN": 0,
+              "TN": 31,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.45614035087719296
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 26,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17002",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 22,
+              "FN": 0,
+              "TN": 35,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.38596491228070173
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 22,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17003",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 24,
+              "FN": 0,
+              "TN": 33,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.42105263157894735
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 24,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17004",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 20,
+              "FN": 0,
+              "TN": 37,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.3508771929824561
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 20,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17005",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 24,
+              "FN": 0,
+              "TN": 33,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.42105263157894735
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 24,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17006",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 26,
+              "FN": 0,
+              "TN": 31,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.45614035087719296
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 26,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17007",
+            "windows": 57,
+            "confusion": {
+              "TP": 9,
+              "FP": 17,
+              "FN": 0,
+              "TN": 31,
+              "precision": 0.34615384615384615,
+              "recall": 1.0,
+              "false_positive_rate": 0.3541666666666667
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 7,
+                  "end_record": 12,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 7,
+                  "first_detection_record": 7,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 48,
+              "false_alarm_window_count": 17,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17008",
+            "windows": 57,
+            "confusion": {
+              "TP": 13,
+              "FP": 15,
+              "FN": 0,
+              "TN": 29,
+              "precision": 0.4642857142857143,
+              "recall": 1.0,
+              "false_positive_rate": 0.3409090909090909
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 18,
+                  "end_record": 27,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 18,
+                  "first_detection_record": 18,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 44,
+              "false_alarm_window_count": 15,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17009",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 26,
+              "FN": 11,
+              "TN": 20,
+              "precision": 0.0,
+              "recall": 0.0,
+              "false_positive_rate": 0.5652173913043478
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": true,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 33,
+                  "end_record": 40,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 33,
+                  "first_detection_record": null,
+                  "detected": false,
+                  "missed": true,
+                  "delay_records": null
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 1,
+              "scorable_event_recall": 0.0,
+              "window_count": 57,
+              "normal_window_count": 46,
+              "false_alarm_window_count": 26,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": true
+          },
+          {
+            "episode_id": "validation_17010",
+            "windows": 57,
+            "confusion": {
+              "TP": 17,
+              "FP": 8,
+              "FN": 0,
+              "TN": 32,
+              "precision": 0.68,
+              "recall": 1.0,
+              "false_positive_rate": 0.2
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 11,
+                  "end_record": 24,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 11,
+                  "first_detection_record": 11,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 40,
+              "false_alarm_window_count": 8,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17011",
+            "windows": 57,
+            "confusion": {
+              "TP": 8,
+              "FP": 23,
+              "FN": 0,
+              "TN": 26,
+              "precision": 0.25806451612903225,
+              "recall": 1.0,
+              "false_positive_rate": 0.46938775510204084
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 26,
+                  "end_record": 30,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 26,
+                  "first_detection_record": 26,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 49,
+              "false_alarm_window_count": 23,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "validation_17012",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 23,
+              "FN": 12,
+              "TN": 22,
+              "precision": 0.0,
+              "recall": 0.0,
+              "false_positive_rate": 0.5111111111111111
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": true,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 42,
+                  "end_record": 50,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 42,
+                  "first_detection_record": null,
+                  "detected": false,
+                  "missed": true,
+                  "delay_records": null
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 1,
+              "scorable_event_recall": 0.0,
+              "window_count": 57,
+              "normal_window_count": 45,
+              "false_alarm_window_count": 23,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": true
+          }
+        ],
+        "counts": {
+          "TP": 47,
+          "FP": 254,
+          "FN": 23,
+          "TN": 360
+        },
+        "event_summary": {
+          "event_count": 6,
+          "scorable_event_count": 6,
+          "unscorable_event_count": 0,
+          "detected_event_count": 4,
+          "missed_event_count": 2,
+          "window_count": 684,
+          "normal_window_count": 614,
+          "false_alarm_window_count": 254,
+          "episode_count": 12,
+          "all_normal_episode_count": 6,
+          "all_normal_episode_with_alarm_count": 6,
+          "scorable_event_recall": 0.6666666666666666,
+          "detected_events_with_delay": 4,
+          "mean_delay_records_among_detected": 0.0,
+          "limits": "Detected-only delay excludes misses; report missed and unscorable counts alongside it. Windows are correlated."
+        }
+      },
+      "test": {
+        "episodes": [
+          {
+            "episode_id": "test_18001",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 24,
+              "FN": 0,
+              "TN": 33,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.42105263157894735
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 24,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18002",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 26,
+              "FN": 0,
+              "TN": 31,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.45614035087719296
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 26,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18003",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 24,
+              "FN": 0,
+              "TN": 33,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.42105263157894735
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 24,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18004",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 26,
+              "FN": 0,
+              "TN": 31,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.45614035087719296
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 26,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18005",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 22,
+              "FN": 0,
+              "TN": 35,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.38596491228070173
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 22,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18006",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 26,
+              "FN": 0,
+              "TN": 31,
+              "precision": 0.0,
+              "recall": null,
+              "false_positive_rate": 0.45614035087719296
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [],
+              "event_count": 0,
+              "scorable_event_count": 0,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 0,
+              "scorable_event_recall": null,
+              "window_count": 57,
+              "normal_window_count": 57,
+              "false_alarm_window_count": 26,
+              "all_normal_episode": true,
+              "all_normal_episode_with_alarm": true,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18007",
+            "windows": 57,
+            "confusion": {
+              "TP": 9,
+              "FP": 12,
+              "FN": 0,
+              "TN": 36,
+              "precision": 0.42857142857142855,
+              "recall": 1.0,
+              "false_positive_rate": 0.25
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 7,
+                  "end_record": 12,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 7,
+                  "first_detection_record": 7,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 48,
+              "false_alarm_window_count": 12,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18008",
+            "windows": 57,
+            "confusion": {
+              "TP": 12,
+              "FP": 15,
+              "FN": 1,
+              "TN": 29,
+              "precision": 0.4444444444444444,
+              "recall": 0.9230769230769231,
+              "false_positive_rate": 0.3409090909090909
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 18,
+                  "end_record": 27,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 18,
+                  "first_detection_record": 18,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 44,
+              "false_alarm_window_count": 15,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18009",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 22,
+              "FN": 11,
+              "TN": 24,
+              "precision": 0.0,
+              "recall": 0.0,
+              "false_positive_rate": 0.4782608695652174
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": true,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 33,
+                  "end_record": 40,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 33,
+                  "first_detection_record": null,
+                  "detected": false,
+                  "missed": true,
+                  "delay_records": null
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 1,
+              "scorable_event_recall": 0.0,
+              "window_count": 57,
+              "normal_window_count": 46,
+              "false_alarm_window_count": 22,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": true
+          },
+          {
+            "episode_id": "test_18010",
+            "windows": 57,
+            "confusion": {
+              "TP": 17,
+              "FP": 10,
+              "FN": 0,
+              "TN": 30,
+              "precision": 0.6296296296296297,
+              "recall": 1.0,
+              "false_positive_rate": 0.25
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 11,
+                  "end_record": 24,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 11,
+                  "first_detection_record": 11,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 40,
+              "false_alarm_window_count": 10,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18011",
+            "windows": 57,
+            "confusion": {
+              "TP": 8,
+              "FP": 21,
+              "FN": 0,
+              "TN": 28,
+              "precision": 0.27586206896551724,
+              "recall": 1.0,
+              "false_positive_rate": 0.42857142857142855
+            },
+            "first_event_delay_records": 0,
+            "first_event_missed": false,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 26,
+                  "end_record": 30,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 26,
+                  "first_detection_record": 26,
+                  "detected": true,
+                  "missed": false,
+                  "delay_records": 0
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 1,
+              "missed_event_count": 0,
+              "scorable_event_recall": 1.0,
+              "window_count": 57,
+              "normal_window_count": 49,
+              "false_alarm_window_count": 21,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": false
+          },
+          {
+            "episode_id": "test_18012",
+            "windows": 57,
+            "confusion": {
+              "TP": 0,
+              "FP": 22,
+              "FN": 12,
+              "TN": 23,
+              "precision": 0.0,
+              "recall": 0.0,
+              "false_positive_rate": 0.4888888888888889
+            },
+            "first_event_delay_records": null,
+            "first_event_missed": true,
+            "first_event_unscorable": false,
+            "event_evaluation": {
+              "schema_version": "EventEvaluation/1.0",
+              "event_definition": "maximal contiguous true intervals in raw sample labels",
+              "events": [
+                {
+                  "event_index": 0,
+                  "start_record": 42,
+                  "end_record": 50,
+                  "scorable": true,
+                  "onset_before_first_window": false,
+                  "eligible_start_record": 42,
+                  "first_detection_record": null,
+                  "detected": false,
+                  "missed": true,
+                  "delay_records": null
+                }
+              ],
+              "event_count": 1,
+              "scorable_event_count": 1,
+              "unscorable_event_count": 0,
+              "detected_event_count": 0,
+              "missed_event_count": 1,
+              "scorable_event_recall": 0.0,
+              "window_count": 57,
+              "normal_window_count": 45,
+              "false_alarm_window_count": 22,
+              "all_normal_episode": false,
+              "all_normal_episode_with_alarm": false,
+              "delay_unit": "interaction_records; not physical seconds",
+              "credit_policy": "only window-end predictions during the raw event interval count; no credit for post-event tails"
+            },
+            "anomalous_episode_missed": true
+          }
+        ],
+        "counts": {
+          "TP": 46,
+          "FP": 250,
+          "FN": 24,
+          "TN": 364
+        },
+        "event_summary": {
+          "event_count": 6,
+          "scorable_event_count": 6,
+          "unscorable_event_count": 0,
+          "detected_event_count": 4,
+          "missed_event_count": 2,
+          "window_count": 684,
+          "normal_window_count": 614,
+          "false_alarm_window_count": 250,
+          "episode_count": 12,
+          "all_normal_episode_count": 6,
+          "all_normal_episode_with_alarm_count": 6,
+          "scorable_event_recall": 0.6666666666666666,
+          "detected_events_with_delay": 4,
+          "mean_delay_records_among_detected": 0.0,
+          "limits": "Detected-only delay excludes misses; report missed and unscorable counts alongside it. Windows are correlated."
+        }
+      }
+    },
+    "physical_safety_limit": false,
+    "probability_calibrated": false,
+    "limits": "Window counts are correlated. EventEvaluation/1.0 uses raw label intervals, excludes post-event-tail credit and discloses warmup-unscorable events. Delay is in records, not seconds. Labels need independent review."
+  },
+  "whole_normal": {
+    "validation": {
+      "episodes": 6,
+      "episodes_with_alarm": 6,
+      "episode_false_alarm_rate": 1.0
+    },
+    "test": {
+      "episodes": 6,
+      "episodes_with_alarm": 6,
+      "episode_false_alarm_rate": 1.0
+    }
+  },
+  "probability_calibrated": false,
+  "physical_anomaly_acceptance": false,
+  "operating_envelope_independence_established": false,
+  "deployment_authorized": false,
+  "limits": "Fresh source seeds and whole-clean controls improve the benchmark; simulated sensor corruption remains distinct from process health. No physical performance claim or generalization certification."
+}

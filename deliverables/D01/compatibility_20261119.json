@@ -1,0 +1,45 @@
+{
+  "schema_version": "DCompatibilityVerification/1.0",
+  "A_source_commit": "3446dc08902be751a1b7e82403a0cd6f70cede37",
+  "previous_D_commit": "b63df20a928f69da2270832909aa20d38bfba040",
+  "authorization_commit": "611a81fd4c78d206bf5f274261e0e713d8f10eb9",
+  "tests": {
+    "system": 171,
+    "D_toolkit": 270,
+    "D04": 33
+  },
+  "isolated_simulation": {
+    "seeds": [
+      1101,
+      1102,
+      1103
+    ],
+    "steps": [
+      3,
+      3,
+      3
+    ],
+    "baseline_completed": true,
+    "repeat_for_compatibility_only": true,
+    "code_file_sha256": {
+      "runtime.py": "abb830c145fd422f44faad583569cdb8aa508af47aff88ab804b558c53db0f21",
+      "main.py": "6f54128db1047b9bc97c34048d667b97df6fe4d4f8ce3efd9595eba60070da78",
+      "execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+      "execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+      "monitoring/atropine_experiment.py": "a38b602317d221ebea0abaccc30d5d2b6eb81bf52d8ded424774039623bac09f",
+      "agents/process_rules.py": "e4f146b584f7d4b42826a86d7ca65afebc3ead02b04792740f135eae7cdbefe0"
+    }
+  },
+  "archive_replay": {
+    "episodes": 12,
+    "takeover_cases": 6,
+    "new_simulator_steps": 0,
+    "source_package_unchanged": true,
+    "runtime_review": {
+      "runtime_sha256": "abb830c145fd422f44faad583569cdb8aa508af47aff88ab804b558c53db0f21",
+      "reviewed_A_commit": "3446dc08902be751a1b7e82403a0cd6f70cede37"
+    }
+  },
+  "physical_efficacy_established": false,
+  "raw_trajectories_or_weights_included": false
+}

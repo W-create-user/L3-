@@ -1,0 +1,48 @@
+{
+  "schema_version": "DMonitoringProtocol/1.0",
+  "scope": "isolated Atropine artificial sensor-bias engineering experiment only",
+  "status": "frozen_for_completed_holdout",
+  "frozen_before_holdout_collection": true,
+  "freeze_record_sha256": "7e6eb5c99f2ee715c4cd584d7bb116f95eb313808c7aa78e971d68bea827f557",
+  "preregistered_plan_sha256": "b1430153220db81aa65f95c6b86a6ea5771cbae359f1791e88d5c24af45e4f10",
+  "preregistered_created_utc": "2026-11-23T15:43:05.552700+00:00",
+  "criteria": {
+    "window_recall_min": 0.8,
+    "normal_window_fpr_max": 0.05,
+    "whole_normal_episode_fpr_max": 0.1,
+    "raw_event_recall_min": 0.8
+  },
+  "model_sha256": "181c5604f8f54277ef98a029abb169f6382b7a19a189b0269996088198f20bb1",
+  "model_binding": {
+    "environment": "AtropineEnvGym",
+    "observation_size": 39,
+    "indices": {
+      "reference": 5,
+      "current": 6
+    },
+    "coordinate": "normalize_false",
+    "controller": "space_midpoint",
+    "adapter_sha256": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+    "registry_sha256": "cf2af66617f7d759fa69894aa8d813cb9a3f0c9e8408e5713009afe751c48e57"
+  },
+  "test_seeds": [
+    48001,
+    48002,
+    48003,
+    48004,
+    48005,
+    48006,
+    48007,
+    48008,
+    48009,
+    48010,
+    48011,
+    48012
+  ],
+  "test_episodes": 12,
+  "steps": 720,
+  "development_history": "v1 and v2 holdouts retained as failed development evidence; final v3 evaluated once on 48001..48012",
+  "entire_project_protocol_frozen": false,
+  "production_goal_accepted": false,
+  "physical_safety_certified": false
+}

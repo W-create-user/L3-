@@ -1,0 +1,279 @@
+test_adjust_then_hold_and_report_through_existing_chain (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_adjust_then_hold_and_report_through_existing_chain) ... ok
+test_deadline_rechecked_after_policy_before_step (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_deadline_rechecked_after_policy_before_step) ... ok
+test_prepared_candidate_outside_goal_range_does_not_step (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_prepared_candidate_outside_goal_range_does_not_step) ... ok
+test_projection_changes_goal_evidence_but_not_model_input (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_projection_changes_goal_evidence_but_not_model_input) ... ok
+test_projection_enforces_physical_action_limit_before_step (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_projection_enforces_physical_action_limit_before_step) ... ok
+test_stale_feedback_after_a_real_call_is_not_replayed (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_stale_feedback_after_a_real_call_is_not_replayed) ... ok
+test_web_operations_require_current_form_and_explicit_resume (l3_system.tests.test_a_goal_runtime.NumericGoalRuntimeTests.test_web_operations_require_current_form_and_explicit_resume) ... ok
+test_assignment_enrichment (l3_system.tests.test_a_integration.AIntegrationTests.test_assignment_enrichment) ... ok
+test_dependencies_reference_known_ids (l3_system.tests.test_a_integration.AIntegrationTests.test_dependencies_reference_known_ids) ... ok
+test_feedback_completed_unlocks_next (l3_system.tests.test_a_integration.AIntegrationTests.test_feedback_completed_unlocks_next) ... ok
+test_first_ready_only (l3_system.tests.test_a_integration.AIntegrationTests.test_first_ready_only) ... ok
+test_rejected_normalized_to_failed (l3_system.tests.test_a_integration.AIntegrationTests.test_rejected_normalized_to_failed) ... ok
+test_six_tasks_registered (l3_system.tests.test_a_integration.AIntegrationTests.test_six_tasks_registered) ... ok
+test_unique_subtask_ids (l3_system.tests.test_a_integration.AIntegrationTests.test_unique_subtask_ids) ... ok
+test_changed_request_never_steps (l3_system.tests.test_contract.ContractTests.test_changed_request_never_steps) ... ok
+test_duplicate_request_never_steps_twice (l3_system.tests.test_contract.ContractTests.test_duplicate_request_never_steps_twice) ... ok
+test_explicit_task_action (l3_system.tests.test_contract.ContractTests.test_explicit_task_action) ... ok
+test_invalid_actions_do_not_step (l3_system.tests.test_contract.ContractTests.test_invalid_actions_do_not_step) ... ok
+test_missing_review_never_steps (l3_system.tests.test_contract.ContractTests.test_missing_review_never_steps) ... ok
+test_preparation_never_steps (l3_system.tests.test_contract.ContractTests.test_preparation_never_steps) ... ok
+test_rejection_never_steps (l3_system.tests.test_contract.ContractTests.test_rejection_never_steps) ... ok
+test_reset_clears_pending_requests (l3_system.tests.test_contract.ContractTests.test_reset_clears_pending_requests) ... ok
+test_state_change_invalidates_pending_request (l3_system.tests.test_contract.ContractTests.test_state_change_invalidates_pending_request) ... ok
+test_unsupported_task_does_not_invent_action (l3_system.tests.test_contract.ContractTests.test_unsupported_task_does_not_invent_action) ... ok
+test_wrong_review_never_steps (l3_system.tests.test_contract.ContractTests.test_wrong_review_never_steps) ... ok
+test_contradictory_safety_rejection_cannot_replay (l3_system.tests.test_failure_classification.FailureClassificationTests.test_contradictory_safety_rejection_cannot_replay) ... ok
+test_invalid_budgets_and_unknown_inputs (l3_system.tests.test_failure_classification.FailureClassificationTests.test_invalid_budgets_and_unknown_inputs) ... ok
+test_release_confirmation_and_actual_lock_state_required (l3_system.tests.test_failure_classification.FailureClassificationTests.test_release_confirmation_and_actual_lock_state_required) ... ok
+test_retry_budget_is_bounded (l3_system.tests.test_failure_classification.FailureClassificationTests.test_retry_budget_is_bounded) ... ok
+test_six_failure_categories (l3_system.tests.test_failure_classification.FailureClassificationTests.test_six_failure_categories) ... ok
+test_timeout_without_nonexecution_proof_never_calls_scheduler (l3_system.tests.test_failure_classification.FailureClassificationTests.test_timeout_without_nonexecution_proof_never_calls_scheduler) ... ok
+test_conflicting_review_is_blocked (l3_system.tests.test_failure_paths.FailurePathTests.test_conflicting_review_is_blocked) ... ok
+test_continuous_cycles_preserve_state_and_release_locks (l3_system.tests.test_failure_paths.FailurePathTests.test_continuous_cycles_preserve_state_and_release_locks) ... ok
+test_demo_review_cannot_authorize_low_level_execution (l3_system.tests.test_failure_paths.FailurePathTests.test_demo_review_cannot_authorize_low_level_execution) ... ok
+test_environment_exception_releases_executor_lock (l3_system.tests.test_failure_paths.FailurePathTests.test_environment_exception_releases_executor_lock) ... ok
+test_generator_exception_releases_decision_lock (l3_system.tests.test_failure_paths.FailurePathTests.test_generator_exception_releases_decision_lock) ... ok
+test_mismatched_task_review_is_blocked (l3_system.tests.test_failure_paths.FailurePathTests.test_mismatched_task_review_is_blocked) ... ok
+test_missing_review_is_blocked (l3_system.tests.test_failure_paths.FailurePathTests.test_missing_review_is_blocked) ... ok
+test_monitor_exception_discards_pending_candidate (l3_system.tests.test_failure_paths.FailurePathTests.test_monitor_exception_discards_pending_candidate) ... ok
+test_no_bids_fails_with_feedback (l3_system.tests.test_failure_paths.FailurePathTests.test_no_bids_fails_with_feedback) ... ok
+test_nonfinite_candidate_is_blocked (l3_system.tests.test_failure_paths.FailurePathTests.test_nonfinite_candidate_is_blocked) ... ok
+test_nonterminal_executor_result_cannot_complete_synchronous_cycle (l3_system.tests.test_failure_paths.FailurePathTests.test_nonterminal_executor_result_cannot_complete_synchronous_cycle) ... ok
+test_observation_exception_returns_failed_feedback (l3_system.tests.test_failure_paths.FailurePathTests.test_observation_exception_returns_failed_feedback) ... ok
+test_second_review_rejection_blocks_final_execution (l3_system.tests.test_failure_paths.FailurePathTests.test_second_review_rejection_blocks_final_execution) ... ok
+test_wrong_parent_feedback_cannot_release_other_task (l3_system.tests.test_failure_paths.FailurePathTests.test_wrong_parent_feedback_cannot_release_other_task) ... ok
+test_wrong_parent_status_query_is_refused (l3_system.tests.test_failure_paths.FailurePathTests.test_wrong_parent_status_query_is_refused) ... ok
+test_b_registry_rebuild_matches_committed_output (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_b_registry_rebuild_matches_committed_output) ... ok
+test_deadline_last_step_and_late_window (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_deadline_last_step_and_late_window) ... ok
+test_domain_and_truncated_history_rejected (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_domain_and_truncated_history_rejected) ... ok
+test_interval_endpoints_and_deviation (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_interval_endpoints_and_deviation) ... ok
+test_invalid_identity_gap_duplicate_episode_shape_and_nan_fail_closed (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_invalid_identity_gap_duplicate_episode_shape_and_nan_fail_closed) ... ok
+test_missing_mapping_and_unit_conflict_raise (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_missing_mapping_and_unit_conflict_raise) ... ok
+test_previous_safety_violation_prevents_success (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_previous_safety_violation_prevents_success) ... ok
+test_window_requires_actual_steps_not_reset (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_window_requires_actual_steps_not_reset) ... ok
+test_window_resets_on_excursion (l3_system.tests.test_goal_criteria.GoalCriteriaTests.test_window_resets_on_excursion) ... ok
+test_actions_cannot_be_missing_extra_or_widened (l3_system.tests.test_goal_spec.GoalSpecTests.test_actions_cannot_be_missing_extra_or_widened) ... ok
+test_equal_and_inclusive_bounds (l3_system.tests.test_goal_spec.GoalSpecTests.test_equal_and_inclusive_bounds) ... ok
+test_identifiers_not_silently_normalized (l3_system.tests.test_goal_spec.GoalSpecTests.test_identifiers_not_silently_normalized) ... ok
+test_input_and_output_do_not_alias (l3_system.tests.test_goal_spec.GoalSpecTests.test_input_and_output_do_not_alias) ... ok
+test_invalid_budgets (l3_system.tests.test_goal_spec.GoalSpecTests.test_invalid_budgets) ... ok
+test_malformed_objects_rejected (l3_system.tests.test_goal_spec.GoalSpecTests.test_malformed_objects_rejected) ... ok
+test_missing_and_unknown_goal_fields (l3_system.tests.test_goal_spec.GoalSpecTests.test_missing_and_unknown_goal_fields) ... ok
+test_nested_unknown_fields_rejected (l3_system.tests.test_goal_spec.GoalSpecTests.test_nested_unknown_fields_rejected) ... ok
+test_no_observation_bounds_invents_no_limits (l3_system.tests.test_goal_spec.GoalSpecTests.test_no_observation_bounds_invents_no_limits) ... ok
+test_nonfinite_and_non_numeric_ranges (l3_system.tests.test_goal_spec.GoalSpecTests.test_nonfinite_and_non_numeric_ranges) ... ok
+test_registry_action_bounds_required (l3_system.tests.test_goal_spec.GoalSpecTests.test_registry_action_bounds_required) ... ok
+test_registry_duplicate_or_out_of_bounds_indices (l3_system.tests.test_goal_spec.GoalSpecTests.test_registry_duplicate_or_out_of_bounds_indices) ... ok
+test_registry_must_cover_all_action_axes (l3_system.tests.test_goal_spec.GoalSpecTests.test_registry_must_cover_all_action_axes) ... ok
+test_registry_requires_evidence_and_exact_fields (l3_system.tests.test_goal_spec.GoalSpecTests.test_registry_requires_evidence_and_exact_fields) ... ok
+test_registry_unresolved_metadata_is_rejected (l3_system.tests.test_goal_spec.GoalSpecTests.test_registry_unresolved_metadata_is_rejected) ... ok
+test_reversed_and_out_of_domain_target (l3_system.tests.test_goal_spec.GoalSpecTests.test_reversed_and_out_of_domain_target) ... ok
+test_units_and_coordinates_are_not_converted (l3_system.tests.test_goal_spec.GoalSpecTests.test_units_and_coordinates_are_not_converted) ... ok
+test_unknown_or_action_variable (l3_system.tests.test_goal_spec.GoalSpecTests.test_unknown_or_action_variable) ... ok
+test_valid_fixture_is_not_a_success_report (l3_system.tests.test_goal_spec.GoalSpecTests.test_valid_fixture_is_not_a_success_report) ... ok
+test_wrong_version_and_environment (l3_system.tests.test_goal_spec.GoalSpecTests.test_wrong_version_and_environment) ... ok
+test_cycle_and_missing_dependency (l3_system.tests.test_htn_methods.HTNMethodsTests.test_cycle_and_missing_dependency) ... ok
+test_execution_still_requires_safety_and_resource_facts (l3_system.tests.test_htn_methods.HTNMethodsTests.test_execution_still_requires_safety_and_resource_facts) ... ok
+test_predicates_evaluated_and_effects_require_completion_evidence (l3_system.tests.test_htn_methods.HTNMethodsTests.test_predicates_evaluated_and_effects_require_completion_evidence) ... ok
+test_three_finite_methods_and_different_paths (l3_system.tests.test_htn_methods.HTNMethodsTests.test_three_finite_methods_and_different_paths) ... ok
+test_unknown_state_budget_and_missing_capability_stop_planning (l3_system.tests.test_htn_methods.HTNMethodsTests.test_unknown_state_budget_and_missing_capability_stop_planning) ... ok
+test_control_subtask_pass_and_feedback (l3_system.tests.test_integrated_contracts.IntegrationTests.test_control_subtask_pass_and_feedback) ... ok
+test_control_subtask_reject_does_not_step (l3_system.tests.test_integrated_contracts.IntegrationTests.test_control_subtask_reject_does_not_step) ... ok
+test_d_demo_mode_refused (l3_system.tests.test_integrated_contracts.IntegrationTests.test_d_demo_mode_refused) ... ok
+test_default_executor_identity (l3_system.tests.test_integrated_contracts.IntegrationTests.test_default_executor_identity) ... ok
+test_readonly_subtask_does_not_step (l3_system.tests.test_integrated_contracts.IntegrationTests.test_readonly_subtask_does_not_step) ... ok
+test_real_d_adapter_contract_pass (l3_system.tests.test_integrated_contracts.IntegrationTests.test_real_d_adapter_contract_pass) ... ok
+test_reject_feedback_maps_to_failed (l3_system.tests.test_integrated_contracts.IntegrationTests.test_reject_feedback_maps_to_failed) ... ok
+test_winner_mismatch_blocks (l3_system.tests.test_integrated_contracts.IntegrationTests.test_winner_mismatch_blocks) ... ok
+test_demo_mode_is_refused (l3_system.tests.test_live_orchestration_contracts.LiveOrchestrationContractTests.test_demo_mode_is_refused) ... ok
+test_full_six_subtask_chain_with_real_B_agent_and_D_monitor_fake_env (l3_system.tests.test_live_orchestration_contracts.LiveOrchestrationContractTests.test_full_six_subtask_chain_with_real_B_agent_and_D_monitor_fake_env) ... ok
+test_inspect_goal_has_three_stages_and_no_step (l3_system.tests.test_live_orchestration_contracts.LiveOrchestrationContractTests.test_inspect_goal_has_three_stages_and_no_step) ... ok
+test_real_D_preflight_reject_blocks_before_B_step (l3_system.tests.test_live_orchestration_contracts.LiveOrchestrationContractTests.test_real_D_preflight_reject_blocks_before_B_step) ... ok
+test_completed_feedback_releases_agent_resource (l3_system.tests.test_member_c_nov5.TestNov5FailureRecovery.test_completed_feedback_releases_agent_resource) ... ok
+test_failed_task_without_alternative_remains_failed (l3_system.tests.test_member_c_nov5.TestNov5FailureRecovery.test_failed_task_without_alternative_remains_failed) ... ok
+test_failed_winner_is_excluded_and_task_reassigned (l3_system.tests.test_member_c_nov5.TestNov5FailureRecovery.test_failed_winner_is_excluded_and_task_reassigned) ... ok
+test_no_bids_returns_unassigned_for_timeout_or_unavailable (l3_system.tests.test_member_c_nov5.TestNov5FailureRecovery.test_no_bids_returns_unassigned_for_timeout_or_unavailable) ... ok
+test_resource_conflict_excludes_agent_with_active_assignment (l3_system.tests.test_member_c_nov5.TestNov5FailureRecovery.test_resource_conflict_excludes_agent_with_active_assignment) ... ok
+test_retry_only_allowed_after_failure (l3_system.tests.test_member_c_nov5.TestNov5FailureRecovery.test_retry_only_allowed_after_failure) ... ok
+test_active_assignment_query (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_active_assignment_query) ... ok
+test_explicit_exclusion_flag_overrides_default (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_explicit_exclusion_flag_overrides_default) ... ok
+test_failed_assignment_history_is_preserved (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_failed_assignment_history_is_preserved) ... ok
+test_failure_reason_categories_are_preserved (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_failure_reason_categories_are_preserved) ... ok
+test_no_bid_can_be_reannounced_without_terminal_failure (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_no_bid_can_be_reannounced_without_terminal_failure) ... ok
+test_old_agent_lock_released_after_failure_and_retry (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_old_agent_lock_released_after_failure_and_retry) ... ok
+test_safety_rejection_does_not_exclude_agent_by_default (l3_system.tests.test_member_c_nov5.TestNov6FeedbackAndAssignmentHistory.test_safety_rejection_does_not_exclude_agent_by_default) ... ok
+test_agent_unavailable_reassigns_to_alternative (l3_system.tests.test_member_c_nov5.TestNov6ReplanningIntegrationScenarios.test_agent_unavailable_reassigns_to_alternative) ... ok
+test_environment_error_can_be_overridden_not_to_exclude (l3_system.tests.test_member_c_nov5.TestNov6ReplanningIntegrationScenarios.test_environment_error_can_be_overridden_not_to_exclude) ... ok
+test_task_ids_are_preserved_across_retry_history (l3_system.tests.test_member_c_nov5.TestNov6ReplanningIntegrationScenarios.test_task_ids_are_preserved_across_retry_history) ... ok
+test_constructor_refuses_shapes_without_live_space (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_constructor_refuses_shapes_without_live_space) ... ok
+test_disabled_repository_config_retains_original_behavior (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_disabled_repository_config_retains_original_behavior) ... ok
+test_existing_R02_has_priority (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_existing_R02_has_priority) ... ok
+test_exported_rejection_retains_provenance (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_exported_rejection_retains_provenance) ... ok
+test_final_gate_rechecks_changed_context (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_final_gate_rechecks_changed_context) ... ok
+test_normal_full_chain_executes_one_step (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_normal_full_chain_executes_one_step) ... ok
+test_process_reject_stops_full_chain_before_step (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_process_reject_stops_full_chain_before_step) ... ok
+test_provider_exception_blocks (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_provider_exception_blocks) ... ok
+test_recovery_confirmation_cannot_skip_process_fence (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_recovery_confirmation_cannot_skip_process_fence) ... ok
+test_request_context_supported_without_provider (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_request_context_supported_without_provider) ... ok
+test_request_metadata_cannot_override_provider (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_request_metadata_cannot_override_provider) ... [MonitoringAgent] atropine-midpoint-regression | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] PLAN-9129858b49ad423b8f193e52cdaa6cbf | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-9129858b49ad423b8f193e52cdaa6cbf | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-9129858b49ad423b8f193e52cdaa6cbf | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] PLAN-f7c9d21a495247549cd4c0ff4836d880 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-f7c9d21a495247549cd4c0ff4836d880 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-f7c9d21a495247549cd4c0ff4836d880 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] atropine-midpoint-regression | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] PLAN-0a34abb80c964483be71f9137cfe0634 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-0a34abb80c964483be71f9137cfe0634 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] atropine-midpoint-regression | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] atropine-midpoint-regression | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] PLAN-23123e4478e44573bb78008dea08b57f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-23123e4478e44573bb78008dea08b57f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-23123e4478e44573bb78008dea08b57f | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] PLAN-02d71e633e214dcc83018228190e25a4 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-02d71e633e214dcc83018228190e25a4 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-02d71e633e214dcc83018228190e25a4 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] atropine-midpoint-regression | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] atropine-midpoint-regression | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] PLAN-eff8de12fe5848eab8596dd0c409a8ab | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] PLAN-eff8de12fe5848eab8596dd0c409a8ab | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c1b657e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c1b657e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c1b657e | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-b0b7e82f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b0b7e82f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b0b7e82f | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-e8992909 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e8992909 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e8992909 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-9021d720 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9021d720 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9021d720 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-46acf16f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-46acf16f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-46acf16f | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-dcd0e0cc | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-dcd0e0cc | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-dcd0e0cc | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-029c167e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-029c167e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-8c475a27 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-8c475a27 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e21205a8 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[WARNING] 演示模式：4维 [-1,1] 不是 AtropineEnv 真实边界
+[MonitoringAgent] TASK-9d9ff5a1 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9d9ff5a1 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9d9ff5a1 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-c925a155 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] T | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] T | Level 3 | Reject | Process fence violated: freshness
+[MonitoringAgent] TASK-60217f01 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-60217f01 | Level 3 | Reject | Process fence violated: freshness
+[MonitoringAgent] TASK-a0dee280 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-a0dee280 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-a0dee280 | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] TASK-6ece7ff3 | Level 3 | Reject | Process fence violated: range
+[MonitoringAgent] T | Level 3 | Reject | Process review failed: RuntimeError
+[MonitoringAgent] TASK-bb4161d2 | Level 3 | Reject | Process fence violated: freshness
+[MonitoringAgent] - | Level 3 | Reject | Process fence violated: freshness
+[MonitoringAgent] - | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] TASK-38384294 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-38384294 | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] TASK-38384294 | Level 0 | Pass | 观测完整性与已配置状态围栏检查通过
+[MonitoringAgent] T | Level 0 | Pass | 所有已启用的规则检查通过（含配置的 R-03 仿真围栏）
+[MonitoringAgent] T | Level 3 | Reject | Missing or mismatched process environment context
+[MonitoringAgent] T | Level 3 | Reject | Process fence violated: freshnessok
+test_returned_reviews_cannot_rewrite_nested_log_basis (l3_system.tests.test_process_rules.ProcessIntegrationTests.test_returned_reviews_cannot_rewrite_nested_log_basis) ... ok
+test_both_sides_outside_range (l3_system.tests.test_process_rules.ProcessRuleTests.test_both_sides_outside_range) ... ok
+test_config_conflicting_preconditions (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_conflicting_preconditions) ... ok
+test_config_conflicting_ranges (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_conflicting_ranges) ... ok
+test_config_copied_before_external_mutation (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_copied_before_external_mutation) ... ok
+test_config_duplicate_rule_and_variable_index (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_duplicate_rule_and_variable_index) ... ok
+test_config_missing_basis_and_unknown_variable (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_missing_basis_and_unknown_variable) ... ok
+test_config_nonfinite_limits_and_boolean_enable (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_nonfinite_limits_and_boolean_enable) ... ok
+test_config_range_precondition_conflict (l3_system.tests.test_process_rules.ProcessRuleTests.test_config_range_precondition_conflict) ... ok
+test_deterministic_priority_with_all_violations (l3_system.tests.test_process_rules.ProcessRuleTests.test_deterministic_priority_with_all_violations) ... ok
+test_disabled_engine_does_not_claim_process_check (l3_system.tests.test_process_rules.ProcessRuleTests.test_disabled_engine_does_not_claim_process_check) ... ok
+test_disabled_rule_does_not_require_metadata (l3_system.tests.test_process_rules.ProcessRuleTests.test_disabled_rule_does_not_require_metadata) ... ok
+test_enabled_empty_rules_rejected (l3_system.tests.test_process_rules.ProcessRuleTests.test_enabled_empty_rules_rejected) ... ok
+test_freshness_boundary_and_future_clock (l3_system.tests.test_process_rules.ProcessRuleTests.test_freshness_boundary_and_future_clock) ... ok
+test_invalid_state_and_action (l3_system.tests.test_process_rules.ProcessRuleTests.test_invalid_state_and_action) ... ok
+test_json_nonfinite_constants_rejected (l3_system.tests.test_process_rules.ProcessRuleTests.test_json_nonfinite_constants_rejected) ... ok
+test_missing_context_environment_and_episode (l3_system.tests.test_process_rules.ProcessRuleTests.test_missing_context_environment_and_episode) ... ok
+test_normal_and_inclusive_boundaries (l3_system.tests.test_process_rules.ProcessRuleTests.test_normal_and_inclusive_boundaries) ... ok
+test_precondition (l3_system.tests.test_process_rules.ProcessRuleTests.test_precondition) ... ok
+test_previous_action_required_finite_and_shape (l3_system.tests.test_process_rules.ProcessRuleTests.test_previous_action_required_finite_and_shape) ... ok
+test_rate_boundary_and_both_directions (l3_system.tests.test_process_rules.ProcessRuleTests.test_rate_boundary_and_both_directions) ... ok
+test_rate_cannot_target_observation (l3_system.tests.test_process_rules.ProcessRuleTests.test_rate_cannot_target_observation) ... ok
+test_rate_rejects_previous_episode (l3_system.tests.test_process_rules.ProcessRuleTests.test_rate_rejects_previous_episode) ... ok
+test_rate_requires_positive_time (l3_system.tests.test_process_rules.ProcessRuleTests.test_rate_requires_positive_time) ... ok
+test_rate_uses_elapsed_time (l3_system.tests.test_process_rules.ProcessRuleTests.test_rate_uses_elapsed_time) ... ok
+test_team_thresholds_need_explicit_opt_in (l3_system.tests.test_process_rules.ProcessRuleTests.test_team_thresholds_need_explicit_opt_in) ... ok
+test_units_and_coordinates_required (l3_system.tests.test_process_rules.ProcessRuleTests.test_units_and_coordinates_required) ... ok
+test_proven_unexecuted_timeout_can_reassign_after_release (l3_system.tests.test_replanning_controller.ReplanningControllerTests.test_proven_unexecuted_timeout_can_reassign_after_release) ... ok
+test_safety_rejection_requests_action_regeneration_not_agent_exclusion (l3_system.tests.test_replanning_controller.ReplanningControllerTests.test_safety_rejection_requests_action_regeneration_not_agent_exclusion) ... ok
+test_aggregate_does_not_invent_assignment_rate_for_single_baseline (l3_system.tests.test_review_regressions.ReviewRegressions.test_aggregate_does_not_invent_assignment_rate_for_single_baseline) ... ok
+test_assignment_queries_check_parent (l3_system.tests.test_review_regressions.ReviewRegressions.test_assignment_queries_check_parent) ... ok
+test_duplicate_feedback_cannot_release_next_task_lock (l3_system.tests.test_review_regressions.ReviewRegressions.test_duplicate_feedback_cannot_release_next_task_lock) ... ok
+test_fixed_order_and_cnp_are_distinct (l3_system.tests.test_review_regressions.ReviewRegressions.test_fixed_order_and_cnp_are_distinct) ... ok
+test_invalid_weights_refused (l3_system.tests.test_review_regressions.ReviewRegressions.test_invalid_weights_refused) ... ok
+test_live_aggregate_reports_incomplete_episode (l3_system.tests.test_review_regressions.ReviewRegressions.test_live_aggregate_reports_incomplete_episode) ... ok
+test_nonfinite_or_boolean_bid_values_refused (l3_system.tests.test_review_regressions.ReviewRegressions.test_nonfinite_or_boolean_bid_values_refused) ... ok
+test_null_identity_refused (l3_system.tests.test_review_regressions.ReviewRegressions.test_null_identity_refused) ... ok
+test_parent_dependency_requires_every_child_completed (l3_system.tests.test_review_regressions.ReviewRegressions.test_parent_dependency_requires_every_child_completed) ... ok
+test_ready_tasks_do_not_expose_mutable_internal_state (l3_system.tests.test_review_regressions.ReviewRegressions.test_ready_tasks_do_not_expose_mutable_internal_state) ... ok
+test_terminal_feedback_cannot_be_reversed (l3_system.tests.test_review_regressions.ReviewRegressions.test_terminal_feedback_cannot_be_reversed) ... ok
+test_bounded_regeneration_replans_without_replaying_a_step (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_bounded_regeneration_replans_without_replaying_a_step) ... ok
+test_invalid_goal_requests_takeover_without_execution (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_invalid_goal_requests_takeover_without_execution) ... ok
+test_invalid_observation_blocks_resume_and_action (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_invalid_observation_blocks_resume_and_action) ... ok
+test_monitor_error_never_triggers_automatic_retry (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_monitor_error_never_triggers_automatic_retry) ... ok
+test_parent_dependency_is_not_silently_discarded (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_parent_dependency_is_not_silently_discarded) ... ok
+test_post_execution_observation_is_independently_monitored (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_post_execution_observation_is_independently_monitored) ... ok
+test_rejection_latches_until_explicit_human_resume (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_rejection_latches_until_explicit_human_resume) ... ok
+test_repeated_rejection_exhausts_limit_and_requests_takeover (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_repeated_rejection_exhausts_limit_and_requests_takeover) ... ok
+test_second_gate_rejection_is_reported_consistently (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_second_gate_rejection_is_reported_consistently) ... ok
+test_session_preserves_all_four_roles_and_scheduler_feedback (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_session_preserves_all_four_roles_and_scheduler_feedback) ... ok
+test_uncertain_physical_failure_is_never_retried (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_uncertain_physical_failure_is_never_retried) ... ok
+test_unimplemented_process_constraints_are_not_reported_as_met (l3_system.tests.test_system_runtime.SystemRuntimeTests.test_unimplemented_process_constraints_are_not_reported_as_met) ... ok
+
+----------------------------------------------------------------------
+Ran 171 tests in 0.188s
+
+OK
+
+[MonitoringAgent] T | Level 3 | Reject | Process fence violated: freshness
+[MonitoringAgent] TASK-702c61e2 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-702c61e2 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-702c61e2 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-b22d9c6d | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-0584ffcf | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-0584ffcf | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-0584ffcf | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-3c31afaa | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 3 | Reject | 过程观测维度错误或包含非有限数值
+[MonitoringAgent] T | Level 3 | Reject | 过程观测维度错误或包含非有限数值
+[MonitoringAgent] TASK-b17eb793 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b17eb793 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b17eb793 | Level 3 | Reject | 过程观测维度错误或包含非有限数值
+[MonitoringAgent] TASK-efd88c54 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-aba5e690 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-aba5e690 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-aba5e690 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-9a3bd58f | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-bc882443 | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-d5832e8c | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-b55d27f6 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-b55d27f6 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6711c64e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6711c64e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6711c64e | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-67164947 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-67164947 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-67164947 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-7906cd40 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-7906cd40 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] - | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）

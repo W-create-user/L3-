@@ -10,6 +10,18 @@ RULES = {
 }
 
 
+def observation_integrity_error(observation, expected_shape=None):
+    """Pure STATE-INVALID predicate, reusable by offline tools without a live Box."""
+    try:
+        values = np.asarray(observation)
+        if (values.dtype.kind not in 'fiu' or not np.isfinite(values).all()
+                or (expected_shape is not None and values.shape != tuple(expected_shape))):
+            return '过程观测维度错误或包含非有限数值'
+    except (ValueError, TypeError):
+        return '过程观测无法解析为数值数组'
+    return None
+
+
 def validate_action(action, shape):
     """返回 (转换后的动作数组或 None, 错误原因或 None)。"""
     if action is None:

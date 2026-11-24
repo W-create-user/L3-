@@ -1,0 +1,10 @@
+{
+  "kind": "archived_evidence_audit_not_new_simulation",
+  "repository_commit": "2e88c200afa4698b0dc13a9d2260fbaf44d56972",
+  "csv_rows": 80,
+  "unique_candidate_ids": 40,
+  "monitor_enabled_rows": 40,
+  "out_of_bounds_candidates": 20,
+  "eligible_for_D03_training": false,
+  "reason": "action candidate offline gate comparison; no independent temporal episodes or multimodal process labels"
+}

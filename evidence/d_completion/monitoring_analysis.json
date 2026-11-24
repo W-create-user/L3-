@@ -1,0 +1,119 @@
+{
+  "schema_version": "D08SensorEpisodeAnalysis/1.0",
+  "source_sha256": "66111636afdcc3fd6ab462711ecf98a642eda0283cb101c492de7d760f8ba23a",
+  "paired_episodes": 12,
+  "rows": [
+    {
+      "episode_id": "holdout_48001",
+      "normal_windows": 57,
+      "baseline_fpr": 0.38596491228070173,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.38596491228070173
+    },
+    {
+      "episode_id": "holdout_48002",
+      "normal_windows": 57,
+      "baseline_fpr": 0.42105263157894735,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.42105263157894735
+    },
+    {
+      "episode_id": "holdout_48003",
+      "normal_windows": 57,
+      "baseline_fpr": 0.40350877192982454,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.40350877192982454
+    },
+    {
+      "episode_id": "holdout_48004",
+      "normal_windows": 57,
+      "baseline_fpr": 0.38596491228070173,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.38596491228070173
+    },
+    {
+      "episode_id": "holdout_48005",
+      "normal_windows": 57,
+      "baseline_fpr": 0.42105263157894735,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.42105263157894735
+    },
+    {
+      "episode_id": "holdout_48006",
+      "normal_windows": 57,
+      "baseline_fpr": 0.3684210526315789,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.3684210526315789
+    },
+    {
+      "episode_id": "holdout_48007",
+      "normal_windows": 46,
+      "baseline_fpr": 0.32608695652173914,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.32608695652173914
+    },
+    {
+      "episode_id": "holdout_48008",
+      "normal_windows": 42,
+      "baseline_fpr": 0.30952380952380953,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.30952380952380953
+    },
+    {
+      "episode_id": "holdout_48009",
+      "normal_windows": 39,
+      "baseline_fpr": 0.6410256410256411,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.6410256410256411
+    },
+    {
+      "episode_id": "holdout_48010",
+      "normal_windows": 44,
+      "baseline_fpr": 0.2727272727272727,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.2727272727272727
+    },
+    {
+      "episode_id": "holdout_48011",
+      "normal_windows": 36,
+      "baseline_fpr": 0.5277777777777778,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.5277777777777778
+    },
+    {
+      "episode_id": "holdout_48012",
+      "normal_windows": 39,
+      "baseline_fpr": 0.6410256410256411,
+      "residual_fpr": 0.0,
+      "fpr_reduction": 0.6410256410256411
+    }
+  ],
+  "mean_episode_normal_window_fpr_reduction": 0.4253443342402153,
+  "paired_episode_bootstrap_95_interval": [
+    0.36349275486146193,
+    0.4926509254634253
+  ],
+  "bootstrap_seed": 4810,
+  "bootstrap_samples": 5000,
+  "conditional_binomial_intervals": {
+    "raw_event_detection": {
+      "k": 6,
+      "n": 6,
+      "interval_95": [
+        0.5407418735600995,
+        1.0
+      ]
+    },
+    "whole_normal_false_alarm": {
+      "k": 0,
+      "n": 6,
+      "interval_95": [
+        0.0,
+        0.4592581264399005
+      ]
+    }
+  },
+  "independent_episode_assumption_verified": false,
+  "population_confidence_claim": false,
+  "limits": "Intervals condition on independent representative source episodes, which is not established here. Adaptive v1/v2 development is retained; v3 uses a fresh holdout. Correlated windows are not treated as independent trials. No production/energy/efficiency claims."
+}

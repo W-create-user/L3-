@@ -1,0 +1,114 @@
+{
+  "schema_version": "D24MAbRawAudit/1.0",
+  "planned_runs": 90,
+  "started_runs": 90,
+  "successful_runs": 90,
+  "raw_step_calls": 360,
+  "paired_groups": 30,
+  "unique_initial_state_fingerprints": 30,
+  "identical_action_sequence_pairs": 30,
+  "raw_buffer_model_violations": 0,
+  "records_with_any_model_clipping": 360,
+  "buffer_level_clipped_records": 0,
+  "clipping_count_by_model_index": {
+    "7": 360,
+    "16": 360
+  },
+  "by_condition": {
+    "nominal": {
+      "traditional_controller": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 180.0,
+        "mean_software_wall_seconds": 0.18943944720000444
+      },
+      "single_agent": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 180.0,
+        "mean_software_wall_seconds": 0.1884261250999998
+      },
+      "four_agent": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 180.0,
+        "mean_software_wall_seconds": 0.21110842839999577
+      }
+    },
+    "sensor_fault": {
+      "traditional_controller": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 360.0,
+        "mean_software_wall_seconds": 0.29185465939998495
+      },
+      "single_agent": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 360.0,
+        "mean_software_wall_seconds": 0.28852370219999557
+      },
+      "four_agent": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 360.0,
+        "mean_software_wall_seconds": 0.3432880799000088
+      }
+    },
+    "process_disturbance": {
+      "traditional_controller": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 180.0,
+        "mean_software_wall_seconds": 0.19681045209999865
+      },
+      "single_agent": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 180.0,
+        "mean_software_wall_seconds": 0.2626423189000093
+      },
+      "four_agent": {
+        "planned": 10,
+        "started": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "mean_simulated_makespan_min_success_only": 180.0,
+        "mean_software_wall_seconds": 0.223123290999996
+      }
+    }
+  },
+  "complete_successful_makespan_pairs": 30,
+  "mean_simulated_makespan_reduction": 0.0,
+  "efficiency_target_20_percent_supported": false,
+  "whole_project_90_percent_claim": false,
+  "energy_metric": null,
+  "independent_episode_assumption_verified": false,
+  "physical_safety_certified": false,
+  "limits": "Research buffer goal only. Topologies intentionally share the same proportional law; local C has one executor. Simulated goal time is separate from software wall time. No production/plant generalization claim."
+}

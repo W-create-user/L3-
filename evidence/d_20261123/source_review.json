@@ -1,0 +1,49 @@
+{
+  "schema_version": "DDependencyReview/1.0",
+  "date": "2026-11-23",
+  "main_commit": "3446dc08902be751a1b7e82403a0cd6f70cede37",
+  "D_parent": "4b74430dcf3031a90a8698dc3687d18e57d5904e",
+  "B_review_commit": "db7fbe40ff2ca1b56178e58424b31e0035e663f2",
+  "B_companion_files": {
+    "configs/controllers/mab_buffer_pi.json": {
+      "present_in_B_source": false
+    },
+    "configs/environments/mab_physical_registry.json": {
+      "present_in_B_source": false
+    },
+    "docs/data_dictionary.csv": {
+      "present_in_B_source": false
+    },
+    "configs/environments/dictionary_provenance.json": {
+      "present_in_B_source": false
+    }
+  },
+  "B_source_modified": false,
+  "findings": [
+    "B collector exists but requires companion controller configurations and dictionary files absent in inspected B commit; no fabricated replacement or B edits.",
+    "D directly collected new Atropine sensor-bias episodes with unchanged B adapter/executor, using a D-owned collector.",
+    "Current main C implementation provides local CNP; no verified MADDPG weights or ZeroMQ transport found in inspected branches.",
+    "D07 goal reference is A engineering regression, not signed production success criteria."
+  ],
+  "other_members_source_sha256": {
+    "l3_system/execution/__init__.py": "887792c8d4c4bfbeef1f47ec9f4aff7a13743cd2c46540e09e650219f43ac79c",
+    "l3_system/execution/safety_bridge.py": "9f21346d2bde6ac01b5fa689d0d04ee4a11436c780b1dd31f7e1208ce48a4ee2",
+    "l3_system/execution/environment_adapter.py": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+    "l3_system/execution/local_policy.py": "20375d1f64777fa680f8bbfb35457470a81fdbbcb27eb6ff1c29e5debfcea6be",
+    "l3_system/execution/task_contract.py": "3b5af1a0937d8dd4922ab6d32ee72bf29abb84b726a009d40839016f17efc847",
+    "l3_system/execution/execution_agent.py": "030eab97afdd80f0a87262ea40c3a15549659a93e135657451fb32326fd75499",
+    "l3_system/planning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "l3_system/planning/goals.py": "cb06d401752d391e36ad27f08c15cf00d0861c34407ba39a4734f6dbf487e745",
+    "l3_system/planning/replanning.py": "9457f60e170fbcf5ea47a7b52198e3a165afcfd74e15eb08434ae576e08e2400",
+    "l3_system/planning/goal_runtime.py": "b96d0824d92c3c1ce5567eac1a023d93330e070994e722a9b74b7ee2044cde52",
+    "l3_system/planning/methods.py": "db012aa9db60fc27d9cb6a5c26fe5299c53e4ebcbdbc20022752fc2acfab793f",
+    "l3_system/ui/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "l3_system/ui/app.py": "fc0f3035aa750f0889e448be2988723fc1d44798fae4f8efd4ed5668cc3547fa",
+    "l3_system/ui/templates/dashboard.html": "4be82adfac5b41ef5c0ca5d55d48ff73b875c01a23d793b2cb6363045d1b41c4",
+    "l3_system/runtime.py": "abb830c145fd422f44faad583569cdb8aa508af47aff88ab804b558c53db0f21",
+    "l3_system/main.py": "6f54128db1047b9bc97c34048d667b97df6fe4d4f8ce3efd9595eba60070da78",
+    "l3_system/decision_agent.py": "7dc59126fd3ca0723c4320b1fa9156827bce3c00474c7f317dc0d6afc1883ed3",
+    "l3_system/agents/scheduling_agent.py": "69b9faab33ea3a25602c2a4e529a3185de456abe6cdf87738654cbd12289dc43",
+    "l3_system/algorithms/cnp_protocol.py": "a13589f69935bff2d0169f441f761966e2c75bf78dfa43cfdfa52b8043a03c17"
+  }
+}

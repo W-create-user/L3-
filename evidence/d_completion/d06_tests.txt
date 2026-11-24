@@ -1,0 +1,107 @@
+test_http_and_session_failure_paths_preserve_action_gate (test_acceptance.TakeoverAcceptanceTests.test_http_and_session_failure_paths_preserve_action_gate) ... ok
+test_duplicate_confirmation_and_repeated_reads_do_not_create_clean_samples (test_supervised_session.SupervisedSessionTests.test_duplicate_confirmation_and_repeated_reads_do_not_create_clean_samples) ... ok
+test_fault_hard_constraint_wins_and_new_episode_does_not_reuse_history (test_supervised_session.SupervisedSessionTests.test_fault_hard_constraint_wins_and_new_episode_does_not_reuse_history) ... ok
+test_http_credentials_and_repeated_form (test_supervised_session.SupervisedSessionTests.test_http_credentials_and_repeated_form) ... ok
+test_stale_state_does_not_execute_and_confirmation_needs_resources_clear (test_supervised_session.SupervisedSessionTests.test_stale_state_does_not_execute_and_confirmation_needs_resources_clear) ... ok
+test_startup_needs_explicit_sampling_and_confirmation (test_supervised_session.SupervisedSessionTests.test_startup_needs_explicit_sampling_and_confirmation) ... [MonitoringAgent] TASK-9d8b8a2c | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9d8b8a2c | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9d8b8a2c | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-d9d9425e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-d9d9425e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-d9d9425e | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-dccb0802 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-dccb0802 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-dccb0802 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-035678ca | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-035678ca | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-035678ca | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-82cc4f18 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-82cc4f18 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-82cc4f18 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-e6e10b80 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e6e10b80 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e6e10b80 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-e7bd8f5d | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e7bd8f5d | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e7bd8f5d | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-f35fdd36 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-f35fdd36 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-f35fdd36 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-cfa1f86a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-cfa1f86a | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-cfa1f86a | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-5c301ad3 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5c301ad3 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5c301ad3 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-0419ace9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-0419ace9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-0419ace9 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-a811ec6b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-a811ec6b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-a811ec6b | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-029fc6dd | Level 3 | Reject | R-02: 动作超出允许范围：动作[0]=2，允许范围=[-1, 1]; 动作[1]=2，允许范围=[-1, 1]; 动作[2]=2，允许范围=[-1, 1]; 动作[3]=2，允许范围=[-1, 1]
+[MonitoringAgent] TASK-4096b6ec | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-4096b6ec | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-4096b6ec | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-6854b79b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6854b79b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6854b79b | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-1c9e6b75 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c9e6b75 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1c9e6b75 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-ef2df25e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-ef2df25e | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-ef2df25e | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-9841c555 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9841c555 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-9841c555 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-e3e5a4d5 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e3e5a4d5 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-e3e5a4d5 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-25e5529b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-25e5529b | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-25e5529b | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-8789732f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-f0fbe848 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-f0fbe848 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-f0fbe848 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-ffa127a9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-ffa127a9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-ffa127a9 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-004c77c9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-004c77c9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-004c77c9 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-5f059744 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5f059744 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5f059744 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-a51c2389 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-a51c2389 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）ok
+test_unavailable_scope_and_anomaly_latch_at_first_full_window (test_supervised_session.SupervisedSessionTests.test_unavailable_scope_and_anomaly_latch_at_first_full_window) ... ok
+test_unknown_step_result_never_retried (test_supervised_session.SupervisedSessionTests.test_unknown_step_result_never_retried) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.204s
+
+OK
+
+[MonitoringAgent] TASK-a51c2389 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-1d730d76 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1d730d76 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1d730d76 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-5ad8401f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5ad8401f | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5ad8401f | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-59c513a9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-59c513a9 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-59c513a9 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-6c02f9bb | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6c02f9bb | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-6c02f9bb | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-1df17812 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1df17812 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-1df17812 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-5524d806 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5524d806 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-5524d806 | Level 0 | Pass | 过程观测数据完整性检查通过（非工艺安全判定）
+[MonitoringAgent] TASK-87fcf974 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
+[MonitoringAgent] TASK-87fcf974 | Level 0 | Pass | 所有已启用的规则检查通过（R-03 未启用）
