@@ -1,0 +1,118 @@
+{
+  "schema_version": "DBContractSmoke/1.0",
+  "fixture_only": true,
+  "simulator_step_calls": 0,
+  "model_inference_performed": false,
+  "physical_safety_certified": false,
+  "cases": [
+    {
+      "case": "Atropine.valid_action",
+      "expected": "pass",
+      "actual": "pass",
+      "passed": true
+    },
+    {
+      "case": "Atropine.identity",
+      "expected": "Atropine-1",
+      "actual": "Atropine-1",
+      "passed": true
+    },
+    {
+      "case": "Atropine.bad_shape",
+      "expected": "R-01",
+      "actual": "R-01",
+      "passed": true
+    },
+    {
+      "case": "Atropine.out_of_bounds",
+      "expected": "R-02",
+      "actual": "R-02",
+      "passed": true
+    },
+    {
+      "case": "Atropine.missing_state",
+      "expected": "STATE-INVALID",
+      "actual": "STATE-INVALID",
+      "passed": true
+    },
+    {
+      "case": "mAb.valid_action",
+      "expected": "pass",
+      "actual": "pass",
+      "passed": true
+    },
+    {
+      "case": "mAb.identity",
+      "expected": "mAb-1",
+      "actual": "mAb-1",
+      "passed": true
+    },
+    {
+      "case": "mAb.bad_shape",
+      "expected": "R-01",
+      "actual": "R-01",
+      "passed": true
+    },
+    {
+      "case": "mAb.out_of_bounds",
+      "expected": "R-02",
+      "actual": "R-02",
+      "passed": true
+    },
+    {
+      "case": "mAb.missing_state",
+      "expected": "STATE-INVALID",
+      "actual": "STATE-INVALID",
+      "passed": true
+    },
+    {
+      "case": "Atropine.relative_upper_equality",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "case": "Atropine.relative_upper_breach",
+      "expected": "R-03-ATROPINE-EXPERIMENT-E",
+      "actual": "R-03-ATROPINE-EXPERIMENT-E",
+      "passed": true
+    },
+    {
+      "case": "Atropine.missing_context",
+      "expected": "R-03-CONTEXT",
+      "actual": "R-03-CONTEXT",
+      "passed": true
+    },
+    {
+      "case": "D05.history_without_human_review",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    },
+    {
+      "case": "D05.review_allows_gate_request",
+      "expected": 1,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "case": "D05.never_authorizes_step",
+      "expected": false,
+      "actual": false,
+      "passed": true
+    },
+    {
+      "case": "D05.unavailable_model",
+      "expected": "takeover_requested",
+      "actual": "takeover_requested",
+      "passed": true
+    },
+    {
+      "case": "D05.repeated_version",
+      "expected": true,
+      "actual": true,
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

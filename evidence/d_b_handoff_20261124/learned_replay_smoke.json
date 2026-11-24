@@ -1,0 +1,80 @@
+{
+  "schema_version": "DLearnedReplaySmoke/1.0",
+  "source_kind": "already_inspected_regression",
+  "simulator_step_calls": 0,
+  "new_training_performed": false,
+  "deployment_authorized": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu_inference_threads": 1,
+  "residual": {
+    "model_sha256": "181c5604f8f54277ef98a029abb169f6382b7a19a189b0269996088198f20bb1",
+    "binding": {
+      "environment": "AtropineEnvGym",
+      "observation_size": 39,
+      "indices": {
+        "reference": 5,
+        "current": 6
+      },
+      "coordinate": "normalize_false",
+      "controller": "space_midpoint",
+      "adapter_sha256": "fb18c988ce2dd0ceb2a2c2f21cd07280d6ac90830725876dd5f29bd4c073fdaa",
+      "registry_sha256": "cf2af66617f7d759fa69894aa8d813cb9a3f0c9e8408e5713009afe751c48e57"
+    },
+    "load_seconds": 0.0045297179999579384,
+    "source_episode_id": "train_16001",
+    "window_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "score": {
+      "anomaly_score": 0.7592906549945452,
+      "forest_score": 0.7592906549945452,
+      "relative_residual": 1.0,
+      "threshold": 0.7103624005756025,
+      "anomalous": true,
+      "sensor_bias_probability": 0.3861991984403994,
+      "physical_safety_probability": null,
+      "in_empirical_reference_domain": true
+    },
+    "repeated_window_timing": {
+      "count": 20,
+      "mean_s": 0.004636603199998035,
+      "p95_s": 0.005517742000034787,
+      "max_s": 0.006197675999942476,
+      "scope": "same already-inspected window repeated, not independent episodes"
+    }
+  },
+  "fusion": {
+    "study_sha256": "9a1c28215ac2da567441fa4f8d22ee23bedc8da047db26fe3ff86cf21dfb562f",
+    "seed": 17,
+    "variant": "full_attention",
+    "binding_sha256": "634aba403249f9617068bdb47ba906eebd1eba9f825bf27b87b5aac7e7770ba5",
+    "load_seconds": 0.2289477799999986,
+    "score": {
+      "uncalibrated_sigmoid_scores": [
+        0.028407340869307518
+      ],
+      "anomalous": [
+        false
+      ],
+      "sample_counts": {
+        "input_samples": 1,
+        "eligible_samples": 1,
+        "abstained_samples": 0
+      },
+      "execution_authorized": false
+    },
+    "repeated_window_timing": {
+      "count": 20,
+      "mean_s": 0.009536295099991321,
+      "p95_s": 0.010114252899967388,
+      "max_s": 0.03604098599998906,
+      "scope": "same already-inspected window repeated, not independent episodes"
+    },
+    "modality_source": "D derived causal numeric image/text, not independent field modalities"
+  },
+  "times_are_host_measurements_not_deadline_guarantees": true
+}

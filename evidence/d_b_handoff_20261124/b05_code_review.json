@@ -1,0 +1,20 @@
+{
+  "schema_version": "DB05CodeReview/1.0",
+  "B_commit": "db7fbe40ff2ca1b56178e58424b31e0035e663f2",
+  "review_scope": "public code only, new private dataset not located",
+  "B05_transform_tests_passed": 4,
+  "B05_config_tests_skipped": 2,
+  "private_dataset_accepted": false,
+  "B07_supplement_timings_verified": false,
+  "B05_fault_view": "post_step_detector_view_only",
+  "physical_health_labels_available": false,
+  "blocking_items": [
+    "private_dataset_locator_and_bytes",
+    "private_collection_profiles_and_controller_configs",
+    "validation_calibration_threshold_lineage_roles",
+    "mAb_learned_model_and_binding",
+    "joint_latency_deadline",
+    "candidate_and_new_holdout_joint_freeze"
+  ],
+  "known_residual_regression_mismatch": "train_16001 first four observations are synthetic-label negative but residual model alarms; retained without threshold retuning"
+}

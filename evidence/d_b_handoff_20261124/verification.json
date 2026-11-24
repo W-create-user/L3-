@@ -1,0 +1,21 @@
+{
+  "schema_version": "DBHandoffVerification/1.0",
+  "base_main": "4a09dcddfab894dc5d7d66347c3e1ba217680f9c",
+  "risk_policy_tests_passed": 12,
+  "contract_fixture_assertions_passed": 18,
+  "live_gate_checks_passed": {
+    "Atropine": 3,
+    "mAb": 3
+  },
+  "live_gate_simulator_steps": 0,
+  "mab_B_source_commit": "db7fbe40ff2ca1b56178e58424b31e0035e663f2",
+  "mab_B_execution_and_vendor_byte_verified": true,
+  "learned_smoke_source": "already inspected regression, not new holdout",
+  "new_blind_test_started": false,
+  "A_B_C_source_modified": false,
+  "example_source_sha256": {
+    "deliverables/D05/scripts/b_integration_smoke.py": "e892b2e0773d11b8f7b704a3f0911d4ea1107b268689ad0a7fd5e0dee02fab0d",
+    "deliverables/D05/scripts/learned_model_smoke.py": "5b6d18bc4c949c8dde056aaad18e930196410db1892a435f7bd9e93798c278af",
+    "deliverables/D05/scripts/live_gate_smoke.py": "042981cc3f6107a2e58cc327a578e2dfeb69f29cd81dfa2d1b4cccfccff121cd"
+  }
+}
