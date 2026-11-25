@@ -1,0 +1,163 @@
+{
+  "models": {
+    "AtropineEnvGym": {
+      "path": "AtropineEnvGym.model.json",
+      "sha256": "9e3337f367d2602c6a3ddd464b0191c25f103898f559e753f96aed2083cc11e5",
+      "threshold": 0.2671746566372839
+    },
+    "MAbEnvGym": {
+      "path": "MAbEnvGym.model.json",
+      "sha256": "42979a3fe9a52800c8f6e6c7e95da1efa048a69bdecba9855d820a777019c701",
+      "threshold": 0.04023976166797115
+    }
+  },
+  "results": {
+    "AtropineEnvGym": {
+      "finite_counts": {
+        "TP": 44,
+        "FP": 4,
+        "FN": 0,
+        "TN": 148
+      },
+      "finite_recall": 1.0,
+      "finite_fpr": 0.02631578947368421,
+      "missing_windows_blocked": 20,
+      "planned_windows": 216,
+      "episodes": [
+        {
+          "episode_id": "d25_new_sensor_62001",
+          "windows": 27,
+          "missing": 0,
+          "alarms": 1,
+          "source_fault": null
+        },
+        {
+          "episode_id": "d25_new_sensor_62002",
+          "windows": 27,
+          "missing": 0,
+          "alarms": 1,
+          "source_fault": null
+        },
+        {
+          "episode_id": "d25_new_sensor_62003",
+          "windows": 27,
+          "missing": 0,
+          "alarms": 10,
+          "source_fault": "bias"
+        },
+        {
+          "episode_id": "d25_new_sensor_62004",
+          "windows": 27,
+          "missing": 0,
+          "alarms": 12,
+          "source_fault": "bias"
+        },
+        {
+          "episode_id": "d25_new_sensor_62005",
+          "windows": 27,
+          "missing": 0,
+          "alarms": 10,
+          "source_fault": "noise"
+        },
+        {
+          "episode_id": "d25_new_sensor_62006",
+          "windows": 27,
+          "missing": 0,
+          "alarms": 13,
+          "source_fault": "noise"
+        },
+        {
+          "episode_id": "d25_new_sensor_62007",
+          "windows": 27,
+          "missing": 9,
+          "alarms": 1,
+          "source_fault": "missing"
+        },
+        {
+          "episode_id": "d25_new_sensor_62008",
+          "windows": 27,
+          "missing": 11,
+          "alarms": 0,
+          "source_fault": "missing"
+        }
+      ],
+      "numerical_criteria_met": true,
+      "deployment_authorized": false
+    },
+    "MAbEnvGym": {
+      "finite_counts": {
+        "TP": 22,
+        "FP": 3,
+        "FN": 0,
+        "TN": 23
+      },
+      "finite_recall": 1.0,
+      "finite_fpr": 0.11538461538461539,
+      "missing_windows_blocked": 8,
+      "planned_windows": 56,
+      "episodes": [
+        {
+          "episode_id": "d25_new_sensor_65001",
+          "windows": 7,
+          "missing": 0,
+          "alarms": 0,
+          "source_fault": null
+        },
+        {
+          "episode_id": "d25_new_sensor_65002",
+          "windows": 7,
+          "missing": 0,
+          "alarms": 1,
+          "source_fault": null
+        },
+        {
+          "episode_id": "d25_new_sensor_65003",
+          "windows": 7,
+          "missing": 0,
+          "alarms": 5,
+          "source_fault": "bias"
+        },
+        {
+          "episode_id": "d25_new_sensor_65004",
+          "windows": 7,
+          "missing": 0,
+          "alarms": 6,
+          "source_fault": "bias"
+        },
+        {
+          "episode_id": "d25_new_sensor_65005",
+          "windows": 7,
+          "missing": 0,
+          "alarms": 7,
+          "source_fault": "noise"
+        },
+        {
+          "episode_id": "d25_new_sensor_65006",
+          "windows": 7,
+          "missing": 0,
+          "alarms": 6,
+          "source_fault": "noise"
+        },
+        {
+          "episode_id": "d25_new_sensor_65007",
+          "windows": 7,
+          "missing": 4,
+          "alarms": 0,
+          "source_fault": "missing"
+        },
+        {
+          "episode_id": "d25_new_sensor_65008",
+          "windows": 7,
+          "missing": 4,
+          "alarms": 0,
+          "source_fault": "missing"
+        }
+      ],
+      "numerical_criteria_met": false,
+      "deployment_authorized": false
+    }
+  },
+  "test_used_for_tuning": false,
+  "formal_D07_blind": false,
+  "physical_safety_certified": false
+}

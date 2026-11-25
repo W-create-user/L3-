@@ -1,0 +1,74 @@
+{
+  "schema_version": "DResearchFreezeProposal/1.0",
+  "scope": "isolated mAb buffer recovery, control attribution only; no production or distributed-training claim",
+  "status": "D_preflight_complete_joint_confirmation_pending",
+  "goal": {
+    "index": 17,
+    "physical_scale": 3,
+    "unit": "dm",
+    "target": [
+      14.95,
+      15.05
+    ],
+    "hold_valid_poststeps": 3,
+    "step_limit": 10,
+    "wall_seconds": 90
+  },
+  "controller": "unchanged B P plus D trusted-startup mass-balance observer",
+  "startup_calibration_required": true,
+  "unsupported": [
+    "arbitrary unknown initial sensor bias",
+    "unmeasured actual flow disturbance",
+    "physical plant safety certification"
+  ],
+  "baseline": "frozen P kp=pi*2.5^2/60, ki=kd=0",
+  "arms": [
+    "baseline P direct",
+    "candidate P+observer direct",
+    "same candidate with A/C one executor"
+  ],
+  "gate_profile": "hard model-domain rules apply from first request; learning model rollout and startup acquisition must be explicitly jointly confirmed",
+  "inference_budget_seconds": 0.5,
+  "inference_preload_limit_seconds": 30,
+  "observation_max_age_seconds": 0.5,
+  "model_workers": 1,
+  "execution_resources": 1,
+  "models": {
+    "AtropineEnvGym": {
+      "path": "AtropineEnvGym.model.json",
+      "sha256": "92b0eb734143d2fb130cf586336040e9e1ec22c22f4b34d2cc812ae10913fca1",
+      "threshold": 0.5
+    },
+    "MAbEnvGym": {
+      "path": "MAbEnvGym.model.json",
+      "sha256": "a8deb16bb87a2d86e1245bf04b98efc4d21c4ce6506b66b31e0e4d85cbc6403c",
+      "threshold": 0.5
+    }
+  },
+  "model_artifact_file": "D_20261125_缺失处理_模型_观测器与预算实测.zip",
+  "code_sha256": {
+    "l3_system/monitoring/b05_model.py": "3d9c64d3ef60823717289570d925d37c1c1ab30172a91de6a990fca63248523f",
+    "l3_system/monitoring/b05_supervised.py": "be7919a9631a770d4525e5dfe4f0c14cac981cca6649c40307b918bf19849bb1",
+    "l3_system/monitoring/buffer_observer.py": "a57d6dcaf6990fb9c2b0a7d940cb62ba9dc8de116e2109aba0fa4fdecce95a67",
+    "l3_system/monitoring/inference_service.py": "65e89be9bf57143c63881f2e50e71233fd6552d179720dd9ffea27c0a02084f2",
+    "l3_system/monitoring/mab_acceptance_stats.py": "a9bfff1250bf334048bd6bfcaa2a8a6c3a56dc70531f090a3701208623cbbe7b"
+  },
+  "confirmations": {
+    "D": {
+      "review": "completed preflight, experiment scope only"
+    },
+    "A": null,
+    "B": null,
+    "C": null
+  },
+  "new_D07_holdout_seed_group_frozen": false,
+  "formal_blind_launch_authorized": false,
+  "B08_full_training_authorized": false,
+  "joint_decisions_remaining": [
+    "candidate trusted startup anchor and model scope",
+    "same control and resource plan",
+    "500ms budget and 90s start event",
+    "initial missing-history acquisition and learned-gate rollout",
+    "new holdout access isolation and fixed commit"
+  ]
+}

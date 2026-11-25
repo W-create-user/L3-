@@ -1,0 +1,15 @@
+test_actual_timeout_terminates_worker (test_closeout.CloseoutTests.test_actual_timeout_terminates_worker) ... ok
+test_binding_and_stale_wall_clock_block (test_closeout.CloseoutTests.test_binding_and_stale_wall_clock_block) ... ok
+test_boolean_and_stale_version_block (test_closeout.CloseoutTests.test_boolean_and_stale_version_block) ... ok
+test_initial_bias_without_anchor_and_unknown_result_block (test_closeout.CloseoutTests.test_initial_bias_without_anchor_and_unknown_result_block) ... ok
+test_invalid_budget_and_untrusted_model_startup (test_closeout.CloseoutTests.test_invalid_budget_and_untrusted_model_startup) ... ok
+test_missing_window_never_passes (test_closeout.CloseoutTests.test_missing_window_never_passes) ... ok
+test_observer_uses_executed_flow_not_measurement_bias (test_closeout.CloseoutTests.test_observer_uses_executed_flow_not_measurement_bias) ... ok
+test_real_process_reply_dedup_and_expiry (test_closeout.CloseoutTests.test_real_process_reply_dedup_and_expiry) ... ok
+test_rejection_does_not_advance_observer (test_closeout.CloseoutTests.test_rejection_does_not_advance_observer) ... ok
+test_shape_cannot_map_mab_to_atropine (test_closeout.CloseoutTests.test_shape_cannot_map_mab_to_atropine) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.056s
+
+OK
