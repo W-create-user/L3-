@@ -1,0 +1,14 @@
+{
+  "schema_version": "DB25Verification/1.0",
+  "handoff_commit": "ad45d80c002f6cf36f13c592de676a95fa2d6d09",
+  "B_source_commit": "db7fbe40ff2ca1b56178e58424b31e0035e663f2",
+  "B05_tests_executed": 6,
+  "B05_tests_passed": 6,
+  "B05_tests_skipped": 0,
+  "new_simulation_steps": 0,
+  "learned_predictions_on_B05_test_performed": false,
+  "new_training_performed": false,
+  "D07_blind_started": false,
+  "A_B_C_repository_files_modified": false,
+  "audit_source_sha256": "4e8504bd0cef8815e3a5956e0583e58f260127554e3065efb33343fc106a36ff"
+}
