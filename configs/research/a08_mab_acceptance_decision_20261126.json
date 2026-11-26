@@ -1,0 +1,62 @@
+{
+  "version": "A08-MAB-03",
+  "decided_on": "2026-11-26",
+  "decision_owner": "A",
+  "joint_freeze_status": "pending",
+  "formal_launch_authorized": false,
+  "base_commit": "4a09dcddfab894dc5d7d66347c3e1ba217680f9c",
+  "b_development_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+  "d_review_commit": "9f4d4411542d66312f127411e4402be14d04da27",
+  "scope": "SMPL MAbEnvGym simulated buffer-level recovery, one execution resource",
+  "primary_profile": {
+    "arms": ["baseline_P", "observer_direct", "observer_four"],
+    "gate": "shared_hard_model_domain_and_validity",
+    "requires_trusted_pre_fault_reset_certificate": true,
+    "learned_gate_enabled": false,
+    "target_observation_index": 17,
+    "target_unit": "dm",
+    "target_interval": [14.95, 15.05],
+    "required_consecutive_valid_post_steps": 3,
+    "max_steps": 10,
+    "sim_minutes_per_step": 60,
+    "episode_wall_budget_seconds": 90,
+    "wall_start": "before_environment_construction",
+    "success_rate_target_pct": 90
+  },
+  "comparisons": [
+    {
+      "requirement": "RQ-15",
+      "baseline": "observer_direct",
+      "candidate": "observer_four",
+      "target_pct": 20
+    },
+    {
+      "interpretation": "control_policy_improvement",
+      "baseline": "baseline_P",
+      "candidates": ["observer_direct", "observer_four"]
+    }
+  ],
+  "sampling": {
+    "paired_conditions": 30,
+    "conditions_per_stratum": 10,
+    "development_seed_range_inclusive": [26001, 26030],
+    "holdout_commitment_sha256": "121b8422b7ef513da79c13e12f48a85219d74505dfc087bbed8bd21bbbed1d50",
+    "holdout_executed": false
+  },
+  "analysis": {
+    "interval_confidence_pct": 95,
+    "success_interval": "Wilson",
+    "efficiency_interval": "paired_bootstrap_stratified_by_condition",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 251125,
+    "failure_sensitivity_penalty_sim_minutes": 600
+  },
+  "separate_learned_gate_profile": {
+    "enabled_for_primary_comparison": false,
+    "restricted_startup_steps": 6,
+    "startup_steps_count_in_both_budgets": true,
+    "startup_steps_count_toward_autonomous_streak": false,
+    "operator_confirmation_required": true,
+    "inference_budget_ms": 500
+  }
+}
