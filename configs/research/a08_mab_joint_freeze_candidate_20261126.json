@@ -1,0 +1,118 @@
+{
+  "protocol": "A08-MAB-03",
+  "status": "awaiting_joint_signoff",
+  "formal_launch_authorized": false,
+  "components": {
+    "A_C_source_commit": "0f33b02122ac38cdec8ab6b713e829a7be67a202",
+    "A_C_source_sha256": {
+      "configs/research/a08_mab_acceptance_decision_20261126.json": "382d5601e4d0f8f5fa681ce392eb5aa815a00bac741ed47fece946c95baaa856",
+      "l3_system/runtime.py": "abb830c145fd422f44faad583569cdb8aa508af47aff88ab804b558c53db0f21",
+      "l3_system/planning/goal_runtime.py": "2a417735f709dc0500374d36931c8d5c612fee2eb58765ee5fa3e5fd7e088a06",
+      "l3_system/agents/scheduling_agent.py": "69b9faab33ea3a25602c2a4e529a3185de456abe6cdf87738654cbd12289dc43",
+      "l3_system/algorithms/cnp_protocol.py": "a13589f69935bff2d0169f441f761966e2c75bf78dfa43cfdfa52b8043a03c17"
+    },
+    "B_source_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+    "B_source_sha256": {
+      "l3_system/execution/controllers/acknowledged_buffer.py": "11274313c81c0cf37f1559891c76829cc1c4f253c0f85f437e91a26d029e5bd5",
+      "l3_system/execution/controllers/policies.py": "babc65181224d7fe1fd43c5cecbffc54d0c4451db235e0c7a8155db9a19bc8e5",
+      "l3_system/execution/mab_adapter.py": "4bdc76da1443cf34a37eb6a90302814606ebfe93bcabc366942d560b1d23a9e5",
+      "l3_system/execution/joint_action_gateway.py": "49be13c71d579a2d96777d29e1b27d65f0a3848e06e820c96b92b10db2a975b8",
+      "vendor/smpl/SOURCE_VERSION.json": "9cd56434c998242cc1d4c3a8407ef57e431e7ffbbcd8d38ac37e754aaecd6232"
+    },
+    "D_review_commit": "9f4d4411542d66312f127411e4402be14d04da27",
+    "D_source_sha256": {
+      "l3_system/monitoring/mab_acceptance_stats.py": "a9bfff1250bf334048bd6bfcaa2a8a6c3a56dc70531f090a3701208623cbbe7b",
+      "deliverables/D07/scripts/run_mab_paired.py": "928291db10a4092c97065b6a5d0cf5c51bc6800f6a94e2a0e5b314e3638728aa"
+    }
+  },
+  "controller": {
+    "baseline_P": "BufferLevelPID with P-only gains",
+    "observer_direct": "AcknowledgedBufferPolicy with shared P-only gains",
+    "observer_four": "same observer as direct, through local four-agent orchestration",
+    "shared_P_parameters": {
+      "setpoint_dm": 15.0,
+      "kp_L_min_per_dm": 0.3272492347489368,
+      "ki_L_min_per_dm_min": 0.0,
+      "kd_L_min_min_per_dm": 0.0,
+      "sampling_period_min": 60.0
+    },
+    "innovation_limit_dm": 0.3,
+    "startup": "validated simulator reset before fault injection",
+    "startup_certificate_required_fields": [
+      "episode_id",
+      "state_version",
+      "timestamp",
+      "level_dm",
+      "calibration_source"
+    ],
+    "runtime_allowed_channels": [
+      "delivered_measurements",
+      "acknowledged_executed_action_with_episode_step_and_state_version"
+    ],
+    "evaluator_only": [
+      "post_step_scoring_truth",
+      "fault_labels",
+      "fault_schedule",
+      "holdout_seed"
+    ]
+  },
+  "gate": {
+    "profile_version": "D24-model-envelope-1",
+    "rule_id": "R-03-MAB-MODEL-BUFFER",
+    "limits_source": "live bounds of the pinned mAb model, observation index 17",
+    "effective_primary_config_sha256": null,
+    "learned_gate_enabled": false
+  },
+  "resources": {
+    "execution_resources": 1,
+    "scheduling": "in_process_local_CNP",
+    "simulation_step_owner_count": 1
+  },
+  "goal_and_budget": {
+    "arms": [
+      "baseline_P",
+      "observer_direct",
+      "observer_four"
+    ],
+    "gate": "shared_hard_model_domain_and_validity",
+    "requires_trusted_pre_fault_reset_certificate": true,
+    "learned_gate_enabled": false,
+    "target_observation_index": 17,
+    "target_unit": "dm",
+    "target_interval": [
+      14.95,
+      15.05
+    ],
+    "required_consecutive_valid_post_steps": 3,
+    "max_steps": 10,
+    "sim_minutes_per_step": 60,
+    "episode_wall_budget_seconds": 90,
+    "wall_start": "before_environment_construction",
+    "success_rate_target_pct": 90
+  },
+  "holdout": {
+    "commitment_sha256": "121b8422b7ef513da79c13e12f48a85219d74505dfc087bbed8bd21bbbed1d50",
+    "strata": {
+      "nominal": 10,
+      "sensor_fault": 10,
+      "process_disturbance": 10
+    },
+    "pairs": 30,
+    "planned_runs": 90,
+    "custodian_and_runner": "D",
+    "account_isolation_verified": false,
+    "executed": false
+  },
+  "formal_runner": {
+    "integrated_commit": null,
+    "runner_sha256": null,
+    "dependency_lock_sha256": null,
+    "public_fixture_end_to_end_validation": null
+  },
+  "joint_signoffs": {
+    "A": null,
+    "B": null,
+    "C": null,
+    "D": null
+  }
+}
