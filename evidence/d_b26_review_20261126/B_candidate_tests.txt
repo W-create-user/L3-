@@ -1,0 +1,17 @@
+test_changed_action_is_not_assumed_requested (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_changed_action_is_not_assumed_requested) ... ok
+test_duplicate_receipt_latches (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_duplicate_receipt_latches) ... ok
+test_label_and_true_poststep_not_needed (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_label_and_true_poststep_not_needed) ... ok
+test_large_unmodelled_change_blocks (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_large_unmodelled_change_blocks) ... ok
+test_lost_chain_after_real_step_latches (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_lost_chain_after_real_step_latches) ... ok
+test_missing_measurement_latches (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_missing_measurement_latches) ... ok
+test_new_anchor_needed_after_reset (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_new_anchor_needed_after_reset) ... ok
+test_no_receipt_is_not_success (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_no_receipt_is_not_success) ... ok
+test_only_matching_ack_updates_balance (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_only_matching_ack_updates_balance) ... ok
+test_opt_in_and_trusted_startup_required (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_opt_in_and_trusted_startup_required) ... ok
+test_rejection_does_not_update_or_integrate (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_rejection_does_not_update_or_integrate) ... ok
+test_stale_episode_and_version_block (l3_system.tests.test_acknowledged_buffer.AcknowledgementTests.test_stale_episode_and_version_block) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.002s
+
+OK

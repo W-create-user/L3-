@@ -1,0 +1,9 @@
+{
+  "B_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+  "malformed_receipt_exception": "ValueError",
+  "B_internal_failed_flag": false,
+  "D_outer_failed_flag": true,
+  "second_ack_blocked": true,
+  "fixture_only": true,
+  "actual_simulator_steps": 0
+}
