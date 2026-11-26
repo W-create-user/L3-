@@ -1,0 +1,70 @@
+{
+  "executed_on": "2026-11-26",
+  "scope": "public old-seed SMPL mAb single-resource development replication",
+  "execution_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+  "mpctools_commit": "ac683dc8199d3e11bf4f3971a3b8f613c83a162b",
+  "development_seeds_inclusive": [
+    26001,
+    26030
+  ],
+  "source_sha256": {
+    "experiments/run_b08_development.py": "0a8e811dced0b1b5e8c9511b395f1bd1c51dab94992b1800672d5ce82135b01b",
+    "experiments/audit_b08_development.py": "30d51bbbd2993c65b9ffb4a71d855e1b1be1f84099de1380e78cf1cd409139f1",
+    "l3_system/execution/controllers/acknowledged_buffer.py": "11274313c81c0cf37f1559891c76829cc1c4f253c0f85f437e91a26d029e5bd5",
+    "requirements.txt": "efe615191a77539cef2ebbaafd733edfc5771869a37c99e5f4716b3f4818e874"
+  },
+  "research_pi_config_sha256": "17b9ee22fca241ef5318333ecc23df95c96db7a2f2536bf4de6699125364388b",
+  "mpctools_patch_sha256": "7d626760a4990030817a34ba0e610d8af061d7ac2a339454c38557973df3ab95",
+  "local_artifact_sha256": {
+    "frozen_plan.json": "a38d38a8e556b572e5707589302ebdf1f4a60df2bdb3c83d9b4b6e9cbb03ecb5",
+    "run_ledger.json": "0c649335f3f2ceb5bf03304c362d59cbf458f075b582f1399c92012e8477cbe0",
+    "completion.json": "b6d25b34d1a701691f57a4413e8869f9dd8cce14fb70c5ace9f2edf570fe13c3"
+  },
+  "audit_sha256": "de0042fb820c668006a7064f1d3eadb5e5b698da3bc694f2401b805561aff7e2",
+  "audit_passed": true,
+  "planned_runs": 120,
+  "raw_steps_checked": 420,
+  "paired_conditions": 30,
+  "candidate_direct_four_identical_action_pairs": 30,
+  "groups": {
+    "baseline_P": {
+      "planned": 30,
+      "started": 30,
+      "successes": 30,
+      "not_started": 0,
+      "failures": 0,
+      "mean_successful_simulated_minutes": 240.0
+    },
+    "research_PI": {
+      "planned": 30,
+      "started": 30,
+      "successes": 30,
+      "not_started": 0,
+      "failures": 0,
+      "mean_successful_simulated_minutes": 240.0
+    },
+    "observer_direct": {
+      "planned": 30,
+      "started": 30,
+      "successes": 30,
+      "not_started": 0,
+      "failures": 0,
+      "mean_successful_simulated_minutes": 180.0
+    },
+    "observer_four": {
+      "planned": 30,
+      "started": 30,
+      "successes": 30,
+      "not_started": 0,
+      "failures": 0,
+      "mean_successful_simulated_minutes": 180.0
+    }
+  },
+  "paired_mean_cycle_reduction_pct": {
+    "research_PI_vs_baseline_P": 0.0,
+    "observer_direct_vs_baseline_P": 25.0,
+    "observer_four_vs_baseline_P": 25.0,
+    "observer_four_vs_observer_direct": 0.0
+  },
+  "formal_holdout_run": false
+}
