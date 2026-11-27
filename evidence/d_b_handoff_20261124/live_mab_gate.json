@@ -1,0 +1,62 @@
+{
+  "backend": "mAb",
+  "fixture_only": false,
+  "simulator_step_calls": 0,
+  "metadata": {
+    "environment": "SMPL.MAbEnvGym",
+    "environment_id": "MAbEnvGym",
+    "normalize": false,
+    "uss_subtracted": false,
+    "action_coordinate": "physical_divided_by_uscale",
+    "observation_coordinate": "physical_divided_by_xscale",
+    "observation_return": "source_clipped_to_model_Box_not_a_safety_limit",
+    "sampling_period": {
+      "value": 60,
+      "unit": "min"
+    },
+    "model_units_source": "vendor/smpl/smpl/envs/helpers/mab_helpers.py",
+    "physical_process_safety_verified": false,
+    "episode_id": "e3bad57a-3ecf-4c72-9093-c9df3ce00e2f",
+    "adapter_schema_version": "B03/1.0",
+    "termination_note": "Upstream checks max_steps before increment; adapter honors configured successful-call cap."
+  },
+  "model_gate_only": true,
+  "D04_D05_enabled": false,
+  "observation_shape": [
+    1970
+  ],
+  "action_shape": [
+    9
+  ],
+  "physical_safety_certified": false,
+  "valid_model_action": {
+    "request_id": "gate-only",
+    "subtask_id": null,
+    "task_id": "D-B-live-space-smoke",
+    "decision": "pass",
+    "rule_id": null,
+    "reason": "\u6240\u6709\u5df2\u542f\u7528\u7684\u89c4\u5219\u68c0\u67e5\u901a\u8fc7\uff08R-03 \u672a\u542f\u7528\uff09",
+    "risk_level": 0,
+    "demo_mode": false
+  },
+  "out_of_bounds": {
+    "request_id": "gate-only",
+    "subtask_id": null,
+    "task_id": "D-B-live-space-smoke",
+    "decision": "reject",
+    "rule_id": "R-02",
+    "reason": "R-02: \u52a8\u4f5c\u8d85\u51fa\u5141\u8bb8\u8303\u56f4\uff1a\u52a8\u4f5c[0]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.347027, 1]; \u52a8\u4f5c[1]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.347107, 1]; \u52a8\u4f5c[2]=2\uff0c\u5141\u8bb8\u8303\u56f4=[8.00228e-05, 1]; \u52a8\u4f5c[3]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.347027, 1]; \u52a8\u4f5c[4]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.799999, 1]; \u52a8\u4f5c[5]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.00519849, 1]; \u52a8\u4f5c[6]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.592, 1]; \u52a8\u4f5c[7]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0.347027, 1]; \u52a8\u4f5c[8]=2\uff0c\u5141\u8bb8\u8303\u56f4=[0, 1]",
+    "risk_level": 3,
+    "demo_mode": false
+  },
+  "missing_observation": {
+    "request_id": "gate-only",
+    "subtask_id": null,
+    "task_id": "D-B-live-space-smoke",
+    "decision": "reject",
+    "rule_id": "STATE-INVALID",
+    "reason": "\u8fc7\u7a0b\u89c2\u6d4b\u7ef4\u5ea6\u9519\u8bef\u6216\u5305\u542b\u975e\u6709\u9650\u6570\u503c",
+    "risk_level": 3,
+    "demo_mode": false
+  }
+}

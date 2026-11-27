@@ -1,0 +1,18 @@
+{
+  "schema_version": "DAcceptanceReview/1.0",
+  "reviewed_main": "4a09dcddfab894dc5d7d66347c3e1ba217680f9c",
+  "acceptance_candidate": "A08-MAB-02",
+  "formal_blind_test_started": false,
+  "joint_freeze_verified": false,
+  "new_holdout_verified": false,
+  "anti_bias_candidate_verified": false,
+  "new_candidate_safety_gate_passed": false,
+  "d07_tests_passed": 10,
+  "regression_reaudit": {
+    "runs": 90,
+    "successes": 90,
+    "actual_steps": 360,
+    "improvement": 0
+  },
+  "physical_safety_certified": false
+}

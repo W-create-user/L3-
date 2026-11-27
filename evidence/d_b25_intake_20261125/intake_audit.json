@@ -1,0 +1,433 @@
+{
+  "schema_version": "DB25IntakeAudit/1.0",
+  "archive_sha256": "e0c0cced1ff3adb94f3e2d6574a4f5607b1f7f6cebc5bc91c9f5fe728a102117",
+  "B_source_commit": "db7fbe40ff2ca1b56178e58424b31e0035e663f2",
+  "verified_package_file_count": 1141,
+  "B_validators": {
+    "01_B05_final": {
+      "validated": true,
+      "episodes": 42,
+      "steps": 860,
+      "sensor_positive_steps": 138,
+      "synthetic_visuals": 172,
+      "physical_health_labels_available": false,
+      "semantic_sha256": "73296a7cfce18dc2253b61e8cc6545c5224b81699b8f596572bf46436343d9e8"
+    },
+    "02_B05_replay": {
+      "validated": true,
+      "episodes": 42,
+      "steps": 860,
+      "sensor_positive_steps": 138,
+      "synthetic_visuals": 172,
+      "physical_health_labels_available": false,
+      "semantic_sha256": "73296a7cfce18dc2253b61e8cc6545c5224b81699b8f596572bf46436343d9e8"
+    }
+  },
+  "dataset": {
+    "episodes": 42,
+    "steps": 860,
+    "sensor_positive_steps": 138,
+    "derived_images": 172,
+    "unique_initial_groups": 42,
+    "split_and_fault_counts": {
+      "AtropineEnvGym|test|bias": 2,
+      "AtropineEnvGym|test|clean": 2,
+      "AtropineEnvGym|test|missing": 2,
+      "AtropineEnvGym|test|noise": 2,
+      "AtropineEnvGym|train|clean": 6,
+      "AtropineEnvGym|validation|bias": 2,
+      "AtropineEnvGym|validation|clean": 2,
+      "AtropineEnvGym|validation|missing": 2,
+      "AtropineEnvGym|validation|noise": 2,
+      "MAbEnvGym|test|bias": 2,
+      "MAbEnvGym|test|clean": 2,
+      "MAbEnvGym|test|missing": 2,
+      "MAbEnvGym|test|noise": 2,
+      "MAbEnvGym|train|clean": 4,
+      "MAbEnvGym|validation|bias": 2,
+      "MAbEnvGym|validation|clean": 2,
+      "MAbEnvGym|validation|missing": 2,
+      "MAbEnvGym|validation|noise": 2
+    },
+    "exact_raw_trace_duplicates": [],
+    "full_numeric_window_eligibility": {
+      "AtropineEnvGym": {
+        "windows": 594,
+        "finite_full_windows": 554,
+        "missing_or_nonfinite_windows": 40
+      },
+      "MAbEnvGym": {
+        "windows": 140,
+        "finite_full_windows": 124,
+        "missing_or_nonfinite_windows": 16
+      }
+    },
+    "D_basic_gate_archived_action_replay": {
+      "AtropineEnvGym|pass": 660,
+      "MAbEnvGym|pass": 200
+    },
+    "D_R03_or_learned_models_enabled": false,
+    "semantic_sha256": "73296a7cfce18dc2253b61e8cc6545c5224b81699b8f596572bf46436343d9e8",
+    "source_independence_proven": false
+  },
+  "B07_profiles": [
+    {
+      "case": "atropine_midpoint",
+      "status": "completed",
+      "reason": null,
+      "step_calls": 5,
+      "successful_steps": 5,
+      "wall_seconds": 1.0918761259999883,
+      "phases": {
+        "D_review": {
+          "count": 10,
+          "mean_s": 4.306850000261875e-05,
+          "p95_s": 5.524040001603225e-05,
+          "max_s": 5.7656000024053355e-05
+        },
+        "construct": {
+          "count": 1,
+          "mean_s": 0.8312428400000158,
+          "p95_s": 0.8312428400000158,
+          "max_s": 0.8312428400000158
+        },
+        "full_cycle": {
+          "count": 5,
+          "mean_s": 0.030499871599988636,
+          "p95_s": 0.045730783999988485,
+          "max_s": 0.04695795999998609
+        },
+        "policy_predict": {
+          "count": 5,
+          "mean_s": 4.7254800006157896e-05,
+          "p95_s": 4.98108000101638e-05,
+          "max_s": 4.995500000859465e-05
+        },
+        "reset": {
+          "count": 1,
+          "mean_s": 0.0014974280000501494,
+          "p95_s": 0.0014974280000501494,
+          "max_s": 0.0014974280000501494
+        },
+        "step": {
+          "count": 5,
+          "mean_s": 0.026553253599990966,
+          "p95_s": 0.04150579399998833,
+          "max_s": 0.04297021399997902
+        }
+      },
+      "R03_runtime_enabled": false,
+      "expected_outcome_met": true
+    },
+    {
+      "case": "mab_steady",
+      "status": "failed",
+      "reason": "goal_not_met_by_deadline",
+      "step_calls": 10,
+      "successful_steps": 10,
+      "wall_seconds": 1.0062079830000243,
+      "phases": {
+        "D_review": {
+          "count": 20,
+          "mean_s": 0.00012328754999373358,
+          "p95_s": 0.0001519533500157877,
+          "max_s": 0.00016271399999823188
+        },
+        "construct": {
+          "count": 1,
+          "mean_s": 0.5809633910000116,
+          "p95_s": 0.5809633910000116,
+          "max_s": 0.5809633910000116
+        },
+        "full_cycle": {
+          "count": 10,
+          "mean_s": 0.029739092499994513,
+          "p95_s": 0.04948203814998631,
+          "max_s": 0.06847936100001561
+        },
+        "policy_predict": {
+          "count": 10,
+          "mean_s": 4.892499998732092e-06,
+          "p95_s": 5.783999984032562e-06,
+          "max_s": 5.918999988807627e-06
+        },
+        "policy_reset": {
+          "count": 1,
+          "mean_s": 4.909999802293896e-07,
+          "p95_s": 4.909999802293896e-07,
+          "max_s": 4.909999802293896e-07
+        },
+        "reset": {
+          "count": 1,
+          "mean_s": 0.00017884899995124215,
+          "p95_s": 0.00017884899995124215,
+          "max_s": 0.00017884899995124215
+        },
+        "step": {
+          "count": 10,
+          "mean_s": 0.014034199700006411,
+          "p95_s": 0.034663309349997416,
+          "max_s": 0.05447169600000734
+        }
+      },
+      "R03_runtime_enabled": false,
+      "expected_outcome_met": true
+    },
+    {
+      "case": "mab_midpoint",
+      "status": "failed",
+      "reason": "environment_error",
+      "step_calls": 1,
+      "successful_steps": 0,
+      "wall_seconds": 0.6764744339999993,
+      "phases": {
+        "D_review": {
+          "count": 2,
+          "mean_s": 0.00012384100003259846,
+          "p95_s": 0.00012642310001922396,
+          "max_s": 0.0001267100000177379
+        },
+        "construct": {
+          "count": 1,
+          "mean_s": 0.5995935629999849,
+          "p95_s": 0.5995935629999849,
+          "max_s": 0.5995935629999849
+        },
+        "full_cycle": {
+          "count": 1,
+          "mean_s": 0.06678327500003434,
+          "p95_s": 0.06678327500003434,
+          "max_s": 0.06678327500003434
+        },
+        "policy_predict": {
+          "count": 1,
+          "mean_s": 0.00011404200000697529,
+          "p95_s": 0.00011404200000697529,
+          "max_s": 0.00011404200000697529
+        },
+        "policy_reset": {
+          "count": 1,
+          "mean_s": 8.509999815942138e-07,
+          "p95_s": 8.509999815942138e-07,
+          "max_s": 8.509999815942138e-07
+        },
+        "reset": {
+          "count": 1,
+          "mean_s": 0.00013772700003755745,
+          "p95_s": 0.00013772700003755745,
+          "max_s": 0.00013772700003755745
+        },
+        "step": {
+          "count": 1,
+          "mean_s": 0.05328495600002725,
+          "p95_s": 0.05328495600002725,
+          "max_s": 0.05328495600002725
+        }
+      },
+      "R03_runtime_enabled": false,
+      "expected_outcome_met": true
+    },
+    {
+      "case": "mab_PI_step",
+      "status": "succeeded",
+      "reason": null,
+      "step_calls": 3,
+      "successful_steps": 3,
+      "wall_seconds": 0.700360336000017,
+      "phases": {
+        "D_review": {
+          "count": 6,
+          "mean_s": 0.0001222450000094947,
+          "p95_s": 0.0001711089999929527,
+          "max_s": 0.00018876299998282775
+        },
+        "construct": {
+          "count": 1,
+          "mean_s": 0.5231055669999591,
+          "p95_s": 0.5231055669999591,
+          "max_s": 0.5231055669999591
+        },
+        "full_cycle": {
+          "count": 4,
+          "mean_s": 0.03498011599998563,
+          "p95_s": 0.06298271124997255,
+          "max_s": 0.067105827999967
+        },
+        "policy_predict": {
+          "count": 3,
+          "mean_s": 0.0003127493333370997,
+          "p95_s": 0.0004323743000099966,
+          "max_s": 0.00045286900001428876
+        },
+        "policy_reset": {
+          "count": 1,
+          "mean_s": 8.210000146391394e-07,
+          "p95_s": 8.210000146391394e-07,
+          "max_s": 8.210000146391394e-07
+        },
+        "reset": {
+          "count": 1,
+          "mean_s": 0.00019385100000590683,
+          "p95_s": 0.00019385100000590683,
+          "max_s": 0.00019385100000590683
+        },
+        "step": {
+          "count": 3,
+          "mean_s": 0.03065206799999487,
+          "p95_s": 0.048835096399989196,
+          "max_s": 0.05180311999998821
+        }
+      },
+      "R03_runtime_enabled": false,
+      "expected_outcome_met": true
+    },
+    {
+      "case": "mab_PI_noise",
+      "status": "succeeded",
+      "reason": null,
+      "step_calls": 3,
+      "successful_steps": 3,
+      "wall_seconds": 0.8257683340000312,
+      "phases": {
+        "D_review": {
+          "count": 6,
+          "mean_s": 0.00011052583331168837,
+          "p95_s": 0.00011956999996698414,
+          "max_s": 0.00012144299995497931
+        },
+        "construct": {
+          "count": 1,
+          "mean_s": 0.6077077610000288,
+          "p95_s": 0.6077077610000288,
+          "max_s": 0.6077077610000288
+        },
+        "full_cycle": {
+          "count": 4,
+          "mean_s": 0.03723482499999875,
+          "p95_s": 0.07257746114998438,
+          "max_s": 0.07915639499998406
+        },
+        "policy_predict": {
+          "count": 3,
+          "mean_s": 0.0003736806666552184,
+          "p95_s": 0.00042606099997328785,
+          "max_s": 0.0004341409999710777
+        },
+        "policy_reset": {
+          "count": 1,
+          "mean_s": 6.6100000140068e-07,
+          "p95_s": 6.6100000140068e-07,
+          "max_s": 6.6100000140068e-07
+        },
+        "reset": {
+          "count": 1,
+          "mean_s": 0.0002459990000147627,
+          "p95_s": 0.0002459990000147627,
+          "max_s": 0.0002459990000147627
+        },
+        "step": {
+          "count": 3,
+          "mean_s": 0.03401227499999019,
+          "p95_s": 0.06039274909996947,
+          "max_s": 0.06489667299996427
+        }
+      },
+      "R03_runtime_enabled": false,
+      "expected_outcome_met": true
+    },
+    {
+      "case": "mab_MPC_step",
+      "status": "succeeded",
+      "reason": null,
+      "step_calls": 3,
+      "successful_steps": 3,
+      "wall_seconds": 1.2483398459999648,
+      "phases": {
+        "D_review": {
+          "count": 6,
+          "mean_s": 0.0001107028333535709,
+          "p95_s": 0.00013918100003706968,
+          "max_s": 0.00014613900003723757
+        },
+        "construct": {
+          "count": 1,
+          "mean_s": 0.5897667989999604,
+          "p95_s": 0.5897667989999604,
+          "max_s": 0.5897667989999604
+        },
+        "full_cycle": {
+          "count": 4,
+          "mean_s": 0.042519183999999655,
+          "p95_s": 0.07540435640001418,
+          "max_s": 0.08088843500001985
+        },
+        "policy_predict": {
+          "count": 3,
+          "mean_s": 0.013856363333313007,
+          "p95_s": 0.017385847999975113,
+          "max_s": 0.017986835999977302
+        },
+        "policy_reset": {
+          "count": 1,
+          "mean_s": 0.45192844799998966,
+          "p95_s": 0.45192844799998966,
+          "max_s": 0.45192844799998966
+        },
+        "reset": {
+          "count": 1,
+          "mean_s": 0.0001385979999781739,
+          "p95_s": 0.0001385979999781739,
+          "max_s": 0.0001385979999781739
+        },
+        "step": {
+          "count": 3,
+          "mean_s": 0.02860798033333367,
+          "p95_s": 0.0464637416999949,
+          "max_s": 0.04957471599999508
+        }
+      },
+      "R03_runtime_enabled": false,
+      "expected_outcome_met": true
+    }
+  ],
+  "gateway": {
+    "success": true,
+    "checks": {
+      "one_step_after_out_of_order_components": true,
+      "missing_timeout_no_step": true,
+      "duplicate_no_step": true,
+      "D_rejection_no_step": true,
+      "stale_round_no_step": true,
+      "research_wrapper_not_training_approval": true,
+      "unknown_result_latches_no_replay": true
+    },
+    "real_step_calls": 3,
+    "complete_successful_transitions": 2,
+    "deliberately_lost_feedback_after_real_step": 1,
+    "C05_contract_confirmed": false,
+    "training_ready": false,
+    "R03_runtime_enabled": false
+  },
+  "worker_exit": {
+    "success": true,
+    "provider_exit_code": 23,
+    "missing_actor": "buffer",
+    "real_step_delta": 0,
+    "duplicate_finish_same_record": true,
+    "default_action_inserted": false,
+    "training_ready": false,
+    "scope": "local provider OS exit, real monotonic deadline, real initialized mAb; not distributed transport"
+  },
+  "B07_recorded_input_and_source_hashes_verified": true,
+  "new_simulator_step_calls": 0,
+  "model_training_performed": false,
+  "formal_blind_test_started": false,
+  "replay_counted_as_independent_samples": false,
+  "physical_health_labels_available": false,
+  "limitations": [
+    "file and trace integrity do not establish physical safety or independent field modalities",
+    "B05 post-step detector-only injection is not a biased-control closed loop",
+    "B07 small-sample timing excludes new D learned integration",
+    "new candidate and holdout joint freeze remain required"
+  ]
+}
