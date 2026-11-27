@@ -1,0 +1,204 @@
+{
+  "schema_version": "DMAbAcceptanceStats/1.0",
+  "arms": {
+    "baseline": {
+      "planned": 3,
+      "verified_started": 3,
+      "unknown_start": 0,
+      "not_started": 0,
+      "successes": 3,
+      "verified_started_failures": 0,
+      "success_over_verified_started": 1.0,
+      "wilson95_verified_started": [
+        0.4385029682449546,
+        1
+      ],
+      "success_over_planned": 1.0,
+      "wilson95_planned": [
+        0.4385029682449546,
+        1
+      ],
+      "conservative_started_rate": 1.0
+    },
+    "candidate": {
+      "planned": 3,
+      "verified_started": 3,
+      "unknown_start": 0,
+      "not_started": 0,
+      "successes": 3,
+      "verified_started_failures": 0,
+      "success_over_verified_started": 1.0,
+      "wilson95_verified_started": [
+        0.4385029682449546,
+        1
+      ],
+      "success_over_planned": 1.0,
+      "wilson95_planned": [
+        0.4385029682449546,
+        1
+      ],
+      "conservative_started_rate": 1.0
+    }
+  },
+  "by_condition": {
+    "nominal": {
+      "baseline": {
+        "planned": 1,
+        "verified_started": 1,
+        "unknown_start": 0,
+        "not_started": 0,
+        "successes": 1,
+        "verified_started_failures": 0,
+        "success_over_verified_started": 1.0,
+        "wilson95_verified_started": [
+          0.20654931437723745,
+          1
+        ],
+        "success_over_planned": 1.0,
+        "wilson95_planned": [
+          0.20654931437723745,
+          1
+        ],
+        "conservative_started_rate": 1.0
+      },
+      "candidate": {
+        "planned": 1,
+        "verified_started": 1,
+        "unknown_start": 0,
+        "not_started": 0,
+        "successes": 1,
+        "verified_started_failures": 0,
+        "success_over_verified_started": 1.0,
+        "wilson95_verified_started": [
+          0.20654931437723745,
+          1
+        ],
+        "success_over_planned": 1.0,
+        "wilson95_planned": [
+          0.20654931437723745,
+          1
+        ],
+        "conservative_started_rate": 1.0
+      }
+    },
+    "process_disturbance": {
+      "baseline": {
+        "planned": 1,
+        "verified_started": 1,
+        "unknown_start": 0,
+        "not_started": 0,
+        "successes": 1,
+        "verified_started_failures": 0,
+        "success_over_verified_started": 1.0,
+        "wilson95_verified_started": [
+          0.20654931437723745,
+          1
+        ],
+        "success_over_planned": 1.0,
+        "wilson95_planned": [
+          0.20654931437723745,
+          1
+        ],
+        "conservative_started_rate": 1.0
+      },
+      "candidate": {
+        "planned": 1,
+        "verified_started": 1,
+        "unknown_start": 0,
+        "not_started": 0,
+        "successes": 1,
+        "verified_started_failures": 0,
+        "success_over_verified_started": 1.0,
+        "wilson95_verified_started": [
+          0.20654931437723745,
+          1
+        ],
+        "success_over_planned": 1.0,
+        "wilson95_planned": [
+          0.20654931437723745,
+          1
+        ],
+        "conservative_started_rate": 1.0
+      }
+    },
+    "sensor_fault": {
+      "baseline": {
+        "planned": 1,
+        "verified_started": 1,
+        "unknown_start": 0,
+        "not_started": 0,
+        "successes": 1,
+        "verified_started_failures": 0,
+        "success_over_verified_started": 1.0,
+        "wilson95_verified_started": [
+          0.20654931437723745,
+          1
+        ],
+        "success_over_planned": 1.0,
+        "wilson95_planned": [
+          0.20654931437723745,
+          1
+        ],
+        "conservative_started_rate": 1.0
+      },
+      "candidate": {
+        "planned": 1,
+        "verified_started": 1,
+        "unknown_start": 0,
+        "not_started": 0,
+        "successes": 1,
+        "verified_started_failures": 0,
+        "success_over_verified_started": 1.0,
+        "wilson95_verified_started": [
+          0.20654931437723745,
+          1
+        ],
+        "success_over_planned": 1.0,
+        "wilson95_planned": [
+          0.20654931437723745,
+          1
+        ],
+        "conservative_started_rate": 1.0
+      }
+    }
+  },
+  "efficiency": {
+    "common_success": {
+      "point": {
+        "pairs": 3,
+        "baseline_mean_minutes": 240.0,
+        "candidate_mean_minutes": 180.0,
+        "improvement": 0.25
+      },
+      "bootstrap95": [
+        0.25,
+        0.25
+      ],
+      "valid_bootstrap_draws": 10000,
+      "degenerate_interval": true,
+      "penalty_is_actual_time": false
+    },
+    "all_planned_600min_sensitivity": {
+      "point": {
+        "pairs": 3,
+        "baseline_mean_minutes": 240.0,
+        "candidate_mean_minutes": 180.0,
+        "improvement": 0.25
+      },
+      "bootstrap95": [
+        0.25,
+        0.25
+      ],
+      "valid_bootstrap_draws": 10000,
+      "degenerate_interval": true,
+      "penalty_is_actual_time": false
+    }
+  },
+  "failure_details": [],
+  "resampling": "complete source-lineage clusters stratified by condition",
+  "seed": 251125,
+  "resamples": 10000,
+  "small_cluster_warning": true,
+  "physical_safety_certified": false,
+  "target_pass_automatically_claimed": false
+}

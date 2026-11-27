@@ -1,0 +1,219 @@
+{
+  "review_date": "2026-11-27",
+  "upstream_main": "3bcd21a6d6ff531a64ccef23a02fd5893370b8c0",
+  "D_source": "9f4d4411542d66312f127411e4402be14d04da27",
+  "integrated": {
+    "commit": "5b8278a05db6fb2521b0b60694da87459ac1fa5a",
+    "python": "3.12.14",
+    "profile": "full",
+    "public_simulation_only": true,
+    "blind_holdout_executed": false,
+    "passed": true,
+    "cases": [
+      {
+        "case": "contracts",
+        "args": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "l3_system/tests",
+          "-t",
+          "."
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.916,
+        "log": "contracts.log"
+      },
+      {
+        "case": "docs",
+        "args": [
+          "-m",
+          "experiments.check_docs"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.064,
+        "log": "docs.log"
+      },
+      {
+        "case": "atropine",
+        "args": [
+          "main.py",
+          "--cycles",
+          "3",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/atropine"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 2.521,
+        "log": "atropine.log"
+      },
+      {
+        "case": "atropine-reject",
+        "args": [
+          "main.py",
+          "--scenario",
+          "reject",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/atropine-reject"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.117,
+        "log": "atropine-reject.log"
+      },
+      {
+        "case": "atropine-suite",
+        "args": [
+          "-m",
+          "experiments.run_validation",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/atropine-suite"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 5.681,
+        "log": "atropine-suite.log"
+      },
+      {
+        "case": "console",
+        "args": [
+          "-m",
+          "experiments.verify_a_console",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/console"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 1.169,
+        "log": "console.log"
+      },
+      {
+        "case": "c08",
+        "args": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "deliverables/C08/tests"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.064,
+        "log": "c08.log"
+      },
+      {
+        "case": "c10",
+        "args": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "deliverables/C10/tests"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.165,
+        "log": "c10.log"
+      },
+      {
+        "case": "zmq",
+        "args": [
+          "main.py",
+          "--transport",
+          "zmq",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/zmq"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 3.327,
+        "log": "zmq.log"
+      },
+      {
+        "case": "lost-reply",
+        "args": [
+          "-m",
+          "deliverables.C10.live",
+          "--lost-reply",
+          "--out",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/lost-reply"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 4.33,
+        "log": "lost-reply.log"
+      },
+      {
+        "case": "owner-exit",
+        "args": [
+          "-m",
+          "deliverables.C10.live",
+          "--owner-exit",
+          "--out",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/owner-exit"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 3.033,
+        "log": "owner-exit.log"
+      },
+      {
+        "case": "mab-goal",
+        "args": [
+          "main.py",
+          "--environment",
+          "MAbEnvGym",
+          "--seed",
+          "26001",
+          "--max-steps",
+          "10",
+          "--goal-timeout",
+          "90",
+          "--goal-spec",
+          "configs/goals/mab_public_buffer_goal.json",
+          "--goal-registry",
+          "configs/goals/mab_public_buffer_registry.json",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/mab-goal"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 0.92,
+        "log": "mab-goal.log"
+      },
+      {
+        "case": "mab-receipts",
+        "args": [
+          "-m",
+          "experiments.verify_b_freeze_receipts",
+          "--output",
+          "/workspace/scratch/a99286b262bf/d27_runs/integrated/mab-receipts"
+        ],
+        "exit_code": 0,
+        "wall_seconds": 2.521,
+        "log": "mab-receipts.log"
+      }
+    ]
+  },
+  "D_suites": {
+    "D01": {
+      "tests_discovered": 278,
+      "outcome": "OK",
+      "skipped": 0
+    },
+    "D04": {
+      "tests_discovered": 41,
+      "outcome": "OK",
+      "skipped": 0
+    },
+    "D05": {
+      "tests_discovered": 16,
+      "outcome": "OK",
+      "skipped": 0
+    },
+    "D06": {
+      "tests_discovered": 9,
+      "outcome": "OK",
+      "skipped": 0
+    },
+    "D07": {
+      "tests_discovered": 14,
+      "outcome": "OK",
+      "skipped": 0
+    }
+  },
+  "formal_blind_test": false,
+  "independent_operator_signature": null
+}

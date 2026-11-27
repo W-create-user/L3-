@@ -1,0 +1,10 @@
+{
+  "checks": {
+    "D_refusal_zero_step_no_observer_update": true,
+    "unknown_execution_latches_candidate": true,
+    "no_candidate_retry_after_unknown": true
+  },
+  "success": true,
+  "real_step_calls": 1,
+  "scope": "development fault injection, one actual step intentionally lacks controller receipt"
+}

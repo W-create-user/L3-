@@ -1,0 +1,166 @@
+{
+  "schema_version": "DB05Evaluation/1.0",
+  "models": {
+    "AtropineEnvGym": {
+      "path": "AtropineEnvGym.model.json",
+      "sha256": "4a6e8b7b0a8fe35b93ee8f50a765300469f980a0e3825b82f7240d4cb2e20854",
+      "threshold": 0.36480769207806907
+    },
+    "MAbEnvGym": {
+      "path": "MAbEnvGym.model.json",
+      "sha256": "b7a3bafc40adfacd3ea941ab248c2aec79a8785e0f11b8f6ce83be79752d2b42",
+      "threshold": 1.778957390103137
+    }
+  },
+  "results": {
+    "AtropineEnvGym": {
+      "test_source_episodes": 8,
+      "finite_window_counts": {
+        "TP": 39,
+        "FP": 13,
+        "FN": 5,
+        "TN": 139
+      },
+      "missing_windows_blocked": 20,
+      "all_planned_windows": 216,
+      "finite_recall": 0.8863636363636364,
+      "finite_fpr": 0.08552631578947369,
+      "numerical_criteria_met": false,
+      "per_episode": [
+        {
+          "episode_id": "b05_22001",
+          "windows": 27,
+          "unavailable": 0,
+          "alarms": 2,
+          "has_injected_fault": false
+        },
+        {
+          "episode_id": "b05_22002",
+          "windows": 27,
+          "unavailable": 0,
+          "alarms": 4,
+          "has_injected_fault": false
+        },
+        {
+          "episode_id": "b05_22003",
+          "windows": 27,
+          "unavailable": 0,
+          "alarms": 9,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_22004",
+          "windows": 27,
+          "unavailable": 0,
+          "alarms": 15,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_22005",
+          "windows": 27,
+          "unavailable": 0,
+          "alarms": 7,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_22006",
+          "windows": 27,
+          "unavailable": 0,
+          "alarms": 14,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_22007",
+          "windows": 27,
+          "unavailable": 9,
+          "alarms": 1,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_22008",
+          "windows": 27,
+          "unavailable": 11,
+          "alarms": 0,
+          "has_injected_fault": true
+        }
+      ],
+      "deployment_authorized": false
+    },
+    "MAbEnvGym": {
+      "test_source_episodes": 8,
+      "finite_window_counts": {
+        "TP": 22,
+        "FP": 2,
+        "FN": 0,
+        "TN": 24
+      },
+      "missing_windows_blocked": 8,
+      "all_planned_windows": 56,
+      "finite_recall": 1.0,
+      "finite_fpr": 0.07692307692307693,
+      "numerical_criteria_met": false,
+      "per_episode": [
+        {
+          "episode_id": "b05_25001",
+          "windows": 7,
+          "unavailable": 0,
+          "alarms": 0,
+          "has_injected_fault": false
+        },
+        {
+          "episode_id": "b05_25002",
+          "windows": 7,
+          "unavailable": 0,
+          "alarms": 0,
+          "has_injected_fault": false
+        },
+        {
+          "episode_id": "b05_25003",
+          "windows": 7,
+          "unavailable": 0,
+          "alarms": 5,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_25004",
+          "windows": 7,
+          "unavailable": 0,
+          "alarms": 5,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_25005",
+          "windows": 7,
+          "unavailable": 0,
+          "alarms": 7,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_25006",
+          "windows": 7,
+          "unavailable": 0,
+          "alarms": 6,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_25007",
+          "windows": 7,
+          "unavailable": 4,
+          "alarms": 0,
+          "has_injected_fault": true
+        },
+        {
+          "episode_id": "b05_25008",
+          "windows": 7,
+          "unavailable": 4,
+          "alarms": 1,
+          "has_injected_fault": true
+        }
+      ],
+      "deployment_authorized": false
+    }
+  },
+  "test_used_to_tune": false,
+  "physical_safety_certified": false,
+  "formal_blind_test": false
+}
