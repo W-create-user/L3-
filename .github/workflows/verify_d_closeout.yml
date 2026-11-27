@@ -1,0 +1,23 @@
+name: D sensor models and acceptance statistics
+on:
+  pull_request:
+    paths:
+      - 'l3_system/monitoring/b05_*.py'
+      - 'l3_system/monitoring/inference_service.py'
+      - 'l3_system/monitoring/buffer_observer.py'
+      - 'l3_system/monitoring/mab_acceptance_stats.py'
+      - 'deliverables/D05/**'
+      - 'deliverables/D07/tests/test_acceptance_stats.py'
+      - '.github/workflows/verify_d_closeout.yml'
+  workflow_dispatch:
+jobs:
+  verify-d-closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy==1.26.4 scikit-learn==1.8.0
+      - run: python -B -m unittest discover -s deliverables/D05/tests -v
+      - run: python -B -m unittest discover -s deliverables/D07/tests -p test_acceptance_stats.py -v

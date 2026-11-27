@@ -1,0 +1,16 @@
+{
+  "models": {
+    "AtropineEnvGym": {
+      "path": "AtropineEnvGym.model.json",
+      "sha256": "92b0eb734143d2fb130cf586336040e9e1ec22c22f4b34d2cc812ae10913fca1",
+      "threshold": 0.5
+    },
+    "MAbEnvGym": {
+      "path": "MAbEnvGym.model.json",
+      "sha256": "a8deb16bb87a2d86e1245bf04b98efc4d21c4ce6506b66b31e0e4d85cbc6403c",
+      "threshold": 0.5
+    }
+  },
+  "plan_sha256": "d222a2250eaf03b3e15ad202d767587f7ea275354de96191c655b333eb4c55a7",
+  "before_test_predictions": true
+}
