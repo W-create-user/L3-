@@ -58,7 +58,8 @@ class WorkerRegistry:
                 continue
             bid = {"task_id": task["task_id"], "agent_id": worker.worker_id,
                    "estimated_cost": base_cost * worker.cost_factor,
-                   "capability_match": 1.0, "load": worker.load}
+                   "capability_match": 1.0, "load": worker.load,
+                   "issued_at": now, "expires_at": worker.heartbeat + self.heartbeat_timeout}
             if task.get("subtask_id") is not None:
                 bid["subtask_id"] = task["subtask_id"]
             bids.append(bid)

@@ -29,12 +29,25 @@ class LeasedScheduler(SchedulingAgent):
         self.retryable = set()
         self.receipts = {}
 
+    @staticmethod
+    def validate_bid_times(bids, now):
+        for bid in bids:
+            if "issued_at" not in bid and "expires_at" not in bid:
+                continue  # Legacy local callers submit bids synchronously.
+            issued, expires = bid.get("issued_at"), bid.get("expires_at")
+            if (type(issued) not in (int, float) or type(expires) not in (int, float)
+                    or not math.isfinite(issued) or not math.isfinite(expires)
+                    or not issued <= now < expires):
+                raise CNPError("Invalid, future or expired bid")
+
     def schedule(self, task, bids, *, now, lease_duration):
         deadline = now + lease_duration
         if not math.isfinite(now) or not math.isfinite(deadline) or deadline <= now:
             raise CNPError("Lease duration and clock must produce a finite future deadline")
         # Validate even bids that would subsequently be excluded by resource state.
-        self.cnp.collect_bids(task, bids := list(bids))
+        bids = list(bids)
+        self.cnp.collect_bids(task, bids)
+        self.validate_bid_times(bids, now)
         result = super().schedule(task, bids)
         if result["assignment_status"] == "awarded":
             key = self._key(task)

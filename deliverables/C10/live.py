@@ -5,7 +5,7 @@ from contextlib import ExitStack
 import json
 import multiprocessing as mp
 from pathlib import Path
-from time import monotonic
+from time import monotonic, sleep
 from types import SimpleNamespace
 from uuid import uuid4
 
@@ -18,6 +18,7 @@ from l3_system.runtime import MultiAgentSystem
 from deliverables.C10.learning_adapter import TrainingFixtureAdapter, frozen_policy
 from l3_system.scheduling.transport import TransportError, ZmqEndpoint
 from l3_system.agents.scheduling_agent import SchedulingAgent
+from l3_system.scheduling.leased_scheduler import LeasedScheduler
 
 METHODS = {
     "B": {"reset", "get_observation", "prepare_action", "execute_action",
@@ -25,7 +26,7 @@ METHODS = {
     "D": {"check_request", "check_observation", "get_logs"},
     "C": {"register_tasks", "ready_tasks", "schedule", "assignment_for_execution",
           "update_feedback", "get_active_assignment", "get_task_status",
-          "get_assignment_history", "block"},
+          "get_assignment_history", "block", "record_unknown", "reconcile_executed"},
 }
 STEP_METHODS = {"execute_action", "reject_action_request"}
 
@@ -36,8 +37,10 @@ class SchedulingService(SchedulingAgent):
     def __init__(self, lease_seconds):
         super().__init__()
         self.lease_seconds = lease_seconds
+        self.unknown_requests = {}
 
     def schedule(self, task, bids):
+        LeasedScheduler.validate_bid_times(bids, monotonic())
         result = super().schedule(task, bids)
         key = self._key(task)
         if result["assignment_status"] == "awarded":
@@ -60,11 +63,36 @@ class SchedulingService(SchedulingAgent):
         current = self.get_assignment(feedback["task_id"], feedback.get("subtask_id"))
         if (None if current is None else current["assignment_id"]) != assignment_id:
             raise ValueError("Feedback has the wrong assignment_id")
+        if assignment_id in self.unknown_requests:
+            raise RuntimeError("Execution result unknown; reconciliation required")
         if current is not None and self.get_active_assignment(
                 feedback["task_id"], feedback.get("subtask_id")) is not None:
             if monotonic() >= current["lease_deadline"]:
                 raise TimeoutError("Expired active lease requires reconciliation")
         return super().update_feedback(feedback)
+
+    def record_unknown(self, feedback, assignment_id, request_id):
+        active = self.get_active_assignment(feedback["task_id"], feedback["subtask_id"])
+        if not active or active["assignment_id"] != assignment_id or not request_id:
+            raise ValueError("Uncertain execution must match an active assignment")
+        previous = self.unknown_requests.setdefault(assignment_id, request_id)
+        if previous != request_id:
+            raise ValueError("Conflicting unknown request identity")
+        raise RuntimeError("Execution result unknown; reconciliation required")
+
+    def reconcile_executed(self, assignment, receipt):
+        active = self.get_active_assignment(assignment["task_id"], assignment["subtask_id"])
+        request_id = self.unknown_requests.get(assignment["assignment_id"])
+        if (active != assignment or request_id is None or receipt.get("request_id") != request_id
+                or receipt.get("task_id") != assignment["task_id"]
+                or receipt.get("subtask_id") != assignment["subtask_id"]
+                or receipt.get("executed") is not True or receipt.get("success") is not True):
+            raise ValueError("Owner receipt does not resolve the active assignment")
+        result = super().update_feedback({"task_id": assignment["task_id"],
+                                         "subtask_id": assignment["subtask_id"],
+                                         "execution_status": "completed"})
+        del self.unknown_requests[assignment["assignment_id"]]
+        return result
 
     def block(self, task_key):
         if self.tasks[task_key]["status"] != "pending":
@@ -103,6 +131,7 @@ def _serve(role, ready, options):
         ready.send(channel.address)
         ready.close()
         receipts = {}
+        drop_next = options.get("drop_first_step_reply", False)
         while True:
             request = channel.receive()
             identity = request["correlation_id"]
@@ -127,6 +156,10 @@ def _serve(role, ready, options):
                 elif operation == "spaces" and role == "B":
                     value = {"action": _space(adapter.action_space),
                              "observation": _space(adapter.observation_space)}
+                elif operation == "lookup_execution_receipt" and role == "B":
+                    request_id, = request["args"]
+                    cached = receipts.get(f"execute:{request_id}")
+                    value = cached[1].get("value") if cached else None
                 elif operation == "state" and role == "B":
                     value = {k: getattr(adapter, k) for k in
                              ("step_calls", "state_version", "step_count", "done")}
@@ -145,6 +178,10 @@ def _serve(role, ready, options):
                 response["error"] = f"{type(error).__name__}: {error}"
             if role == "B" and operation in STEP_METHODS:
                 receipts[identity] = (request, response)
+            if drop_next and operation == "execute_action" and (response.get("value") or {}).get("executed"):
+                drop_next = False
+                # Reply after A's receive deadline. B's completed result stays in its ledger.
+                sleep(options["reply_delay_seconds"])
             channel.send(response)
 
 
@@ -260,8 +297,9 @@ class Tasks:
 
 
 class SchedulingProxy(RoleProxy):
-    def __init__(self, remote):
+    def __init__(self, remote, execution):
         super().__init__(remote)
+        self.execution = execution
         self.tasks = Tasks(self)
         self.current_ids = {}
 
@@ -272,14 +310,57 @@ class SchedulingProxy(RoleProxy):
 
     def update_feedback(self, feedback):
         key = (feedback["task_id"], feedback.get("subtask_id"))
-        return self.remote.call("update_feedback", feedback, self.current_ids.get(key))
+        assignment_id = self.current_ids.get(key)
+        if feedback.get("failure_reason") == "execution_result_unknown":
+            request, _ = getattr(self.execution, "last_args", (None, None))
+            if request is None or (request["task_id"], request["subtask_id"]) != key:
+                raise RuntimeError("Execution result unknown without matching request; keep lock")
+            return self.remote.call("record_unknown", feedback, assignment_id, request["request_id"])
+        return self.remote.call("update_feedback", feedback, assignment_id)
 
     @property
     def active_agent_tasks(self):
         return self.remote.call("locks")
 
 
-def run(out, *, seed, timeout_ms, backend):
+def verify_lost_reply(system, execution, scheduler, goal, generator):
+    try:
+        system.run_cycle(goal, action_generator=generator)
+    except RuntimeError as error:
+        assert "reconciliation required" in str(error)
+    else:
+        raise AssertionError("Missing execution reply did not trigger takeover")
+    assert system.state == "takeover_requested"
+    request, _ = execution.last_args
+    assignment = scheduler.get_active_assignment(request["task_id"], request["subtask_id"])
+    assert assignment and scheduler.active_agent_tasks
+    try:
+        system.resume(operator="c-acceptance", reason="premature resume probe")
+    except RuntimeError as error:
+        assert "Outstanding assignments" in str(error)
+    else:
+        raise AssertionError("Unresolved assignment allowed resume")
+    receipt = execution.remote.call("lookup_execution_receipt", request["request_id"])
+    current = execution.remote.call("state")
+    assert receipt["step_calls"] == current["step_calls"] == 1
+    assert receipt["state_version"] == current["state_version"] and not current["pending"]
+    try:
+        scheduler.remote.call("reconcile_executed", assignment,
+                              {**receipt, "request_id": "older-request"})
+    except RuntimeError as error:
+        assert "does not resolve" in str(error)
+    else:
+        raise AssertionError("Out-of-order receipt released the current lock")
+    assert scheduler.active_agent_tasks
+    scheduler.remote.call("reconcile_executed", assignment, receipt)
+    assert not scheduler.active_agent_tasks and execution.adapter.step_calls == 1
+    system.resume(operator="c-acceptance", reason="B cached result confirmed without replay")
+    return {"step_calls": 1, "takeover": True, "premature_resume_blocked": True,
+            "out_of_order_receipt_rejected": True, "reconciled_without_replay": True,
+            "request_id": request["request_id"], "assignment_id": assignment["assignment_id"]}
+
+
+def run(out, *, seed, timeout_ms, backend, lost_reply=False):
     out.mkdir(parents=True, exist_ok=False)
     trace = []
     runs = {"backend": backend, "seed": seed, "rpc_timeout_ms": timeout_ms}
@@ -295,20 +376,25 @@ def run(out, *, seed, timeout_ms, backend):
 
         d_path = out / "D_reviews.json"
         try:
-            execution = ExecutionProxy(start("B", backend=backend, max_steps=12, b_log=str(out / "B_events.jsonl")))
+            execution = ExecutionProxy(start(
+                "B", backend=backend, max_steps=12, b_log=str(out / "B_events.jsonl"),
+                drop_first_step_reply=lost_reply, reply_delay_seconds=1.5 * timeout_ms / 1000))
             spaces = execution.remote.call("spaces")
             execution.adapter = AdapterProxy(execution.remote, spaces)
             monitor = RoleProxy(start("D", **spaces))
-            scheduler = SchedulingProxy(start("C", lease_seconds=10))
+            scheduler = SchedulingProxy(start("C", lease_seconds=10), execution)
             system = MultiAgentSystem(executor=execution, monitor=monitor,
                                       scheduler=scheduler, event_path=out / "A_events.jsonl")
             execution.reset(seed=seed)
+            if lost_reply:
+                runs["lost_execution_reply"] = verify_lost_reply(system, execution, scheduler, goal, generator)
             runs["normal"] = system.run_cycle(goal, action_generator=generator)["summary"]
+            baseline = 1 if lost_reply else 0
             assert runs["normal"]["step_delta"] == 1 and runs["normal"]["run_status"] == "completed"
             result = execution.last_dispatch
             request, review = execution.last_args
             replay = execution.execute_action(request, review)
-            assert replay == result and execution.adapter.step_calls == 1
+            assert replay == result and execution.adapter.step_calls == baseline + 1
             try:
                 execution.remote.call("execute_action", request, {**review, "decision": "reject"},
                                       correlation_id=f'execute:{request["request_id"]}')
@@ -316,8 +402,8 @@ def run(out, *, seed, timeout_ms, backend):
                 assert "Conflicting" in str(error)
             else:
                 raise AssertionError("Conflicting execution replay accepted")
-            assert execution.adapter.step_calls == 1
-            runs["replay"] = {"identical_cached": True, "conflict_rejected": True, "step_calls": 1}
+            assert execution.adapter.step_calls == baseline + 1
+            runs["replay"] = {"identical_cached": True, "conflict_rejected": True, "step_calls": baseline + 1}
 
             scheduler.remote.close()
             assert not scheduler.remote.process.is_alive()
@@ -330,7 +416,7 @@ def run(out, *, seed, timeout_ms, backend):
             try:
                 system.run_cycle(goal, action_generator=generator)
             except RuntimeError:
-                assert execution.adapter.step_calls == 1
+                assert execution.adapter.step_calls == baseline + 1
             else:
                 raise AssertionError("Paused system accepted another cycle")
             runs["process_exit"] = {"state": system.state, "step_calls": execution.adapter.step_calls,
@@ -339,12 +425,12 @@ def run(out, *, seed, timeout_ms, backend):
             assert scheduler.remote.call("heartbeat")
             runs["resume"] = system.resume(operator="c-acceptance", reason="C is responsive; B did not step")
             runs["recovered"] = system.run_cycle(goal, action_generator=generator)["summary"]
-            assert runs["recovered"]["step_calls"] == 2
+            assert runs["recovered"]["step_calls"] == baseline + 2
             assert runs["recovered"]["all_C_locks_released"]
             runs["rejected"] = system.run_cycle(
                 goal, action_generator=lambda _, space, __: space.high + 1)["summary"]
             assert runs["rejected"]["failure_reason"] == "safety_rejected"
-            assert runs["rejected"]["step_calls"] == 2
+            assert runs["rejected"]["step_calls"] == baseline + 2
             assert runs["rejected"]["all_C_locks_released"]
             d_path.write_text(json.dumps(monitor.get_logs(), ensure_ascii=False, indent=2), encoding="utf-8")
         finally:
@@ -359,5 +445,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=1101)
     parser.add_argument("--timeout-ms", type=int, default=750)
     parser.add_argument("--backend", choices=("atropine", "learning-fixture"), default="atropine")
+    parser.add_argument("--lost-reply", action="store_true")
     args = parser.parse_args()
-    run(args.out, seed=args.seed, timeout_ms=args.timeout_ms, backend=args.backend)
+    run(args.out, seed=args.seed, timeout_ms=args.timeout_ms, backend=args.backend,
+        lost_reply=args.lost_reply)

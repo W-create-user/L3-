@@ -31,6 +31,17 @@ class TestDynamicBidding(unittest.TestCase):
         with self.assertRaises(CNPError):
             registry.register(registry.workers["r1"])
 
+    def test_individual_bid_expiration_and_future_issuance(self):
+        scheduler = LeasedScheduler()
+        timed = {**bid("r1"), "issued_at": 1, "expires_at": 3}
+        for expired in (timed, {**timed, "issued_at": 4, "expires_at": 6},
+                        {**timed, "expires_at": float("nan")}):
+            with self.assertRaisesRegex(CNPError, "expired bid"):
+                scheduler.schedule(task(), [expired], now=3, lease_duration=2)
+        self.assertEqual(scheduler.active_agent_tasks, {})
+        award = scheduler.schedule(task(), [timed], now=2, lease_duration=2)
+        self.assertEqual(award["winner_id"], "r1")
+
     def test_no_bids_and_invalid_candidates(self):
         scheduler = LeasedScheduler()
         self.assertEqual(scheduler.schedule(task(), [], now=0, lease_duration=2)["reason"],
