@@ -1,0 +1,47 @@
+{
+  "revision": "49930e9764088d61072ff0eb9f9430fbad989078",
+  "python": "3.12.14",
+  "scope": "public C simulation",
+  "checks": {
+    "main-tests": "passed",
+    "scheduling-tests": "passed",
+    "wire-tests": "passed",
+    "local-communication": "passed",
+    "local-atropine": "passed",
+    "paired-scheduling": "passed",
+    "train-candidates": "passed",
+    "atropine-delayed": "passed",
+    "atropine-owner-exit": "passed",
+    "learning-gated": "passed"
+  },
+  "status": "passed",
+  "local_atropine_cases": 10,
+  "scheduling": {
+    "jobs": 1260,
+    "completed": 1260,
+    "overlapping_awards": 0,
+    "old_feedback_rejected": 11
+  },
+  "learning": {
+    "candidates": 6,
+    "evaluation_mean": {
+      "fixed_zero": -2.8062640185561833,
+      "single_shared_p": -0.42483416261487733,
+      "maddpg": -0.7965012677659823
+    },
+    "rebuilt_weight_sha256": "577f457e0fb252916264c0bb674569854a7782e026489afb201d97a868bde602",
+    "archived_weight_sha256": "577f457e0fb252916264c0bb674569854a7782e026489afb201d97a868bde602"
+  },
+  "communication": {
+    "delayed_reply_reconciled": true,
+    "owner_exit_left_locked": true,
+    "learning_fixture_gate_passed": true
+  },
+  "tested_git_tree": "b659e9ea60779813a56dd5d9de2f48a95ef432ae",
+  "same_tree_github_commit": "f9239bfec413a22c7afa1cd7609ee3279fe6d23d",
+  "test_count": {
+    "main": 181,
+    "scheduling": 9,
+    "wire": 2
+  }
+}
