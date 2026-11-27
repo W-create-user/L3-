@@ -31,6 +31,19 @@ class TestDynamicBidding(unittest.TestCase):
         with self.assertRaises(CNPError):
             registry.register(registry.workers["r1"])
 
+    def test_worker_unavailability_changes_candidate(self):
+        registry = WorkerRegistry(3)
+        for name in ("r1", "r2"):
+            registry.register(Worker(name, frozenset({"regular"}), frozenset({"sim"}), 1, 0))
+
+        def choose():
+            bids = registry.bids(task(), now=1, environment="sim", base_cost=2, occupied=())
+            return LeasedScheduler().schedule(task(), bids, now=1, lease_duration=3)["winner_id"]
+
+        self.assertEqual(choose(), "r1")
+        registry.update(registry.workers["r1"], heartbeat=1, load=0, available=False)
+        self.assertEqual(choose(), "r2")
+
     def test_individual_bid_expiration_and_future_issuance(self):
         scheduler = LeasedScheduler()
         timed = {**bid("r1"), "issued_at": 1, "expires_at": 3}

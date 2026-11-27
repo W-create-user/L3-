@@ -32,3 +32,16 @@ python -m deliverables.C10.live --lost-reply --out /tmp/l3-c-lost-reply
 C 已完成公开仿真范围的技术核验。A08-MAB-03 团队候选清单的正式运行 SHA 仍为空，正式启动仍关闭。B 的 mAb 联合动作 wrapper 只允许研究诊断，D26 审核配置仅供开发验证。团队正式版本与核签由 A 组织，B 确认训练环境和转移合同，D 确认正式审核版本和评估权限。C 可在同一冻结版完成复验与回签。正式保留组未访问或运行。
 
 [A 联合冻结候选](../../configs/research/a08_mab_joint_freeze_candidate_20261126.json) · [B 固定候选](https://github.com/W-create-user/L3-/commit/68831ef9e06440a1066e9d18bfb3955e1ac3006f) · [D 开发审核候选](https://github.com/W-create-user/L3-/commit/9f4d4411542d66312f127411e4402be14d04da27)
+
+## 公开验收一键复跑
+
+Linux 或 WSL 需能找到 libzmq。进入仓库根目录，使用 Python 3.12 和仓库交付中锁定的依赖。输出目录须为新路径。程序按顺序运行主链与 C 专项测试、10 个本地真实 Atropine 场景、90 次配对调度、6 个合成 MADDPG 候选及三个四进程场景。它会比对调度逐行指标、训练配置、验证选权及评估回报，并核查 D 拒绝、超时对账和 B 退出时的步进次数。子步骤失败时命令返回非零并保留已生成的日志。
+
+```bash
+python3.12 -m venv .venv-c
+source .venv-c/bin/activate
+python -m pip install -r evidence/c_20261127_integration/python-dependencies.txt
+python -m deliverables.C10.acceptance --out /tmp/l3-c-acceptance
+```
+
+汇总为输出目录中的 `acceptance.json`。训练权重会重新生成，逐项回报允许绝对误差 1e-9，实际推理仍使用已归档并校验哈希的权重。汇总中 `public C simulation` 对应 C 的公开验收范围。正式 mAb 运行版本、门控和团队签字见上文。
