@@ -1,0 +1,19 @@
+test_failure_and_missing_receipt_stay_in_plan (test_acceptance_stats.StatsTests.test_failure_and_missing_receipt_stay_in_plan) ... ok
+test_ratio_of_means_not_average_of_ratios (test_acceptance_stats.StatsTests.test_ratio_of_means_not_average_of_ratios) ... ok
+test_success_after_deadline_is_rejected (test_acceptance_stats.StatsTests.test_success_after_deadline_is_rejected) ... ok
+test_wall_timeout_or_missing_time_cannot_claim_success (test_acceptance_stats.StatsTests.test_wall_timeout_or_missing_time_cannot_claim_success) ... ok
+test_exact_counts_and_zero_improvement_without_production_claim (test_mab_audit.MAbAuditTests.test_exact_counts_and_zero_improvement_without_production_claim) ... ok
+test_failure_remains_in_started_denominator (test_mab_audit.MAbAuditTests.test_failure_remains_in_started_denominator) ... ok
+test_initial_state_mismatch_is_rejected (test_mab_audit.MAbAuditTests.test_initial_state_mismatch_is_rejected) ... ok
+test_missing_run_is_rejected (test_mab_audit.MAbAuditTests.test_missing_run_is_rejected) ... ok
+test_out_of_bounds_action_and_version_gap_are_rejected (test_mab_audit.MAbAuditTests.test_out_of_bounds_action_and_version_gap_are_rejected) ... ok
+test_raw_state_violation_cannot_be_hidden_by_success_label (test_mab_audit.MAbAuditTests.test_raw_state_violation_cannot_be_hidden_by_success_label) ... ok
+test_duplicate_seeds_and_implicit_order_are_rejected (test_readiness.ReadinessTests.test_duplicate_seeds_and_implicit_order_are_rejected) ... ok
+test_existing_engineering_goal_is_hashed_but_not_production_acceptance (test_readiness.ReadinessTests.test_existing_engineering_goal_is_hashed_but_not_production_acceptance) ... ok
+test_missing_and_outside_references_block (test_readiness.ReadinessTests.test_missing_and_outside_references_block) ... ok
+test_pairing_and_random_order_reproduce_without_launch (test_readiness.ReadinessTests.test_pairing_and_random_order_reproduce_without_launch) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.457s
+
+OK

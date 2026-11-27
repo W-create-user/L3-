@@ -1,0 +1,38 @@
+{
+  "schema_version": "DBudgetVerification/1.0",
+  "performance": {
+    "AtropineEnvGym": {
+      "model_worker_startup_seconds": 0.8358868410000468,
+      "hot_calls": 100,
+      "mean_s": 0.004569433479987311,
+      "p95_s": 0.006743556050037113,
+      "max_s": 0.012582244999975956,
+      "deadline_seconds": 0.5,
+      "deadline_overruns": 0,
+      "scope": "archived training window repeated, IPC plus numeric model; no B execution, no distributed network",
+      "duplicate_blocked": true,
+      "expired_blocked": true,
+      "stale_blocked": true
+    },
+    "MAbEnvGym": {
+      "model_worker_startup_seconds": 0.7451561170000787,
+      "hot_calls": 100,
+      "mean_s": 0.007944958609991773,
+      "p95_s": 0.01085773820018403,
+      "max_s": 0.01748580999992555,
+      "deadline_seconds": 0.5,
+      "deadline_overruns": 0,
+      "scope": "archived training window repeated, IPC plus numeric model; no B execution, no distributed network",
+      "duplicate_blocked": true,
+      "expired_blocked": true,
+      "stale_blocked": true
+    }
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "host": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "new_simulator_steps": 0,
+  "missing_windows_planned": 56,
+  "missing_windows_blocked": 56,
+  "joint_budget_approved": false,
+  "formal_blind_started": false
+}
