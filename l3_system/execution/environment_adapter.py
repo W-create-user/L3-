@@ -7,8 +7,11 @@ import os
 from pathlib import Path
 import sys
 import threading
+from uuid import uuid4
 
 import numpy as np
+
+from .base_adapter import ActionCoordinates
 
 
 def legacy_termination_flags(done, info):
@@ -59,6 +62,7 @@ class EnvironmentAdapter:
         self._done = False
         self._version = 0
         self._step_calls = 0
+        self._episode_id = None
         self.source_dir = str(source)
         try:
             self._env = AtropineEnvGym(
@@ -71,6 +75,23 @@ class EnvironmentAdapter:
         except Exception:
             self.close()
             raise
+
+    @property
+    def metadata(self):
+        return {'environment': 'SMPL.AtropineEnvGym', 'environment_id': 'AtropineEnvGym',
+                'normalize': False, 'uss_subtracted': True, 'action_coordinate': 'delta_from_USS',
+                'observation_coordinate': 'model_observation_normalize_false',
+                'sampling_period': {'value': 10, 'unit': 'min'},
+                'observation_flags': {key: bool(getattr(self._env, 'observation_include_' + key))
+                                      for key in ['t','action','uss','ess','e','kf','z','x']},
+                'physical_process_safety_verified': False, 'episode_id': self._episode_id,
+                'adapter_schema_version': 'B03/1.0'}
+
+    @property
+    def action_coordinates(self):
+        from smpl.envs.helpers.constants import USS
+        return ActionCoordinates(self.action_space.low, self.action_space.high,
+                                 np.ones(self.action_space.shape), USS)
 
     @property
     def observation_space(self):
@@ -105,6 +126,7 @@ class EnvironmentAdapter:
         self._ready = False
         self._observation = None
         self._version += 1  # invalidate all requests created before any reset
+        self._episode_id = str(uuid4())
         np.random.seed(seed)
         observation = np.asarray(self._env.reset())
         if (observation.shape != self.observation_space.shape
