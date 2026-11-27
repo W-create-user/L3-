@@ -1,0 +1,207 @@
+{
+  "scope": "Integrated public simulation only",
+  "environment": {
+    "python": "3.12.14",
+    "os": "Linux",
+    "holdout_executed": false
+  },
+  "release_cases": {
+    "contracts": {
+      "exit_code": 0,
+      "wall_seconds": 0.767
+    },
+    "docs": {
+      "exit_code": 0,
+      "wall_seconds": 0.066
+    },
+    "atropine": {
+      "exit_code": 0,
+      "wall_seconds": 1.418
+    },
+    "atropine-reject": {
+      "exit_code": 0,
+      "wall_seconds": 1.369
+    },
+    "atropine-suite": {
+      "exit_code": 0,
+      "wall_seconds": 5.882
+    },
+    "console": {
+      "exit_code": 0,
+      "wall_seconds": 1.318
+    },
+    "c08": {
+      "exit_code": 0,
+      "wall_seconds": 0.064
+    },
+    "c10": {
+      "exit_code": 0,
+      "wall_seconds": 0.165
+    },
+    "zmq": {
+      "exit_code": 0,
+      "wall_seconds": 3.479
+    },
+    "lost-reply": {
+      "exit_code": 0,
+      "wall_seconds": 5.004
+    },
+    "owner-exit": {
+      "exit_code": 0,
+      "wall_seconds": 3.285
+    },
+    "mab-goal": {
+      "exit_code": 0,
+      "wall_seconds": 1.017
+    },
+    "mab-receipts": {
+      "exit_code": 0,
+      "wall_seconds": 2.475
+    }
+  },
+  "contract_tests": {
+    "discovered": 242,
+    "passed": 240,
+    "skipped_private_B05": 2
+  },
+  "c_specialized_tests": 10,
+  "atropine_suite_cases": 10,
+  "mab_numeric_goal": {
+    "status": "succeeded",
+    "seed": 26001,
+    "consecutive_steps": 3,
+    "total_step_calls": 3,
+    "r03_enabled": false,
+    "production_acceptance": false
+  },
+  "mab_receipt_smoke": {
+    "case_count": 11,
+    "model_gate_enabled_in_full_chain": true,
+    "native_steps": 3,
+    "learned_gate_enabled": false
+  },
+  "atropine_console_http": {
+    "backend": "AtropineEnvGym",
+    "seed": 1101,
+    "operations": [
+      {
+        "operation": "cycle",
+        "http_status": 303,
+        "step_calls": 1,
+        "state_version": 2
+      },
+      {
+        "operation": "pause",
+        "http_status": 303,
+        "step_calls": 1,
+        "state_version": 2
+      },
+      {
+        "operation": "cycle",
+        "http_status": 409,
+        "step_calls": 1,
+        "state_version": 2
+      },
+      {
+        "operation": "resume",
+        "http_status": 409,
+        "step_calls": 1,
+        "state_version": 2
+      },
+      {
+        "operation": "confirm",
+        "http_status": 303,
+        "step_calls": 1,
+        "state_version": 2
+      },
+      {
+        "operation": "resume",
+        "http_status": 303,
+        "step_calls": 1,
+        "state_version": 2
+      },
+      {
+        "operation": "cycle",
+        "http_status": 303,
+        "step_calls": 2,
+        "state_version": 3
+      }
+    ]
+  },
+  "zmq_lost_reply": {
+    "step_calls": 1,
+    "takeover": true,
+    "premature_resume_blocked": true,
+    "out_of_order_receipt_rejected": true,
+    "reconciled_without_replay": true
+  },
+  "zmq_owner_exit": {
+    "state": "takeover_requested",
+    "owner_exitcode": 0,
+    "audited_step_calls": 1,
+    "resource_lock_retained": true,
+    "resume_blocked": true,
+    "new_dispatch_blocked": true,
+    "resolved": false
+  },
+  "development_replay": {
+    "runs": 120,
+    "raw_steps_checked": 420,
+    "groups": {
+      "baseline_P": {
+        "planned": 30,
+        "started": 30,
+        "successes": 30,
+        "not_started": 0,
+        "failures": 0,
+        "mean_successful_simulated_minutes": 240.0
+      },
+      "research_PI": {
+        "planned": 30,
+        "started": 30,
+        "successes": 30,
+        "not_started": 0,
+        "failures": 0,
+        "mean_successful_simulated_minutes": 240.0
+      },
+      "observer_direct": {
+        "planned": 30,
+        "started": 30,
+        "successes": 30,
+        "not_started": 0,
+        "failures": 0,
+        "mean_successful_simulated_minutes": 180.0
+      },
+      "observer_four": {
+        "planned": 30,
+        "started": 30,
+        "successes": 30,
+        "not_started": 0,
+        "failures": 0,
+        "mean_successful_simulated_minutes": 180.0
+      }
+    },
+    "same_action_pairs": 30,
+    "observer_vs_p_pct": 25.0,
+    "four_vs_single_agent_pct": 0.0
+  },
+  "c_scheduling_replay": {
+    "paired_runs": 90,
+    "published_metrics_match": true,
+    "metrics_sha256": "1267c06927dd5d48f60bcfd0e38ce6e231b8a41e206de80eaa2b105837bc4d62"
+  },
+  "source_sha256": {
+    "l3_system/main.py": "56995f8168d1752289f19211d29dfcfa0e48bd50489c6553957c447973614819",
+    "experiments/verify_a_release.py": "46512d06a731396a5e2ba21a46b069525f7c7f419351aec394d93cd91c4b151d",
+    "experiments/setup_a_mab.py": "efbfde7efb325cd3a33e2bfba19d04d9352eebcaff5e4a3fefa6c7e5f84b42c3",
+    "requirements-a-release.txt": "39e53bf4465f0804a830c4fd0777a925083503f1b6b966512913c17830113a1e",
+    "configs/goals/mab_public_buffer_goal.json": "57383b2f1f303620a1fde3ecd6c1a5af48c8b9aebf36613d24f6b418df71f0e9",
+    "configs/goals/mab_public_buffer_registry.json": "31326d4403941fe7f897fc95302405adb047c8201bd49c9cb51dd8e904ae2b4e"
+  },
+  "local_evidence_sha256": {
+    "release_tree_manifest": "0c6a7d08378da683a41344c9304a0639f8d89ff6a6a7bc642b1cd0a799ef9bfa",
+    "mab_development_audit": "de0042fb820c668006a7064f1d3eadb5e5b698da3bc694f2401b805561aff7e2"
+  },
+  "browser_video_verified": false,
+  "independent_team_acceptance_verified": false
+}

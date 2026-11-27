@@ -392,6 +392,8 @@ def run_live(*, goal="执行一次仿真控制任务", source_dir=None, seed=110
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="四智能体 HTN → CNP → 安全监管 → SMPL 执行闭环")
+    parser.add_argument("--transport", choices=["local", "zmq"], default="local",
+                        help="Local runtime or the Atropine ZeroMQ integration exercise")
     parser.add_argument("--scenario", choices=["normal", "reject", "inspect"], default="normal")
     parser.add_argument("--source-dir", help="External SMPL source tree (defaults to vendor/smpl)")
     parser.add_argument("--seed", type=int, default=1101)
@@ -404,6 +406,17 @@ def main(argv=None):
     parser.add_argument("--goal-registry", type=Path)
     parser.add_argument("--goal-timeout", type=float, help="Wall-clock seconds for an explicitly configured numeric goal")
     args = parser.parse_args(argv)
+    if args.transport == "zmq":
+        if (args.environment != "AtropineEnvGym" or args.scenario != "normal"
+                or args.cycles != 1 or args.max_steps != 60 or args.source_dir
+                or args.goal_spec or args.goal_registry or args.goal_timeout is not None
+                or args.offline_preview or not args.output_dir):
+            parser.error("ZeroMQ requires an output directory and supports the standard Atropine exercise only")
+        from deliverables.C10.live import run as run_zmq
+        out = Path(args.output_dir)
+        run_zmq(out, seed=args.seed, timeout_ms=750, backend="atropine")
+        print((out / "summary.json").read_text(encoding="utf-8"))
+        return
     if args.offline_preview:
         goal = "检查当前仿真状态" if args.scenario == "inspect" else "执行一次仿真控制任务"
         print(json.dumps(DecisionAgent.task_to_dict(DecisionAgent().create_task(goal)), ensure_ascii=False, indent=2))

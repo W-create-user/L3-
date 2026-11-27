@@ -1,0 +1,110 @@
+{
+  "schema_version": "2.0-draft",
+  "environment_id": "MAbEnvGym",
+  "registry_version": "D24-buffer-model-1",
+  "evidence_ref": "mab_helpers h=x[17] dm, xscale[17]=3; live B03 native action bounds",
+  "observation_size": 1970,
+  "action_size": 9,
+  "variables": {
+    "buffer_height": {
+      "source": "observation",
+      "index": 17,
+      "unit": "dm",
+      "coordinate": "physical_projection",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 49.99999809265137
+      }
+    },
+    "model_action_0": {
+      "source": "action",
+      "index": 0,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.34702715277671814,
+        "upper": 1.0
+      }
+    },
+    "model_action_1": {
+      "source": "action",
+      "index": 1,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.3471071720123291,
+        "upper": 1.0
+      }
+    },
+    "model_action_2": {
+      "source": "action",
+      "index": 2,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 8.002277900232002e-05,
+        "upper": 1.0
+      }
+    },
+    "model_action_3": {
+      "source": "action",
+      "index": 3,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.34702715277671814,
+        "upper": 1.0
+      }
+    },
+    "model_action_4": {
+      "source": "action",
+      "index": 4,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.799999475479126,
+        "upper": 1.0
+      }
+    },
+    "model_action_5": {
+      "source": "action",
+      "index": 5,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.005198487546294928,
+        "upper": 1.0
+      }
+    },
+    "model_action_6": {
+      "source": "action",
+      "index": 6,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.591999888420105,
+        "upper": 1.0
+      }
+    },
+    "model_action_7": {
+      "source": "action",
+      "index": 7,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.34702715277671814,
+        "upper": 1.0
+      }
+    },
+    "model_action_8": {
+      "source": "action",
+      "index": 8,
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    }
+  }
+}

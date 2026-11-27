@@ -1,0 +1,89 @@
+{
+  "schema_version": "2.0-draft",
+  "goal_id": "mab-public-steady-buffer",
+  "environment_id": "MAbEnvGym",
+  "registry_version": "D24-buffer-model-1",
+  "variable": "buffer_height",
+  "unit": "dm",
+  "coordinate": "physical_projection",
+  "target_range": {
+    "lower": 14.95,
+    "upper": 15.05
+  },
+  "max_steps": 10,
+  "hold_steps": 3,
+  "allowed_actions": {
+    "model_action_0": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.34702715277671814,
+        "upper": 1.0
+      }
+    },
+    "model_action_1": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.3471071720123291,
+        "upper": 1.0
+      }
+    },
+    "model_action_2": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 8.002277900232002e-05,
+        "upper": 1.0
+      }
+    },
+    "model_action_3": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.34702715277671814,
+        "upper": 1.0
+      }
+    },
+    "model_action_4": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.799999475479126,
+        "upper": 1.0
+      }
+    },
+    "model_action_5": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.005198487546294928,
+        "upper": 1.0
+      }
+    },
+    "model_action_6": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.591999888420105,
+        "upper": 1.0
+      }
+    },
+    "model_action_7": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.34702715277671814,
+        "upper": 1.0
+      }
+    },
+    "model_action_8": {
+      "unit": "dimensionless_model_scaled",
+      "coordinate": "physical_divided_by_uscale",
+      "range": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    }
+  }
+}
