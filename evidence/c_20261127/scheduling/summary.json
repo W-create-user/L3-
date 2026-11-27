@@ -1,0 +1,254 @@
+{
+  "runtime": "3.12.14",
+  "results": {
+    "normal": {
+      "fixed": {
+        "episodes": 10,
+        "jobs": 120,
+        "completed": 120,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 90,
+        "resolved_conflicts": 90,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 120,
+        "mean_makespan_ticks": 26.5,
+        "mean_initial_wait_ticks": 0,
+        "mean_utilization": 0.569343732895457,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": 0,
+        "paired_deltas_min_max": [
+          0,
+          0
+        ],
+        "paired_win_tie_loss": [
+          0,
+          10,
+          0
+        ]
+      },
+      "cnp": {
+        "episodes": 10,
+        "jobs": 120,
+        "completed": 120,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 89,
+        "resolved_conflicts": 89,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 120,
+        "mean_makespan_ticks": 26.5,
+        "mean_initial_wait_ticks": 0,
+        "mean_utilization": 0.5432927736376012,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": 0,
+        "paired_deltas_min_max": [
+          -1,
+          1
+        ],
+        "paired_win_tie_loss": [
+          3,
+          4,
+          3
+        ]
+      },
+      "cnp_no_load": {
+        "episodes": 10,
+        "jobs": 120,
+        "completed": 120,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 79,
+        "resolved_conflicts": 79,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 120,
+        "mean_makespan_ticks": 26,
+        "mean_initial_wait_ticks": 0,
+        "mean_utilization": 0.5066118011405367,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": -0.5,
+        "paired_deltas_min_max": [
+          -1,
+          1
+        ],
+        "paired_win_tie_loss": [
+          6,
+          3,
+          1
+        ]
+      }
+    },
+    "burst": {
+      "fixed": {
+        "episodes": 10,
+        "jobs": 180,
+        "completed": 180,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 581,
+        "resolved_conflicts": 156,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 180,
+        "mean_makespan_ticks": 27.5,
+        "mean_initial_wait_ticks": 2.361111111111111,
+        "mean_utilization": 0.777018809734327,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": 0,
+        "paired_deltas_min_max": [
+          0,
+          0
+        ],
+        "paired_win_tie_loss": [
+          0,
+          10,
+          0
+        ]
+      },
+      "cnp": {
+        "episodes": 10,
+        "jobs": 180,
+        "completed": 180,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 565,
+        "resolved_conflicts": 154,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 180,
+        "mean_makespan_ticks": 27.7,
+        "mean_initial_wait_ticks": 2.283333333333333,
+        "mean_utilization": 0.7669095102428436,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": 0.2,
+        "paired_deltas_min_max": [
+          -2,
+          2
+        ],
+        "paired_win_tie_loss": [
+          3,
+          3,
+          4
+        ]
+      },
+      "cnp_no_load": {
+        "episodes": 10,
+        "jobs": 180,
+        "completed": 180,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 558,
+        "resolved_conflicts": 149,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 180,
+        "mean_makespan_ticks": 27.6,
+        "mean_initial_wait_ticks": 2.272222222222222,
+        "mean_utilization": 0.748014323184883,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": 0.1,
+        "paired_deltas_min_max": [
+          -1,
+          2
+        ],
+        "paired_win_tie_loss": [
+          3,
+          4,
+          3
+        ]
+      }
+    },
+    "worker_exit": {
+      "fixed": {
+        "episodes": 10,
+        "jobs": 120,
+        "completed": 120,
+        "unfinished": 0,
+        "timeouts": 10,
+        "reassignments": 10,
+        "overlapping_awards": 0,
+        "contention_attempts": 133,
+        "resolved_conflicts": 96,
+        "old_feedback_rejected": 10,
+        "duplicates_idempotent": 120,
+        "mean_makespan_ticks": 26.4,
+        "mean_initial_wait_ticks": 0.25,
+        "mean_utilization": 0.6510456342063633,
+        "mean_timeout_rate": 0.07692307692307693,
+        "paired_delta_vs_fixed_ticks": 0,
+        "paired_deltas_min_max": [
+          0,
+          0
+        ],
+        "paired_win_tie_loss": [
+          0,
+          10,
+          0
+        ]
+      },
+      "cnp": {
+        "episodes": 10,
+        "jobs": 120,
+        "completed": 120,
+        "unfinished": 0,
+        "timeouts": 1,
+        "reassignments": 1,
+        "overlapping_awards": 0,
+        "contention_attempts": 103,
+        "resolved_conflicts": 88,
+        "old_feedback_rejected": 1,
+        "duplicates_idempotent": 120,
+        "mean_makespan_ticks": 26.4,
+        "mean_initial_wait_ticks": 0.11666666666666667,
+        "mean_utilization": 0.6242773889325256,
+        "mean_timeout_rate": 0.007692307692307693,
+        "paired_delta_vs_fixed_ticks": 0,
+        "paired_deltas_min_max": [
+          -1,
+          1
+        ],
+        "paired_win_tie_loss": [
+          3,
+          4,
+          3
+        ]
+      },
+      "cnp_no_load": {
+        "episodes": 10,
+        "jobs": 120,
+        "completed": 120,
+        "unfinished": 0,
+        "timeouts": 0,
+        "reassignments": 0,
+        "overlapping_awards": 0,
+        "contention_attempts": 90,
+        "resolved_conflicts": 83,
+        "old_feedback_rejected": 0,
+        "duplicates_idempotent": 120,
+        "mean_makespan_ticks": 26,
+        "mean_initial_wait_ticks": 0.05833333333333333,
+        "mean_utilization": 0.586645798277944,
+        "mean_timeout_rate": 0.0,
+        "paired_delta_vs_fixed_ticks": -0.4,
+        "paired_deltas_min_max": [
+          -1,
+          1
+        ],
+        "paired_win_tie_loss": [
+          5,
+          4,
+          1
+        ]
+      }
+    }
+  }
+}

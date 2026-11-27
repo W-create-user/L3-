@@ -1,0 +1,165 @@
+{
+  "mode": "local",
+  "role_process_count": 1,
+  "events": [
+    {
+      "request": {
+        "role": "C",
+        "operation": "heartbeat",
+        "correlation_id": "heartbeat-C"
+      },
+      "response": {
+        "role": "C",
+        "correlation_id": "heartbeat-C",
+        "status": "ok"
+      }
+    },
+    {
+      "request": {
+        "role": "D",
+        "operation": "heartbeat",
+        "correlation_id": "heartbeat-D"
+      },
+      "response": {
+        "role": "D",
+        "correlation_id": "heartbeat-D",
+        "status": "ok"
+      }
+    },
+    {
+      "request": {
+        "role": "B",
+        "operation": "heartbeat",
+        "correlation_id": "heartbeat-B"
+      },
+      "response": {
+        "role": "B",
+        "correlation_id": "heartbeat-B",
+        "status": "ok",
+        "steps": 0
+      }
+    },
+    {
+      "request": {
+        "role": "C",
+        "operation": "allocate",
+        "correlation_id": "round-1"
+      },
+      "response": {
+        "role": "C",
+        "correlation_id": "round-1",
+        "status": "ok",
+        "winner": "fixture-worker"
+      }
+    },
+    {
+      "request": {
+        "role": "D",
+        "operation": "review",
+        "correlation_id": "round-1",
+        "action": 1
+      },
+      "response": {
+        "role": "D",
+        "correlation_id": "round-1",
+        "status": "ok",
+        "approved": true
+      }
+    },
+    {
+      "request": {
+        "role": "B",
+        "operation": "step",
+        "correlation_id": "round-1",
+        "action": 1,
+        "approved": true,
+        "expected_steps": 0
+      },
+      "response": {
+        "role": "B",
+        "correlation_id": "round-1",
+        "status": "ok",
+        "steps": 1,
+        "applied": 1
+      }
+    },
+    {
+      "request": {
+        "role": "B",
+        "operation": "step",
+        "correlation_id": "round-1",
+        "action": 1,
+        "approved": true,
+        "expected_steps": 0
+      },
+      "response": {
+        "role": "B",
+        "correlation_id": "round-1",
+        "status": "ok",
+        "steps": 1,
+        "applied": 1
+      }
+    },
+    {
+      "request": {
+        "role": "B",
+        "operation": "step",
+        "correlation_id": "round-1",
+        "action": 0,
+        "approved": true,
+        "expected_steps": 0
+      },
+      "response": {
+        "role": "B",
+        "correlation_id": "round-1",
+        "status": "conflicting_duplicate"
+      }
+    },
+    {
+      "request": {
+        "role": "B",
+        "operation": "step",
+        "correlation_id": "late-round",
+        "action": 1,
+        "approved": true,
+        "expected_steps": 0
+      },
+      "response": {
+        "role": "B",
+        "correlation_id": "late-round",
+        "status": "stale_state",
+        "steps": 1
+      }
+    },
+    {
+      "request": {
+        "role": "D",
+        "operation": "review",
+        "correlation_id": "veto-round",
+        "action": 4
+      },
+      "response": {
+        "role": "D",
+        "correlation_id": "veto-round",
+        "status": "ok",
+        "approved": false
+      }
+    },
+    {
+      "request": {
+        "role": "B",
+        "operation": "step",
+        "correlation_id": "veto-round",
+        "action": 4,
+        "approved": false,
+        "expected_steps": 1
+      },
+      "response": {
+        "role": "B",
+        "correlation_id": "veto-round",
+        "status": "rejected",
+        "steps": 1
+      }
+    }
+  ]
+}
