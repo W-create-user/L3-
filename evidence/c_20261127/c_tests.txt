@@ -1,0 +1,12 @@
+test_capability_environment_heartbeat_and_load (test_c_delivery.TestDynamicBidding.test_capability_environment_heartbeat_and_load) ... ok
+test_no_bids_and_invalid_candidates (test_c_delivery.TestDynamicBidding.test_no_bids_and_invalid_candidates) ... ok
+test_main_local_single_worker_releases_lock_and_late_message_cannot_take_new_lock (test_c_delivery.TestFreezeCandidateContract.test_main_local_single_worker_releases_lock_and_late_message_cannot_take_new_lock) ... ok
+test_executed_failure_does_not_allow_retry (test_c_delivery.TestLease.test_executed_failure_does_not_allow_retry) ... ok
+test_identical_receipt_is_idempotent_and_wrong_identity_rejected (test_c_delivery.TestLease.test_identical_receipt_is_idempotent_and_wrong_identity_rejected) ... ok
+test_invalid_retry_preserves_previous_assignment (test_c_delivery.TestLease.test_invalid_retry_preserves_previous_assignment) ... ok
+test_timeout_requires_reconciliation_before_retry (test_c_delivery.TestLease.test_timeout_requires_reconciliation_before_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

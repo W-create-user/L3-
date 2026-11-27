@@ -1,0 +1,16 @@
+{
+  "backend": "atropine",
+  "seed": 1101,
+  "rpc_timeout_ms": 750,
+  "owner_exit": {
+    "state": "takeover_requested",
+    "owner_exitcode": 0,
+    "audited_step_calls": 1,
+    "request_id": "237517b2-97a9-4dfc-b4e3-38de9a3a87ed",
+    "assignment_id": "f2d5b3068cbc4f79a0e9e34e77ccb51b",
+    "resource_lock_retained": true,
+    "resume_blocked": true,
+    "new_dispatch_blocked": true,
+    "resolved": false
+  }
+}

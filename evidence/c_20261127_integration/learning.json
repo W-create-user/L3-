@@ -1,0 +1,110 @@
+{
+  "backend": "learning-fixture",
+  "seed": 1101,
+  "rpc_timeout_ms": 750,
+  "weight_sha256": "577f457e0fb252916264c0bb674569854a7782e026489afb201d97a868bde602",
+  "normal": {
+    "run_status": "completed",
+    "failure_reason": null,
+    "task_id": "TASK-6edc391f",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 6,
+    "subtask_statuses": {
+      "SUB-6b29fc62": "completed",
+      "SUB-d930a555": "completed",
+      "SUB-d4252706": "completed",
+      "SUB-a9fee9da": "completed",
+      "SUB-9510814d": "completed",
+      "SUB-77ebd1ba": "completed"
+    },
+    "step_calls": 1,
+    "step_delta": 1,
+    "step_count": 1,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Caller-supplied simulation policy.",
+    "r03_enabled": false,
+    "system_state": "autonomous",
+    "action_regenerations": 0
+  },
+  "replay": {
+    "identical_cached": true,
+    "conflict_rejected": true,
+    "step_calls": 1
+  },
+  "process_exit": {
+    "state": "takeover_requested",
+    "step_calls": 1,
+    "dispatch_blocked": true
+  },
+  "resume": {
+    "system_state": "autonomous",
+    "new_episode": false
+  },
+  "recovered": {
+    "run_status": "completed",
+    "failure_reason": null,
+    "task_id": "TASK-7f80e1de",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 6,
+    "subtask_statuses": {
+      "SUB-ac981347": "completed",
+      "SUB-cd288857": "completed",
+      "SUB-079dfa90": "completed",
+      "SUB-b8f3747d": "completed",
+      "SUB-39ddc5a5": "completed",
+      "SUB-4d9b3d7d": "completed"
+    },
+    "step_calls": 2,
+    "step_delta": 1,
+    "step_count": 2,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Caller-supplied simulation policy.",
+    "r03_enabled": false,
+    "system_state": "autonomous",
+    "action_regenerations": 0
+  },
+  "rejected": {
+    "run_status": "incomplete_or_failed",
+    "failure_reason": "safety_rejected",
+    "task_id": "TASK-9bdda056",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 3,
+    "subtask_statuses": {
+      "SUB-e8bfe596": "completed",
+      "SUB-82b2e2d3": "completed",
+      "SUB-21237dd2": "completed",
+      "SUB-a7ad8afc": "failed",
+      "SUB-bcf4016d": "blocked",
+      "SUB-b2c08ca8": "blocked"
+    },
+    "step_calls": 2,
+    "step_delta": 0,
+    "step_count": 2,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Caller-supplied simulation policy.",
+    "r03_enabled": false,
+    "failure_classification": {
+      "failure_type": "candidate_rejected",
+      "retryable": false,
+      "action": "takeover",
+      "rule_id": null
+    },
+    "system_state": "takeover_requested",
+    "action_regenerations": 0
+  }
+}

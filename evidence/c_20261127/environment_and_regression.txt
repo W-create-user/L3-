@@ -1,0 +1,22 @@
+Base: 08ea1796b6ecdc6d20f2f569f502e9f4e8edc351
+B candidate: 68831ef9e06440a1066e9d18bfb3955e1ac3006f
+Python 3.12.14
+NumPy 2.3.5
+Architecture x86_64
+model name	: AMD EPYC 9V74 80-Core Processor
+libzmq 4.3.5 (zmq_version)
+OPENBLAS_NUM_THREADS=1 for both training runs
+
+Baseline and C working tree: python -m unittest discover -s l3_system/tests
+C working tree: ERROR: test_a23_integration (unittest.loader._FailedTest.test_a23_integration)
+C working tree: ModuleNotFoundError: No module named 'flask'
+C working tree: ERROR: test_a_goal_runtime (unittest.loader._FailedTest.test_a_goal_runtime)
+C working tree: ModuleNotFoundError: No module named 'flask'
+C working tree: Ran 166 tests in 0.106s
+C working tree: FAILED (errors=2)
+Baseline: ERROR: test_a23_integration (unittest.loader._FailedTest.test_a23_integration)
+Baseline: ModuleNotFoundError: No module named 'flask'
+Baseline: ERROR: test_a_goal_runtime (unittest.loader._FailedTest.test_a_goal_runtime)
+Baseline: ModuleNotFoundError: No module named 'flask'
+Baseline: Ran 166 tests in 0.108s
+Baseline: FAILED (errors=2)
