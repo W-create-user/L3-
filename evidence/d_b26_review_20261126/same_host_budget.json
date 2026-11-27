@@ -1,0 +1,323 @@
+{
+  "schema_version": "D26FullCycleBudget/1.0",
+  "B_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+  "model_sha256": "a8deb16bb87a2d86e1245bf04b98efc4d21c4ce6506b66b31e0e4d85cbc6403c",
+  "gate_config_sha256": "04165c3d52acc48e3a4eadd64edf8d4e5e965be97d556a7b421afa903af3cb4c",
+  "learned_full_cycles": 12,
+  "mean_seconds": 0.0418839657499935,
+  "p95_seconds": 0.044636569899989806,
+  "max_seconds": 0.04495913499999915,
+  "over_500ms": 0,
+  "cases": [
+    {
+      "condition": "nominal",
+      "seed": 26001,
+      "complete": true,
+      "failure": null,
+      "wall_seconds": 1.6374019190000126,
+      "cycles": [
+        {
+          "index": 1,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.07270494700003383,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 2
+        },
+        {
+          "index": 2,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03285001000006105,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 3
+        },
+        {
+          "index": 3,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.026179501999990862,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 4
+        },
+        {
+          "index": 4,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03263717599998017,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 5
+        },
+        {
+          "index": 5,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.035809347000054004,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 6
+        },
+        {
+          "index": 6,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.033612940000011804,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 7
+        },
+        {
+          "index": 7,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.04058785400002307,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 8
+        },
+        {
+          "index": 8,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.0401596059999747,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 9
+        },
+        {
+          "index": 9,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.03848740900002667,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 10
+        },
+        {
+          "index": 10,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.04205562999993617,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 11
+        }
+      ]
+    },
+    {
+      "condition": "sensor_fault",
+      "seed": 26011,
+      "complete": true,
+      "failure": null,
+      "wall_seconds": 1.118372403999956,
+      "cycles": [
+        {
+          "index": 1,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.06253730299999916,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 2
+        },
+        {
+          "index": 2,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03314281099994787,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 3
+        },
+        {
+          "index": 3,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.024867024000059246,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 4
+        },
+        {
+          "index": 4,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03228440899999896,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 5
+        },
+        {
+          "index": 5,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03172408600005383,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 6
+        },
+        {
+          "index": 6,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03317606899997827,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 7
+        },
+        {
+          "index": 7,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.04495913499999915,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 8
+        },
+        {
+          "index": 8,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.04183233300000211,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 9
+        },
+        {
+          "index": 9,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.03983326599995962,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 10
+        },
+        {
+          "index": 10,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.044038943000032305,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 11
+        }
+      ]
+    },
+    {
+      "condition": "process_disturbance",
+      "seed": 26021,
+      "complete": true,
+      "failure": null,
+      "wall_seconds": 1.1494627900000296,
+      "cycles": [
+        {
+          "index": 1,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.06769287600002372,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 2
+        },
+        {
+          "index": 2,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03769352400001935,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 3
+        },
+        {
+          "index": 3,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.026768997999965904,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 4
+        },
+        {
+          "index": 4,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.043053556000018034,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 5
+        },
+        {
+          "index": 5,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.03564653700004783,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 6
+        },
+        {
+          "index": 6,
+          "mode": "explicit_restricted_sampling",
+          "whole_cycle_seconds": 0.034036833000072875,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 7
+        },
+        {
+          "index": 7,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.044372652999982165,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 8
+        },
+        {
+          "index": 8,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.04144023699996069,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 9
+        },
+        {
+          "index": 9,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.0423158629999989,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 10
+        },
+        {
+          "index": 10,
+          "mode": "learned_gate_cycle",
+          "whole_cycle_seconds": 0.042524660000026415,
+          "step_delta": 1,
+          "all_C_locks_released": true,
+          "pending_clear": true,
+          "state_version": 11
+        }
+      ]
+    }
+  ],
+  "scope": "same-host B+A/C+D process scorer, old-seed development; not goal efficiency or formal holdout",
+  "startup_manual_samples": 18,
+  "actual_step_calls": 30,
+  "initial_failed_integration_steps_preserved": 18,
+  "formal_holdout_started": false,
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logical_cpu_count": 9,
+    "rf_n_jobs": 1,
+    "model_worker_processes": 1
+  },
+  "confirmation_scope": "scripted operator API confirmation, not browser recording or human participant trial",
+  "actual_step_calls_including_retained_initial_failure_and_B_guard": 49
+}

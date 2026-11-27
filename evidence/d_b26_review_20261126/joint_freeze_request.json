@@ -1,0 +1,58 @@
+{
+  "schema_version": "D26JointFreezeRequest/1.0",
+  "private_list_sha256": "121b8422b7ef513da79c13e12f48a85219d74505dfc087bbed8bd21bbbed1d50",
+  "pair_count": 30,
+  "conditions": {
+    "nominal": 10,
+    "sensor_fault": 10,
+    "process_disturbance": 10
+  },
+  "planned_arms": [
+    "baseline_P",
+    "observer_direct",
+    "observer_four"
+  ],
+  "planned_runs": 90,
+  "B_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+  "model_sha256": "a8deb16bb87a2d86e1245bf04b98efc4d21c4ce6506b66b31e0e4d85cbc6403c",
+  "config_sha256": "04165c3d52acc48e3a4eadd64edf8d4e5e965be97d556a7b421afa903af3cb4c",
+  "gate_source_sha256": "5d9203729c7a5c98a311a9784907c74f404a0f805c046dc6bbdec7100c7fbf3c",
+  "controller_inputs": [
+    "trusted pre-fault startup certificate",
+    "delivered measurements",
+    "acknowledged executed joint actions"
+  ],
+  "forbidden_inputs": [
+    "D scoring observations",
+    "fault labels",
+    "fault schedule",
+    "holdout seeds"
+  ],
+  "access_proposal": {
+    "A": "review and approval",
+    "D_evaluator": "custodian and runner",
+    "B_C_policy_authors": "no seed list before candidate freeze; aggregates after evaluation",
+    "controller_process": "no seeds/labels/truth; only allowed channels"
+  },
+  "access_enforcement": "private file retained outside Git; actual separate A/B/C account ACL not verified, no claim of authenticated role isolation",
+  "statistics": {
+    "success": "goal+budget+safety, started failures retained; planned denominator also reported",
+    "cycle": "ratio of paired means on common successes, with coverage",
+    "sensitivity": "all planned pairs, failures/not-started 600min penalty",
+    "ci": "95% Wilson success; 10000 source-group paired bootstrap stratified by condition",
+    "frozen_analysis_seed": 251125
+  },
+  "A_confirmation": null,
+  "B_confirmation": null,
+  "C_confirmation": null,
+  "jointly_frozen": false,
+  "formal_launch_authorized": false,
+  "pending_A_decisions": [
+    "whether primary control experiment uses model-fence-only or full learned gate",
+    "how six restricted startup steps count against 10-step and simulated-cycle budgets; cannot subtract them after results",
+    "90-second clock starts before initialization/calibration",
+    "approve startup certificate assumption and source",
+    "approve 500ms inference budget and measured complete-cycle budget",
+    "verify holdout access separation and approve exact fixed versions"
+  ]
+}

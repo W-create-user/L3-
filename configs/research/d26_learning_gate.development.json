@@ -1,0 +1,19 @@
+{
+  "schema_version": "D26LearningGate/1.0",
+  "B_commit": "68831ef9e06440a1066e9d18bfb3955e1ac3006f",
+  "model_sha256": "a8deb16bb87a2d86e1245bf04b98efc4d21c4ce6506b66b31e0e4d85cbc6403c",
+  "inference_seconds": 0.5,
+  "observation_max_age_seconds": 0.5,
+  "formal_launch_authorized": false,
+  "scope": "B05 PI-trained scalar model extended experimentally to B26 P+observer on old development seeds; not independent generalization approval",
+  "warmup": "six individually authorized actual steps, three clean model verdicts then explicit human confirmation",
+  "runtime_sha256": {
+    "l3_system/execution/controllers/acknowledged_buffer.py": "11274313c81c0cf37f1559891c76829cc1c4f253c0f85f437e91a26d029e5bd5",
+    "l3_system/execution/controllers/policies.py": "babc65181224d7fe1fd43c5cecbffc54d0c4451db235e0c7a8155db9a19bc8e5",
+    "l3_system/execution/mab_adapter.py": "4bdc76da1443cf34a37eb6a90302814606ebfe93bcabc366942d560b1d23a9e5",
+    "l3_system/execution/base_adapter.py": "d110e52afa7540ea123279391d3b52cf36892fef1d4a436ca7e5722ac745fa55",
+    "l3_system/execution/execution_agent.py": "5b6a9d82c52b3f254ed88b360802f149f168d6999287e6252d1ef4bded8d367a"
+  },
+  "receipt_guard": "D FailClosedPolicy, stop on every candidate API exception",
+  "repeated_review": "cache exact request in same current state; B retains sole execution deduplication"
+}
