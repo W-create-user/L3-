@@ -1,0 +1,28 @@
+Main base: 08ea1796b6ecdc6d20f2f569f502e9f4e8edc351
+B gateway checkout: 68831ef9e06440a1066e9d18bfb3955e1ac3006f
+D gate checkout: 9f4d4411542d66312f127411e4402be14d04da27
+
+Main: python -m unittest discover -s l3_system/tests -t . -v
+Ran 181 tests in 0.331s
+OK
+
+C08: python -m unittest discover -s deliverables/C08/tests -v
+Ran 7 tests in 0.001s
+OK
+
+C10: python -m unittest discover -s deliverables/C10/tests -v
+test_expired_lease_blocks_dispatch_and_preserves_worker_lock (test_wire_scheduler.WireSchedulerTests.test_expired_lease_blocks_dispatch_and_preserves_worker_lock) ... ok
+test_feedback_requires_original_award_and_cannot_release_new_lock (test_wire_scheduler.WireSchedulerTests.test_feedback_requires_original_award_and_cannot_release_new_lock) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+
+B: python -m unittest l3_system.tests.test_joint_action_gateway
+Ran 13 tests in 0.012s
+OK
+
+D: python -m unittest discover -s deliverables/D05/tests -p test_b26_gate.py -v
+Ran 6 tests in 0.001s
+OK

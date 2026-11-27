@@ -15,7 +15,7 @@ class TransportError(RuntimeError):
 class ZmqEndpoint:
     """One process, one socket. Close and reconnect after a request times out."""
 
-    def __init__(self, *, server, timeout_ms, address=None):
+    def __init__(self, *, server, timeout_ms, address=None, max_frame=MAX_FRAME):
         if type(timeout_ms) is not int or not 0 < timeout_ms <= 60_000:
             raise ValueError("timeout_ms must be between 1 and 60000")
         if not server and (address is None or not address.startswith("tcp://127.0.0.1:")):
@@ -23,6 +23,9 @@ class ZmqEndpoint:
         library = find_library("zmq")
         if not library:
             raise TransportError("libzmq is missing")
+        if type(max_frame) is not int or not 0 < max_frame <= 1_048_576:
+            raise ValueError("max_frame must be between 1 and 1048576")
+        self.max_frame = max_frame
         self.lib = ct.CDLL(library)
         pointer, number, string = ct.c_void_p, ct.c_int, ct.c_char_p
         signatures = {
@@ -50,7 +53,7 @@ class ZmqEndpoint:
                 setting = ct.c_int(value)
                 self._check(self.lib.zmq_setsockopt(
                     self.socket, option, ct.byref(setting), ct.sizeof(setting)))
-            max_frame = ct.c_int64(MAX_FRAME)
+            max_frame = ct.c_int64(self.max_frame)
             self._check(self.lib.zmq_setsockopt(
                 self.socket, 22, ct.byref(max_frame), ct.sizeof(max_frame)))  # ZMQ_MAXMSGSIZE
             if server:
@@ -81,14 +84,14 @@ class ZmqEndpoint:
 
     def send(self, message):
         data = json.dumps(message, allow_nan=False).encode()
-        if len(data) > MAX_FRAME:
+        if len(data) > self.max_frame:
             raise TransportError("Frame exceeds maximum size")
         self._check(self.lib.zmq_send(self.socket, data, len(data), 0))
 
     def receive(self):
-        buffer = ct.create_string_buffer(MAX_FRAME)
-        size = self._check(self.lib.zmq_recv(self.socket, buffer, MAX_FRAME, 0))
-        if size > MAX_FRAME:
+        buffer = ct.create_string_buffer(self.max_frame)
+        size = self._check(self.lib.zmq_recv(self.socket, buffer, self.max_frame, 0))
+        if size > self.max_frame:
             raise TransportError("Frame exceeds maximum size")
         try:
             message = json.loads(buffer.raw[:size])

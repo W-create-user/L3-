@@ -1,0 +1,109 @@
+{
+  "backend": "atropine",
+  "seed": 1101,
+  "rpc_timeout_ms": 750,
+  "normal": {
+    "run_status": "completed",
+    "failure_reason": null,
+    "task_id": "TASK-7d4aa474",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 6,
+    "subtask_statuses": {
+      "SUB-e27daf5e": "completed",
+      "SUB-e6b32286": "completed",
+      "SUB-c7071a1c": "completed",
+      "SUB-0acfdcb1": "completed",
+      "SUB-b04f6776": "completed",
+      "SUB-3b031e04": "completed"
+    },
+    "step_calls": 1,
+    "step_delta": 1,
+    "step_count": 1,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Atropine space midpoint interface baseline.",
+    "r03_enabled": false,
+    "system_state": "autonomous",
+    "action_regenerations": 0
+  },
+  "replay": {
+    "identical_cached": true,
+    "conflict_rejected": true,
+    "step_calls": 1
+  },
+  "process_exit": {
+    "state": "takeover_requested",
+    "step_calls": 1,
+    "dispatch_blocked": true
+  },
+  "resume": {
+    "system_state": "autonomous",
+    "new_episode": false
+  },
+  "recovered": {
+    "run_status": "completed",
+    "failure_reason": null,
+    "task_id": "TASK-4ca21859",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 6,
+    "subtask_statuses": {
+      "SUB-116d9e33": "completed",
+      "SUB-40d9587c": "completed",
+      "SUB-74c5cee2": "completed",
+      "SUB-a14db924": "completed",
+      "SUB-30b0fe01": "completed",
+      "SUB-4aba0030": "completed"
+    },
+    "step_calls": 2,
+    "step_delta": 1,
+    "step_count": 2,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Atropine space midpoint interface baseline.",
+    "r03_enabled": false,
+    "system_state": "autonomous",
+    "action_regenerations": 0
+  },
+  "rejected": {
+    "run_status": "incomplete_or_failed",
+    "failure_reason": "safety_rejected",
+    "task_id": "TASK-e6bfd781",
+    "task_type": "control_cycle",
+    "subtask_count": 6,
+    "completed_subtasks": 3,
+    "subtask_statuses": {
+      "SUB-137ead1d": "completed",
+      "SUB-d5428e92": "completed",
+      "SUB-d1899f5f": "completed",
+      "SUB-b625b5ff": "failed",
+      "SUB-e6d07f1b": "blocked",
+      "SUB-be75c9c9": "blocked"
+    },
+    "step_calls": 2,
+    "step_delta": 0,
+    "step_count": 2,
+    "executor_id": "ExecutionAgent-01",
+    "d_demo_mode": false,
+    "bids_are_live": false,
+    "bids_note": "One installed capable worker per role; local deterministic bids.",
+    "all_C_locks_released": true,
+    "controller_note": "Caller-supplied simulation policy.",
+    "r03_enabled": false,
+    "failure_classification": {
+      "failure_type": "candidate_rejected",
+      "retryable": false,
+      "action": "takeover",
+      "rule_id": null
+    },
+    "system_state": "takeover_requested",
+    "action_regenerations": 0
+  }
+}
