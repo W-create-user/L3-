@@ -1,0 +1,6 @@
+c10.log:Ran 2 tests in 0.001s
+c10.log:OK
+c08.log:Ran 8 tests in 0.001s
+c08.log:OK
+main.log:Ran 181 tests in 0.303s
+main.log:OK

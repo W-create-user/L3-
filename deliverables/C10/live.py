@@ -131,7 +131,7 @@ def _serve(role, ready, options):
         ready.send(channel.address)
         ready.close()
         receipts = {}
-        drop_next = options.get("drop_first_step_reply", False)
+        reply_fault = options.get("reply_fault")
         while True:
             request = channel.receive()
             identity = request["correlation_id"]
@@ -178,8 +178,10 @@ def _serve(role, ready, options):
                 response["error"] = f"{type(error).__name__}: {error}"
             if role == "B" and operation in STEP_METHODS:
                 receipts[identity] = (request, response)
-            if drop_next and operation == "execute_action" and (response.get("value") or {}).get("executed"):
-                drop_next = False
+            if reply_fault and operation == "execute_action" and (response.get("value") or {}).get("executed"):
+                if reply_fault == "exit":
+                    return  # Lose the owner and its in-memory receipt after the logged step.
+                reply_fault = None
                 # Reply after A's receive deadline. B's completed result stays in its ledger.
                 sleep(options["reply_delay_seconds"])
             channel.send(response)
@@ -360,7 +362,44 @@ def verify_lost_reply(system, execution, scheduler, goal, generator):
             "request_id": request["request_id"], "assignment_id": assignment["assignment_id"]}
 
 
-def run(out, *, seed, timeout_ms, backend, lost_reply=False):
+def verify_owner_exit(system, execution, scheduler, goal, generator, b_log):
+    try:
+        system.run_cycle(goal, action_generator=generator)
+    except TransportError:
+        assert system.state == "takeover_requested"
+    else:
+        raise AssertionError("Execution owner exit did not trigger takeover")
+    execution.remote.process.join(3)
+    assert execution.remote.process.exitcode == 0
+    request, _ = execution.last_args
+    assignment = scheduler.get_active_assignment(request["task_id"], request["subtask_id"])
+    assert assignment and scheduler.active_agent_tasks == {assignment["winner_id"]: request["subtask_id"]}
+    try:
+        system.resume(operator="c-acceptance", reason="probe missing execution owner")
+    except RuntimeError as error:
+        assert "Outstanding assignments" in str(error)
+    else:
+        raise AssertionError("Resume accepted without a live owner or reconciled assignment")
+    try:
+        system.run_cycle(goal, action_generator=generator)
+    except RuntimeError as error:
+        assert "Human confirmation" in str(error)
+    else:
+        raise AssertionError("Takeover did not prevent new dispatch")
+    records = [json.loads(line) for line in b_log.read_text(encoding="utf-8").splitlines()]
+    results = [row["result"] for row in records if row["event"] == "execution_result"]
+    assert len(results) == 1
+    receipt = results[0]
+    assert receipt["request_id"] == request["request_id"] and receipt["executed"] is True
+    assert receipt["step_calls"] == 1
+    return {"state": system.state, "owner_exitcode": execution.remote.process.exitcode,
+            "audited_step_calls": receipt["step_calls"], "request_id": request["request_id"],
+            "assignment_id": assignment["assignment_id"], "resource_lock_retained": True,
+            "resume_blocked": True, "new_dispatch_blocked": True,
+            "resolved": False}
+
+
+def run(out, *, seed, timeout_ms, backend, lost_reply=False, owner_exit=False):
     out.mkdir(parents=True, exist_ok=False)
     trace = []
     runs = {"backend": backend, "seed": seed, "rpc_timeout_ms": timeout_ms}
@@ -376,9 +415,11 @@ def run(out, *, seed, timeout_ms, backend, lost_reply=False):
 
         d_path = out / "D_reviews.json"
         try:
+            b_log = out / "B_events.jsonl"
+            reply_fault = "exit" if owner_exit else "delay" if lost_reply else None
             execution = ExecutionProxy(start(
-                "B", backend=backend, max_steps=12, b_log=str(out / "B_events.jsonl"),
-                drop_first_step_reply=lost_reply, reply_delay_seconds=1.5 * timeout_ms / 1000))
+                "B", backend=backend, max_steps=12, b_log=str(b_log),
+                reply_fault=reply_fault, reply_delay_seconds=1.5 * timeout_ms / 1000))
             spaces = execution.remote.call("spaces")
             execution.adapter = AdapterProxy(execution.remote, spaces)
             monitor = RoleProxy(start("D", **spaces))
@@ -386,6 +427,12 @@ def run(out, *, seed, timeout_ms, backend, lost_reply=False):
             system = MultiAgentSystem(executor=execution, monitor=monitor,
                                       scheduler=scheduler, event_path=out / "A_events.jsonl")
             execution.reset(seed=seed)
+            if owner_exit:
+                runs["owner_exit"] = verify_owner_exit(system, execution, scheduler, goal, generator, b_log)
+                d_path.write_text(json.dumps(monitor.get_logs(), ensure_ascii=False, indent=2), encoding="utf-8")
+                (out / "summary.json").write_text(json.dumps(runs, ensure_ascii=False, indent=2) + "\n",
+                                                  encoding="utf-8")
+                return
             if lost_reply:
                 runs["lost_execution_reply"] = verify_lost_reply(system, execution, scheduler, goal, generator)
             runs["normal"] = system.run_cycle(goal, action_generator=generator)["summary"]
@@ -445,7 +492,9 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=1101)
     parser.add_argument("--timeout-ms", type=int, default=750)
     parser.add_argument("--backend", choices=("atropine", "learning-fixture"), default="atropine")
-    parser.add_argument("--lost-reply", action="store_true")
+    faults = parser.add_mutually_exclusive_group()
+    faults.add_argument("--lost-reply", action="store_true")
+    faults.add_argument("--owner-exit", action="store_true")
     args = parser.parse_args()
     run(args.out, seed=args.seed, timeout_ms=args.timeout_ms, backend=args.backend,
-        lost_reply=args.lost_reply)
+        lost_reply=args.lost_reply, owner_exit=args.owner_exit)
